@@ -1,4 +1,4 @@
-import { Input, FormFlex } from '/app/components/Form/index';
+import { Input, FormFlex } from 'components/Form/index'; 
 import { useState } from 'react';
 import styled from 'styled-components';
 
