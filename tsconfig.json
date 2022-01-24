@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "allowJs": true,
+        "noEmit": true
+    },
+    "include": ["app/**/*", "pages/**/*"],
+    "exclude": ["node_modules"]
+}
