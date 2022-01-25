@@ -105,7 +105,6 @@ export default function UserRegister() {
           Register
         </button>
       </FormFlex>
-      <h1>{userRegistrationStatus}</h1>
     </Wrapper>
   );
 }
