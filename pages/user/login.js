@@ -1,4 +1,4 @@
-import { Input, FormFlex } from 'components/Form/index'; 
+import { Input } from 'components/Form/index';
 import { useState } from 'react';
 import styled from 'styled-components';
 
@@ -6,6 +6,12 @@ const Wrapper = styled.div`
     width: 50%;
     margin: 50px auto;
     background-color: ${(props) => props.theme === 'light' ? '#fff' : '#666'};
+`;
+
+const FormFlex = styled.form`
+    display: flex;
+    flex-direction: column; 
+    max-width: 400px;
 `;
 
 export default function UserLogin() {
@@ -34,7 +40,7 @@ export default function UserLogin() {
                     type="text"
                     label="Username"
                     value={username}
-                    error={usernameError}
+                    errorMsg={usernameError}
                     onInputChange={(e) => setUsername(e.target.value)} />
                 <Input
                     name="password"
