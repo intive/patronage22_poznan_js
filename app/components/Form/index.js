@@ -1,22 +1,24 @@
-import styled from 'styled-components';
+import { useState } from 'react';
+import { FormRow, FormLabel, FormInput, ErrorMsg } from './form-styling-components'
 
-export function Input(props) {
+export function Input({ id, name, type, label, value, errorMsg, onInputChange }) {
+    const [isInputFocused, setIfInputIsFocused] = useState(false)
+
     return (
         <>
-            <label htmlFor={props.id}>{props.label}</label>
-            <input
-                id={props.id}
-                name={props.name}
-                type={props.type}
-                value={props.value}
-                onChange={props.onInputChange} />
-            {props.error && <div style={{ color: "red"}}>{props.error}</div>}
+            <FormRow>
+                <FormLabel isInputFocused={isInputFocused} htmlFor={id}>{label}</FormLabel>
+                <FormInput
+                    id={id}
+                    name={name}
+                    type={type}
+                    value={value}
+                    onChange={onInputChange}
+                    onFocus={() => setIfInputIsFocused(true)}
+                    onBlur={e => !e.target.value && setIfInputIsFocused(false)}
+                />
+            </FormRow>
+            {errorMsg && <ErrorMsg>{errorMsg}</ErrorMsg>}
         </>
     )
 }
-
-export const FormFlex = styled.form`
-    display: flex;
-    flex-direction: column; 
-    max-width: 400px;
-`;
