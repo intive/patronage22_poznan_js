@@ -1,4 +1,4 @@
-import { Input, FormFlex } from 'components/Form/index'; 
+import { Input, FormFlex, Button } from 'components/Form/index';
 import { useState } from 'react';
 import styled from 'styled-components';
 
@@ -13,15 +13,29 @@ export default function UserLogin() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [usernameError, setUsernameError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
 
     const userLogin = async (e) => {
         e.preventDefault();
         setUsernameError('');
-        if (!username || username.length < 5) {
-            setUsernameError('Invalid username');
-        }
+        setPasswordError('');
+        let isErrorOccured = false;
 
-        const user = { username, password };
+        if (!username || username.length < 5) {
+            isErrorOccured = true;
+            setUsernameError(['Invalid username']);
+        } if (!password || password.length <5) {
+            isErrorOccured = true;
+            setPasswordError('Invalid password');
+
+        }
+        if(!isErrorOccured){
+            const user = {
+              username: username,
+              password: password
+            };
+            console.log(user);
+          }
     }
 
     return (
@@ -40,8 +54,9 @@ export default function UserLogin() {
                     type="password"
                     label="Password"
                     value={password}
+                    error={passwordError}
                     onInputChange={(e) => setPassword(e.target.value)} />
-                <button onClick={userLogin}>Sign In</button>
+                <Button onClick={userLogin}>Sign In</Button>
             </FormFlex>
         </Wrapper>
     )

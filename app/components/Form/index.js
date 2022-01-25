@@ -4,7 +4,7 @@ export function Input(props) {
     return (
         <>
             <label htmlFor={props.id}>{props.label}</label>
-            <input
+            <input style={{borderRadius: "2px", height: "25px", margin: "2px"}}
                 id={props.id}
                 name={props.name}
                 type={props.type}
@@ -15,8 +15,15 @@ export function Input(props) {
     )
 }
 
+export const Button = styled.button`
+    height: 30px;
+    border-radius: 3px;
+    background-color: rgb(50, 147, 168);
+    font-weight: bold;
+`;
+
 export const FormFlex = styled.form`
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     max-width: 400px;
 `;
