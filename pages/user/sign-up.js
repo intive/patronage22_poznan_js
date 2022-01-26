@@ -73,7 +73,7 @@ export default function UserRegistration() {
                     <Input
                         id="email"
                         name="email"
-                        type="text"
+                        type="email"
                         label="Email"
                         value={inputValues.email}
                         errorMsg={errorMsg.email}
