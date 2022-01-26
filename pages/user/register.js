@@ -32,6 +32,7 @@ export default function UserRegister() {
     if(Object.keys(formErrors).length === 0){
       console.log(formValues);
       setSubmitted(true);
+      console.log(submitted);
     }
   };
 
