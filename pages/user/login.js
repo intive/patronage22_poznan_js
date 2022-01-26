@@ -27,16 +27,10 @@ export default function UserLogin() {
         } if (!password || password.length <5) {
             isErrorOccured = true;
             setPasswordError('Invalid password');
-
-        }
-        if(!isErrorOccured){
-            const user = {
-              username: username,
-              password: password
-            };
-            console.log(user);
-          }
-    }
+        } if (!isErrorOccured){
+        const user = { username, password };
+        console.log(user);
+    }}
 
     return (
         <Wrapper theme={"light"}>
