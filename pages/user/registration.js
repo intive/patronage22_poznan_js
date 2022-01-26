@@ -18,7 +18,7 @@ export default function UserRegister() {
   const [userPasswordError, setUserPasswordError] = useState("");
   const [userEmailError, setUserEmailError] = useState("");
   const [userConfirmEmailError, setUserConfirmEmailError] = useState("");
-  const [userRegistrationStatus, setUserRegistrationStatus] = useState("");
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
