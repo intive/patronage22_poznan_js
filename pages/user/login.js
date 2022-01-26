@@ -8,15 +8,15 @@ export default function UserLogin() {
     const [usernameError, setUsernameError] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
-const getUsers = async () => {
-    const users = await fetch('/api/users/').then(res => res.json());
-    return users;
-}
+//const getUsers = async () => {
+//    const users = await fetch('/api/users/').then(res => res.json());
+//    return users;
+//}
 
-const checkUserExists = async (username) => {
-    const users = await getUsers();
-    return users.some(user => user.username === username);
-}
+//const checkUserExists = async (username) => {
+//    const users = await getUsers();
+//    return users.some(user => user.username === username);
+//}
 
     const userLogin = (e) => {
         e.preventDefault();
