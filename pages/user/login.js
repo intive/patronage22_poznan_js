@@ -22,6 +22,7 @@ export default function UserLogin() {
         }
 
         const user = { username, password };
+        console.log(user);
     }
 
     return (
