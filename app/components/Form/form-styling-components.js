@@ -71,4 +71,17 @@ const ErrorMsg = styled.p`
     color: red;
 `
 
-export { FormWrapper, FormContent, Form, FormTitle, FormButton, FormRow, FormLabel, FormInput, ErrorMsg }
+const Wrapper = styled.div`
+    width: 50%;
+    margin: 50px auto;
+    background-color: ${(props) => props.theme === 'light' ? '#fff' : '#666'};
+`;
+
+
+const FormFlex = styled.form`
+    display: flex;
+    flex-direction: column; 
+    max-width: 400px;
+`;
+
+export { FormWrapper, FormContent, Form, FormTitle, FormButton, FormRow, FormLabel, FormInput, ErrorMsg, Wrapper, FormFlex }

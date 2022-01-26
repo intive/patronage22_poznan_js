@@ -1,18 +1,6 @@
 import { Input } from 'components/Form/index';
+import { Wrapper, FormFlex } from '../../app/components/Form/form-styling-components'
 import { useState } from 'react';
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-    width: 50%;
-    margin: 50px auto;
-    background-color: ${(props) => props.theme === 'light' ? '#fff' : '#666'};
-`;
-
-const FormFlex = styled.form`
-    display: flex;
-    flex-direction: column; 
-    max-width: 400px;
-`;
 
 export default function UserLogin() {
 
