@@ -13,19 +13,19 @@ const [usernameError, setUsernameError] = useState('');
 const [passwordError, setPasswordError] = useState('');
 const [mailError, setMailError] = useState('');
 
-const getUsers = async () => {
-    const users = await fetch('/api/users/')
-    .then(res => res.json());
-    return users;
-}
+//const getUsers = async () => {
+//    const users = await fetch('/api/users/')
+//    .then(res => res.json());
+//    return users;
+//}
 
-const checkUserExists = async (username) => {
-    const users = await getUsers()
-    .then (result => {
-        return result.some(user => user.username === username);
-    });
-    
-}
+//const checkUserExists = async (username) => {
+//    const users = await getUsers()
+//    .then (result => {
+//        return result.some(user => user.username === username);
+//    });
+//    
+//}
 
     const userRegister = (e) => {
         // preventDefault zapobiega wyświetleniu polecenia w adresie URL
