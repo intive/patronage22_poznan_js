@@ -1,10 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-// import styles from './styles/formStyles.module.css' //
-
-
-
-// Log in form
 
 export function Input(props) {
     return (
@@ -112,6 +106,6 @@ export const validPassword = new RegExp(
 );
 
 export const validEmail =  new RegExp(
-    "^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" // Użyty stary RegExp - niepoprawny
+    "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$" // Użyty stary RegExp - niepoprawny
 );
 

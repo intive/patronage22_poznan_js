@@ -8,7 +8,8 @@ export default function UserLogin() {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [confEmail, setConfirmEmail] = useState('');
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState('You successfully signed up!');
+    
 
     const [usernameError, setUsernameError] = useState('');
     const [passwordError, setPasswordError] = useState('');
@@ -41,7 +42,6 @@ export default function UserLogin() {
         {
             setConfEmailError("Emails don't match")
         } else{
-            message = "You successfully signed up!"
             setMessage(alert(message))
         }
 
