@@ -27,3 +27,9 @@ export const FormFlex = styled.form`
     flex-direction: column;
     max-width: 400px;
 `;
+
+export const Wrapper = styled.div`
+    width: 50%;
+    margin: 50px auto;
+    background-color: ${(props) => props.theme === 'light' ? '#fff' : '#666'};
+`;

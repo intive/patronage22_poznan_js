@@ -1,13 +1,7 @@
-import { FormFlex, Input, Button } from 'components/Form';
+import { FormFlex, Input, Button, Wrapper } from 'components/Form';
 import { useState } from 'react';
-import styled from 'styled-components';
 
 
-const Wrapper = styled.div`
-    width: 50%;
-    margin: 50px auto;
-    background-color: ${(props) => props.theme === 'light' ? '#fff' : '#666'};
-`;
 const usernameRegEx = /^[a-zA-Z0-9_-]*$/;
 const emailRegEx = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
 
@@ -31,21 +25,35 @@ export default function UserRegister() {
     setConfirmEmailError('');
     let isErrorOccured = false;
 
-    if (!registerUsername || registerUsername.length < 5) {
+   if (!registerPassword) {
       isErrorOccured = true;
-        setRegisterUsernameError('Invalid username');
-    } if (!registerPassword || registerPassword.length < 6) {
+      setRegisterPasswordError('Enter your password.')
+    } else if (registerPassword.length < 6) {
       isErrorOccured = true;
       setRegisterPasswordError('Password should be at least 6 characters long');
-    } if (confirmEmail != email) {
+    }
+    if (!confirmEmail) {
+      isErrorOccured = true;
+      setConfirmEmailError('You need to confirm you email');
+    } else if (confirmEmail != email) {
       isErrorOccured = true;
       setConfirmEmailError('Confirm email should be the same as email');
-    } if (!usernameRegEx.test(registerUsername) || registerUsername.length<6 || registerUsername.length >20) {
+    }
+     if (!registerUsername) {
+      isErrorOccured = true;
+      setRegisterUsernameError('Enter your username');
+    } else if (!usernameRegEx.test(registerUsername) || registerUsername.length<6 || registerUsername.length >20) {
       isErrorOccured = true;
       setRegisterUsernameError('Username must be between 6 and 20 characters long and can only contain letters and numbers');
-    } if (!emailRegEx.test(email)) {
+
+    }
+    if (!email) {
+      isErrorOccured = true;
+      setEmailError('Enter your email');
+    } else if (!emailRegEx.test(email)) {
       isErrorOccured = true;
       setEmailError('The email must be in a valid email address format');
+
     }
 
     if(!isErrorOccured){
@@ -72,6 +80,7 @@ export default function UserRegister() {
           error={registerUsernameError}
           onInputChange={(e) => setRegisterUsername(e.target.value)} />
       <Input
+        id="registerPassword"
         name="registerPassword"
         type="password"
         label="Password"
@@ -79,15 +88,17 @@ export default function UserRegister() {
         error={registerPasswordError}
         onInputChange={(e) => setRegisterPassword(e.target.value)} />
       <Input
+        id="email"
         name="email"
-        type="emaii"
+        type="email"
         label="Email"
         value={email}
         error={emailError}
         onInputChange={(e) => setEmail(e.target.value)} />
       <Input
+        id="confirmEmail"
         name="confirmEmail"
-        type="emaii"
+        type="email"
         label="Confirm Email"
         value={confirmEmail}
         error={confirmEmailError}
