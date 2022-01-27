@@ -1,4 +1,4 @@
-import { useState } from "react/cjs/react.development";
+import { useState, useEffect } from "react/cjs/react.development";
 import { Input, FormFlex } from "components/Form";
 import styled from "styled-components";
 
@@ -21,6 +21,7 @@ export default function UserRegister() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormValues({ ...formValues, [name]: value });
   };
 
@@ -29,7 +30,7 @@ export default function UserRegister() {
 
     setFormErrors(validate(formValues));
     console.log(formErrors);
-    if(Object.keys(formErrors).length === 0){
+    if (Object.keys(formErrors).length === 0) {
       console.log(formValues);
       setSubmitted(true);
       console.log(submitted);
@@ -55,7 +56,9 @@ export default function UserRegister() {
      */
     if (!values.email) {
       errors.email = "Email is required";
-    } else if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(values.email)) {
+    } else if (
+      !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(values.email)
+    ) {
       errors.email = "Not valid format!";
     }
 
