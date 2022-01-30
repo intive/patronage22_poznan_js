@@ -1,21 +1,21 @@
-import { InputReg, FormFlex, Wrapper, Button, Container, validName, validPassword, validEmail } from '/app/components/Form/index';
+import { InputReg, FormFlex, Wrapper, Button, Container } from '/app/components/Form/index';
 import { useState } from 'react';
 
+const validName = /^[0-9a-zA-Z]{6,20}$/;
+const validPassword = /^[0-9a-zA-Z]{6,20}$/;
+const validEmail =  /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/;
 
 export default function UserLogin() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-    const [confEmail, setConfirmEmail] = useState('');
-    const [message, setMessage] = useState('You successfully signed up!');
-    
+    const [confEmail, setConfirmEmail] = useState('');    
 
     const [usernameError, setUsernameError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [confEmailError, setConfEmailError] = useState('');
-
 
     const userSignIn = async (e) => {
         e.preventDefault();
@@ -28,7 +28,7 @@ export default function UserLogin() {
         setPasswordError('');
         if (!validPassword.test(password))
         {
-            setPasswordError('Password must be at least 6 characters long')
+            setPasswordError('Password must be between 6 and 20 characters, letters and numbers are only allowed')
         }
 
         setEmailError('');
@@ -41,11 +41,9 @@ export default function UserLogin() {
         if (email !== confEmail)
         {
             setConfEmailError("Emails don't match")
-        } else{
-            setMessage(alert(message))
         }
 
-        const user = { username, password };
+        const user = { username, password, email };
         console.log(user);
 
     }
@@ -66,6 +64,7 @@ export default function UserLogin() {
                         value={username}
                         error={usernameError}
                         onInputChange={(e) => setUsername(e.target.value)} />
+                        
                     <InputReg
                         name="password"
                         type="password"

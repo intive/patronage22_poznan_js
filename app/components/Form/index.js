@@ -4,7 +4,7 @@ export function Input(props) {
     return (
         <>
             <label htmlFor={props.id}>{props.label}</label>
-            <input style={{backgroundColor: '#f2f2f2', border: 'none', height: '25px', marginBottom: '5px'}}
+            <InputStyle
                 id={props.id}
                 name={props.name}
                 type={props.type}
@@ -15,21 +15,19 @@ export function Input(props) {
     )
 }
 
-
 // Sign up form
 
 export function InputReg(props) {
     return (
         <>
             <label htmlFor={props.id}>{props.label}</label>
-            <input style={{backgroundColor: '#f2f2f2', border: 'none', height: '25px', marginBottom: '5px'}}
+            <InputStyle
                 id={props.id}
                 name={props.name}
                 type={props.name}
                 value={props.value}
                 onChange={props.onInputChange} />
             {props.error && <div style={{ color: "red"}}>{props.error}</div>}
-        
         </>
     )
 }
@@ -38,6 +36,7 @@ export const InputStyle = styled.input`
     background-color: #f2f2f2;
     border: none;
     height: 25px;
+    margin-bottom: 5px;
 `;
 
 // Form Style component //
@@ -51,7 +50,6 @@ export const FormFlex = styled.form`
     font-size: 13px;
 `;
 
-
 // Container style component //
 
 export const Container = styled.div`
@@ -60,9 +58,7 @@ export const Container = styled.div`
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 	max-width: 30%;
 	margin: 0 auto;
-
 `
-
 
 // Wrapper Style component //
 
@@ -71,8 +67,6 @@ export const Wrapper = styled.div`
     margin: 50px auto;
     background-color: ${(props) => props.theme === 'light' ? '#fff' : '#666'};
     `;
-
-
 
 // Button component //
 
@@ -90,22 +84,5 @@ export const Button = styled.button`
         background-color: #fff;
         color: green;
         border: 2px solid green;
-
     }
 `;
-
-
-// RegEx component
-
-export const validName = new RegExp(
-    '^[0-9a-zA-Z]{6,20}$'
-);
-
-export const validPassword = new RegExp(
-    '^[0-9a-zA-Z]{6,20}$'
-);
-
-export const validEmail =  new RegExp(
-    "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$" // Użyty stary RegExp - niepoprawny
-);
-
