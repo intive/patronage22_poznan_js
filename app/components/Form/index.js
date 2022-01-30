@@ -1,35 +1,16 @@
-import styled from 'styled-components';
+import { InputStyle, InputWrapper, LabelStyle } from 'components/Form/styleComponents';
 
 export function Input(props) {
     return (
-        <>
-            <label htmlFor={props.id}>{props.label}</label>
-            <input style={{borderRadius: "2px", height: "25px", margin: "2px"}}
+        <InputWrapper>
+            <LabelStyle htmlFor={props.id}>{props.label}</LabelStyle>
+            <InputStyle
                 id={props.id}
                 name={props.name}
                 type={props.type}
                 value={props.value}
                 onChange={props.onInputChange} />
-            {props.error && <div style={{ color: "red"}}>{props.error}</div>}
-        </>
+            {props.error && <div style={{ color: "red", marginLeft:"81%", width: "40%", position:"absolute"}}>{props.error}</div>}
+        </InputWrapper>
     )
 }
-
-export const Button = styled.button`
-    height: 30px;
-    border-radius: 3px;
-    background-color: rgb(50, 147, 168);
-    font-weight: bold;
-`;
-
-export const FormFlex = styled.form`
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-`;
-
-export const Wrapper = styled.div`
-    width: 50%;
-    margin: 50px auto;
-    background-color: ${(props) => props.theme === 'light' ? '#fff' : '#666'};
-`;

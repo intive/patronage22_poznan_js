@@ -1,7 +1,6 @@
-import { Input, FormFlex, Button,Wrapper } from 'components/Form/index';
+import { Input } from 'components/Form/index';
+import { FormFlex, Button, Wrapper, HeaderStyle } from 'components/Form/styleComponents'
 import { useState } from 'react';
-
-
 
 export default function UserLogin() {
 
@@ -16,13 +15,21 @@ export default function UserLogin() {
         setPasswordError('');
         let isErrorOccured = false;
 
-        if (!username || username.length < 5) {
+        if (!username) {
             isErrorOccured = true;
-            setUsernameError(['Invalid username']);
-        } if (!password || password.length <5) {
+            setUsernameError('Enter your username');
+        } else if (username.length < 5) {
+            isErrorOccured = true;
+            setUsernameError('Invalid username.');
+        }
+        if (!password) {
+            isErrorOccured = true;
+            setPasswordError('Enter your password.');
+        } else if (password.length <5) {
             isErrorOccured = true;
             setPasswordError('Invalid password');
-        } if (!isErrorOccured){
+        }
+         if (!isErrorOccured){
         const user = { username, password };
         console.log(user);
     }}
@@ -30,6 +37,7 @@ export default function UserLogin() {
     return (
         <Wrapper theme={"light"}>
             <FormFlex>
+            <HeaderStyle>Sign in</HeaderStyle>
                 <Input
                     id="username"
                     name="username"

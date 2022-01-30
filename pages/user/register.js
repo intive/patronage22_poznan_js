@@ -1,12 +1,11 @@
-import { FormFlex, Input, Button, Wrapper } from 'components/Form';
+import { FormFlex, Button, Wrapper, HeaderStyle} from 'components/Form/styleComponents';
+import { Input } from 'components/Form/index';
 import { useState } from 'react';
-
 
 const usernameRegEx = /^[a-zA-Z0-9_-]*$/;
 const emailRegEx = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
 
 export default function UserRegister() {
-
   const [registerUsername, setRegisterUsername] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const [registerUsernameError, setRegisterUsernameError] = useState('');
@@ -17,7 +16,6 @@ export default function UserRegister() {
   const [confirmEmailError, setConfirmEmailError] = useState('');
 
   const userRegister = async (e) => {
-
     e.preventDefault();
     setRegisterUsernameError('');
     setRegisterPasswordError('');
@@ -30,30 +28,34 @@ export default function UserRegister() {
       setRegisterPasswordError('Enter your password.')
     } else if (registerPassword.length < 6) {
       isErrorOccured = true;
-      setRegisterPasswordError('Password should be at least 6 characters long');
+      setRegisterPasswordError('Password is too short.');
     }
     if (!confirmEmail) {
       isErrorOccured = true;
-      setConfirmEmailError('You need to confirm you email');
+      setConfirmEmailError('You need to confirm your email.');
     } else if (confirmEmail != email) {
       isErrorOccured = true;
-      setConfirmEmailError('Confirm email should be the same as email');
+      setConfirmEmailError('Invalid confirm email.');
     }
      if (!registerUsername) {
       isErrorOccured = true;
-      setRegisterUsernameError('Enter your username');
-    } else if (!usernameRegEx.test(registerUsername) || registerUsername.length<6 || registerUsername.length >20) {
+      setRegisterUsernameError('Enter your username.');
+    } else if (!usernameRegEx.test(registerUsername)) {
       isErrorOccured = true;
-      setRegisterUsernameError('Username must be between 6 and 20 characters long and can only contain letters and numbers');
-
+      setRegisterUsernameError('Invalid format.');
+    } else if (registerUsername.length<6) {
+      isErrorOccured = true;
+      setRegisterUsernameError('Username is too short.');
+    } else if (registerUsername.length >20) {
+      isErrorOccured = true;
+      setRegisterUsernameError('Username is to long.');
     }
     if (!email) {
       isErrorOccured = true;
-      setEmailError('Enter your email');
+      setEmailError('Enter your email.');
     } else if (!emailRegEx.test(email)) {
       isErrorOccured = true;
-      setEmailError('The email must be in a valid email address format');
-
+      setEmailError('Invalid e-mail address format.');
     }
 
     if(!isErrorOccured){
@@ -64,18 +66,17 @@ export default function UserRegister() {
       };
       console.log(userData);
     }
-
-
 }
 
   return (
     <Wrapper theme={"light"}>
       <FormFlex>
+      <HeaderStyle>Sign up</HeaderStyle>
         <Input
           id="registerUsername"
           name="registerUsername"
           type="text"
-          label="Username"
+          label="Username:"
           value={registerUsername}
           error={registerUsernameError}
           onInputChange={(e) => setRegisterUsername(e.target.value)} />
@@ -83,7 +84,7 @@ export default function UserRegister() {
         id="registerPassword"
         name="registerPassword"
         type="password"
-        label="Password"
+        label="Password:"
         value={registerPassword}
         error={registerPasswordError}
         onInputChange={(e) => setRegisterPassword(e.target.value)} />
@@ -91,7 +92,7 @@ export default function UserRegister() {
         id="email"
         name="email"
         type="email"
-        label="Email"
+        label="Email:"
         value={email}
         error={emailError}
         onInputChange={(e) => setEmail(e.target.value)} />
@@ -99,7 +100,7 @@ export default function UserRegister() {
         id="confirmEmail"
         name="confirmEmail"
         type="email"
-        label="Confirm Email"
+        label="Confirm Email:"
         value={confirmEmail}
         error={confirmEmailError}
         onInputChange={(e) => setConfirmEmail(e.target.value)} />
