@@ -19,6 +19,8 @@ export default function UserRegister() {
   const [formErrors, setFormErrors] = useState(initValues);
   const [submitted, setSubmitted] = useState(false);
 
+  const emailRegEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -29,13 +31,20 @@ export default function UserRegister() {
     e.preventDefault();
 
     setFormErrors(validate(formValues));
+    setSubmitted(true);
+  };
+
+  /*  Show updated data if the validation passed
+      (problem solved, erlier user had to press the button twice)
+      ('useEffect' is the sollution) 
+  */
+  useEffect(() => {
     console.log(formErrors);
     if (Object.keys(formErrors).length === 0) {
       console.log(formValues);
-      setSubmitted(true);
       console.log(submitted);
     }
-  };
+  }, [formErrors]);
 
   const validate = (values) => {
     const errors = {};
@@ -56,9 +65,7 @@ export default function UserRegister() {
      */
     if (!values.email) {
       errors.email = "Email is required";
-    } else if (
-      !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(values.email)
-    ) {
+    } else if (!emailRegEx.test(values.email)) {
       errors.email = "Not valid format!";
     }
 
@@ -116,7 +123,7 @@ export default function UserRegister() {
           label="Password"
           id="password"
           name="password"
-          type="pasword"
+          type="password"
           value={formValues.password}
           onInputChange={handleChange}
           error={formErrors.password}
