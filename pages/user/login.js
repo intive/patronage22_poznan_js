@@ -28,6 +28,7 @@ export default function UserLogin() {
             const validatedUser = { 
                 username: username,
                 password: password };
+                console.log(validatedUser);
         }
     }    
 
