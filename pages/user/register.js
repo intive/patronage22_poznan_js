@@ -13,60 +13,31 @@ const [usernameError, setUsernameError] = useState('');
 const [passwordError, setPasswordError] = useState('');
 const [mailError, setMailError] = useState('');
 
-//const getUsers = async () => {
-//    const users = await fetch('/api/users/')
-//    .then(res => res.json());
-//    return users;
-//}
-
-//const checkUserExists = async (username) => {
-//    const users = await getUsers()
-//    .then (result => {
-//        return result.some(user => user.username === username);
-//    });
-//    
-//}
+const emailRegEx = new RegExp('[a-z0-9]+@[a-z0-9]+[.]+[a-z]');
+const usernameRegEx = /[^A-Za-z0-9]+/;
 
     const userRegister = (e) => {
-        // preventDefault zapobiega wyświetleniu polecenia w adresie URL
         e.preventDefault();
-
-        // walidacja username
-
         setUsernameError('');
         setPasswordError('');
         setMailError('');
 
         let validated = true;
 
-        // TODO sprawdź, czy taki użytkownik istnieje w users
-
-        // if (checkUserExists(username) === true){
-        //     alert('istnieje');
-        // }
-        // if (!checkUserExists(username) === false){
-        //     alert('NIE istnieje');
-        // }
-
         if (!username) {
             setUsernameError('Wprowadź nazwę użytkownika');
             validated = false;
+        } else {
+            if (username.match(usernameRegEx)){
+                setUsernameError('Nazwa użytkownika może składać się jedynie z liter i cyfr, bez polskich znaków');
+                validated = false;
+            } else {
+                if (username.length < 6 || username.length > 20){
+                    setUsernameError('Nazwa użytkownika powinna składać się z minimum 6, maksymalnie 20 znaków');
+                    validated = false;
+                } 
+            }
         }
-        if (username.length < 5 && username.length > 0){
-            setUsernameError('Zbyt krótka nazwa użytkownika');
-            validated = false;
-        }
-        if (username.length > 20){
-            setUsernameError('Zbyt długa nazwa użytkownika');
-            validated = false;
-        }
-        let usernameRegEx = /[^A-Za-z0-9]+/;
-        if (username.match(usernameRegEx)){
-            setUsernameError('Nazwa użytkownika może składać się jedynie z liter i cyfr, bez polskich znaków');
-            validated = false;
-        } 
-
-        // walidacja pass
 
         if (!password) {
             setPasswordError('Wprowadź hasło');
@@ -76,24 +47,20 @@ const [mailError, setMailError] = useState('');
             setPasswordError('Zbyt krótkie hasło');
             validated = false;
         }
-
-        // walidacja e-mail
-
-        if (mail !== reMail) {
-            setMailError('Podane adresy e-mail nie są takie same');
-            validated = false;
-        }
-        let emailRegEx = new RegExp('[a-z0-9]+@[a-z0-9]+[.]+[a-z]');
-        if (emailRegEx.test(mail) != true){
-            setMailError ('Niepoprawny format adresu e-mail');
-            validated = false;
-        } 
         if (!mail) {
             setMailError('Wprowadź adres e-mail');
             validated = false;
-        }
-
-        // TODO sprawdzenie, czy dany adres nie został już wykorzystany      
+        } else {
+            if (emailRegEx.test(mail) != true){
+                setMailError ('Niepoprawny format adresu e-mail');
+                validated = false;
+            } else {
+                if (mail !== reMail) {
+                    setMailError('Podane adresy e-mail nie są takie same');
+                    validated = false;
+                } 
+            }
+        }     
         
         if (validated) {
             const validatedUser = { 
@@ -102,8 +69,6 @@ const [mailError, setMailError] = useState('');
                 email: mail };
             console.log(validatedUser);
         }
-
-
     }    
     
   return (
@@ -139,7 +104,6 @@ const [mailError, setMailError] = useState('');
             type="email" 
             label="Confirm User e-mail:"
             value={reMail}
-            // error={reMailError}
             onInputChange={(e) => setReMail(e.target.value)} />
         <button type="button" onClick={userRegister}>Register</button>
     </form>
