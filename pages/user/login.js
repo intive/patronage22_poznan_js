@@ -39,6 +39,7 @@ export default function UserLogin() {
             <FormFlex>
             <HeaderStyle>Sign in</HeaderStyle>
                 <Input
+                    id="username"
                     name="username"
                     type="text"
                     label="Username"
@@ -46,6 +47,7 @@ export default function UserLogin() {
                     error={usernameError}
                     onInputChange={(e) => setUsername(e.target.value)} />
                 <Input
+                    id="password"
                     name="password"
                     type="password"
                     label="Password"
