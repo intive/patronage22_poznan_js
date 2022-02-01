@@ -1,16 +1,9 @@
-import { Input } from "../../app/components/Form"
 import { useState } from "react"
 
-import styled from 'styled-components';
+import { Input, Wrapper } from "../../app/components/Form"
 
-const Wrapper = styled.form`
-display: flex;
-flex-direction: column;
-width: 30%;
-margin: 100px auto;
-padding: 10px 10px;
-`
-export default function Home() {
+
+export default function Registration() {
   const initialState = {
     username: '',
     password: '',
@@ -20,40 +13,63 @@ export default function Home() {
   const [allValues, setAllValues] = useState(initialState);
   const [allErrors, setAllErrors] = useState(initialState);
 
-  const erros = {
-    userError: 'User mast be at least 5 leters',
+  const errors = {
+    user: {
+      length: "The username must be between 5 and 15 characters",
+      invalid: 'Username contains not allowed characters'
+    },
     passwordError: 'Password mast be at least 8 leters',
-    emailError: 'Invalid email',
-    confrimEmailError: 'Emails nedd to bee the same',
-  }
+    emailError: 'Email address is not allowed',
+    confrimEmail: 'The emails are not the same',
+    emptyError: 'The field cannot be empty',
+  };
 
   const validateFunction = (e) => {
     e.preventDefault()
-    let newUser = {}
+
     let validateErrors = {}
-    if (allValues.username.length < 5) {
-      validateErrors.usernameError = erros.userError
+    const { username, password, email, confirmEmail } = allValues;
+
+    const userPatter = /^(?=.*[a-z]{4})[-[\]\\/\w]{5,15}$/i;
+    const userEmailPattern = /^[^\s@]+@((([a-z0-9]+.)+[a-z]{2,}))$/i;
+
+    if (username === '') {
+      validateErrors.usernameError = errors.emptyError
+    } else if (!userPatter.test(username)) {
+      if (username.length < 5 || username.length > 15) {
+        validateErrors.usernameError = errors.user.length
+      } else {
+        validateErrors.usernameError = errors.user.invalid
+      }
     }
 
-    if (allValues.password.length < 8) {
-      validateErrors.passwordError = erros.passwordError
+    if (password === '') {
+      validateErrors.passwordError = errors.emptyError
+    } else if (password.length < 8) {
+      validateErrors.passwordError = errors.passwordError
     }
 
-    if (!(allValues.email.includes('@') && allValues.email.length > 0)) {
-      validateErrors.emailError = erros.emailError
-    }
-    if (!(allValues.email === allValues.confirmEmail && allValues.confirmEmail.length > 0)) {
-      validateErrors.confrimEmailError = erros.confrimEmailError
+    if (email === '') {
+      validateErrors.emailError = errors.emptyError
+    } else if (!userEmailPattern.test(email)) {
+      validateErrors.emailError = errors.emailError
     }
 
-    let size = (Object.keys(validateErrors).length)
+    if (confirmEmail === '') {
+      validateErrors.confrimEmailError = errors.emptyError
+    } else if (confirmEmail !== email) {
+      validateErrors.confrimEmailError = errors.confrimEmail
+    }
 
-    if (size === 0) {
-      newUser = {
+    const errorsLength = Object.keys(validateErrors).length
+    if (errorsLength === 0) {
+      setAllErrors(initialState)
+      setAllValues(initialState)
+      return console.log({
         name: allValues.username,
         password: allValues.password,
         email: allValues.email,
-      }
+      })
     }
     else {
       setAllErrors(prevState => (
@@ -64,42 +80,32 @@ export default function Home() {
           email: validateErrors.emailError,
           confirmEmail: validateErrors.confrimEmailError
         }))
-
     }
-    console.log(newUser)
-  };
 
+  };
   return (
     <Wrapper>
       <Input
-        id="username"
         name="username"
         type="text"
-        label="username"
         value={allValues.username}
         error={allErrors.username}
         onInputChange={(e) => setAllValues({ ...allValues, [e.target.name]: e.target.value })} />
       <Input
-        id="password"
         name="password"
         type="password"
-        label="password"
         value={allValues.password}
         error={allErrors.password}
         onInputChange={(e) => setAllValues({ ...allValues, [e.target.name]: e.target.value })} />
       <Input
-        id="email"
         name="email"
         type="email"
-        label="email"
         value={allValues.email}
         error={allErrors.email}
         onInputChange={(e) => setAllValues({ ...allValues, [e.target.name]: e.target.value })} />
       <Input
-        id="confirmEmail"
         name="confirmEmail"
         type="email"
-        label="confirmEmail"
         value={allValues.confirmEmail}
         error={allErrors.confirmEmail}
         onInputChange={(e) => setAllValues({ ...allValues, [e.target.name]: e.target.value })} />
