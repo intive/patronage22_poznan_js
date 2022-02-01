@@ -155,6 +155,7 @@ export default function UserRegister() {
     } else {
       setErrors({
         ...errors,
+        ...validation.errors,
       });
     }
   };
@@ -167,37 +168,77 @@ export default function UserRegister() {
     let correct = false;
     let comparisonEmails = false;
 
-    if (UserReg.test(values.username)) {
+    const newErr = {
+      ...errors,
+    };
+
+    if (!UserReg.test(values.username)) {
+      if (errors.userError === "") {
+        newErr.userError = errMessage.requiredField;
+      }
+    } else {
       username = true;
     }
-    if (values.password.length > 8) {
+
+    if (values.password.length < 8) {
+      if (errors.passwordError === "") {
+        newErr.passwordError = errMessage.requiredField;
+      }
+    } else {
       password = true;
     }
 
     if (EmailReg.test(values.email)) {
       email = true;
+    } else if (values.email.length === 0) {
+      if (errors.emailError === "") {
+        newErr.emailError = errMessage.requiredField;
+      }
     }
 
-    if (EmailReg.test(values.email)) {
+    if (EmailReg.test(values.confirmEmail)) {
       confirmEmail = true;
+    } else if (values.confirmEmail.length === 0) {
+      if (errors.confirmEmailError === "") {
+        newErr.confirmEmailError = errMessage.requiredField;
+      }
     }
 
-    if (values.email !== values.confirmEmail) {
-      setErrors({
-        ...errors,
-        emailError: errMessage.comparisonEmailsError,
-        confirmEmailError: errMessage.comparisonEmailsError,
-      });
-    } else {
+    if (
+      values.email === values.confirmEmail &&
+      values.email !== "" &&
+      values.confirmEmail !== ""
+    ) {
       comparisonEmails = true;
+      newErr.confirmEmailError = errMessage.noError;
+      newErr.emailError = errMessage.noError;
+    } else {
+      if (
+        values.confirmEmail.length !== 0 ||
+        values.confirmEmail.length !== 0
+      ) {
+        if (errors.confirmEmailError === "") {
+          newErr.confirmEmailError = errMessage.comparisonEmailsError;
+        }
+        if (errors.emailError === "") {
+          newErr.emailError = errMessage.comparisonEmailsError;
+        }
+      }
     }
-
-    // TODO nie działa ustawianie errora w tej funkcji.
 
     if (username && password && email && confirmEmail && comparisonEmails) {
       correct = true;
     }
-    return { username, password, email, correct };
+    return {
+      username,
+      password,
+      email,
+      correct,
+      errors: {
+        ...errors,
+        ...newErr,
+      },
+    };
   };
 
   return (
