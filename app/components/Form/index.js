@@ -1,4 +1,4 @@
-import { InputStyle, InputWrapper, LabelStyle } from 'components/Form/styleComponents';
+import { ErrorStyle, InputStyle, InputWrapper, LabelStyle } from 'components/Form/styleComponents';
 
 export function Input(props) {
     return (
@@ -10,7 +10,7 @@ export function Input(props) {
                 type={props.type}
                 value={props.value}
                 onChange={props.onInputChange} />
-            {props.error && <div style={{ color: "red", marginLeft:"81%", width: "40%", position:"absolute"}}>{props.error}</div>}
+            {props.error && <ErrorStyle>{props.error}</ErrorStyle>}
         </InputWrapper>
     )
 }

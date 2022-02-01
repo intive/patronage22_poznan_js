@@ -42,7 +42,7 @@ export default function UserRegister() {
       setRegisterUsernameError('Enter your username.');
     } else if (!usernameRegEx.test(registerUsername)) {
       isErrorOccured = true;
-      setRegisterUsernameError('Invalid format.');
+      setRegisterUsernameError('Invalid username format.');
     } else if (registerUsername.length<6) {
       isErrorOccured = true;
       setRegisterUsernameError('Username is too short.');
@@ -73,7 +73,6 @@ export default function UserRegister() {
       <FormFlex>
       <HeaderStyle>Sign up</HeaderStyle>
         <Input
-          id="registerUsername"
           name="registerUsername"
           type="text"
           label="Username:"
@@ -81,7 +80,6 @@ export default function UserRegister() {
           error={registerUsernameError}
           onInputChange={(e) => setRegisterUsername(e.target.value)} />
       <Input
-        id="registerPassword"
         name="registerPassword"
         type="password"
         label="Password:"
@@ -89,7 +87,6 @@ export default function UserRegister() {
         error={registerPasswordError}
         onInputChange={(e) => setRegisterPassword(e.target.value)} />
       <Input
-        id="email"
         name="email"
         type="email"
         label="Email:"
@@ -97,7 +94,6 @@ export default function UserRegister() {
         error={emailError}
         onInputChange={(e) => setEmail(e.target.value)} />
       <Input
-        id="confirmEmail"
         name="confirmEmail"
         type="email"
         label="Confirm Email:"
