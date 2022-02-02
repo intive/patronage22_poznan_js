@@ -21,9 +21,9 @@ export default function Home() {
         </p>
       </main>
 
-      <footer className={styles.footer}>
+      {/* <footer className={styles.footer}>
         (c) intive 2022
-      </footer>
+      </footer> */}
     </div>
   )
 }
