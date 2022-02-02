@@ -73,6 +73,6 @@ const movies = [
 
 export default async function handler(req, res) {
   const { id } = req.query;
-  const findMovie = movies.find((movies) => movies.id === Number(id));
+  const findMovie = movies.find((movie) => movie.id === Number(id));
   findMovie ? res.status(200).json(findMovie) : res.status(200).json({});
 }
