@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
-import '../pages/fontawesome';
+import '../styles/fontawesome.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRuler } from '@fortawesome/free-solid-svg-icons';
 import { faYenSign } from '@fortawesome/free-solid-svg-icons';
