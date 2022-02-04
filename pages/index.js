@@ -20,10 +20,6 @@ export default function Home() {
           Please <Link href={'/user/login'}>sign in</Link>.
         </p>
       </main>
-
-      {/* <footer className={styles.footer}>
-        (c) intive 2022
-      </footer> */}
     </div>
   )
 }

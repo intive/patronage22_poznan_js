@@ -2,16 +2,16 @@ import styled from "styled-components";
 export default function Footer() {
     return (
         <FooterWrapper>
-
-            <IconWrapper>
+            {/* TODO waiting for icons ticket P2022-610 */}
+            {/* <IconWrapper>
                     <li><i class="fab fa-facebook-f"></i></li>
                     <li><i class="fab fa-instagram"></i></li>
                     <li><i class="fab fa-twitter"></i></li>
                     <li><i class="fab fa-youtube"></i></li>
-            </IconWrapper>
+            </IconWrapper> */}
             <LinksList>
                 <LinkStyle>Audio and Subtitles</LinkStyle>
-                <LinkStyle>Audio Descripton</LinkStyle>
+                <LinkStyle>Audio Description</LinkStyle>
                 <LinkStyle>Help Center</LinkStyle>
                 <LinkStyle>Gift Cards</LinkStyle>
                 <LinkStyle>Media Center</LinkStyle>
@@ -25,7 +25,6 @@ export default function Footer() {
                 <LinkStyle>Contact Us</LinkStyle>
             </LinksList>
             <p style={{fontSize: "0.8rem", marginLeft: "2.40rem", marginTop:"2rem"}}>© 2022 InTiVi</p>
-
         </FooterWrapper>
     );
 }
@@ -33,20 +32,17 @@ export default function Footer() {
 export const FooterWrapper = styled.div`
     display: grid;
     justify-content: center;
+    bottom: 0;
+    width: 100%;
     color: grey;
     background-color: black;
-    @media (max-width: 992px) {
+    @media (max-width: 768px) {
 		justify-content: flex-start;
 	}
 `;
 
-// export const ContentWrapper = styled.div`
-//     color: grey;
-// `;
-
 export const IconWrapper = styled.ul`
     list-style-type: none;
-
 `;
 
 export const LinksList = styled.ul`
@@ -55,20 +51,16 @@ export const LinksList = styled.ul`
     column-gap: 7rem;
     row-gap: 1.1rem;
     list-style-type: none;
-
-
     @media (max-width: 992px) {
 		grid-template-columns: 1fr 1fr;
-        column-gap: 15rem;
-        font-size: 1.1rem;
+        column-gap: 10rem;
 	}
     @media (max-width: 768px) {
         column-gap: 8rem;
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
-    @media (max-width: 760px) {
+    @media (max-width: 480px) {
         column-gap: 3rem;
-        font-size: 1.1rem;
     }
 `;
 
