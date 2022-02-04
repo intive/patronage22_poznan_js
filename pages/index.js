@@ -1,6 +1,11 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
+import '../pages/fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRuler } from '@fortawesome/free-solid-svg-icons';
+import { faYenSign } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function Home() {
   return (
@@ -14,7 +19,11 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to inTiVi
+          <FontAwesomeIcon icon={faRuler} />  
+          <FontAwesomeIcon icon={faYenSign} />  
+
         </h1>
+        <FontAwesomeIcon icon={faRuler} />  
 
         <p className={styles.description}>
           Please <Link href={'/user/login'}>sign in</Link>.
