@@ -10,19 +10,19 @@ export default function Footer() {
                     <li><i class="fab fa-youtube"></i></li>
             </IconWrapper> */}
             <LinksList>
-                <LinkStyle>Audio and Subtitles</LinkStyle>
-                <LinkStyle>Audio Description</LinkStyle>
-                <LinkStyle>Help Center</LinkStyle>
-                <LinkStyle>Gift Cards</LinkStyle>
-                <LinkStyle>Media Center</LinkStyle>
-                <LinkStyle>Investor Relations</LinkStyle>
-                <LinkStyle>Jobs</LinkStyle>
-                <LinkStyle>Terms of Use</LinkStyle>
-                <LinkStyle>Privacy</LinkStyle>
-                <LinkStyle>Legal Notices</LinkStyle>
-                <LinkStyle>Cookie Preferences</LinkStyle>
-                <LinkStyle>Corporate Information</LinkStyle>
-                <LinkStyle>Contact Us</LinkStyle>
+                <LinkStyle><a>Audio and Subtitles</a></LinkStyle>
+                <LinkStyle><a>Audio Description</a></LinkStyle>
+                <LinkStyle><a>Help Center</a></LinkStyle>
+                <LinkStyle><a>Gift Cards</a></LinkStyle>
+                <LinkStyle><a>Media Center</a></LinkStyle>
+                <LinkStyle><a>Investor Relations</a></LinkStyle>
+                <LinkStyle><a>Jobs</a></LinkStyle>
+                <LinkStyle><a>Terms of Use</a></LinkStyle>
+                <LinkStyle><a>Privacy</a></LinkStyle>
+                <LinkStyle><a>Legal Notices</a></LinkStyle>
+                <LinkStyle><a>Cookie Preferences</a></LinkStyle>
+                <LinkStyle><a>Corporate Information</a></LinkStyle>
+                <LinkStyle><a>Contact Us</a></LinkStyle>
             </LinksList>
             <p style={{fontSize: "0.8rem", marginLeft: "2.40rem", marginTop:"2rem"}}>© 2022 InTiVi</p>
         </FooterWrapper>
