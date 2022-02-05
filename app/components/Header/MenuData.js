@@ -20,6 +20,8 @@ const navData = [
         link: '',
     },
 ];
+const userImg = 'img'
 const pageName = 'InTiVI'
+const mobileMenu = 'Explore'
 
-export { pageName, navData }
+export { pageName, navData, mobileMenu, userImg }
