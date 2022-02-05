@@ -1,24 +1,43 @@
-import { FormA, FormUl } from "./headerStyle";
-import { navData } from "./MenuData";
+import { DesctoFormUl, UserImg, MobileFormUl, LinkStyle, StyleI, DesctopLinkStyle } from "./headerStyle"
+import { navData, userImg } from "./MenuData";
 const SingleA = ({ name, link }) => {
     return (
-        <FormA href={link}>
+        <StyleI href={link}>
             {name}
-        </FormA>
+        </StyleI>
     )
 }
 
-const NavBar = () => {
+function MainNav() {
     return (
         <>
-            <FormUl>
+            <DesctoFormUl>
                 {navData.map(elementA =>
-                    <SingleA
-                        name={elementA.name}
-                        link={elementA.link}
-                    />)}
-            </FormUl>
+                    <DesctopLinkStyle>
+                        <SingleA
+                            name={elementA.name}
+                            link={elementA.link}
+                        />
+                    </DesctopLinkStyle>)}
+            </DesctoFormUl>
         </>
     )
 }
-export default NavBar
+function MobileNav() {
+    return (
+        <>
+            <MobileFormUl>
+                {navData.map(elementA =>
+                    <LinkStyle >
+                        <SingleA
+                            key={elementA.name}
+                            name={elementA.name}
+                            link={elementA.link}
+                        />
+                    </LinkStyle>
+                )}
+            </MobileFormUl>
+        </>
+    )
+}
+export { MainNav, MobileNav, }
