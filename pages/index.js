@@ -15,6 +15,7 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to inTiVi
         </h1>
+
         <p className={styles.description}>
           Please <Link href={'/user/login'}>sign in</Link>.
         </p>
