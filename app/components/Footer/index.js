@@ -1,5 +1,24 @@
 import styled from "styled-components";
+
 export default function Footer() {
+const links = ['Audio and Subtitles', 'Audio Description', 'Help Center', 'Gift Cards', 'Media Center', 'Investor Relations', 'Jobs', 'Terms of Use', 'Privacy', 'Legal Notices', 'Cookie Preferences', 'Corporate Information', 'Contact Us'];
+
+function Item(props) {
+    return <ListItem><a>{props.value}</a></ListItem>;
+}
+
+function List(props) {
+    const links = props.links;
+    const listItems = links.map((link, index) =>
+    <Item key={index} value={link} />
+    );
+    return (
+        <LinksList>
+        {listItems}
+        </LinksList>
+    );
+}
+
     return (
         <FooterWrapper>
             {/* TODO waiting for icons ticket P2022-610 */}
@@ -9,33 +28,19 @@ export default function Footer() {
                     <li><i class="fab fa-twitter"></i></li>
                     <li><i class="fab fa-youtube"></i></li>
             </IconWrapper> */}
-            <LinksList>
-                <LinkStyle><a>Audio and Subtitles</a></LinkStyle>
-                <LinkStyle><a>Audio Description</a></LinkStyle>
-                <LinkStyle><a>Help Center</a></LinkStyle>
-                <LinkStyle><a>Gift Cards</a></LinkStyle>
-                <LinkStyle><a>Media Center</a></LinkStyle>
-                <LinkStyle><a>Investor Relations</a></LinkStyle>
-                <LinkStyle><a>Jobs</a></LinkStyle>
-                <LinkStyle><a>Terms of Use</a></LinkStyle>
-                <LinkStyle><a>Privacy</a></LinkStyle>
-                <LinkStyle><a>Legal Notices</a></LinkStyle>
-                <LinkStyle><a>Cookie Preferences</a></LinkStyle>
-                <LinkStyle><a>Corporate Information</a></LinkStyle>
-                <LinkStyle><a>Contact Us</a></LinkStyle>
-            </LinksList>
+            <List links={links} />
             <p style={{fontSize: "0.8rem", marginLeft: "2.40rem", marginTop:"2rem"}}>© 2022 InTiVi</p>
         </FooterWrapper>
     );
 }
 
-export const FooterWrapper = styled.div`
+export const FooterWrapper = styled.footer`
     display: grid;
     justify-content: center;
-    bottom: 0;
     width: 100%;
-    color: grey;
-    background-color: black;
+    font-weight: 600;
+    color: rgb(94, 93, 93);
+    background-color: rgb(0, 0, 0);
     @media (max-width: 768px) {
 		justify-content: flex-start;
 	}
@@ -64,7 +69,7 @@ export const LinksList = styled.ul`
     }
 `;
 
-export const LinkStyle = styled.li`
+export const ListItem = styled.li`
     cursor: pointer;
     &:hover {
         text-decoration: underline;
