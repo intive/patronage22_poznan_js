@@ -1,5 +1,5 @@
-import { DesctoFormUl, UserImg, MobileFormUl, LinkStyle, StyleI, DesctopLinkStyle } from "./headerStyle"
-import { navData, userImg } from "./MenuData";
+import { DesctoFormUl, MobileFormUl, LinkStyle, StyleI, DesctopLinkStyle } from "./headerStyle"
+import { navData } from "./MenuData";
 const SingleA = ({ name, link }) => {
     return (
         <StyleI href={link}>
@@ -13,7 +13,7 @@ function MainNav() {
         <>
             <DesctoFormUl>
                 {navData.map(elementA =>
-                    <DesctopLinkStyle>
+                    <DesctopLinkStyle key={elementA.name}>
                         <SingleA
                             name={elementA.name}
                             link={elementA.link}
@@ -28,9 +28,9 @@ function MobileNav() {
         <>
             <MobileFormUl>
                 {navData.map(elementA =>
-                    <LinkStyle >
+                    <LinkStyle
+                        key={elementA.name}>
                         <SingleA
-                            key={elementA.name}
                             name={elementA.name}
                             link={elementA.link}
                         />
