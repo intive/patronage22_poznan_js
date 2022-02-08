@@ -15,6 +15,9 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to inTiVi
         </h1>
+        <h2>
+          This is a Vercel test.
+        </h2>
 
         <p className={styles.description}>
           Please <Link href={'/user/login'}>sign in</Link>.
