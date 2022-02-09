@@ -38,10 +38,10 @@ export default function Footer() {
   return (
     <FooterWrapper>
       <IconWrapper>
-        <FontAwesomeItem> <FontAwesomeIcon icon= { faFacebookF } /> </FontAwesomeItem>
-        <FontAwesomeItem> <FontAwesomeIcon icon= { faInstagram } /> </FontAwesomeItem>
-        <FontAwesomeItem> <FontAwesomeIcon icon= { faTwitter } /> </FontAwesomeItem>
-        <FontAwesomeItem> <FontAwesomeIcon icon= { faYoutube } /> </FontAwesomeItem>
+        <FontAwesomeItem> <FontAwesomeIcon icon={faFacebookF} /> </FontAwesomeItem>
+        <FontAwesomeItem> <FontAwesomeIcon icon={faInstagram} /> </FontAwesomeItem>
+        <FontAwesomeItem> <FontAwesomeIcon icon={faTwitter} /> </FontAwesomeItem>
+        <FontAwesomeItem> <FontAwesomeIcon icon={faYoutube} /> </FontAwesomeItem>
       </IconWrapper>
       <List links={mockLinks} />
       <p style={{ fontSize: "0.8rem", marginLeft: "2.40rem", marginTop: "2rem" }}>© 2022 InTiVi</p>
