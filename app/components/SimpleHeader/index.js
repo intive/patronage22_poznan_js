@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-import LogoLink from '../LogoLink/index'
+import { device } from "../../../styles/breakpoints";
+import LogoLink from "../LogoLink/index";
 import PrimaryButton from "../PrimaryButton/index";
 
 const SimpleHeader = () => {
@@ -23,7 +24,8 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
   padding: 2rem 1rem 0;
-  @media only screen and (min-width: 768px) {
+
+  @media ${device.tablet} {
     padding-left: 2rem;
     padding-right: 2rem;
   }
