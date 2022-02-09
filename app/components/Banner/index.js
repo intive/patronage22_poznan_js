@@ -1,5 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlay,
+  faVolumeUp,
+  faVolumeMute,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const Wrapper = styled.div`
   background-image: url(${(props) => props.imgLink});
@@ -39,7 +45,7 @@ const MediaBox = styled.div`
 const MediaButton = styled.button`
   padding: 0.5em 1em;
   width: 6em;
-  margin-right: 1em;
+  margin-right: 1.3em;
   font-size: 1.2em;
   font-weight: bold;
   border: 0px solid;
@@ -54,27 +60,37 @@ const MediaButton = styled.button`
   }
 `;
 
-const MuteIcon = styled.i`
+const MuteIcon = styled(FontAwesomeIcon)`
+  color: #ffffff;
+  font-size: 1.8em;
   cursor: pointer;
-  font-size: 1.2em;
-  font-weight: bold;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const PlayIcon = styled(FontAwesomeIcon)`
+  margin-right: 0.7em;
 `;
 
 export function Media() {
-  const [isMute, setMute] = useState("Mute");
+  const [isMute, setMute] = useState(false);
 
-  const toggleMute = () => {
-    if (isMute === "Mute") {
-      setMute("Unmute");
-    } else if (isMute === "Unmute") {
-      setMute("Mute");
-    }
-  };
+  const toggleMute = () => setMute(!isMute);
 
   return (
     <MediaBox>
-      <MediaButton>Play</MediaButton>
-      <MuteIcon onClick={toggleMute}>{isMute}</MuteIcon>
+      <MediaButton>
+        <PlayIcon icon={faPlay} />
+        Play
+      </MediaButton>
+      <MuteIcon
+        icon={isMute ? faVolumeMute : faVolumeUp}
+        onClick={toggleMute}
+      />
     </MediaBox>
   );
 }
