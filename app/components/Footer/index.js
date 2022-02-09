@@ -106,7 +106,7 @@ export const IconList = styled.ul`
   margin-top: 4rem;
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
-  color: #FFFFFF;
+  color: #ffffff;
   list-style-type: none;
 `;
 
