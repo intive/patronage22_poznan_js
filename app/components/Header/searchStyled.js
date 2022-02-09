@@ -6,7 +6,7 @@ const SearchContainer = styled.header`
   align-items: center;
   padding: 2px;
   margin: 0 auto;
-  border: solid 1px rgba(0, 0, 0, 0.85);
+  border: solid 1px rgba(0, 0, 0, 0.8);
   transition: width 0.3s ease-in-out;
   overflow: hidden;
 `;
