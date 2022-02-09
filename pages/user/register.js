@@ -1,7 +1,3 @@
 export default function Home() {
-  return (
-    <div >
-        user register
-    </div>
-  )
+  return <div>user register</div>;
 }
