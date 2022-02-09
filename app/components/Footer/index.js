@@ -6,56 +6,56 @@ export default function Footer() {
   const mockLinks = [
     {
       id: 1,
-      displayLink: 'Audio and Subtitles'
+      displayLink: 'Audio and Subtitles',
     },
     {
       id: 2,
-      displayLink: 'Audio Description'
+      displayLink: 'Audio Description',
     },
     {
       id: 3,
-      displayLink: 'Help Center'
+      displayLink: 'Help Center',
     },
     {
       id: 4,
-      displayLink: 'Gift Cards'
+      displayLink: 'Gift Cards',
     },
     {
       id: 5,
-      displayLink: 'Media Center'
+      displayLink: 'Media Center',
     },
     {
       id: 6,
-      displayLink: 'Investor Relations'
+      displayLink: 'Investor Relations',
     },
     {
       id: 7,
-      displayLink: 'Jobs'
+      displayLink: 'Jobs',
     },
     {
       id: 8,
-      displayLink: 'Terms of Use'
+      displayLink: 'Terms of Use',
     },
     {
       id: 9,
-      displayLink: 'Privacy'
+      displayLink: 'Privacy',
     },
     {
       id: 10,
-      displayLink: 'Legal Notices'
+      displayLink: 'Legal Notices',
     },
     {
       id: 11,
-      displayLink: 'Cookie Preferences'
+      displayLink: 'Cookie Preferences',
     },
     {
       id: 12,
-      displayLink: 'Corporate Information'
+      displayLink: 'Corporate Information',
     },
     {
       id: 13,
-      displayLink: 'Contact Us'
-    }
+      displayLink: 'Contact Us',
+    },
   ];
 
   function Item(props) {
@@ -64,23 +64,29 @@ export default function Footer() {
 
   function List(props) {
     const links = props.links;
-    const listItems = links.map((link) =>
-      <Item key={link.id} value={link.displayLink} />
-    );
-    return (
-      <LinksList>
-        {listItems}
-      </LinksList>
-    );
+    const listItems = links.map((link) => <Item key={link.id} value={link.displayLink} />);
+    return <LinksList>{listItems}</LinksList>;
   }
 
   return (
     <FooterWrapper>
       <IconList>
-        <IconWrapper> <FontAwesomeIcon icon={faFacebookF} /> </IconWrapper>
-        <IconWrapper> <FontAwesomeIcon icon={faInstagram} /> </IconWrapper>
-        <IconWrapper> <FontAwesomeIcon icon={faTwitter} /> </IconWrapper>
-        <IconWrapper> <FontAwesomeIcon icon={faYoutube} /> </IconWrapper>
+        <IconWrapper>
+          {' '}
+          <FontAwesomeIcon icon={faFacebookF} />{' '}
+        </IconWrapper>
+        <IconWrapper>
+          {' '}
+          <FontAwesomeIcon icon={faInstagram} />{' '}
+        </IconWrapper>
+        <IconWrapper>
+          {' '}
+          <FontAwesomeIcon icon={faTwitter} />{' '}
+        </IconWrapper>
+        <IconWrapper>
+          {' '}
+          <FontAwesomeIcon icon={faYoutube} />{' '}
+        </IconWrapper>
       </IconList>
       <List links={mockLinks} />
       <CopyrightParagraph>© 2022 InTiVi</CopyrightParagraph>
@@ -132,14 +138,14 @@ export const LinksList = styled.ul`
 `;
 
 export const LinkItem = styled.li`
-    cursor: pointer;
-    &:hover {
-      text-decoration: underline;
-    }
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const CopyrightParagraph = styled.p`
   font-size: 0.8rem;
-  margin-left: 2.40rem;
-  margin-top: 2rem
+  margin-left: 2.4rem;
+  margin-top: 2rem;
 `;
