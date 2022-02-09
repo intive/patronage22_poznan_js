@@ -1,4 +1,4 @@
-const navData = [
+export const navData = [
     {
         name: 'home',
         link: '',
@@ -20,8 +20,6 @@ const navData = [
         link: '',
     },
 ];
-const userImg = 'img'
-const pageName = 'InTiVI'
-const mobileMenu = 'Explore'
-
-export { pageName, navData, mobileMenu, userImg }
+export const userImg = 'img'
+export const pageName = 'InTiVI'
+export const mobileMenu = 'Explore'

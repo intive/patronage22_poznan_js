@@ -1,38 +1,39 @@
-import { DesctoFormUl, MobileFormUl, LinkStyle, StyleI, DesctopLinkStyle } from "./headerStyle"
-import { navData } from "./MenuData";
-const SingleA = ({ name, link }) => {
+import { DesctoFormUl, MobileFormUl, LinkStyle, DesctopLinkStyle } from './headerStyle'
+import { navData } from './menuData';
+
+const NavigationLink = ({ name, link }) => {
     return (
-        <StyleI href={link}>
+        <a style={{ width: '100%', color: 'white' }} href={link}>
             {name}
-        </StyleI>
+        </a>
     )
 }
 
-function MainNav() {
+export const MainNav = () => {
     return (
         <>
             <DesctoFormUl>
-                {navData.map(elementA =>
-                    <DesctopLinkStyle key={elementA.name}>
-                        <SingleA
-                            name={elementA.name}
-                            link={elementA.link}
+                {navData.map(navigationItem =>
+                    <DesctopLinkStyle key={navigationItem.name}>
+                        <NavigationLink
+                            name={navigationItem.name}
+                            link={navigationItem.link}
                         />
                     </DesctopLinkStyle>)}
             </DesctoFormUl>
         </>
     )
 }
-function MobileNav() {
+export const MobileNav = () => {
     return (
         <>
             <MobileFormUl>
-                {navData.map(elementA =>
+                {navData.map(navigationItem =>
                     <LinkStyle
-                        key={elementA.name}>
-                        <SingleA
-                            name={elementA.name}
-                            link={elementA.link}
+                        key={navigationItem.name}>
+                        <NavigationLink
+                            name={navigationItem.name}
+                            link={navigationItem.link}
                         />
                     </LinkStyle>
                 )}
@@ -40,4 +41,3 @@ function MobileNav() {
         </>
     )
 }
-export { MainNav, MobileNav, }

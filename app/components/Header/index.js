@@ -1,25 +1,26 @@
-import { MainNav, MobileNav } from "./Nav";
-import { pageName, mobileMenu, userImg } from "./MenuData";
-import { NavBar, MainNavBar, LogoName, SecondNavBar, ExploreMore, UserImg } from "./headerStyle";
+import { MainNav, MobileNav } from "./nav";
+import { pageName, mobileMenu, userImg } from "./menuData";
+import { MainNavigationBar, LogoName, SecondNavigationBar, MobileMenuBtn, UserImg, NavigationBar } from "./headerStyle";
+
 import { useState } from "react";
 
 export default function Header() {
-    const [showMoblieMenu, setMoblieMenu] = useState(false)
+    const [showMobileMenu, setMobileMenu] = useState(false)
     return (
         <>
-            <NavBar>
-                <MainNavBar>
+            <NavigationBar>
+                <MainNavigationBar>
                     <LogoName>{pageName}</LogoName>
-                    <ExploreMore onClick={() => setMoblieMenu(!showMoblieMenu)} >{mobileMenu}</ExploreMore>
+                    <MobileMenuBtn onClick={() => setMobileMenu(!showMobileMenu)} >{mobileMenu}</MobileMenuBtn>
                     <MainNav />
-                </MainNavBar>
-                <SecondNavBar>
+                </MainNavigationBar>
+                <SecondNavigationBar>
                     {/* TODO search input */}
                     <UserImg>{userImg}</UserImg>
                     {/* TODO waiting for icons */}
-                </SecondNavBar>
-            </NavBar >
-            {showMoblieMenu ? <MobileNav /> : null}
+                </SecondNavigationBar>
+            </NavigationBar >
+            {showMobileMenu ? <MobileNav /> : null}
         </>
     );
 }
