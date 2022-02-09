@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-import LogoLink from "components/LogoLink/logo-link";
-import { PrimaryButton } from "../Button/button";
+import LogoLink from '../LogoLink/index'
+import PrimaryButton from "../PrimaryButton/index";
 
 const SimpleHeader = () => {
   return (
