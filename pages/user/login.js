@@ -1,10 +1,14 @@
-import { Input } from 'components/Form/index';
+import { LoginInput } from './loginInput';
 import { useState } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
     margin-left: 35vw;
-    margin-top: -7vh;
+    margin-top: 7vh;
     width: 30vw;
     height: 86vh;
     color: rgb(255, 255, 255);
@@ -39,10 +43,12 @@ const LayerWrapper = styled.div`
 `;
 
 const FormContainer = styled.div`
-    padding-left: 4vw;
-    padding-top: 2vh;
-    width: 18vw;
-    height: 68vh;
+    display:flex;
+    flex-direction: column;
+    margin-top: 5vh;
+    width: 20vw;
+    height: 76vh;
+
 `;
 
 export default function UserLogin() {
@@ -65,23 +71,28 @@ export default function UserLogin() {
         <LoginPageContainer>
             <LayerWrapper></LayerWrapper>
             <Header>
-                <img src='../logo-intivi.svg'></img>
+                {/* <img src='../logo-intivi.svg'></img> */}
             </Header>
             <Wrapper>
                 <FormContainer>
-                    <h1 style={{fontWeight:"600"}}>Sign In</h1>
-                    <Input
+                    <h1 style={{fontWeight:"600", marginBottom: "3vh", marginLeft: "0.5vw"}}>Sign In</h1>
+
+                    <LoginInput
                         id="username"
                         name="username"
                         type="text"
                         label="Username"
+                        placeholder="Email or phone number"
                         value={username}
                         error={usernameError}
-                        onInputChange={(e) => setUsername(e.target.value)} />
-                    <Input
+                        onInputChange={(e) => setUsername(e.target.value)}/>
+
+                    <LoginInput
+                        id="password"
                         name="password"
                         type="password"
                         label="Password"
+                        placeholder="Password"
                         value={password}
                         onInputChange={(e) => setPassword(e.target.value)} />
                     <button onClick={userLogin}>Sign In</button>
@@ -89,4 +100,4 @@ export default function UserLogin() {
             </Wrapper>
         </LoginPageContainer>
     )
-};
+}
