@@ -53,7 +53,7 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
-      - run: npm run lint
+      - run: npm run lint && npx prettier --check .
 
   test:
     needs: install
