@@ -1,4 +1,4 @@
-import { MainNav, MobileNav } from './nav';
+import { MainNav, MobileNav } from './Nav';
 import { pageName, mobileMenu, userImg } from './menuData';
 import {
   MainNavigationBar,
