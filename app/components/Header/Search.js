@@ -1,39 +1,35 @@
-import {
-  SearchContainer,
-  SearchButton,
-  SearchInput,
-  ClearInputButton,
-} from "./searchStyled";
-import { useState } from "react";
+import { useState } from 'react';
+import { SearchMoviesContainer, SearchButton, SearchInput, ClearInputButton } from './searchStyled';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-export default function Search() {
-  const [buttonState, setButtonChange] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+export default function SearchMoviesInput() {
+  const [buttonState, setButtonState] = useState(false);
+  const [searchInputValue, setSearchInputValue] = useState('');
+
+  const searchIcon = <FontAwesomeIcon icon={faSearch} />;
+  const closeIcon = 'X';
 
   return (
-    <SearchContainer style={buttonState ? { width: 300 } : { width: 30 }}>
+    <SearchMoviesContainer style={buttonState ? { width: 300 } : { width: 30 }}>
       {buttonState && (
         <>
-          <SearchButton onClick={() => setButtonChange(!buttonState)}>
-            S{/*  {/@Todo icon Search} */}
-          </SearchButton>
+          <SearchButton onClick={() => setButtonState(!buttonState)}>{searchIcon}</SearchButton>
           <SearchInput
             placeholder="Title, Actors, Film genre"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            value={searchInputValue}
+            onChange={(e) => setSearchInputValue(e.target.value)}
           ></SearchInput>
-          {inputValue.length > 0 ? (
-            <ClearInputButton onClick={() => setInputValue(" ")}>
-              X {/*  {/@Todo icon Close} */}
+          {searchInputValue.length > 0 ? (
+            <ClearInputButton onClick={() => setSearchInputValue(' ')}>
+              {closeIcon}
             </ClearInputButton>
           ) : null}
         </>
       )}
       {buttonState ? null : (
-        <SearchButton onClick={() => setButtonChange(!buttonState)}>
-          S
-        </SearchButton>
+        <SearchButton onClick={() => setButtonState(!buttonState)}>{searchIcon}</SearchButton>
       )}
-    </SearchContainer>
+    </SearchMoviesContainer>
   );
 }

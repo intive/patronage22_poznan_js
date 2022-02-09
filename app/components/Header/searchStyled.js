@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const SearchContainer = styled.header`
+export const SearchMoviesContainer = styled.header`
   display: flex;
   justify-content: left;
   align-items: center;
@@ -10,8 +10,9 @@ const SearchContainer = styled.header`
   transition: width 0.3s ease-in-out;
   overflow: hidden;
 `;
-const SearchButton = styled.button`
+export const SearchButton = styled.button`
   display: inline-block;
+  padding: 2px;
   background: none;
   outline: none;
   width: 30px;
@@ -19,8 +20,9 @@ const SearchButton = styled.button`
   margin-right: 5px;
   cursor: pointer;
   border: none;
+  font-size: 1.1rem;
 `;
-const SearchInput = styled.input`
+export const SearchInput = styled.input`
   padding: 5px;
   height: 20px;
   width: 80%;
@@ -30,9 +32,7 @@ const SearchInput = styled.input`
     outline: none;
   }
 `;
-
-const ClearInputButton = styled(SearchButton)`
+export const ClearInputButton = styled(SearchButton)`
   font-weight: 600;
+  font-size: 1.1rem;
 `;
-
-export { SearchContainer, SearchButton, SearchInput, ClearInputButton };

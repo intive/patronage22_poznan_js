@@ -58,9 +58,7 @@
     "release_date": "1999-10-15",
     "revenue": 100853753,
     "runtime": 139,
-    "spoken_languages": [
-      { "english_name": "English", "iso_639_1": "en", "name": "English" }
-    ],
+    "spoken_languages": [{ "english_name": "English", "iso_639_1": "en", "name": "English" }],
     "status": "Released",
     "tagline": "Mischief. Mayhem. Soap.",
     "title": "Fight Club",

@@ -1,4 +1,4 @@
-const movies = require("/public/shared/jsons/movieMockData.json");
+const movies = require('/public/shared/jsons/movieMockData.json');
 
 export default async function handler(req, res) {
   const { id } = req.query;
