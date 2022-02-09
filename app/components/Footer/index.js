@@ -1,77 +1,104 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { device } from './breakpoints'
 
 export default function Footer() {
-const links = ['Audio and Subtitles', 'Audio Description', 'Help Center', 'Gift Cards', 'Media Center', 'Investor Relations', 'Jobs', 'Terms of Use', 'Privacy', 'Legal Notices', 'Cookie Preferences', 'Corporate Information', 'Contact Us'];
+  const mockLinks = [
+    'Audio and Subtitles',
+    'Audio Description',
+    'Help Center',
+    'Gift Cards',
+    'Media Center',
+    'Investor Relations',
+    'Jobs',
+    'Terms of Use',
+    'Privacy',
+    'Legal Notices',
+    'Cookie Preferences',
+    'Corporate Information',
+    'Contact Us'];
 
-function Item(props) {
+  function Item(props) {
     return <ListItem><a>{props.value}</a></ListItem>;
-}
+  }
 
-function List(props) {
+  function List(props) {
     const links = props.links;
     const listItems = links.map((link, index) =>
-    <Item key={index} value={link} />
+      <Item key={index} value={link} />
     );
     return (
-        <LinksList>
+      <LinksList>
         {listItems}
-        </LinksList>
+      </LinksList>
     );
-}
+  }
 
-    return (
-        <FooterWrapper>
-            {/* TODO waiting for icons ticket P2022-610 */}
-            {/* <IconWrapper>
-                    <li><i class="fab fa-facebook-f"></i></li>
-                    <li><i class="fab fa-instagram"></i></li>
-                    <li><i class="fab fa-twitter"></i></li>
-                    <li><i class="fab fa-youtube"></i></li>
-            </IconWrapper> */}
-            <List links={links} />
-            <p style={{fontSize: "0.8rem", marginLeft: "2.40rem", marginTop:"2rem"}}>© 2022 InTiVi</p>
-        </FooterWrapper>
-    );
+  return (
+    <FooterWrapper>
+      <IconWrapper>
+        <FontAwesomeItem> <FontAwesomeIcon icon= { faFacebookF } /> </FontAwesomeItem>
+        <FontAwesomeItem> <FontAwesomeIcon icon= { faInstagram } /> </FontAwesomeItem>
+        <FontAwesomeItem> <FontAwesomeIcon icon= { faTwitter } /> </FontAwesomeItem>
+        <FontAwesomeItem> <FontAwesomeIcon icon= { faYoutube } /> </FontAwesomeItem>
+      </IconWrapper>
+      <List links={mockLinks} />
+      <p style={{ fontSize: "0.8rem", marginLeft: "2.40rem", marginTop: "2rem" }}>© 2022 InTiVi</p>
+    </FooterWrapper>
+  );
 }
 
 export const FooterWrapper = styled.footer`
-    display: grid;
+  display: grid;
+  justify-content: flex-start;
+  width: 100%;
+  font-weight: 600;
+  color: #5e5d5d;
+  background-color: #000000;
+  @media ${device.tablet} {
     justify-content: center;
-    width: 100%;
-    font-weight: 600;
-    color: rgb(94, 93, 93);
-    background-color: rgb(0, 0, 0);
-    @media (max-width: 768px) {
-		justify-content: flex-start;
-	}
+  }
 `;
 
 export const IconWrapper = styled.ul`
-    list-style-type: none;
+  display: flex;
+  margin-left: 0.4rem;
+  margin-top: 4rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  list-style-type: none;
+`;
+
+export const FontAwesomeItem = styled.li`
+  margin-right: 2rem;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.85;
+  }
 `;
 
 export const LinksList = styled.ul`
-    display: grid;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3rem;
+  row-gap: 1.1rem;
+  font-size: 0.9rem;
+  list-style-type: none;
+  @media ${device.desktop} {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 7rem;
-    row-gap: 1.1rem;
-    list-style-type: none;
-    @media (max-width: 992px) {
-		grid-template-columns: 1fr 1fr;
-        column-gap: 10rem;
-	}
-    @media (max-width: 768px) {
-        column-gap: 8rem;
-        font-size: 0.9rem;
-    }
-    @media (max-width: 480px) {
-        column-gap: 3rem;
-    }
+    column-gap: 10rem;
+  }
+  @media ${device.tablet} {
+    column-gap: 8rem;
+    font-size: 1rem;
+  }
 `;
 
 export const ListItem = styled.li`
     cursor: pointer;
     &:hover {
-        text-decoration: underline;
+      text-decoration: underline;
     }
 `;
