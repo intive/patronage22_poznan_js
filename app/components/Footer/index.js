@@ -1,32 +1,71 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { device } from './breakpoints'
 
 export default function Footer() {
   const mockLinks = [
-    'Audio and Subtitles',
-    'Audio Description',
-    'Help Center',
-    'Gift Cards',
-    'Media Center',
-    'Investor Relations',
-    'Jobs',
-    'Terms of Use',
-    'Privacy',
-    'Legal Notices',
-    'Cookie Preferences',
-    'Corporate Information',
-    'Contact Us'];
+    {
+      id: 1,
+      displayLink: 'Audio and Subtitles'
+    },
+    {
+      id: 2,
+      displayLink: 'Audio Description'
+    },
+    {
+      id: 3,
+      displayLink: 'Help Center'
+    },
+    {
+      id: 4,
+      displayLink: 'Gift Cards'
+    },
+    {
+      id: 5,
+      displayLink: 'Media Center'
+    },
+    {
+      id: 6,
+      displayLink: 'Investor Relations'
+    },
+    {
+      id: 7,
+      displayLink: 'Jobs'
+    },
+    {
+      id: 8,
+      displayLink: 'Terms of Use'
+    },
+    {
+      id: 9,
+      displayLink: 'Privacy'
+    },
+    {
+      id: 10,
+      displayLink: 'Legal Notices'
+    },
+    {
+      id: 11,
+      displayLink: 'Cookie Preferences'
+    },
+    {
+      id: 12,
+      displayLink: 'Corporate Information'
+    },
+    {
+      id: 13,
+      displayLink: 'Contact Us'
+    }
+  ];
 
   function Item(props) {
-    return <ListItem><a>{props.value}</a></ListItem>;
+    return <LinkItem>{props.value}</LinkItem>;
   }
 
   function List(props) {
     const links = props.links;
-    const listItems = links.map((link, index) =>
-      <Item key={index} value={link} />
+    const listItems = links.map((link) =>
+      <Item key={link.id} value={link.displayLink} />
     );
     return (
       <LinksList>
@@ -37,14 +76,14 @@ export default function Footer() {
 
   return (
     <FooterWrapper>
-      <IconWrapper>
-        <FontAwesomeItem> <FontAwesomeIcon icon={faFacebookF} /> </FontAwesomeItem>
-        <FontAwesomeItem> <FontAwesomeIcon icon={faInstagram} /> </FontAwesomeItem>
-        <FontAwesomeItem> <FontAwesomeIcon icon={faTwitter} /> </FontAwesomeItem>
-        <FontAwesomeItem> <FontAwesomeIcon icon={faYoutube} /> </FontAwesomeItem>
-      </IconWrapper>
+      <IconList>
+        <IconWrapper> <FontAwesomeIcon icon={faFacebookF} /> </IconWrapper>
+        <IconWrapper> <FontAwesomeIcon icon={faInstagram} /> </IconWrapper>
+        <IconWrapper> <FontAwesomeIcon icon={faTwitter} /> </IconWrapper>
+        <IconWrapper> <FontAwesomeIcon icon={faYoutube} /> </IconWrapper>
+      </IconList>
       <List links={mockLinks} />
-      <p style={{ fontSize: "0.8rem", marginLeft: "2.40rem", marginTop: "2rem" }}>© 2022 InTiVi</p>
+      <CopyrightParagraph>© 2022 InTiVi</CopyrightParagraph>
     </FooterWrapper>
   );
 }
@@ -56,12 +95,12 @@ export const FooterWrapper = styled.footer`
   font-weight: 600;
   color: #5e5d5d;
   background-color: #000000;
-  @media ${device.tablet} {
+  @media (min-width: 768px) {
     justify-content: center;
   }
 `;
 
-export const IconWrapper = styled.ul`
+export const IconList = styled.ul`
   display: flex;
   margin-left: 0.4rem;
   margin-top: 4rem;
@@ -71,7 +110,7 @@ export const IconWrapper = styled.ul`
   list-style-type: none;
 `;
 
-export const FontAwesomeItem = styled.li`
+export const IconWrapper = styled.li`
   margin-right: 2rem;
   cursor: pointer;
   &:hover {
@@ -86,19 +125,21 @@ export const LinksList = styled.ul`
   row-gap: 1.1rem;
   font-size: 0.9rem;
   list-style-type: none;
-  @media ${device.desktop} {
+  @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 10rem;
-  }
-  @media ${device.tablet} {
-    column-gap: 8rem;
-    font-size: 1rem;
+    column-gap: 2.3rem;
   }
 `;
 
-export const ListItem = styled.li`
+export const LinkItem = styled.li`
     cursor: pointer;
     &:hover {
       text-decoration: underline;
     }
+`;
+
+export const CopyrightParagraph = styled.p`
+  font-size: 0.8rem;
+  margin-left: 2.40rem;
+  margin-top: 2rem
 `;
