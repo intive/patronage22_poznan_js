@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:jest/recommended"
-  ],
+  "extends": ["next/core-web-vitals", "eslint:recommended", "plugin:jest/recommended", "prettier"],
   "plugins": ["jest"],
   "settings": {
     "import/resolver": {

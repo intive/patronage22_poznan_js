@@ -12,18 +12,14 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to inTiVi
-        </h1>
+        <h1 className={styles.title}>Welcome to inTiVi</h1>
 
         <p className={styles.description}>
           Please <Link href={'/user/login'}>sign in</Link>.
         </p>
       </main>
 
-      <footer className={styles.footer}>
-        (c) intive 2022
-      </footer>
+      <footer className={styles.footer}>(c) intive 2022</footer>
     </div>
-  )
+  );
 }
