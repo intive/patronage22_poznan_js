@@ -1,4 +1,4 @@
-import { DesctoFormUl, MobileFormUl, LinkStyle, DesctopLinkStyle } from './headerStyle'
+import { DesktopFormUl, MobileFormUl, LinkStyle, DesktopLinkStyle } from './headerStyle';
 import { navData } from './menuData';
 
 const NavigationLink = ({ name, link }) => {
@@ -12,15 +12,7 @@ const NavigationLink = ({ name, link }) => {
 export const MainNav = () => {
     return (
         <>
-            <DesctoFormUl>
-                {navData.map(navigationItem =>
-                    <DesctopLinkStyle key={navigationItem.name}>
-                        <NavigationLink
-                            name={navigationItem.name}
-                            link={navigationItem.link}
-                        />
-                    </DesctopLinkStyle>)}
-            </DesctoFormUl>
+      <DesktopFormUl>
         </>
     )
 }

@@ -39,8 +39,7 @@ ${media.tablets}{
 ${media.desktop}{
     display: none;
 }
-`
-export const DesctoFormUl = styled.ul`
+export const DesktopFormUl = styled.ul`
 display: none;
 ${media.desktop}{
     display: flex;
@@ -80,7 +79,6 @@ text-transform: uppercase;
 list-style: none;
 text-align: center;
 margin: 10px;
-`
-export const DesctopLinkStyle = styled(LinkStyle)`
+export const DesktopLinkStyle = styled(LinkStyle)`
 margin: 0 10px;
 `
