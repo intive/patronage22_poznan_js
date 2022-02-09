@@ -1,0 +1,13 @@
+# Ignore artifacts:
+.next/
+/build
+.github/
+/node_modules
+/coverage
+
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+.vercel
