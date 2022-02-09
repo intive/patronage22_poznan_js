@@ -23,7 +23,7 @@ export default function Search() {
             onChange={(e) => setInputValue(e.target.value)}
           ></SearchInput>
           {inputValue.length > 0 ? (
-            <ClearInputButton onClick={() => setInputValue("")}>
+            <ClearInputButton onClick={() => setInputValue(" ")}>
               X {/*  {/@Todo icon Close} */}
             </ClearInputButton>
           ) : null}
@@ -37,5 +37,3 @@ export default function Search() {
     </SearchContainer>
   );
 }
-
-//674 zadanie
