@@ -1,6 +1,7 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import styles from '../styles/Home.module.css';
+import Search from "components/Header/Search";
+import Head from "next/head";
+import Link from "next/link";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -11,11 +12,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Search />
+
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to inTiVi</h1>
 
         <p className={styles.description}>
-          Please <Link href={'/user/login'}>sign in</Link>.
+          Please <Link href={"/user/login"}>sign in</Link>.
         </p>
       </main>
 
