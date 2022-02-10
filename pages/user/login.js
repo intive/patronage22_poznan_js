@@ -69,10 +69,11 @@ const Button = styled.button`
 `;
 
 const CheckboxWrapper = styled.div`
+  display: flex;
   margin-top: 1rem;
   width: 17rem;
   color: #ffffff;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 `;
 const Checkbox = styled.input`
   opacity: 0.5;
@@ -126,13 +127,14 @@ export default function UserLogin() {
           <Button onClick={userLogin}>Sign In</Button>
           <CheckboxWrapper>
             <Checkbox type="checkbox" id="rememberMe" name="rememberMe" />
-            <label htmlFor="rememberMe">Scales</label>
+            <label htmlFor="rememberMe">Remember me</label>
+            <span style={{ marginLeft: '5rem' }}>Need help?</span>
           </CheckboxWrapper>
-          <p style={{ color: '#5e5d5d' }}>
-            Nie masz jeszcze konta? <br />
-            <a href="" style={{ color: '#ffffff' }}>
+          <p style={{ color: '#5e5d5d', display: 'flex', fontWeight: '600' }}>
+            New to Netflix?
+            <a href="" style={{ color: '#ffffff', marginLeft: '3px' }}>
               {' '}
-              Zarejestruj się!
+              Sign up now.
             </a>
           </p>
         </FormContainer>
