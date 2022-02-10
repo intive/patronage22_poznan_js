@@ -8,6 +8,8 @@ import {
   UserImg,
   NavigationBar,
 } from './headerStyle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 import { useState } from 'react';
 
@@ -24,7 +26,10 @@ export default function Header() {
         <SecondNavigationBar>
           {/* TODO search input */}
           <UserImg>{userImg}</UserImg>
-          {/* TODO waiting for icons */}
+          <FontAwesomeIcon
+            icon={faSortDown}
+            style={{ fontSize: '25px', paddingBottom: '5px', color: 'white' }}
+          />
         </SecondNavigationBar>
       </NavigationBar>
       {showMobileMenu ? <MobileNav /> : null}

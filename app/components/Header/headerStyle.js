@@ -23,9 +23,7 @@ export const MainNavigationBar = styled.div`
   flex-direction: row;
   align-items: center;
 `;
-export const SecondNavigationBar = styled(MainNavigationBar)`
-  flex-direction: row-reverse;
-`;
+export const SecondNavigationBar = styled(MainNavigationBar)``;
 export const MobileMenuBtn = styled.button`
   font-size: 14px;
   margin: 0 30px;
