@@ -2,57 +2,80 @@ import { LoginInput } from './loginInput';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    // justify-content: center;
-    align-items: center;
-    // margin-left: 35vw;
-    // margin-top: 7vh;
-    width: 100vw;
-    height: 100vh;
-    color: rgb(255, 255, 255);
-    background-color: rgba(0, 0, 0, 0.8);
-`;
-
 const LoginPageContainer = styled.div`
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('../UserLoginBackgroundImg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position:center;
-    z-index: -2;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vw;
+  height: 100vh;
+  background-image: url('../UserLoginBackgroundImg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 `;
 
-// const Header = styled.div`
-//    padding-left: 3vw;
-//    padding-top: 1.5vh;
-//    z-index: 3;
-// `;
+const Header = styled.div``;
 
 const LayerWrapper = styled.div`
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index:-1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  color: rgb(255, 255, 255);
+  background-color: #000000;
+  @media (min-width: 768px) {
+    width: 24rem;
+    height: 32rem;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 `;
 
 const FormContainer = styled.div`
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5vh;
-    width: 90vw;
-    height: 80vh;
+  margin-top: 5vh;
+`;
+
+const FormHeader = styled.h1`
+  width: 17rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
 `;
 
 const InputWrapper = styled.div`
-  margin-bottom: 3vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Button = styled.button`
+  width: 17rem;
+  height: 3rem;
+  border-radius: 5px;
+  border-color: #e50914;
+  background-color: #e50914;
+  color: #ffffff;
+  @media (min-width: 768px) {
+    width: 16rem;
+  }
+`;
+
+const CheckboxWrapper = styled.div`
+  margin-top: 1rem;
+  width: 17rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+`;
+const Checkbox = styled.input`
+  opacity: 0.5;
 `;
 
 export default function UserLogin() {
@@ -69,17 +92,15 @@ export default function UserLogin() {
 
     const user = { username, password };
     console.log(user);
-  }
+  };
 
   return (
     <LoginPageContainer>
       <LayerWrapper></LayerWrapper>
-      {/* <Header>
-
-      </Header> */}
+      <Header></Header>
       <Wrapper>
         <FormContainer>
-          <h1 style={{ fontWeight: "600", marginBottom: "3vh", marginLeft: "-33vw" }}>Sign In</h1>
+          <FormHeader>Sign In</FormHeader>
           <InputWrapper>
             <LoginInput
               id="username"
@@ -89,7 +110,8 @@ export default function UserLogin() {
               placeholder="Email or phone number"
               value={username}
               error={usernameError}
-              onInputChange={(e) => setUsername(e.target.value)} />
+              onInputChange={(e) => setUsername(e.target.value)}
+            />
 
             <LoginInput
               id="password"
@@ -98,11 +120,23 @@ export default function UserLogin() {
               label="Password"
               placeholder="Password"
               value={password}
-              onInputChange={(e) => setPassword(e.target.value)} />
+              onInputChange={(e) => setPassword(e.target.value)}
+            />
           </InputWrapper>
-          <button onClick={userLogin}>Sign In</button>
+          <Button onClick={userLogin}>Sign In</Button>
+          <CheckboxWrapper>
+            <Checkbox type="checkbox" id="rememberMe" name="rememberMe" />
+            <label htmlFor="rememberMe">Scales</label>
+          </CheckboxWrapper>
+          <p style={{ color: '#5e5d5d' }}>
+            Nie masz jeszcze konta? <br />
+            <a href="" style={{ color: '#ffffff' }}>
+              {' '}
+              Zarejestruj się!
+            </a>
+          </p>
         </FormContainer>
       </Wrapper>
     </LoginPageContainer>
-  )
+  );
 }
