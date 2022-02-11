@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const PrimaryButton = styled.button`
+export const PrimaryButton = styled.button`
   color: #fff;
   font-size: 1rem;
   text-transform: capitalize;
@@ -10,5 +10,3 @@ const PrimaryButton = styled.button`
   border-radius: 3px;
   white-space: nowrap;
 `;
-
-export default PrimaryButton;
