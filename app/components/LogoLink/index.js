@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import Link from "next/link";
-import Image from "next/image";
-import appLogoImg from "../../../public/app-logo.svg";
+import styled from 'styled-components';
+import Link from 'next/link';
+import Image from 'next/image';
+import appLogoImg from '../../../public/app-logo.svg';
 
 const LogoLink = () => {
   return (
