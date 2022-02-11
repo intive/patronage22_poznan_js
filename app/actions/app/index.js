@@ -1,6 +1,8 @@
 import { useReducer } from 'react';
 
-let dispatch = () => {};
+let dispatch = (action) => {
+  console.error('Ojeju rety nie ma dispacza jeszcze', action);
+};
 
 const actionTypes = {
   closeModal: 'modal-close',
