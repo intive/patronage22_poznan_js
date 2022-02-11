@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import Link from "next/link";
+import styled from 'styled-components';
+import Link from 'next/link';
 
-import { device } from "../../../styles/breakpoints";
-import LogoLink from "../LogoLink/index";
-import PrimaryButton from "../PrimaryButton/index";
+import { device } from 'consts/mediaQueries';
+import LogoLink from '../LogoLink/index';
+import { PrimaryButton } from 'components/Button';
 
 const SimpleHeader = () => {
   return (
