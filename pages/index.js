@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Please <Link href={'/user/login'}>sign in</Link>.
+          Please <Link href={'/movieHero/video-section'}>Movie Hero CLICK HERE!</Link>.
         </p>
       </main>
 
