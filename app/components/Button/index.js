@@ -1,12 +1,17 @@
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import StyledButton from './Button.styles';
 
-export const PrimaryButton = styled.button`
-  color: #fff;
-  font-size: 1rem;
-  text-transform: capitalize;
-  background-color: #db0510;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 3px;
-  white-space: nowrap;
-`;
+const Button = ({ children, href, ...props }) => (
+  <StyledButton as={href ? 'a' : null} href={href} {...props}>
+    {children}
+  </StyledButton>
+);
+
+Button.propTypes = {
+  backgroundColor: PropTypes.string,
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  primary: PropTypes.bool,
+};
+
+export default Button;
