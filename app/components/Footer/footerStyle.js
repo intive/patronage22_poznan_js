@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'consts/mediaQueries';
 
 export const FooterWrapper = styled.footer`
   display: grid;
@@ -7,7 +8,7 @@ export const FooterWrapper = styled.footer`
   font-weight: 600;
   color: #5e5d5d;
   background-color: #000000;
-  @media (min-width: 768px) {
+  ${device.tablet} {
     justify-content: center;
   }
 `;
@@ -37,7 +38,7 @@ export const LinksList = styled.ul`
   row-gap: 1.1rem;
   font-size: 0.9rem;
   list-style-type: none;
-  @media (min-width: 768px) {
+  ${device.tablet} {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 2.3rem;
   }
