@@ -3,7 +3,7 @@ import { SearchMoviesContainer, SearchButton, SearchInput, ClearInputButton } fr
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-export default function SearchMoviesInput() {
+export const SearchMoviesInput = () => {
   const [isExpanded, setButtonState] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState('');
 
@@ -14,9 +14,10 @@ export default function SearchMoviesInput() {
   const closeIcon = <>&times;</>;
   const SearchIcon = <FontAwesomeIcon icon={faSearch} />;
   const containerWidth = isExpanded ? 300 : 30;
+  const containerBackground = isExpanded ? 'rgba(0, 0, 0, 0.8)' : 'none';
 
   return (
-    <SearchMoviesContainer containerWidth={containerWidth}>
+    <SearchMoviesContainer containerWidth={containerWidth} color={containerBackground}>
       <SearchButton onClick={() => setButtonState(!isExpanded)}>{SearchIcon}</SearchButton>
       <SearchInput
         placeholder={placeholder.searchValue}
@@ -28,4 +29,4 @@ export default function SearchMoviesInput() {
       )}
     </SearchMoviesContainer>
   );
-}
+};

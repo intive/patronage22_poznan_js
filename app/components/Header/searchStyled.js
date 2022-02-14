@@ -1,15 +1,19 @@
 import styled from 'styled-components';
+import { device } from '/app/consts/mediaQueries';
 
 export const SearchMoviesContainer = styled.header`
   width: ${(props) => `${props.containerWidth}px`};
-  display: flex;
+  display: none;
   justify-content: left;
   align-items: center;
   padding: 2px;
-  margin: 0 auto;
-  border: solid 1px rgba(0, 0, 0, 0.8);
+  margin-right: 10px;
+  background: ${(props) => props.color};
   transition: width 0.3s ease-in-out;
   overflow: hidden;
+  ${device.tablet} {
+    display: flex;
+  }
 `;
 export const SearchButton = styled.button`
   display: inline-block;
@@ -22,14 +26,16 @@ export const SearchButton = styled.button`
   cursor: pointer;
   border: none;
   font-size: 1.1rem;
+  color: #fff;
 `;
 export const SearchInput = styled.input`
   height: 20px;
   width: 70%;
   border: none;
   background: none;
+  color: #fff;
   &:focus {
-    outline: 1px solid #00000050;
+    outline: 1px solid #ffffff50;
   }
 `;
 export const ClearInputButton = styled(SearchButton)`
