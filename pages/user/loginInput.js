@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { InputStyle, ErrorMessage } from './loginStyle';
 
 export function LoginInput(props) {
   return (
@@ -18,22 +18,3 @@ export function LoginInput(props) {
     </>
   );
 }
-
-const InputStyle = styled.input`
-  margin-bottom: 1.4rem;
-  padding-left: 10px;
-  width: 17rem;
-  height: 3rem;
-  border-radius: 5px;
-  border-color: black;
-  background-color: #3a3b3a;
-  letter-spacing: 0.3px;
-  @media (min-width: 768px) {
-    width: 16rem;
-  }
-`;
-const ErrorMessage = styled.div`
-  margin-top: -1.5rem;
-  height: 1.5rem;
-  color: red;
-`;
