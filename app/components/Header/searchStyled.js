@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const SearchMoviesContainer = styled.header`
+  width: ${(props) => `${props.containerWidth}px`};
   display: flex;
   justify-content: left;
   align-items: center;
@@ -23,16 +24,14 @@ export const SearchButton = styled.button`
   font-size: 1.1rem;
 `;
 export const SearchInput = styled.input`
-  padding: 5px;
   height: 20px;
-  width: 80%;
+  width: 70%;
   border: none;
   background: none;
   &:focus {
-    outline: none;
+    outline: 1px solid #00000050;
   }
 `;
 export const ClearInputButton = styled(SearchButton)`
-  font-weight: 600;
-  font-size: 1.1rem;
+  margin: 0;
 `;
