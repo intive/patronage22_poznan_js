@@ -1,37 +1,46 @@
-import { DesktopFormUl, MobileFormUl, LinkStyle, DesktopLinkStyle } from './headerStyle';
+import Link from 'next/link';
+import {
+  DesktopMenuList,
+  MobileMenuList,
+  LinkStyle,
+  DesktopLinkStyle,
+  LinkWrapper,
+} from './headerStyle';
 import { navData } from './menuData';
 
 const NavigationLink = ({ name, link }) => {
   return (
-    <a style={{ width: '100%', color: 'white' }} href={link}>
-      {name}
-    </a>
+    <LinkWrapper>
+      <Link href={link} passHref>
+        {name}
+      </Link>
+    </LinkWrapper>
   );
 };
 
 export const MainNav = () => {
   return (
     <>
-      <DesktopFormUl>
+      <DesktopMenuList>
         {navData.map((navigationItem) => (
-          <DesktopLinkStyle key={navigationItem.name}>
+          <DesktopLinkStyle key={navigationItem.id}>
             <NavigationLink name={navigationItem.name} link={navigationItem.link} />
           </DesktopLinkStyle>
         ))}
-      </DesktopFormUl>
+      </DesktopMenuList>
     </>
   );
 };
 export const MobileNav = () => {
   return (
     <>
-      <MobileFormUl>
+      <MobileMenuList>
         {navData.map((navigationItem) => (
-          <LinkStyle key={navigationItem.name}>
+          <LinkStyle key={navigationItem.id}>
             <NavigationLink name={navigationItem.name} link={navigationItem.link} />
           </LinkStyle>
         ))}
-      </MobileFormUl>
+      </MobileMenuList>
     </>
   );
 };

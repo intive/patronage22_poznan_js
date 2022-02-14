@@ -1,25 +1,9 @@
 export const navData = [
-  {
-    name: 'home',
-    link: '',
-  },
-  {
-    name: 'tv shows',
-    link: '',
-  },
-  {
-    name: 'movies',
-    link: '',
-  },
-  {
-    name: 'new & popular',
-    link: '',
-  },
-  {
-    name: 'my list',
-    link: '',
-  },
+  { id: 1, name: 'home', link: '' },
+  { id: 2, name: 'tv shows', link: '' },
+  { id: 3, name: 'movies', link: '' },
+  { id: 4, name: 'new & popular', link: '' },
+  { id: 5, name: 'my list', link: '' },
 ];
-export const userImg = 'img';
-export const pageName = 'InTiVI';
+export const userImg = ':)';
 export const mobileMenu = 'Explore';
