@@ -1,10 +1,19 @@
 import PropTypes from 'prop-types';
 import StyledButton from './Button.styles';
+import Link from 'next/link';
 
 const Button = ({ children, href, ...props }) => (
-  <StyledButton as={href ? 'a' : null} href={href} {...props}>
-    {children}
-  </StyledButton>
+  <>
+    {href ? (
+      <Link href={href} passHref>
+        <StyledButton as="a" {...props}>
+          {children}
+        </StyledButton>
+      </Link>
+    ) : (
+      <StyledButton {...props}>{children}</StyledButton>
+    )}
+  </>
 );
 
 Button.propTypes = {

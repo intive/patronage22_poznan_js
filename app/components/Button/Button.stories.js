@@ -33,6 +33,6 @@ CustomColor.args = {
 export const ButtonAsLink = Template.bind({});
 ButtonAsLink.args = {
   primary: true,
-  href: 'user/login',
+  href: '/user/login',
   text: 'Button as Link',
 };
