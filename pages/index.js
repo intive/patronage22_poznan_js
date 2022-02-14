@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Footer from 'components/Footer';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -19,7 +18,6 @@ export default function Home() {
           Please <Link href={'/user/login'}>sign in</Link>.
         </p>
       </main>
-      <Footer></Footer>
     </div>
   );
 }
