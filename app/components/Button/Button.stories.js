@@ -7,15 +7,15 @@ export default {
 
 const Template = ({ text, ...args }) => <Button {...args}>{text}</Button>;
 
-export const Primary = Template.bind({});
-Primary.args = {
-  primary: true,
-  text: 'Primary Button',
+export const Default = Template.bind({});
+Default.args = {
+  text: 'Default Button',
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  text: 'Secondary Button',
+export const Primary = Template.bind({});
+Primary.args = {
+  text: 'Primary button',
+  primary: true,
 };
 
 export const Disabled = Template.bind({});

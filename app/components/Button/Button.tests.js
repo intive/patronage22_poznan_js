@@ -1,5 +1,5 @@
 import render, { screen, userEvent } from '../../../testUtils/setup';
-import { Primary, Secondary, CustomColor, Disabled, ButtonAsLink } from './Button.stories';
+import { Primary, Default, CustomColor, Disabled, ButtonAsLink } from './Button.stories';
 
 import Button from '.';
 
@@ -28,13 +28,13 @@ describe('Button', () => {
   });
 
   it('renders a secondary button', () => {
-    render(<Secondary {...Secondary.args} />);
+    render(<Default {...Default.args} />);
 
     expect(screen.getByRole('button')).toBeVisible();
     expect(screen.getByRole('button')).toHaveStyleRule('background-color', '#fff');
   });
 
-  it('renders a green button', () => {
+  it('renders a button with custom color', () => {
     render(<CustomColor {...CustomColor.args} />);
 
     expect(screen.getByRole('button')).toBeVisible();
@@ -54,7 +54,7 @@ describe('Button', () => {
   it('renders the button as a link if href is given', () => {
     render(<ButtonAsLink {...ButtonAsLink.args} />);
 
-    expect(screen.getByRole('link', { name: ButtonAsLink.args.text })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: ButtonAsLink.args.text })).toBeVisible();
     expect(screen.getByRole('link', { name: ButtonAsLink.args.text })).toHaveAttribute(
       'href',
       ButtonAsLink.args.href
