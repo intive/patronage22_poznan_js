@@ -1,6 +1,5 @@
 import {
   LoginPageContainer,
-  Header,
   LayerWrapper,
   Wrapper,
   FormContainer,
@@ -32,7 +31,6 @@ export default function UserLogin() {
   return (
     <LoginPageContainer>
       <LayerWrapper></LayerWrapper>
-      <Header></Header>
       <Wrapper>
         <FormContainer>
           <FormHeader>Sign In</FormHeader>
@@ -65,7 +63,7 @@ export default function UserLogin() {
           </CheckboxWrapper>
           <p style={{ color: '#5e5d5d', display: 'flex', fontWeight: '600' }}>
             New to Netflix?
-            <a href="" style={{ color: '#ffffff', marginLeft: '3px' }}>
+            <a href="/create-account" style={{ color: '#ffffff', marginLeft: '3px' }}>
               Sign up now.
             </a>
           </p>
@@ -73,4 +71,10 @@ export default function UserLogin() {
       </Wrapper>
     </LoginPageContainer>
   );
+}
+
+export async function getServerSideProps() {
+  return {
+    props: { headerMode: 'signUp' }, // will be passed to the page component as props
+  };
 }

@@ -5,14 +5,21 @@ import { device } from 'consts/mediaQueries';
 export const LoginPageContainer = styled.div`
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  min-width: 100vw;
+  width: 100vw;
   height: 100vh;
-  background-image: url('../UserLoginBackgroundImg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  padding-top: 100px;
+  background-image: none;
+  background-color: rgb(0, 0, 0);
+
+  ${device.tablet} {
+    // background-color: rgba(0, 0, 0, 0.8);
+    background-image: url('../UserLoginBackgroundImg.jpg');
+  }
 `;
 
 export const LayerWrapper = styled.div`
@@ -21,28 +28,33 @@ export const LayerWrapper = styled.div`
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.6);
+  // z-index: -1;
 `;
 
-export const Header = styled.div``;
-
 export const Wrapper = styled.div`
+  // position: absolute;
+  // left: 0;
+  // top: 0;
   display: flex;
   justify-content: center;
   width: 100vw;
   height: 100vh;
   color: rgb(255, 255, 255);
   background-color: #000000;
+  z-index: 3;
   ${device.tablet} {
+    // position: static;
     width: 24rem;
     height: 32rem;
-    background-color: rgba(0, 0, 0, 0.8);
   }
 `;
 
 export const FormContainer = styled.div`
-  margin-top: 5vh;
+  margin-top: 10vh;
+  ${device.tablet} {
+    margin-top: 5vh;
+  }
 `;
 
 export const FormHeader = styled.h1`
@@ -78,7 +90,6 @@ export const ErrorMessage = styled.div`
 export const Button = styled(PrimaryButton)`
   width: 17rem;
   height: 3rem;
-  cursor: pointer;
   ${device.tablet} {
     width: 16rem;
   }

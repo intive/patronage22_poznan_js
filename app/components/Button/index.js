@@ -9,4 +9,5 @@ export const PrimaryButton = styled.button`
   border: none;
   border-radius: 3px;
   white-space: nowrap;
+  cursor: pointer;
 `;
