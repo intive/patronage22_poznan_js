@@ -1,4 +1,4 @@
-import { InputStyle, ErrorMessage } from './loginStyle';
+import { InputStyle, ErrorMessage } from './styles';
 
 export function LoginInput(props) {
   return (

@@ -7,7 +7,6 @@ import AppContext from 'context/app';
 
 export default function Layout({ children }) {
   const { user, headerMode } = useContext(AppContext);
-  console.log(user);
   return (
     <>
       {user ? <Header /> : <SimpleHeader headerMode={headerMode}></SimpleHeader>}

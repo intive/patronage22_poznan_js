@@ -17,7 +17,6 @@ export const LoginPageContainer = styled.div`
   background-color: rgb(0, 0, 0);
 
   ${device.tablet} {
-    // background-color: rgba(0, 0, 0, 0.8);
     background-image: url('../UserLoginBackgroundImg.jpg');
   }
 `;
@@ -29,13 +28,9 @@ export const LayerWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
-  // z-index: -1;
 `;
 
 export const Wrapper = styled.div`
-  // position: absolute;
-  // left: 0;
-  // top: 0;
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -44,7 +39,6 @@ export const Wrapper = styled.div`
   background-color: #000000;
   z-index: 3;
   ${device.tablet} {
-    // position: static;
     width: 24rem;
     height: 32rem;
   }
@@ -105,4 +99,20 @@ export const CheckboxWrapper = styled.div`
 
 export const Checkbox = styled.input`
   opacity: 0.5;
+`;
+
+export const HelpSpan = styled.span`
+  margin-left: 5rem;
+  cursor: pointer;
+`;
+
+export const SignUpLinkParagraph = styled.p`
+  display: flex;
+  color: #5e5d5d;
+  font-weight: 600;
+`;
+
+export const SignUpLink = styled.a`
+  margin-left: 3px;
+  color: #ffffff;
 `;
