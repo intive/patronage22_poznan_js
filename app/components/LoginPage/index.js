@@ -13,7 +13,7 @@ import {
   SignUpLinkParagraph,
   SignUpLink,
 } from './styles';
-import { LoginInput } from './loginInput';
+import { LoginInput } from './LoginInput';
 
 export function LoginPage() {
   const [username, setUsername] = useState('');
