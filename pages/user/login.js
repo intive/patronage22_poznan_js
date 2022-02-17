@@ -48,3 +48,8 @@ export default function UserLogin() {
     </Wrapper>
   );
 }
+export async function getServerSideProps() {
+  return {
+    props: { headerMode: 'signUp' }, // will be passed to the page component as props
+  };
+}
