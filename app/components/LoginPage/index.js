@@ -1,19 +1,15 @@
 import { useState } from 'react';
 import {
   LoginPageContainer,
-  LayerWrapper,
-  Wrapper,
   FormContainer,
   FormHeader,
-  InputWrapper,
   Button,
   CheckboxWrapper,
-  Checkbox,
-  HelpSpan,
   SignUpLinkParagraph,
   SignUpLink,
+  CheckboxContainer,
 } from './styles';
-import { LoginInput } from './LoginInput';
+import { LoginInput } from './LoginInputStyles';
 
 export function LoginPage() {
   const [username, setUsername] = useState('');
@@ -32,43 +28,38 @@ export function LoginPage() {
   };
   return (
     <LoginPageContainer>
-      <LayerWrapper></LayerWrapper>
-      <Wrapper>
-        <FormContainer>
-          <FormHeader>Sign In</FormHeader>
-          <InputWrapper>
-            <LoginInput
-              id="username"
-              name="username"
-              type="text"
-              label="Username"
-              placeholder="Email or phone number"
-              value={username}
-              error={usernameError}
-              onInputChange={(e) => setUsername(e.target.value)}
-            />
-            <LoginInput
-              id="password"
-              name="password"
-              type="password"
-              label="Password"
-              placeholder="Password"
-              value={password}
-              onInputChange={(e) => setPassword(e.target.value)}
-            />
-          </InputWrapper>
-          <Button onClick={userLogin}>Sign In</Button>
-          <CheckboxWrapper>
-            <Checkbox type="checkbox" id="rememberMe" name="rememberMe" />
+      <FormContainer>
+        <FormHeader>Sign In</FormHeader>
+        <LoginInput
+          id="username"
+          type="text"
+          label="Username"
+          placeholder="Email or phone number"
+          value={username}
+          error={usernameError}
+          onInputChange={(e) => setUsername(e.target.value)}
+        />
+        <LoginInput
+          id="password"
+          type="password"
+          label="Password"
+          placeholder="Password"
+          value={password}
+          onInputChange={(e) => setPassword(e.target.value)}
+        />
+        <Button onClick={userLogin}>Sign In</Button>
+        <CheckboxWrapper>
+          <CheckboxContainer>
+            <input type="checkbox" id="rememberMe" name="rememberMe" />
             <label htmlFor="rememberMe">Remember me</label>
-            <HelpSpan>Need help?</HelpSpan>
-          </CheckboxWrapper>
-          <SignUpLinkParagraph>
-            New to Netflix?
-            <SignUpLink href="/create-account">Sign up now.</SignUpLink>
-          </SignUpLinkParagraph>
-        </FormContainer>
-      </Wrapper>
+          </CheckboxContainer>
+          <span>Need help?</span>
+        </CheckboxWrapper>
+        <SignUpLinkParagraph>
+          New to INTIVI?
+          <SignUpLink href="/create-account">Sign up now.</SignUpLink>
+        </SignUpLinkParagraph>
+      </FormContainer>
     </LoginPageContainer>
   );
 }

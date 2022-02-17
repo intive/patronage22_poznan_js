@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 
-export function Input(props) {
+export function Input({ id, label, name, type, value, onInputChange, error, className, ...props }) {
   return (
-    <>
-      <label htmlFor={props.id}>{props.label}</label>
-      <input
-        id={props.id}
-        name={props.name}
-        type={props.type}
-        value={props.value}
-        onChange={props.onInputChange}
+    <div className={className}>
+      <label htmlFor={id}>{label}</label>
+      <PrimaryInput
+        id={id}
+        name={name || id}
+        type={type}
+        value={value}
+        onChange={onInputChange}
+        {...props}
       />
-      {props.error && <div style={{ color: 'red' }}>{props.error}</div>}
-    </>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
+    </div>
   );
 }
 
@@ -20,4 +21,13 @@ export const FormFlex = styled.form`
   display: flex;
   flex-direction: column;
   max-width: 400px;
+`;
+
+const PrimaryInput = styled.input`
+  border-radius: 5px;
+  border-color: black;
+`;
+
+const ErrorMessage = styled.div`
+  color: red;
 `;

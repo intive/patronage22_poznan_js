@@ -1,7 +1,6 @@
 import Layout from 'components/Layout';
 import '../styles/fonts.css';
 import '../styles/globals.css';
-import React from 'react';
 import { useState } from 'react';
 import AppContext from 'context/app';
 
