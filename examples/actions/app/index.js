@@ -1,13 +1,13 @@
 import { useReducer } from 'react';
 
-let dispatch = (action) => {
-  console.error('Ojeju rety nie ma dispacza jeszcze', action);
-};
-
-const actionTypes = {
+export const actions = {
   closeModal: 'modal-close',
   openModal: 'modal-open',
   setLanguage: 'language-set',
+  //
+  dispatch: (action) => {
+    console.error('Actions was used before dispatch was ready - app store', action);
+  },
 };
 
 // reducer
@@ -15,13 +15,13 @@ const actionTypes = {
 export const appReducer = (state, action = {}) => {
   const { type, payload } = action;
   switch (type) {
-    case actionTypes.closeModal:
+    case actions.closeModal:
       return { ...state, isModalOpen: false, modalContent: '' };
 
-    case actionTypes.openModal:
+    case actions.openModal:
       return { ...state, isModalOpen: true, modalContent: payload || '' };
 
-    case actionTypes.setLanguage:
+    case actions.setLanguage:
       return { ...state, language: payload };
 
     default:
@@ -35,7 +35,7 @@ export const appReducer = (state, action = {}) => {
 
 export const useActions = (initialState) => {
   const [appState, newDispatch] = useReducer(appReducer, initialState);
-  dispatch = newDispatch;
+  actions.dispatch = newDispatch;
   return appState;
 };
 
@@ -46,7 +46,7 @@ export const useActions = (initialState) => {
  *
  */
 export const closeModal = () => {
-  dispatch({ type: actionTypes.closeModal });
+  actions.dispatch({ type: actions.closeModal });
 };
 
 /**
@@ -55,9 +55,9 @@ export const closeModal = () => {
  * @param {string} payload Modal content
  */
 export const openModal = (payload) => {
-  dispatch({ type: actionTypes.openModal, payload });
+  actions.dispatch({ type: actions.openModal, payload });
 };
 
 export const setLanguage = (payload) => {
-  dispatch({ type: setLanguage, payload });
+  actions.dispatch({ type: setLanguage, payload });
 };
