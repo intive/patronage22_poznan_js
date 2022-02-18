@@ -11,6 +11,7 @@ import {
 import LogoLink from 'components/LogoLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { SearchMoviesInput } from '../SearchMoviesInput/SearchMoviesInput';
 
 import { useState } from 'react';
 
@@ -27,7 +28,7 @@ export default function Header() {
           <MainNav />
         </MainNavigationBar>
         <UserPanel>
-          {/* TODO search input */}
+          <SearchMoviesInput />
           <UserImg>{userImg}</UserImg>
           <ShowAccount>
             <FontAwesomeIcon icon={faSortDown} />
