@@ -17,7 +17,6 @@ export default function Home() {
         <p className={styles.description}>
           Please <Link href={'/user/login'}>sign in</Link>.
         </p>
-        <br />
       </main>
 
       <footer className={styles.footer}>(c) intive 2022</footer>
