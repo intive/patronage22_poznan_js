@@ -5,10 +5,10 @@ import SimpleHeader from 'components/SimpleHeader';
 import AppContext from 'context/app';
 
 export default function Layout({ children }) {
-  const { user, headerMode } = useContext(AppContext);
+  const { user } = useContext(AppContext);
   return (
     <>
-      {user ? <Header /> : <SimpleHeader headerMode={headerMode}></SimpleHeader>}
+      {user ? <Header /> : <SimpleHeader></SimpleHeader>}
       {children}
       <Footer />
     </>

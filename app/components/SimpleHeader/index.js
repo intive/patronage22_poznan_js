@@ -3,13 +3,16 @@ import Link from 'next/link';
 import { device } from 'consts/mediaQueries';
 import LogoLink from '../LogoLink/index';
 import { PrimaryButton } from 'components/Button';
+import AppContext from 'context/app';
+import { useContext } from 'react';
 
 const userActions = {
   signUp: { link: '/user/create-account', buttonText: 'Sign Up' },
   signIn: { link: '/user/login', buttonText: 'Sign In' },
 };
 
-const SimpleHeader = ({ headerMode }) => {
+const SimpleHeader = () => {
+  const headerMode = useContext(AppContext);
   const { link, buttonText } = userActions[headerMode] || {};
   return (
     <HeaderContainer>
