@@ -1,4 +1,5 @@
-import { Input, FormFlex } from 'components/Form/index';
+import { FormFlex, Input } from 'components/Form';
+import Button from 'components/Button';
 import { useState } from 'react';
 import styled from 'styled-components';
 
@@ -29,7 +30,6 @@ export default function UserLogin() {
       <FormFlex>
         <Input
           id="username"
-          name="username"
           type="text"
           label="Username"
           value={username}
@@ -37,13 +37,15 @@ export default function UserLogin() {
           onInputChange={(e) => setUsername(e.target.value)}
         />
         <Input
-          name="password"
+          id="password"
           type="password"
           label="Password"
           value={password}
           onInputChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={userLogin}>Sign In</button>
+        <Button primary onClick={userLogin}>
+          Sign In
+        </Button>
       </FormFlex>
     </Wrapper>
   );
