@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Link from 'next/link';
 import { device } from 'consts/mediaQueries';
-import LogoLink from '../LogoLink/index';
+import LogoLink from '../LogoLink';
 import { PrimaryButton } from 'components/Button';
 import AppContext from 'context/app';
 import { useContext } from 'react';
