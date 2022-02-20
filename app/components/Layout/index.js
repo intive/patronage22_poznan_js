@@ -11,8 +11,8 @@ export default function Layout({ children }) {
     <>
       {user ? <Header /> : <SimpleHeader></SimpleHeader>}
       <div style={{ position: 'absolute', bottom: '0', right: '0' }}>
-        <Button primary value="Sign In" onClick={() => logIn({ username: 'Grażyna' })}>
-          Sign In
+        <Button primary value="Log In" onClick={() => logIn({ username: 'Grażyna' })}>
+          Log In
         </Button>
         <Button primary value="Log Out" onClick={() => logOut()}>
           Log Out

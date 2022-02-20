@@ -1,8 +1,8 @@
 import { useReducer } from 'react';
 
 export const actions = {
-  logIn: 'log-in-action',
-  logOut: 'log-out-action',
+  LOG_IN: 'log-in-action',
+  LOG_OUT: 'log-out-action',
   dispatch: (action) => {
     console.error('Actions was used before dispatch was ready - app store', action);
   },
@@ -13,10 +13,10 @@ export const actions = {
 export const appReducer = (state, action = {}) => {
   const { type } = action;
   switch (type) {
-    case actions.logIn:
+    case actions.LOG_IN:
       return { ...state };
 
-    case actions.logOut:
+    case actions.LOG_OUT:
       return;
 
     default:
@@ -37,9 +37,9 @@ export const useActions = (initialState) => {
 // actions
 
 export const logIn = () => {
-  actions.dispatch({ type: actions.logIn });
+  actions.dispatch({ type: actions.LOG_IN });
 };
 
 export const logOut = () => {
-  actions.dispatch({ type: actions.logOut });
+  actions.dispatch({ type: actions.LOG_OUT });
 };
