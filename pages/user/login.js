@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   width: 50%;
-  margin: 50px auto;
+  margin: auto;
   background-color: ${(props) => (props.theme === 'light' ? '#fff' : '#666')};
 `;
 

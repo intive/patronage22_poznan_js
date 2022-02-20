@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import Link from 'next/link';
 import { device } from 'consts/mediaQueries';
 import LogoLink from '../LogoLink';
-import { PrimaryButton } from 'components/Button';
+import Button from 'components/Button';
 import AppContext from 'context/app';
 import { useContext } from 'react';
 
@@ -10,18 +9,18 @@ const userActions = {
   signUp: { link: '/user/create-account', buttonText: 'Sign Up' },
   signIn: { link: '/user/login', buttonText: 'Sign In' },
 };
-
 const SimpleHeader = () => {
-  const headerMode = useContext(AppContext);
+  const { headerMode } = useContext(AppContext);
   const { link, buttonText } = userActions[headerMode] || {};
+
   return (
     <HeaderContainer>
       <StyledNavigation>
         <LogoLink />
         {link && buttonText && (
-          <Link href={link} passHref>
-            <PrimaryButton as="a">{buttonText}</PrimaryButton>
-          </Link>
+          <Button primary href={link}>
+            {buttonText}
+          </Button>
         )}
       </StyledNavigation>
     </HeaderContainer>

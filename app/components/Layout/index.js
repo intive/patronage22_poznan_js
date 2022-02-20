@@ -1,22 +1,22 @@
 import Footer from '../Footer';
 import Header from '../Header';
-import { PrimaryButton } from '../Button';
+import Button from '../Button/Button.styles';
 import SimpleHeader from 'components/SimpleHeader';
 
-import { logIn, logOut, useActions } from 'actions';
+import { useActions, logIn, logOut } from 'actions';
 
 export default function Layout({ children }) {
-  const user = useActions({});
+  const user = useActions();
   return (
     <>
       {user ? <Header /> : <SimpleHeader></SimpleHeader>}
       <div style={{ position: 'absolute', bottom: '0', right: '0' }}>
-        <PrimaryButton value="Sign In" onClick={() => logIn({ username: 'Grażyna' })}>
+        <Button primary value="Sign In" onClick={() => logIn({ username: 'Grażyna' })}>
           Sign In
-        </PrimaryButton>
-        <PrimaryButton value="Sign Up" onClick={logOut}>
-          Sign Up
-        </PrimaryButton>
+        </Button>
+        <Button primary value="Log Out" onClick={() => logOut()}>
+          Log Out
+        </Button>
       </div>
       {children}
       <Footer />

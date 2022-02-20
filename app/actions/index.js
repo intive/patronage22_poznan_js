@@ -14,10 +14,10 @@ export const appReducer = (state, action = {}) => {
   const { type } = action;
   switch (type) {
     case actions.logIn:
-      return { ...state, isLogIn: true };
+      return { ...state };
 
     case actions.logOut:
-      return { ...state, isLogIn: false };
+      return;
 
     default:
       break;
@@ -42,5 +42,4 @@ export const logIn = () => {
 
 export const logOut = () => {
   actions.dispatch({ type: actions.logOut });
-  console.log('log out');
 };
