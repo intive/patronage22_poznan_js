@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 export const CarouselOuter = styled.div`
@@ -7,6 +6,7 @@ export const CarouselOuter = styled.div`
   overflow: hidden;
   position: relative;
   background-color: pink;
+  width: 90vw;
 
   & .carousel-nav-button {
     display: none;
@@ -35,12 +35,6 @@ export const CarouselItemInner = styled.div`
   text-align: center;
   border-radius: 5px;
 `;
-
-export const CarouselItem = ({ title, tileCount }) => (
-  <CarouselItemWrapper tileCount={tileCount}>
-    <CarouselItemInner>{title} </CarouselItemInner>
-  </CarouselItemWrapper>
-);
 
 export const Button = styled.button`
   background-color: rgba(0, 0, 0, 0.2);
