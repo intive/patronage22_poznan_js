@@ -1,11 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
-import { CarouselOuter, CarouselItem, Button } from 'components/Carousel/CarouselStyle';
+import { useEffect, useState } from 'react';
+import {
+  CarouselOuter,
+  CarouselItemWrapper,
+  CarouselItemInner,
+  Button,
+} from 'components/Carousel/CarouselStyle';
 
 const Carousel = ({ movies = [] }) => {
   const [activeScreen, setActiveScreen] = useState(0);
   const [tilesPerScreen, setTilesPerScreen] = useState(1);
-
-  const carouselRef = useRef(null);
 
   const tileCount = movies.length;
   const screenCount = Math.ceil(tileCount / tilesPerScreen);
@@ -15,13 +18,16 @@ const Carousel = ({ movies = [] }) => {
 
   useEffect(() => {
     const foo = () => {
-      const carouselWidth = carouselRef.current ? carouselRef.current.offsetWidth : 1;
-      console.log('carouselWidth', carouselWidth);
+      const windowWidth = window.innerWidth;
+      console.log(`this is window width now ${windowWidth}`);
+
       let targetTileCount = 1;
-      if (carouselWidth > 768) {
+
+      if (windowWidth > 768) {
         targetTileCount = 3;
       }
-      if (carouselWidth > 1024) {
+
+      if (windowWidth > 1024) {
         targetTileCount = 5;
       }
 
@@ -49,8 +55,7 @@ const Carousel = ({ movies = [] }) => {
       'resize',
       throttle(() => {
         foo();
-        console.log('window resize');
-      }, 800)
+      }, 600)
     );
     window.removeEventListener(
       'resize',
@@ -69,8 +74,14 @@ const Carousel = ({ movies = [] }) => {
     setActiveScreen(newIndex);
   };
 
+  const CarouselItem = ({ title, tileCount }) => (
+    <CarouselItemWrapper tileCount={tileCount}>
+      <CarouselItemInner>{title} </CarouselItemInner>
+    </CarouselItemWrapper>
+  );
+
   return (
-    <CarouselOuter ref={carouselRef}>
+    <CarouselOuter>
       <div
         className="inner"
         style={{
