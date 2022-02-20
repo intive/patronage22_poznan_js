@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   stories: ['../app/**/*.stories.{js, jsx}', '../stories/**/*.stories.{js, jsx}'],
   addons: [
@@ -19,5 +21,11 @@ module.exports = {
         [require.resolve('@babel/plugin-proposal-private-property-in-object'), { loose: true }],
       ],
     };
+  },
+  // make webpack understand /app alias
+  webpackFinal: async (config) => {
+    config.resolve.modules.push(path.resolve(__dirname, '../app'));
+
+    return config;
   },
 };
