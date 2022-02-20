@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { createSwaggerSpec } from 'next-swagger-doc';
 import SwaggerUI from 'swagger-ui-react';
 import 'swagger-ui-react/swagger-ui.css';
