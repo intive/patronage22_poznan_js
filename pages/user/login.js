@@ -1,4 +1,14 @@
 import { LoginPage } from 'components/LoginPage';
+import { FormFlex, Input } from 'components/Form';
+import Button from 'components/Button';
+import { useState } from 'react';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  width: 50%;
+  margin: 50px auto;
+  background-color: ${(props) => (props.theme === 'light' ? '#fff' : '#666')};
+`;
 
 export default function UserLogin() {
   return <LoginPage />;
@@ -8,4 +18,29 @@ export async function getServerSideProps() {
   return {
     props: { headerMode: 'signUp' }, // will be passed to the page component as props
   };
+
+  return (
+    <Wrapper theme={'light'}>
+      <FormFlex>
+        <Input
+          id="username"
+          type="text"
+          label="Username"
+          value={username}
+          error={usernameError}
+          onInputChange={(e) => setUsername(e.target.value)}
+        />
+        <Input
+          id="password"
+          type="password"
+          label="Password"
+          value={password}
+          onInputChange={(e) => setPassword(e.target.value)}
+        />
+        <Button primary onClick={userLogin}>
+          Sign In
+        </Button>
+      </FormFlex>
+    </Wrapper>
+  );
 }
