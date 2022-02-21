@@ -20,6 +20,10 @@ export const getStaticProps = async () => {
   return {
     props: {
       spec,
+      pageLayout: {
+        header: false,
+        footer: false,
+      },
     },
   };
 };
