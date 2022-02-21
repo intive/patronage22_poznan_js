@@ -10,10 +10,10 @@ const LogoLink = () => {
         <Image
           src={appLogoImg}
           alt="InTiVi logo"
-          width="100%"
-          height="100%"
-          layout="responsive"
+          layout="fill"
           objectFit="contain"
+          objectPosition="left"
+          priority="true"
         />
       </StyledLogoLink>
     </Link>
@@ -23,7 +23,17 @@ const LogoLink = () => {
 export default LogoLink;
 
 const StyledLogoLink = styled.a`
-  width: clamp(90px, 20vw, 134px);
-  display: inline-block;
-  position: relative;
+  width: clamp(110px, 20vw, 134px);
+  height: 100%;
+
+  span {
+    position: static !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  img {
+    position: static !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
 `;
