@@ -9,9 +9,10 @@ export const NavigationBar = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3px 10px;
+  padding: 1rem;
   ${device.tablet} {
-    padding: 4px 30px;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 `;
 
@@ -19,6 +20,10 @@ export const MainNavigationBar = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  height: 40px;
+  ${device.tablet} {
+    height: 50px;
+  }
 `;
 
 export const UserPanel = styled(MainNavigationBar)``;
@@ -48,6 +53,8 @@ export const DesktopMenuList = styled.ul`
     flex-direction: row;
     padding: 0;
     margin: 0 40px;
+    /* margin-left: 2rem;
+    margin-right: 2rem; */
   }
 `;
 
