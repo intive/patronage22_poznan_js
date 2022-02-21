@@ -35,11 +35,10 @@ export const FormHeader = styled.h1`
 `;
 
 export const SignInButton = styled(Button)`
-  button {
-    width: 100%;
-    margin-top: 0.8rem;
-    padding: 0.8rem;
-  }
+  display: inline-block;
+  width: 100%;
+  margin-top: 0.8rem;
+  padding: 0.8rem;
 `;
 
 export const CheckboxWrapper = styled.div`

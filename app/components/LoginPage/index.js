@@ -34,7 +34,6 @@ export function LoginPage() {
         <LoginInput
           id="username"
           type="text"
-          label="Username"
           placeholder="Email or phone number"
           value={username}
           error={usernameError}
@@ -43,7 +42,6 @@ export function LoginPage() {
         <LoginInput
           id="password"
           type="password"
-          label="Password"
           placeholder="Password"
           value={password}
           onInputChange={(e) => setPassword(e.target.value)}
