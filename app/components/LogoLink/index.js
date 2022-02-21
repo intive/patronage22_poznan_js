@@ -14,6 +14,8 @@ const LogoLink = () => {
           objectFit="contain"
           objectPosition="left"
           priority="true"
+          width="100%"
+          height="100%"
         />
       </StyledLogoLink>
     </Link>
@@ -33,7 +35,5 @@ const StyledLogoLink = styled.a`
   }
   img {
     position: static !important;
-    width: 100% !important;
-    height: 100% !important;
   }
 `;

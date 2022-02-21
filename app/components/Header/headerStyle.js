@@ -9,7 +9,7 @@ export const NavigationBar = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   ${device.tablet} {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -53,8 +53,6 @@ export const DesktopMenuList = styled.ul`
     flex-direction: row;
     padding: 0;
     margin: 0 40px;
-    /* margin-left: 2rem;
-    margin-right: 2rem; */
   }
 `;
 
