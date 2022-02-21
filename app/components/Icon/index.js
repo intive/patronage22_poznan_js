@@ -12,6 +12,20 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
+/**
+ * Display one of available icon types. Styling can be done using additional params listed below.
+ *
+ * @param {*} { type, ...props }
+ ** type (string): defines icon svg;
+ ** color (string): defines icon's color;
+ ** size (string): defines icon's size in relation to the current font-size;
+ ** opacity (number): defines icon's opacity;
+ ** rotation (number): defines icon's rotation;
+ ** flip (string): defines icon's horizontal and vertical flip;
+ ** spin (boolean): sets icon's spin (smooth) animation;
+ ** pulse (boolean): sets icon's pulse (rough) animation;
+ *
+ */
 export default function Icon({ type, ...props }) {
   let iconName = '';
   switch (type) {
@@ -80,20 +94,8 @@ export default function Icon({ type, ...props }) {
       '9x',
       '10x',
     ]),
-    opacity: PropTypes.oneOf([
-      '0',
-      '0.1',
-      '0.2',
-      '0.3',
-      '0.4',
-      '0.5',
-      '0.6',
-      '0.7',
-      '0.8',
-      '0.9',
-      '1',
-    ]),
-    rotation: PropTypes.oneOf(['0', '90', '180', '270']),
+    opacity: PropTypes.oneOf([0, 0.25, 0.5, 0.75, 1]),
+    rotation: PropTypes.oneOf([0, 90, 180, 270]),
     flip: PropTypes.oneOf(['none', 'horizontal', 'vertical', 'both']),
     spin: PropTypes.bool,
     pulse: PropTypes.bool,
