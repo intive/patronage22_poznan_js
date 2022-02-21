@@ -1,16 +1,24 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { device } from '/app/consts/mediaQueries';
 
 export const SearchMoviesContainer = styled.header`
-  width: ${(props) => `${props.containerWidth}px`};
   display: none;
   justify-content: left;
   align-items: center;
   padding: 2px;
   margin-right: 10px;
-  background: ${(props) => props.color};
+  background: none;
+  width: 30px;
   transition: width 0.3s ease-in-out;
   overflow: hidden;
+
+  ${({ isExpanded }) =>
+    isExpanded &&
+    css`
+      width: 300px;
+      background: rgba(0, 0, 0, 0.8);
+    `}
+
   ${device.tablet} {
     display: flex;
   }

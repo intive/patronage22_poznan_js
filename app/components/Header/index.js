@@ -11,7 +11,7 @@ import {
 import LogoLink from 'components/LogoLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
-import { SearchMoviesInput } from '../SearchMoviesInput/SearchMoviesInput';
+import { SearchMoviesInput } from '../SearchMoviesInput/index';
 
 import { useState } from 'react';
 
