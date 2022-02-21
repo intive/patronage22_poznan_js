@@ -1,5 +1,5 @@
-import { useState, createRef, useRef } from 'react';
-import useOnClickOutside from '../../hooks/useOnClickOutside';
+import { useState, useRef } from 'react';
+import useOnClickOutside from 'hooks/useOnClickOutside';
 import {
   SearchMoviesContainer,
   SearchButton,
@@ -12,38 +12,48 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 export const SearchMoviesInput = () => {
   const [isExpanded, setExpanded] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState('');
+  const [isInputEmpty, setInputEmpty] = useState(true);
 
   const placeholder = {
     searchValue: 'Title, Actors, Film genre',
   };
-  const inputRef = createRef();
+  const inputRef = useRef();
 
   const closeIcon = <>&times;</>;
   const SearchIcon = <FontAwesomeIcon icon={faSearch} />;
 
-  const ref = useRef();
+  const containerRef = useRef();
 
-  useOnClickOutside(ref, () =>
-    searchInputValue.length !== 0 ? setExpanded(true) : setExpanded(false)
-  );
+  useOnClickOutside(containerRef, () => (!isInputEmpty ? setExpanded(true) : setExpanded(false)));
 
   const openSearchInput = () => {
     setExpanded(!isExpanded);
-    inputRef.current.focus();
+    if (!isExpanded) {
+      inputRef.current.focus();
+    }
+  };
+
+  const handleInputchange = (e) => {
+    const value = e.target.value;
+    setSearchInputValue(value);
+    value.length > 0 ? setInputEmpty(false) : setInputEmpty(true);
+  };
+
+  const clearInputValue = () => {
+    setSearchInputValue('');
+    setInputEmpty(true);
   };
 
   return (
-    <SearchMoviesContainer isExpanded={isExpanded} ref={ref}>
+    <SearchMoviesContainer isExpanded={isExpanded} ref={containerRef}>
       <SearchButton onClick={openSearchInput}>{SearchIcon}</SearchButton>
       <SearchInput
         placeholder={placeholder.searchValue}
         value={searchInputValue}
-        onChange={(e) => setSearchInputValue(e.target.value)}
+        onChange={(e) => handleInputchange(e)}
         ref={inputRef}
       ></SearchInput>
-      {searchInputValue.length > 0 && (
-        <ClearInputButton onClick={() => setSearchInputValue('')}>{closeIcon}</ClearInputButton>
-      )}
+      {!isInputEmpty && <ClearInputButton onClick={clearInputValue}>{closeIcon}</ClearInputButton>}
     </SearchMoviesContainer>
   );
 };

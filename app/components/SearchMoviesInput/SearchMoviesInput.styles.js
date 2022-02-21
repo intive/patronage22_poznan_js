@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { device } from '/app/consts/mediaQueries';
+import { device } from 'consts/mediaQueries';
 
 export const SearchMoviesContainer = styled.header`
   display: none;
@@ -42,7 +42,7 @@ export const SearchInput = styled.input`
   border: none;
   background: none;
   color: #fff;
-  &:focus {
+  :focus {
     outline: 1px solid #ffffff50;
   }
 `;
