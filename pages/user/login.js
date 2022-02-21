@@ -5,6 +5,6 @@ export default function UserLogin() {
 }
 export async function getServerSideProps() {
   return {
-    props: { headerMode: 'signUp' }, // will be passed to the page component as props
+    props: { pageLayout: { header: 'signUp' } }, // will be passed to the page component as props
   };
 }

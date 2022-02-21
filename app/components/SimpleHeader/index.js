@@ -2,16 +2,13 @@ import styled from 'styled-components';
 import { device } from 'consts/mediaQueries';
 import LogoLink from '../LogoLink';
 import Button from 'components/Button';
-import AppContext from 'context/app';
-import { useContext } from 'react';
 
 const userActions = {
   signUp: { link: '/user/create-account', buttonText: 'Sign Up' },
   signIn: { link: '/user/login', buttonText: 'Sign In' },
 };
-const SimpleHeader = () => {
-  const { headerMode } = useContext(AppContext);
-  const { link, buttonText } = userActions[headerMode] || {};
+const SimpleHeader = ({ mode }) => {
+  const { link, buttonText } = userActions[mode] || {};
 
   return (
     <HeaderContainer>

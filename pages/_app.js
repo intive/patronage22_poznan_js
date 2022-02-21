@@ -5,11 +5,11 @@ import { useState } from 'react';
 import AppContext from 'context/app';
 
 function MyApp({ Component, pageProps }) {
-  const { headerMode } = pageProps;
-  const [appState] = useState({ headerMode });
+  const { pageLayout } = pageProps;
+  const [appState] = useState({});
   return (
     <AppContext.Provider value={appState}>
-      <Layout>
+      <Layout pageLayout={pageLayout}>
         <Component {...pageProps} />
       </Layout>
     </AppContext.Provider>
