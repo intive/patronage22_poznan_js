@@ -1,13 +1,14 @@
 import { useState } from 'react';
+
 import {
   LoginPageContainer,
   FormContainer,
   FormHeader,
-  Button,
   CheckboxWrapper,
   SignUpLinkParagraph,
   SignUpLink,
   CheckboxContainer,
+  SignInButton,
 } from './styles';
 import { LoginInput } from './LoginInputStyles';
 
@@ -47,7 +48,9 @@ export function LoginPage() {
           value={password}
           onInputChange={(e) => setPassword(e.target.value)}
         />
-        <Button onClick={userLogin}>Sign In</Button>
+        <SignInButton primary onClick={userLogin}>
+          Sign In
+        </SignInButton>
         <CheckboxWrapper>
           <CheckboxContainer>
             <input type="checkbox" id="rememberMe" name="rememberMe" />

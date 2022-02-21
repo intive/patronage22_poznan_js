@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import StyledButton from './Button.styles';
 import Link from 'next/link';
 
-const Button = ({ children, href, ...props }) => (
-  <>
+const Button = ({ children, href, className, ...props }) => (
+  <div className={className}>
     {href ? (
       <Link href={href} passHref>
         <StyledButton as="a" {...props}>
@@ -13,7 +13,7 @@ const Button = ({ children, href, ...props }) => (
     ) : (
       <StyledButton {...props}>{children}</StyledButton>
     )}
-  </>
+  </div>
 );
 
 Button.propTypes = {

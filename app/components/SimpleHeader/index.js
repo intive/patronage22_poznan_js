@@ -1,24 +1,14 @@
 import styled from 'styled-components';
-import Link from 'next/link';
 import { device } from 'consts/mediaQueries';
 import LogoLink from '../LogoLink';
-import { PrimaryButton } from 'components/Button';
+import Button from 'components/Button';
 
-const userActions = {
-  signUp: { link: '/user/create-account', buttonText: 'Sign Up' },
-  signIn: { link: '/user/login', buttonText: 'Sign In' },
-};
-const SimpleHeader = ({ headerMode }) => {
-  const { link, buttonText } = userActions[headerMode] || {};
+const SimpleHeader = () => {
   return (
     <HeaderContainer>
       <StyledNavigation>
         <LogoLink />
-        {link && buttonText && (
-          <Link href={link} passHref>
-            <PrimaryButton as="a">{buttonText}</PrimaryButton>
-          </Link>
-        )}
+        <Button primary as="a"></Button>
       </StyledNavigation>
     </HeaderContainer>
   );

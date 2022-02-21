@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 
-const Input = ({ id, name, label, value, onInputChange, error, ...props }) => {
+const Input = ({ id, name, label, value, onInputChange, error, className, ...props }) => {
   return (
-    <>
+    <div className={className}>
       <label htmlFor={id}>{label}</label>
       <input value={value} onChange={onInputChange} name={name || id} id={id} {...props} />
       {error && <div style={{ color: 'red' }}>{error}</div>}
-    </>
+    </div>
   );
 };
 

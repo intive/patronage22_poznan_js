@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Input } from 'components/Form';
+import Input from 'components/Form/Input';
 
 export const LoginInput = styled(Input)`
   input {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PrimaryButton } from 'components/Button';
+import Button from 'components/Button';
 import { device } from 'consts/mediaQueries';
 
 export const LoginPageContainer = styled.div`
@@ -35,10 +35,12 @@ export const FormHeader = styled.h1`
   font-weight: 600;
 `;
 
-export const Button = styled(PrimaryButton)`
-  width: 100%;
-  margin-top: 0.8rem;
-  padding: 0.8rem;
+export const SignInButton = styled(Button)`
+  button {
+    width: 100%;
+    margin-top: 0.8rem;
+    padding: 0.8rem;
+  }
 `;
 
 export const CheckboxWrapper = styled.div`
