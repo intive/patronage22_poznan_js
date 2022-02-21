@@ -11,14 +11,14 @@ export const actions = {
 // reducer
 
 export const appReducer = (state, action = {}) => {
-  const { type, user } = action;
+  const { type, payload } = action;
 
   switch (type) {
     case actions.LOG_IN:
-      return { ...user };
+      return { ...payload };
 
     case actions.LOG_OUT:
-      return { ...user };
+      return {};
 
     default:
       break;
@@ -38,9 +38,9 @@ export const useActions = (initialState) => {
 // actions
 
 export const logIn = (user) => {
-  actions.dispatch({ type: actions.LOG_IN, user });
+  actions.dispatch({ type: actions.LOG_IN, payload: user });
 };
 
-export const logOut = (user) => {
-  actions.dispatch({ type: actions.LOG_OUT, user });
+export const logOut = () => {
+  actions.dispatch({ type: actions.LOG_OUT });
 };
