@@ -1,4 +1,5 @@
-import { useState, createRef } from 'react';
+import { useState, createRef, useRef } from 'react';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 import {
   SearchMoviesContainer,
   SearchButton,
@@ -20,19 +21,24 @@ export const SearchMoviesInput = () => {
   const closeIcon = <>&times;</>;
   const SearchIcon = <FontAwesomeIcon icon={faSearch} />;
 
+  const ref = useRef();
+
+  useOnClickOutside(ref, () =>
+    searchInputValue.length !== 0 ? setExpanded(true) : setExpanded(false)
+  );
+
   const openSearchInput = () => {
     setExpanded(!isExpanded);
     inputRef.current.focus();
   };
 
   return (
-    <SearchMoviesContainer isExpanded={isExpanded}>
+    <SearchMoviesContainer isExpanded={isExpanded} ref={ref}>
       <SearchButton onClick={openSearchInput}>{SearchIcon}</SearchButton>
       <SearchInput
         placeholder={placeholder.searchValue}
         value={searchInputValue}
         onChange={(e) => setSearchInputValue(e.target.value)}
-        onBlur={() => setExpanded(false)}
         ref={inputRef}
       ></SearchInput>
       {searchInputValue.length > 0 && (
