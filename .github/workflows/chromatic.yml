@@ -16,6 +16,14 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      - name: Render comment template
+        id: template
+        uses: chuhlomin/render-template@v1.2
+        with:
+          template: .github/chromatic-comment-template.md
+          vars: |
+            chromaticUrl: ${{ steps.chromatic.outputs.buildUrl }}
+            storybookUrl: ${{ steps.chromatic.outputs.storybookUrl }}
       - name: Comment Chromatic & Storybook URL
         uses: actions/github-script@v6
         with:
@@ -25,9 +33,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `
-:point_down: **Chromatic is ready!**
-:point_right: [Chromatic Link](${{ steps.chromatic.outputs.buildUrl }})
-:point_right: [Storybook Link](${{ steps.chromatic.outputs.storybookUrl }})`
+              body: ${{ steps.template.outputs.result }}
             })
+
         
