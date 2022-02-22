@@ -25,9 +25,9 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `:point_down: **Chromatic is ready!**
-
-                :point_right: [Chromatic Link](${{ steps.chromatic.outputs.buildUrl }})
-                :point_right: [Storybook Link](${{ steps.chromatic.outputs.storybookUrl }})`
+              body: `
+:point_down: **Chromatic is ready!**
+:point_right: [Chromatic Link](${{ steps.chromatic.outputs.buildUrl }})
+:point_right: [Storybook Link](${{ steps.chromatic.outputs.storybookUrl }})`
             })
         
