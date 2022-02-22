@@ -1,6 +1,7 @@
 name: 'Chromatic'
-on: push
-
+on: 
+  pull_request
+  
 jobs:
   chromatic-deployment:
     name: Deploy
@@ -16,11 +17,18 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
       - name: Comment Chromatic & Storybook URL
-        uses: peter-evans/create-or-update-comment@v1
+        if: 
+        uses: actions/github-script@v6
         with:
-          body: |
-            :point_down: **Chromatic is ready!**
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `:point_down: **Chromatic is ready!**
 
-            - [Chromatic Link](${{ steps.chromatic.outputs.buildUrl }})
-            - [Storybook Link](${{ steps.chromatic.outputs.storybookUrl }})
+                - [Chromatic Link](${{ steps.chromatic.outputs.buildUrl }})
+                - [Storybook Link](${{ steps.chromatic.outputs.storybookUrl }})`
+            })
         
