@@ -5,6 +5,7 @@ const FloatingLabelInput = ({ name, label, errorMsg, withBorder, onInputChange, 
     <InputWrapper>
       <FormRow>
         <FormInput
+          id={name}
           name={name}
           errorMsg={errorMsg}
           onChange={onInputChange}
