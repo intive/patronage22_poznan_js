@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function MediaButton(props) {
+export function MediaButton(props) {
   return (
     <Button>
       <Icon icon={props.icon} />
