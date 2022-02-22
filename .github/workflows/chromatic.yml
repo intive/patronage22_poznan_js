@@ -3,6 +3,7 @@ on: push
 
 jobs:
   chromatic-deployment:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -10,6 +11,16 @@ jobs:
         run: yarn
       - name: Publish to Chromatic
         uses: chromaui/action@v1
+        id: chromatic
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      - name: Comment Chromatic & Storybook URL
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          body: |
+            :point_down: **Chromatic is ready!**
+
+            - [Chromatic Link](${{ steps.chromatic.outputs.buildUrl }})
+            - [Storybook Link](${{ steps.chromatic.outputs.storybookUrl }})
+        
