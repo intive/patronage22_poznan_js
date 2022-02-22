@@ -8,9 +8,9 @@ export default {
   component: Button,
 };
 
-const Template = ({ text, ...args }) => <Button {...args}>{text}</Button>;
+const Template = ({ content, ...args }) => <Button {...args}>{content}</Button>;
 
-const TemplateWithWrapper = ({ text, ...args }) => (
+const TemplateWithWrapper = ({ content, ...args }) => (
   <div
     style={{
       width: '300px',
@@ -21,50 +21,50 @@ const TemplateWithWrapper = ({ text, ...args }) => (
       justifyContent: 'center',
     }}
   >
-    <Button {...args}>{text}</Button>
+    <Button {...args}>{content}</Button>
   </div>
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  text: 'Default Button',
+  content: 'Default Button',
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
-  text: 'Primary button',
+  content: 'Primary button',
   primary: true,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   disabled: true,
-  text: 'Disabled Button',
+  content: 'Disabled Button',
 };
 
 export const CustomColor = Template.bind({});
 CustomColor.args = {
   backgroundColor: 'lightgreen',
-  text: 'Green Button',
+  content: 'Green Button',
 };
 
 export const ButtonAsLink = Template.bind({});
 ButtonAsLink.args = {
   primary: true,
   href: '/user/login',
-  text: 'Button as Link',
+  content: 'Button as Link',
 };
 
 export const FullWidth = TemplateWithWrapper.bind({});
 FullWidth.args = {
-  text: 'FullWidth button',
+  content: 'FullWidth button',
   fullWidth: true,
 };
 
 export const ButtonAppended = Template.bind({});
 ButtonAppended.args = {
   appended: true,
-  text: (
+  content: (
     <>
       Get started
       <FontAwesomeIcon style={{ marginLeft: '.6rem' }} icon={faChevronRight} />
@@ -75,5 +75,5 @@ ButtonAppended.args = {
 export const Loader = TemplateWithWrapper.bind({});
 Loader.args = {
   loader: true,
-  text: <Spinner />,
+  content: <Spinner />,
 };
