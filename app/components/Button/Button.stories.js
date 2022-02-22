@@ -1,4 +1,5 @@
 import Button from '.';
+import Spinner from 'components/Miscellaneous/Spinner';
 
 export default {
   title: 'UI/Button',
@@ -6,6 +7,21 @@ export default {
 };
 
 const Template = ({ text, ...args }) => <Button {...args}>{text}</Button>;
+
+const TemplateWithWrapper = ({ text, ...args }) => (
+  <div
+    style={{
+      width: '300px',
+      height: '100px',
+      backgroundColor: 'lightgrey',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
+    <Button {...args}>{text}</Button>
+  </div>
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -35,4 +51,22 @@ ButtonAsLink.args = {
   primary: true,
   href: '/user/login',
   text: 'Button as Link',
+};
+
+export const FullWidth = TemplateWithWrapper.bind({});
+FullWidth.args = {
+  text: 'FullWidth button',
+  fullWidth: true,
+};
+
+export const ButtonAppended = Template.bind({});
+ButtonAppended.args = {
+  appended: true,
+  text: 'Button Appended',
+};
+
+export const Loader = TemplateWithWrapper.bind({});
+Loader.args = {
+  loader: true,
+  text: <Spinner />,
 };
