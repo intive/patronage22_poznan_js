@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
-
 import { device } from 'consts/mediaQueries';
-import BackgroundImage from '../../../../public/images/background-movies.jpeg';
 
 export const CreateAccountBackground = styled.div`
   min-height: 100vh;
@@ -23,7 +21,7 @@ export const CreateAccountWrapper = styled.section`
         `
       : css`
           background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
-            url(${BackgroundImage.src});
+            url('../images/background-movies.jpeg');
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
