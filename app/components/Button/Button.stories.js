@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Button from '.';
 import Spinner from 'components/Miscellaneous/Spinner';
 
@@ -62,7 +64,12 @@ FullWidth.args = {
 export const ButtonAppended = Template.bind({});
 ButtonAppended.args = {
   appended: true,
-  text: 'Button Appended',
+  text: (
+    <>
+      Get started
+      <FontAwesomeIcon style={{ marginLeft: '.6rem' }} icon={faChevronRight} />
+    </>
+  ),
 };
 
 export const Loader = TemplateWithWrapper.bind({});
