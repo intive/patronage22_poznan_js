@@ -4,7 +4,7 @@ import {
   CarouselItemWrapper,
   CarouselItemInner,
   Button,
-} from 'components/Carousel/CarouselStyle';
+} from 'components/Carousel/carousel-style';
 
 const Carousel = ({ movies = [] }) => {
   const [activeScreen, setActiveScreen] = useState(0);
