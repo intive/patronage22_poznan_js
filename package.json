@@ -19,10 +19,12 @@
     "@fortawesome/react-fontawesome": "^0.1.17",
     "jest-styled-components": "^7.0.8",
     "next": "12.0.9",
+    "next-swagger-doc": "^0.2.0",
     "prop-types": "^15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "swagger-ui-react": "^4.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
@@ -40,6 +42,7 @@
     "@testing-library/user-event": "^13.5.0",
     "babel-loader": "^8.2.3",
     "babel-plugin-styled-components": "^2.0.2",
+    "chromatic": "^6.5.1",
     "eslint": "8.7.0",
     "eslint-config-next": "12.0.8",
     "eslint-config-prettier": "^8.3.0",
