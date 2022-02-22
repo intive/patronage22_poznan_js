@@ -1,7 +1,7 @@
 name: 'Chromatic'
 on: 
   pull_request
-  
+
 jobs:
   chromatic-deployment:
     name: Deploy
@@ -17,7 +17,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
       - name: Comment Chromatic & Storybook URL
-        if: 
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
