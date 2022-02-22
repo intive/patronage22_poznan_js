@@ -17,6 +17,7 @@ const Template = ({ args }) => (
       justifyContent: 'space-between',
       alignItems: 'center',
       padding: '1rem',
+      position: 'relative',
     }}
   >
     <LogoLink {...args} />
