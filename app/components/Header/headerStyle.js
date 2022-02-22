@@ -9,9 +9,10 @@ export const NavigationBar = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3px 10px;
+  padding: 1.5rem 1rem;
   ${device.tablet} {
-    padding: 4px 30px;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 `;
 
@@ -19,6 +20,10 @@ export const MainNavigationBar = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  height: 40px;
+  ${device.tablet} {
+    height: 50px;
+  }
 `;
 
 export const UserPanel = styled(MainNavigationBar)``;

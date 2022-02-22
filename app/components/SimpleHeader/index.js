@@ -29,9 +29,10 @@ export default SimpleHeader;
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
-  padding: 2rem 1rem 0;
+  padding: 1.5rem 1rem;
   z-index: 1000;
-  position: fixed;
+  position: absolute;
+  width: 100%;
 
   ${device.tablet} {
     padding-left: 2rem;
@@ -43,5 +44,9 @@ const StyledNavigation = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: clamp(300px, 95vw, 1920px);
+  width: 100%;
+  height: 40px;
+  ${device.tablet} {
+    height: 50px;
+  }
 `;
