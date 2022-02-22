@@ -10,18 +10,22 @@ import {
   faMagnifyingGlass,
   faQuestionCircle,
   faArrowDown,
+  faChevronRight,
+  faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 const iconMap = {
-  'chevron-down': faArrowDown,
+  'arrow-down': faArrowDown,
+  'chevron-down': faChevronDown,
+  'chevron-right': faChevronRight,
+  'volume-mute': faVolumeMute,
+  'volume-up': faVolumeUp,
+  'x-mark': faXmark,
   facebook: faFacebookF,
   instagram: faInstagram,
   play: faPlay,
   search: faMagnifyingGlass,
   twitter: faTwitter,
-  'volume-mute': faVolumeMute,
-  'volume-up': faVolumeUp,
-  'x-mark': faXmark,
   youtube: faYoutube,
 };
 
