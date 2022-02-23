@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { StyledCarousel } from './Carousel.styles';
+import StyledCarousel from './Carousel.styles';
 
 // const movies = [
 //   { id: 1, title: 'Item 1' },
