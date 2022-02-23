@@ -3,6 +3,7 @@ import {
   CarouselOuter,
   CarouselItemWrapper,
   CarouselItemInner,
+  CarouselInner,
   Button,
 } from 'components/Carousel/Carousel.styles';
 
@@ -82,18 +83,15 @@ const Carousel = ({ movies = [] }) => {
 
   return (
     <CarouselOuter>
-      <div
-        className="inner"
+      <CarouselInner
         style={{
           transform: `translateX(-${activeScreen * 100}%)`,
-          whiteSpace: 'nowrap',
-          transition: 'transform 0.3s',
         }}
       >
         {movies.map(({ id, title }) => (
           <CarouselItem key={id} title={title} tileCount={tilesPerScreen} />
         ))}
-      </div>
+      </CarouselInner>
 
       {activeScreen !== 0 && (
         <Button

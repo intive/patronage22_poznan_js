@@ -17,6 +17,11 @@ export const CarouselOuter = styled.div`
   }
 `;
 
+export const CarouselInner = styled.div`
+  white-space: nowrap;
+  transition: transform 0.3s;
+`;
+
 export const CarouselItemWrapper = styled.div`
   width: calc(100% / ${(props) => props.tileCount});
   display: inline-block;
