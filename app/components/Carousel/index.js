@@ -4,7 +4,7 @@ import {
   CarouselItemWrapper,
   CarouselItemInner,
   Button,
-} from 'components/Carousel/carousel-style';
+} from 'components/Carousel/Carousel.styles';
 
 const Carousel = ({ movies = [] }) => {
   const [activeScreen, setActiveScreen] = useState(0);
@@ -121,5 +121,4 @@ const Carousel = ({ movies = [] }) => {
     </CarouselOuter>
   );
 };
-
 export default Carousel;
