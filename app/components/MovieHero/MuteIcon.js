@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export function MuteIcon(props) {
   return (
-    <Button type="button" onClick={props.onClick} aria-pressed='false'>
+    <Button type="button" onClick={props.onClick} aria-pressed="false">
       <Icon icon={props.icon} />
     </Button>
   );

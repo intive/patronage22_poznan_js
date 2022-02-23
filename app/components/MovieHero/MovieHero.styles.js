@@ -36,4 +36,4 @@ const MediaBox = styled.div`
   color: white;
 `;
 
-export {HeroWrapper, HeroTitle, HeroContents, MediaBox};
+export { HeroWrapper, HeroTitle, HeroContents, MediaBox };

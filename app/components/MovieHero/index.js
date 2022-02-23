@@ -29,5 +29,4 @@ MovieHero.propTypes = {
   onClick: PropTypes.func,
 };
 
-
 export default MovieHero;

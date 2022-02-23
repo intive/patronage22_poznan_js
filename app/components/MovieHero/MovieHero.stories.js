@@ -35,6 +35,6 @@ MutedSound.args = {
 
 MutedSound.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  const muteIcon = await canvas.getByRole('button',{pressed:false});
+  const muteIcon = await canvas.getByRole('button', { pressed: false });
   await userEvent.click(muteIcon);
 };
