@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledIcon from './Icon.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faVolumeMute,
@@ -32,20 +31,12 @@ const iconMap = {
 export default function Icon({ type, ...props }) {
   const iconName = iconMap[type] || faQuestionCircle;
 
-  return (
-    <>
-      <StyledIcon as="div" {...props}>
-        <FontAwesomeIcon icon={iconName} {...props} />
-      </StyledIcon>
-    </>
-  );
+  return <FontAwesomeIcon icon={iconName} {...props} />;
 }
 
 Icon.propTypes = {
   type: PropTypes.oneOf(Object.keys(iconMap)),
   color: PropTypes.string,
-  customBackground: PropTypes.string,
-  blackBackground: PropTypes.bool,
   size: PropTypes.oneOf([
     'xs',
     'sm',
