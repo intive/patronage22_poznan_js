@@ -5,7 +5,7 @@ export default {
   component: Icon,
   argTypes: {
     size: {
-      description: 'Sets size in relation to current font-size. ',
+      description: 'Sets size in relation to current font-size.',
     },
     opacity: {
       defaultValue: 1,
@@ -120,9 +120,6 @@ export const Showcase = (args) => (
     </ShowcaseRow>
   </ShowcaseContainer>
 );
-
-// const templateBckg = '';
-// const templateColor = '';
 
 const TemplateContainer = ({ children, style }) => (
   <div
