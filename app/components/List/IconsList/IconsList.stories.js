@@ -23,8 +23,8 @@ VerticalIconsList.args = {
 
 export const CustomIconsList = Template.bind({});
 CustomIconsList.args = {
+  flexDirection: 'row',
   backgroundColor: 'salmon',
   color: 'blue',
   fontSize: '3rem',
-  flexDirection: 'row',
 };
