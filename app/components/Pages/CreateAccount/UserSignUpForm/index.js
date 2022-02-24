@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import validateSignUpFormInputs, { validateUserPassword } from 'utils/validate-form-inputs';
+import validateSignUpFormInputs, { validateUserPassword } from 'utils/validateFormInputs';
 import { FormTitle, InputAndButtonWrapper } from '../CreateAccount.styles';
 import FloatingLabelInput from '../FloatingLabelInput';
 import Button from 'components/Button';
-import Spinner from 'components/Miscellaneous/Spinner';
+import Spinner from 'components/UI/Spinner';
 
 const initialState = { password: '', email: '' };
 
@@ -33,7 +33,7 @@ const UserSignUpForm = ({ emailValue }) => {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 5000);
+    const timer = setTimeout(() => setLoading(false), 3000);
     return () => {
       clearTimeout(timer);
     };
