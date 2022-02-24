@@ -1,18 +1,24 @@
 import styled from 'styled-components';
-import Link from 'next/link';
-
 import { device } from 'consts/mediaQueries';
 import LogoLink from '../LogoLink';
-import { PrimaryButton } from 'components/Button';
+import Button from 'components/Button';
 
-const SimpleHeader = () => {
+const userActions = {
+  signUp: { link: '/user/create-account', buttonText: 'Sign Up' },
+  signIn: { link: '/user/login', buttonText: 'Sign In' },
+};
+const SimpleHeader = ({ mode }) => {
+  const { link, buttonText } = userActions[mode] || {};
+
   return (
     <HeaderContainer>
       <StyledNavigation>
         <LogoLink />
-        <Link href="/user/login" passHref>
-          <PrimaryButton as="a">Sign in</PrimaryButton>
-        </Link>
+        {link && buttonText && (
+          <Button primary href={link}>
+            {buttonText}
+          </Button>
+        )}
       </StyledNavigation>
     </HeaderContainer>
   );
@@ -23,9 +29,12 @@ export default SimpleHeader;
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
-  padding: 2rem 1rem 0;
+  padding: 1.5rem 1rem;
+  z-index: 1000;
+  position: absolute;
+  width: 100%;
 
-  @media ${device.tablet} {
+  ${device.tablet} {
     padding-left: 2rem;
     padding-right: 2rem;
   }
@@ -35,5 +44,9 @@ const StyledNavigation = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: clamp(300px, 95vw, 1920px);
+  width: 100%;
+  height: 40px;
+  ${device.tablet} {
+    height: 50px;
+  }
 `;
