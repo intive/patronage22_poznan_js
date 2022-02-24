@@ -1,8 +1,8 @@
-const movies = require('../../../lib/movies/movieMockData.json');
+import { getMovieById } from '../../../lib/services/movieDb';
 
 /**
  * @swagger
- * /api/movie/{id}:
+ * /api/movies/{id}:
  *   get:
  *     summary: Get a movie by Id
  *     description: Returns a movie with a given Id
@@ -22,7 +22,15 @@ const movies = require('../../../lib/movies/movieMockData.json');
  *         description: movie not found
  */
 export default async function handler(req, res) {
-  const { id } = req.query;
-  const movieSearchResult = movies.find((movie) => movie.id === Number(id));
-  movieSearchResult ? res.status(200).json(movieSearchResult) : res.status(404).send();
+  try {
+    const { id } = req.query;
+    const movie = await getMovieById(id);
+    if (!movie) {
+      return res.status(404).json();
+    }
+    return res.status(200).json(movie);
+  } catch (e) {
+    const message = e.response ? await e.response.text() : e.message;
+    return res.status(400).json(message);
+  }
 }
