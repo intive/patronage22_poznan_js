@@ -1,11 +1,17 @@
-import Footer from '.';
+import Footer from './';
 
 export default {
-  title: 'FOOTER/Footer',
+  title: 'Footer/Footer',
   component: Footer,
 };
 
 const Template = ({ ...args }) => <Footer {...args} />;
 
-export const DesktopFooter = Template.bind({});
-DesktopFooter.args = {};
+export const DefaultFooter = Template.bind({});
+DefaultFooter.args = {};
+
+export const CustomFooter = Template.bind({});
+CustomFooter.args = {
+  backgroundColor: 'salmon',
+  color: 'white',
+};
