@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Button from '.';
-import Spinner from 'components/Miscellaneous/Spinner';
+import Spinner from 'components/UI/Spinner';
 
 export default {
   title: 'UI/Button',

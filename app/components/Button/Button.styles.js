@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { device } from 'consts/mediaQueries';
 
 const StyledButton = styled.button`
   font-size: 1rem;
@@ -29,7 +30,7 @@ const StyledButton = styled.button`
   ${({ appended }) =>
     appended &&
     css`
-      @media (min-width: 768px) {
+      ${device.tablet} {
         font-size: 1.6rem;
         height: 60px;
         border-top-left-radius: 0;
