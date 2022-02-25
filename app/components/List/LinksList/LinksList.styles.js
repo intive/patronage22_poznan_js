@@ -6,6 +6,7 @@ export const ListOfLinks = styled.ul`
   grid-template-columns: ${({ gridTemplateColumns }) => gridTemplateColumns || '1fr 1fr'};
   column-gap: ${({ columnGap }) => columnGap || '3rem'};
   row-gap: ${({ rowGap }) => rowGap || '1.1rem'};
+  padding-right: 2rem;
   color: ${({ color }) => color || '#5e5d5d'};
   background-color: ${({ backgroundColor }) => backgroundColor || 'transparent'};
   font-size: ${({ fontSize }) => fontSize || '0.9rem'};
