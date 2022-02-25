@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import withReducerContext from 'actions/middleware/withReducerContext';
 
 export const actions = {
   closeModal: 'modal-close',
@@ -12,7 +12,7 @@ export const actions = {
 
 // reducer
 
-export const appReducer = (state, action = {}) => {
+export const reducer = (state, action = {}) => {
   const { type, payload } = action;
   switch (type) {
     case actions.closeModal:
@@ -33,11 +33,7 @@ export const appReducer = (state, action = {}) => {
 
 // action hook
 
-export const useActions = (initialState) => {
-  const [appState, newDispatch] = useReducer(appReducer, initialState);
-  actions.dispatch = newDispatch;
-  return appState;
-};
+export const useActions = withReducerContext(actions, reducer);
 
 // actions
 
