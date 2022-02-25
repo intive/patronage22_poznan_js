@@ -27,10 +27,8 @@ export const parameters = {
     },
   },
   layout: 'centered',
-  parameters: {
-    viewport: {
-      viewports: INITIAL_VIEWPORTS,
-      defaultViewport: 'responsive',
-    },
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
+    defaultViewport: 'responsive',
   },
 };
