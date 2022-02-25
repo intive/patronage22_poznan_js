@@ -1,3 +1,4 @@
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import '../styles/fonts.css';
 import '../styles/globals.css';
 
@@ -26,4 +27,10 @@ export const parameters = {
     },
   },
   layout: 'centered',
+  parameters: {
+    viewport: {
+      viewports: INITIAL_VIEWPORTS,
+      defaultViewport: 'responsive',
+    },
+  },
 };
