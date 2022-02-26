@@ -1,36 +1,20 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { mockLinks, mockIcons } from './mockLists';
-import {
-  FooterWrapper,
-  IconList,
-  IconWrapper,
-  LinksList,
-  LinkItem,
-  CopyrightParagraph,
-} from './footerStyle';
+import PropTypes from 'prop-types';
+import { mockLinks } from './mockLists';
+import { FooterWrapper, CopyrightParagraph } from './Footer.styles';
+import IconsList from 'components/List/IconsList';
+import LinksList from 'components/List/LinksList';
 
-export default function Footer() {
-  function Item(props) {
-    return <LinkItem>{props.value}</LinkItem>;
-  }
-
-  function List(props) {
-    const links = props.links;
-    const listItems = links.map((link) => <Item key={link.id} value={link.displayLink} />);
-    return <LinksList>{listItems}</LinksList>;
-  }
-
+export default function Footer({ ...props }) {
   return (
-    <FooterWrapper>
-      <IconList>
-        {mockIcons.map((icon) => (
-          <IconWrapper key={icon.id}>
-            <FontAwesomeIcon icon={icon.icon} />
-          </IconWrapper>
-        ))}
-      </IconList>
-      <List links={mockLinks} />
+    <FooterWrapper {...props}>
+      <IconsList />
+      <LinksList links={mockLinks} />
       <CopyrightParagraph>© 2022 InTiVi</CopyrightParagraph>
     </FooterWrapper>
   );
 }
+
+Footer.propTypes = {
+  backgroundColor: PropTypes.string,
+  color: PropTypes.string,
+};
