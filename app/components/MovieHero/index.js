@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { faPlay, faVolumeUp, faVolumeMute } from '@fortawesome/free-solid-svg-icons';
 import MediaButton from './MediaButton';
 import { MuteIcon } from './MuteIcon';
 
@@ -14,8 +13,8 @@ export default function MovieHero(props) {
       <HeroContents>
         <HeroTitle>{props.heroObj.title}</HeroTitle>
         <MediaBox>
-          <MediaButton icon={faPlay} text={'Play'} />
-          <MuteIcon icon={isMute ? faVolumeMute : faVolumeUp} onClick={toggleMute} />
+          <MediaButton type="play" text={'Play'} />
+          <MuteIcon type={isMute ? 'volume-mute' : 'volume-up'} onClick={toggleMute} />
         </MediaBox>
       </HeroContents>
     </HeroWrapper>
