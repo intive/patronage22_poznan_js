@@ -1,22 +1,19 @@
 import PropTypes from 'prop-types';
 import { StyledBtn } from './NavButton.styles';
 
-const Button = ({text='<', handleClick, left, right}) => {
+const Button = ({ content, handleClick}) => {
     return (
     <>
       <StyledBtn 
-      left={left}
-      onClick={handleClick}>{text}</StyledBtn>
+      onClick={handleClick}>{content}</StyledBtn>
 
       <StyledBtn 
-      right={right}
-      onClick={handleClick}>{text}</StyledBtn>
+      onClick={handleClick}>{content}</StyledBtn>
     </>
     )
 }
 
 Button.propTypes = {
-    text: PropTypes.string,
     handleClick: PropTypes.func,
 };
 

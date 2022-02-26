@@ -6,16 +6,18 @@ export default {
   argTypes: { onClick: { action: 'onClick' } },
 };
 
-const Template = ({ text, ...args }) => <Button {...args}>{text}</Button>;
+const Template = ({ ...args }) => <Button {...args} />;
 
 export const LeftButton = Template.bind({});
 LeftButton.args = {
   backgroundColor: 'grey',
-  text: '<',
+  color: 'white',
+  content: '<',
 };
 
 export const RightButton = Template.bind({});
-LeftButton.args = {
+RightButton.args = {
   backgroundColor: 'grey',
-  text: '>',
+  color: 'white',
+  content: '>',
 };
