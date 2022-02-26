@@ -14,6 +14,6 @@ export const LoginPageContainer = styled.div`
   background-color: rgb(0, 0, 0);
   ${device.tablet} {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url('../UserLoginBackgroundImg.jpg');
+      url('../images/background-movies.jpeg');
   }
 `;
