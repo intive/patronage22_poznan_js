@@ -1,8 +1,10 @@
-name: QA
+name: "QA"
+
 on:
   push:
     branches:
       - main
+
 jobs:
   install:
     runs-on: ubuntu-latest
