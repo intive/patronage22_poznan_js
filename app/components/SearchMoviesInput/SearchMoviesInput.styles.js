@@ -36,6 +36,9 @@ export const SearchButton = styled.button`
   font-size: 1.1rem;
   color: #fff;
 `;
+
+export const SearchIconContainer = styled(SearchButton)``;
+
 export const SearchInput = styled.input`
   height: 20px;
   width: 70%;

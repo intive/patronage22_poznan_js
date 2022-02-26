@@ -5,6 +5,7 @@ import {
   SearchButton,
   SearchInput,
   ClearInputButton,
+  SearchIconContainer,
 } from './SearchMoviesInput.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -14,12 +15,10 @@ export const SearchMoviesInput = () => {
   const [searchInputValue, setSearchInputValue] = useState('');
   const [isInputEmpty, setInputEmpty] = useState(true);
 
-  const placeholder = {
-    searchValue: 'Title, Actors, Film genre',
-  };
+  const placeholder = 'Title, Actors, Film genre';
+
   const inputRef = useRef();
 
-  const closeIcon = <>&times;</>;
   const SearchIcon = <FontAwesomeIcon icon={faSearch} />;
 
   const containerRef = useRef();
@@ -46,14 +45,22 @@ export const SearchMoviesInput = () => {
 
   return (
     <SearchMoviesContainer isExpanded={isExpanded} ref={containerRef}>
-      <SearchButton onClick={openSearchInput}>{SearchIcon}</SearchButton>
+      {isInputEmpty ? (
+        <SearchButton onClick={openSearchInput}>{SearchIcon}</SearchButton>
+      ) : (
+        <SearchIconContainer>{SearchIcon}</SearchIconContainer>
+      )}
       <SearchInput
-        placeholder={placeholder.searchValue}
+        placeholder={placeholder}
         value={searchInputValue}
         onChange={(e) => handleInputchange(e)}
         ref={inputRef}
       ></SearchInput>
-      {!isInputEmpty && <ClearInputButton onClick={clearInputValue}>{closeIcon}</ClearInputButton>}
+      {!isInputEmpty && (
+        <ClearInputButton onClick={clearInputValue}>
+          <>&times;</>
+        </ClearInputButton>
+      )}
     </SearchMoviesContainer>
   );
 };
