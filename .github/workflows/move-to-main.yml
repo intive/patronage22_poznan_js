@@ -1,7 +1,7 @@
-name: Deploy main
+name: "Deploy main"
 
 on: 
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
   sync-branch:
