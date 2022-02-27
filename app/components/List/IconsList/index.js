@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Icon from 'components/Icon';
 import { mockIcons } from 'components/Footer/mockLists';
 import { IconWrapper, IconList } from './IconsList.style';
 
@@ -8,7 +8,7 @@ export default function IconsList({ ...props }) {
     <IconList {...props}>
       {mockIcons.map((icon) => (
         <IconWrapper key={icon.id}>
-          <FontAwesomeIcon icon={icon.icon} />
+          <Icon type={icon.icon} />
         </IconWrapper>
       ))}
     </IconList>

@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import Icon from 'components/Icon';
 import { validateUserEmail } from 'utils/validateFormInputs';
 import { FormTitle, InputAndButtonWrapper } from '../CreateAccount.styles';
 import FloatingLabelInput from '../FloatingLabelInput';
@@ -50,7 +49,7 @@ const UserPrevetForm = ({ onEmailVerified }) => {
         />
         <Button primary appended onClick={handleSubmit}>
           Get started
-          <FontAwesomeIcon style={{ marginLeft: '.6rem' }} icon={faChevronRight} />
+          <Icon style={{ marginLeft: '.6rem' }} type="chevron-right" />
         </Button>
       </InputAndButtonWrapper>
     </form>
