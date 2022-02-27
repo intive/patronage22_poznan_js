@@ -65,7 +65,6 @@ export default function LoginForm({ ...props }) {
 
 LoginForm.propTypes = {
   width: PropTypes.string,
-  padding: PropTypes.string,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
 };

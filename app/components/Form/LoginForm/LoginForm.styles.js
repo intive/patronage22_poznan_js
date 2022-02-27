@@ -4,7 +4,7 @@ import { device } from 'consts/mediaQueries';
 
 export const FormContainer = styled.div`
   width: ${({ width }) => width || '22rem'};
-  padding: ${({ padding }) => padding || '4rem 3rem 8rem'};
+  padding: 4rem 3rem 8rem;
   color: ${({ color }) => color || 'rgb(255, 255, 255)'};
   ${device.tablet} {
     padding-top: 5vh;

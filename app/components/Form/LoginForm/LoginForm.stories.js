@@ -15,7 +15,6 @@ DesktopLoginForm.args = {
 
 export const MobileLoginForm = Template.bind({});
 MobileLoginForm.args = {
-  padding: ' 4rem 3rem 8rem',
   backgroundColor: 'rgb(0, 0, 0)',
   color: 'rgb(255, 255, 255)',
 };
