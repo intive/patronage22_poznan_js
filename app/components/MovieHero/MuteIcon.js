@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Icon from 'components/Icon';
 
+<<<<<<< HEAD
 export function MuteIcon(props) {
   return (
     <Button onClick={props.onClick} aria-pressed="false">
@@ -13,6 +14,9 @@ const Button = styled.button`
   background-color: transparent;
   border: none;
   color: white;
+=======
+export const MuteIcon = styled(Icon)`
+>>>>>>> b7039ad24134ae4a70c9c2be28d5cc4a19d50dae
   font-size: 1.8em;
   margin: 0;
   padding: 0;
