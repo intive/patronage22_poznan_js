@@ -13,7 +13,8 @@ export const FormContainer = styled.div`
 `;
 
 export const FormHeader = styled.h1`
-  padding-bottom: 0.8rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
   font-weight: 600;
 `;
 
@@ -35,6 +36,7 @@ export const CheckboxWrapper = styled.div`
 export const CheckboxContainer = styled.div``;
 
 export const SignUpLinkParagraph = styled.p`
+  margin-top: 0.5rem;
   color: #5e5d5d;
   font-weight: 600;
 `;
