@@ -1,23 +1,25 @@
 import PropTypes from 'prop-types';
 import { StyledBtn } from './NavButton.styles';
+import Icon from 'components/Icon';
 
-const Button = ({ content, handleClick, ...props }) => {
+const NavButton = ({ handleClick, type, ...props }) => {
   return (
     <>
       <StyledBtn onClick={handleClick} {...props}>
-        {content}
+        <Icon type={type} color="#fff" />
       </StyledBtn>
 
       <StyledBtn onClick={handleClick} {...props}>
-        {content}
+        <Icon type={type} color="#fff" />
       </StyledBtn>
     </>
   );
 };
 
-Button.propTypes = {
+NavButton.propTypes = {
   handleClick: PropTypes.func,
   backgroundColor: PropTypes.string,
+  type: PropTypes.oneOfType[('faChevronLeft', 'faChervonRight')],
 };
 
-export default Button;
+export default NavButton;

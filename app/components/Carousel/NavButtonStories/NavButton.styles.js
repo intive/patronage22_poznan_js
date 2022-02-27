@@ -13,6 +13,5 @@ export const StyledBtn = styled.button`
   width: 40px;
   height: 100px;
   margin: 0 auto;
-  content: ${({ content }) => content || '<' || '>'};
   cursor: pointer;
 `;

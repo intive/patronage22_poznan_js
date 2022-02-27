@@ -1,23 +1,23 @@
-import Button from '.';
+import NavButton from '.';
 
 export default {
   title: 'UI/Carousel',
-  component: Button,
+  component: NavButton,
   argTypes: { onClick: { action: 'onClick' } },
 };
 
-const Template = ({ ...args }) => <Button {...args} />;
+const Template = ({ ...args }) => <NavButton {...args} />;
 
 export const LeftButton = Template.bind({});
 LeftButton.args = {
   backgroundColor: 'grey',
   color: '#fff',
-  content: '<',
+  type: 'chevron-left',
 };
 
 export const RightButton = Template.bind({});
 RightButton.args = {
   backgroundColor: 'grey',
   color: '#fff',
-  content: '>',
+  type: 'chevron-right',
 };
