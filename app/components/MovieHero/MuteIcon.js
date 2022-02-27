@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import Icon from 'components/Icon';
 
-<<<<<<< HEAD
 export function MuteIcon(props) {
   return (
     <Button onClick={props.onClick} aria-pressed="false">
-      <FontAwesomeIcon icon={props.icon} />
+      <MuteIconStyled type={props.type} />
     </Button>
   );
 }
@@ -14,10 +13,10 @@ const Button = styled.button`
   background-color: transparent;
   border: none;
   color: white;
-=======
-export const MuteIcon = styled(Icon)`
->>>>>>> b7039ad24134ae4a70c9c2be28d5cc4a19d50dae
-  font-size: 1.8em;
+`;
+
+const MuteIconStyled = styled(Icon)`
+  font-size: 2.5em;
   margin: 0;
   padding: 0;
   cursor: pointer;

@@ -1,11 +1,5 @@
 import { useState } from 'react';
-<<<<<<< HEAD
-import { faPlay, faVolumeUp, faVolumeMute } from '@fortawesome/free-solid-svg-icons';
 import { MediaButton } from './MediaButton';
-=======
-import styled from 'styled-components';
-import MediaButton from './MediaButton';
->>>>>>> b7039ad24134ae4a70c9c2be28d5cc4a19d50dae
 import { MuteIcon } from './MuteIcon';
 import { HeroWrapper, HeroTitle, HeroContents, MediaBox } from './MovieHero.styles';
 
