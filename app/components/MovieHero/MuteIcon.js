@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Icon from 'components/Icon';
 
 export function MuteIcon(props) {
   return (
@@ -13,6 +13,8 @@ const Button = styled.button`
   background-color: transparent;
   border: none;
   color: white;
+  
+export const MuteIcon = styled(Icon)`
   font-size: 1.8em;
   margin: 0;
   padding: 0;

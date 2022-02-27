@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Icon from 'components/Icon';
 
 export function MediaButton(props) {
   return (
     <Button>
-      <Icon icon={props.icon} />
+      <MediaButtonIcon type={props.type} />
       {props.text}
     </Button>
   );
@@ -28,6 +28,6 @@ const Button = styled.button`
   }
 `;
 
-const Icon = styled(FontAwesomeIcon)`
+const MediaButtonIcon = styled(Icon)`
   margin-right: 0.7em;
 `;

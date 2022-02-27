@@ -1,21 +1,19 @@
-import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
-
 export const mockIcons = [
   {
     id: 1,
-    icon: faFacebookF,
+    icon: 'facebook',
   },
   {
     id: 2,
-    icon: faInstagram,
+    icon: 'instagram',
   },
   {
     id: 3,
-    icon: faTwitter,
+    icon: 'twitter',
   },
   {
     id: 4,
-    icon: faYoutube,
+    icon: 'youtube',
   },
 ];
 
