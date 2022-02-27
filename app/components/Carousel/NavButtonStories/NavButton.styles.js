@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 
 export const StyledBtn = styled.button`
-  background-color: rgba(0, 0, 0, 0.2);
-  color: white;
+  background-color: ${({ backgroundColor }) => backgroundColor || 'rgb(0, 0, 0, 0.2)'};
+  color: ${({ color }) => color || '#fff'};
   font-size: 20px;
   border: none;
   position: absolute;
-  left: ${(props) => (props.left === true ? 0 : 'auto')};
-  right: ${(props) => (props.right === true ? 0 : 'auto')};
+  left: ${({ left }) => (left ? 0 : 'auto')};
+  right: ${({ right }) => (right ? 0 : 'auto')};
   top: 0;
   bottom: 0;
   width: 40px;
   height: 100px;
+  margin: 0 auto;
+  content: ${({ content }) => content || '<' || '>'};
   cursor: pointer;
 `;
