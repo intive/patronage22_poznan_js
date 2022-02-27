@@ -18,6 +18,7 @@ const HeroWrapper = styled.div`
 const HeroTitle = styled.h1`
   color: white;
   font-size: 3em;
+  padding-bottom: 0.5em;
 `;
 
 const HeroContents = styled.div`
@@ -31,7 +32,6 @@ const HeroContents = styled.div`
 
 const MediaBox = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
   color: white;
 `;

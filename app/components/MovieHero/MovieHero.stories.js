@@ -1,7 +1,6 @@
 import React from 'react';
 import { within, userEvent } from '@storybook/testing-library';
 import MovieHero from '.';
-import { ButtonAsLink } from 'components/Button/Button.stories';
 
 export default {
   title: 'UI/MovieHero',
@@ -12,25 +11,19 @@ export default {
 };
 
 const Template = (args) => <MovieHero {...args}></MovieHero>;
+const movieObjTemp = {
+  poster_path: 'https://wallpaperaccess.com/full/2191678.jpg',
+  title: 'Whiplash',
+};
 
 export const Default = Template.bind({});
 Default.args = {
-  heroObj: [
-    {
-      poster_path: 'https://wallpaperaccess.com/full/2191678.jpg',
-      title: 'Whiplash',
-    },
-  ],
+  heroObj: movieObjTemp,
 };
 
 export const MutedSound = Template.bind({});
 MutedSound.args = {
-  heroObj: [
-    {
-      poster_path: 'https://wallpaperaccess.com/full/2191678.jpg',
-      title: 'Whiplash',
-    },
-  ],
+  heroObj: movieObjTemp,
 };
 
 MutedSound.play = async ({ canvasElement }) => {

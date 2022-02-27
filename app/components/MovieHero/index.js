@@ -3,7 +3,6 @@ import { faPlay, faVolumeUp, faVolumeMute } from '@fortawesome/free-solid-svg-ic
 import { MediaButton } from './MediaButton';
 import { MuteIcon } from './MuteIcon';
 import { HeroWrapper, HeroTitle, HeroContents, MediaBox } from './MovieHero.styles';
-import PropTypes from 'prop-types';
 
 function MovieHero(props) {
   const [isMute, setMute] = useState(false);
@@ -22,11 +21,5 @@ function MovieHero(props) {
     </HeroWrapper>
   );
 }
-
-MovieHero.propTypes = {
-  backgroundImg: PropTypes.string,
-  title: PropTypes.string,
-  onClick: PropTypes.func,
-};
 
 export default MovieHero;
