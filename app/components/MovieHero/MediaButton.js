@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Icon from 'components/Icon';
 
-export function MediaButton(props) {
+export default function MediaButton(props) {
   return (
     <Button>
       <MediaButtonIcon type={props.type} />

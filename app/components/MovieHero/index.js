@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MediaButton } from './MediaButton';
+import MediaButton from './MediaButton';
 import { MuteIcon } from './MuteIcon';
 import { HeroWrapper, HeroTitle, HeroContents, MediaBox } from './MovieHero.styles';
 
