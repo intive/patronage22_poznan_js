@@ -9,7 +9,7 @@ export const NavigationBar = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 1rem;
+  padding: 0.5rem 1rem;
   ${device.tablet} {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -35,73 +35,33 @@ const TransparentButton = styled.button`
 `;
 
 export const MobileMenuBtn = styled(TransparentButton)`
-  font-size: 0.7rem;
-  margin: 0 30px;
+  font-size: 0.9rem;
+  margin: 0 20px;
+  padding: 0;
   text-transform: uppercase;
   ${device.tablet} {
-    font-size: 0.9rem;
+    margin: 0 30px;
+    font-size: 1.1rem;
   }
   ${device.desktop} {
     display: none;
-  }
-`;
-
-export const DesktopMenuList = styled.ul`
-  display: none;
-  ${device.desktop} {
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    margin: 0 40px;
   }
 `;
 
 export const UserImg = styled.div`
   background-color: black;
   color: white;
-  height: 30px;
-  width: 30px;
-  line-height: 30px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
   text-align: center;
   border-radius: 4px;
   margin: 0 5px;
   ${device.tablet} {
-    height: 40px;
-    width: 40px;
-    line-height: 40px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
   }
-`;
-
-export const MobileMenuList = styled.ul`
-  position: absolute;
-  left: 5%;
-  top: 50px;
-  padding: 0;
-  max-width: 70vw;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  border: 1px solid white;
-  ${device.tablet} {
-    left: 4.5%;
-    max-width: 45vw;
-  }
-  ${device.desktop} {
-    display: none;
-  }
-`;
-
-export const LinkStyle = styled.li`
-  text-transform: uppercase;
-  list-style: none;
-  text-align: center;
-  margin: 10px;
-`;
-
-export const DesktopLinkStyle = styled(LinkStyle)`
-  margin: 0 10px;
 `;
 
 export const ShowAccount = styled(TransparentButton)`
@@ -113,13 +73,5 @@ export const ShowAccount = styled(TransparentButton)`
     display: block;
     font-size: 1rem;
     cursor: pointer;
-  }
-`;
-
-export const LinkWrapper = styled.span`
-  display: block;
-  color: white;
-  a {
-    display: inherit;
   }
 `;
