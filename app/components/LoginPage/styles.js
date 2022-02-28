@@ -21,6 +21,7 @@ export const LoginPageContainer = styled.div`
 
 export const FormContainer = styled.div`
   width: 22rem;
+  max-width: 100%;
   padding: 4rem 3rem 8rem;
   color: rgb(255, 255, 255);
   ${device.tablet} {
