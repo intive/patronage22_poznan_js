@@ -7,7 +7,7 @@ import {
   UserImg,
   NavigationBar,
   ShowAccount,
-} from './headerStyle';
+} from './Header.styles';
 import LogoLink from 'components/LogoLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
@@ -33,8 +33,8 @@ export default function Header() {
             <FontAwesomeIcon icon={faSortDown} />
           </ShowAccount>
         </UserPanel>
+        {isMobileMenuVisible ? <MobileNav /> : null}
       </NavigationBar>
-      {isMobileMenuVisible ? <MobileNav /> : null}
     </>
   );
 }
