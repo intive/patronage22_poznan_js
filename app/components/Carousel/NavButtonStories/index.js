@@ -6,17 +6,18 @@ const NavButton = ({ handleClick, type, ...props }) => {
   return (
     <>
       <StyledBtn onClick={handleClick} {...props}>
-        <Icon type={type} color="#fff" />
+        <Icon type={type} />
       </StyledBtn>
 
       <StyledBtn onClick={handleClick} {...props}>
-        <Icon type={type} color="#fff" />
+        <Icon type={type} />
       </StyledBtn>
     </>
   );
 };
 
 NavButton.propTypes = {
+  color: PropTypes.string,
   handleClick: PropTypes.func,
   backgroundColor: PropTypes.string,
   type: PropTypes.oneOf(['chevron-left', 'chevron-right']),
