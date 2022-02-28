@@ -19,7 +19,7 @@ const NavButton = ({ handleClick, type, ...props }) => {
 NavButton.propTypes = {
   handleClick: PropTypes.func,
   backgroundColor: PropTypes.string,
-  type: PropTypes.oneOfType[('faChevronLeft', 'faChervonRight')],
+  type: PropTypes.oneOf(['chevron-left', 'chevron-right']),
 };
 
 export default NavButton;
