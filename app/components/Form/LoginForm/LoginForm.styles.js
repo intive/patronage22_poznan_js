@@ -3,6 +3,7 @@ import Button from 'components/Button';
 import { device } from 'consts/mediaQueries';
 
 export const FormContainer = styled.div`
+  max-width: 100%;
   width: ${({ width }) => width || '22rem'};
   padding: 4rem 3rem 8rem;
   color: ${({ color }) => color || 'rgb(255, 255, 255)'};
