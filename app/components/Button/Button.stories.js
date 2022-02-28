@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import Icon from 'components/Icon';
 import Button from '.';
 import Spinner from 'components/UI/Spinner';
 
@@ -67,7 +66,7 @@ ButtonAppended.args = {
   content: (
     <>
       Get started
-      <FontAwesomeIcon style={{ marginLeft: '.6rem' }} icon={faChevronRight} />
+      <Icon style={{ marginLeft: '.6rem' }} type="chevron-right" />
     </>
   ),
 };

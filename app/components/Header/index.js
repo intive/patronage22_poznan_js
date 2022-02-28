@@ -9,8 +9,7 @@ import {
   ShowAccount,
 } from './Header.styles';
 import LogoLink from 'components/LogoLink';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSortDown } from '@fortawesome/free-solid-svg-icons';
+import Icon from 'components/Icon';
 
 import { useState } from 'react';
 
@@ -30,7 +29,7 @@ export default function Header() {
           {/* TODO search input */}
           <UserImg>{userImg}</UserImg>
           <ShowAccount>
-            <FontAwesomeIcon icon={faSortDown} />
+            <Icon type="sort-down" />
           </ShowAccount>
         </UserPanel>
         {isMobileMenuVisible ? <MobileNav /> : null}

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Icon from 'components/Icon';
 
-export const MuteIcon = styled(FontAwesomeIcon)`
+export const MuteIcon = styled(Icon)`
   font-size: 1.8em;
   cursor: pointer;
   opacity: 0.8;
