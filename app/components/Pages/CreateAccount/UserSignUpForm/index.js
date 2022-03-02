@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import validateSignUpFormInputs, { validateUserPassword } from 'utils/validateFormInputs';
 import { FormTitle, InputAndButtonWrapper } from '../CreateAccount.styles';
 import FloatingLabelInput from '../FloatingLabelInput';
-import Button from 'components/Button';
+import Button from 'components/UI/Button';
 import Spinner from 'components/UI/Spinner';
 
 const initialState = { password: '', email: '' };

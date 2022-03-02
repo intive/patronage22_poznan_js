@@ -1,4 +1,4 @@
-import render, { screen, userEvent } from '../../../testUtils/setup';
+import render, { screen, userEvent } from '../../../../testUtils/setup';
 import { Primary, Default, CustomColor, Disabled, ButtonAsLink } from './Button.stories';
 
 import Button from '.';
