@@ -16,5 +16,6 @@ export const FooterWrapper = styled.footer`
 export const CopyrightParagraph = styled.p`
   margin-left: 2.4rem;
   margin-top: 2rem;
+  margin-bottom: 1rem;
   font-size: 0.8rem;
 `;
