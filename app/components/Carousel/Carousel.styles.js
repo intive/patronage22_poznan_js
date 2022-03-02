@@ -41,7 +41,7 @@ export const CarouselItemInner = styled.div`
   border-radius: 5px;
 `;
 
-export const Button = styled.button`
+export const NavButton = styled.button`
   background-color: rgba(0, 0, 0, 0.2);
   color: white;
   font-size: 20px;
