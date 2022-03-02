@@ -23,6 +23,9 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
   primary: PropTypes.bool,
+  fullWidth: PropTypes.bool,
+  appended: PropTypes.bool,
+  loader: PropTypes.bool,
 };
 
 export default Button;
