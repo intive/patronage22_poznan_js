@@ -4,7 +4,7 @@ import { getMoviesPopular } from '../../../lib/services/movieDb';
  * @swagger
  * /api/movies/popular:
  *   get:
- *     summary: Get a list of ppular movies
+ *     summary: Get a list of popular movies
  *     description: Returns a list of popular movies
  *     responses:
  *       200:
@@ -14,7 +14,7 @@ import { getMoviesPopular } from '../../../lib/services/movieDb';
  *             schema:
  *               type: array
  *       404:
- *         description: list not found (shound't happen)
+ *         description: list not found (shouldn't happen)
  */
 export default async function handler(req, res) {
   try {
