@@ -34,12 +34,14 @@ export const FormContainer = styled.div`
   }
 `;
 export const Form = styled.div`
+  max-height: 98vh;
   ${device.tablet} {
     width: 340px;
     height: 600px;
-    padding-top: 80px;
+    padding-top: 30px;
   }
   ${device.desktop} {
     width: 440px;
+    padding-top: 80px;
   }
 `;
