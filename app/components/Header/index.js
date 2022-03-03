@@ -8,7 +8,7 @@ import {
   NavigationBar,
   ShowAccount,
 } from './headerStyle';
-import LogoLink from 'components/LogoLink';
+import LogoLink from 'components/UI/LogoLink';
 import Icon from 'components/Icon';
 
 import { useState } from 'react';
