@@ -47,7 +47,7 @@ const UserPrevetForm = ({ onEmailVerified }) => {
           errorMsg={errorMsg}
           onInputChange={handleInputChange}
         />
-        <Button primary appended onClick={handleSubmit}>
+        <Button onClick={handleSubmit}>
           Get started
           <Icon style={{ marginLeft: '.6rem' }} type="chevron-right" />
         </Button>

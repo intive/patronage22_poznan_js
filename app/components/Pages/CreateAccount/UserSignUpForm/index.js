@@ -3,7 +3,7 @@ import validateSignUpFormInputs, { validateUserPassword } from 'utils/validateFo
 import { FormTitle, InputAndButtonWrapper } from '../CreateAccount.styles';
 import FloatingLabelInput from '../FloatingLabelInput';
 import Button from 'components/UI/Button';
-import Spinner from 'components/UI/Spinner';
+import Icon from 'components/Icon';
 
 const initialState = { password: '', email: '' };
 
@@ -82,12 +82,12 @@ const UserSignUpForm = ({ emailValue }) => {
           withBorder
         />
         {!loading ? (
-          <Button onClick={handleSubmit} primary fullWidth>
+          <Button primary onClick={handleSubmit} fullWidth>
             Create account
           </Button>
         ) : (
-          <Button onClick={handleSubmit} primary fullWidth disabled loader>
-            <Spinner />
+          <Button primary onClick={handleSubmit} fullWidth disabled>
+            <Icon type="gear" spin />
           </Button>
         )}
       </InputAndButtonWrapper>
