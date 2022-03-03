@@ -23,6 +23,7 @@ const StyledButton = styled.button`
 
   :disabled {
     opacity: 0.4;
+    background-color: #cecece;
     cursor: not-allowed;
   }
 
@@ -32,6 +33,7 @@ const StyledButton = styled.button`
       backdrop-filter: none;
       background: #ffffff;
       color: #1f1d2b;
+      border: none;
       border-radius: 12px;
     `}
 

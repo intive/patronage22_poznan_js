@@ -3,7 +3,6 @@ import validateSignUpFormInputs, { validateUserPassword } from 'utils/validateFo
 import { FormTitle, InputAndButtonWrapper } from '../CreateAccount.styles';
 import FloatingLabelInput from '../FloatingLabelInput';
 import Button from 'components/UI/Button';
-import Icon from 'components/Icon';
 
 const initialState = { password: '', email: '' };
 
@@ -13,7 +12,7 @@ const UserSignUpForm = ({ emailValue }) => {
     email: emailValue,
   });
   const [errorMsg, setErrorMsg] = useState(initialState);
-  const [loading, setLoading] = useState(false);
+  const [isSubmitting, setLoading] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -37,7 +36,7 @@ const UserSignUpForm = ({ emailValue }) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [loading]);
+  }, [isSubmitting]);
 
   const handleFormData = () => {
     setLoading(true);
@@ -81,15 +80,9 @@ const UserSignUpForm = ({ emailValue }) => {
           onInputChange={handleInputChange}
           withBorder
         />
-        {!loading ? (
-          <Button primary onClick={handleSubmit} fullWidth>
-            Create account
-          </Button>
-        ) : (
-          <Button primary onClick={handleSubmit} fullWidth disabled>
-            <Icon type="gear" spin />
-          </Button>
-        )}
+        <Button primary fullWidth isLoading={isSubmitting} onClick={handleSubmit}>
+          Create account
+        </Button>
       </InputAndButtonWrapper>
     </form>
   );
