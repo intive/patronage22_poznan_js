@@ -5,7 +5,6 @@ export const CarouselOuter = styled.div`
   border: none;
   overflow: hidden;
   position: relative;
-  background-color: pink;
   width: 90vw;
 
   & .carousel-nav-button {
@@ -25,18 +24,14 @@ export const CarouselInner = styled.div`
 export const CarouselItemWrapper = styled.div`
   width: calc(100% / ${(props) => props.tileCount});
   display: inline-block;
-  height: 100px;
-  padding-right: 6px;
+  padding-right: 12px;
 
-  border: 1px solid red;
   cursor: pointer;
 `;
 
 export const CarouselItemInner = styled.div`
   width: 100%;
-  height: 100px;
   background-color: grey;
-  padding: 20px;
   text-align: center;
   border-radius: 5px;
 `;
@@ -47,8 +42,8 @@ export const NavButton = styled.button`
   font-size: 20px;
   border: none;
   position: absolute;
-  left: ${(props) => (props.left === true ? 0 : 'auto')};
-  right: ${(props) => (props.right === true ? 0 : 'auto')};
+  left: ${({ left }) => left && '0'};
+  right: ${({ right }) => right && '0'};
   top: 0;
   bottom: 0;
   width: 40px;
