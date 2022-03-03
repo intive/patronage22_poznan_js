@@ -23,7 +23,7 @@ describe('Button', () => {
     render(<Primary {...Primary.args} />);
 
     expect(screen.getByRole('button')).toBeVisible();
-    expect(screen.getByRole('button')).toHaveStyleRule('color', '#fff');
+    expect(screen.getByRole('button')).toHaveStyleRule('color', '#1f1d2b');
     // TODO: to test the background color of primary button, we need to pull the color in from theme and see if it's set on the button
   });
 
@@ -31,7 +31,7 @@ describe('Button', () => {
     render(<Default {...Default.args} />);
 
     expect(screen.getByRole('button')).toBeVisible();
-    expect(screen.getByRole('button')).toHaveStyleRule('background-color', '#fff');
+    expect(screen.getByRole('button')).toHaveStyleRule('background-color', 'rgba(30,27,38,0.24)');
   });
 
   it('renders a button with custom color', () => {

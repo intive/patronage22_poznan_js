@@ -7,7 +7,7 @@ const StyledButton = styled.button`
   color: #ffffff;
   border: 1px solid #ffffff;
   border-radius: 8px;
-  background-color: rgba(30, 27, 38, 0.24);
+  background-color: ${({ backgroundColor }) => backgroundColor || 'rgba(30,27,38,0.24)'};
   box-shadow: 0px 6px 20px -2px rgb(26 26 26 / 14%), 0px 4px 6px rgb(26 26 26 / 6%);
   backdrop-filter: blur(2px);
   width: ${({ fullWidth }) => fullWidth && '100%'};
