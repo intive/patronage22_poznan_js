@@ -7,7 +7,7 @@ import {
   NavButton,
 } from 'components/Carousel/Carousel.styles';
 
-import { device } from '/app/consts/mediaQueries.js';
+import PropTypes from 'prop-types';
 
 const Carousel = ({ movies = [] }) => {
   const [activeScreen, setActiveScreen] = useState(0);
@@ -21,14 +21,14 @@ const Carousel = ({ movies = [] }) => {
     const carouselWidth = () => {
       const windowWidth = window.innerWidth;
 
-      let targetTileCount = 1;
+      let targetTileCount = 2;
 
-      if (windowWidth > device.tablet) {
+      if (windowWidth > 768) {
         targetTileCount = 3;
       }
 
-      if (windowWidth > device.desktop) {
-        targetTileCount = 5;
+      if (windowWidth > 1024) {
+        targetTileCount = 6;
       }
 
       if (targetTileCount !== tilesPerScreen) {
@@ -73,9 +73,11 @@ const Carousel = ({ movies = [] }) => {
     setActiveScreen(newIndex);
   };
 
-  const CarouselItem = ({ title, tileCount }) => (
+  const CarouselItem = ({ tileCount }) => (
     <CarouselItemWrapper tileCount={tileCount}>
-      <CarouselItemInner>{title} </CarouselItemInner>
+      <CarouselItemInner>
+        <div style={{ height: '320px' }}>MovieCard will be here</div>
+      </CarouselItemInner>
     </CarouselItemWrapper>
   );
 
@@ -116,6 +118,10 @@ const Carousel = ({ movies = [] }) => {
       )}
     </CarouselOuter>
   );
+};
+
+Carousel.propTypes = {
+  numOfChildren: PropTypes.oneOf([2, 3, 6]),
 };
 
 export default Carousel;
