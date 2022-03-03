@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Carousel from 'components/Carousel';
+import Carousel from 'components/Carousel/index';
 
 export default {
   title: 'UI/Carousel',
@@ -25,7 +25,7 @@ CarouselDesktop.parameters = {
   viewport: {
     defaultViewport: 'responsive',
   },
-  numOfChildren: 6,
+  numOfChildren: 10,
 };
 
 export const CarouselTablet = Template.bind({});
@@ -33,7 +33,7 @@ CarouselTablet.parameters = {
   viewport: {
     defaultViewport: 'ipad',
   },
-  numOfChildren: 3,
+  numOfChildren: 10,
 };
 
 export const CarouselMobile = Template.bind({});
@@ -41,5 +41,5 @@ CarouselMobile.parameters = {
   viewport: {
     defaultViewport: 'iphonex',
   },
-  numOfChildren: 2,
+  numOfChildren: 10,
 };
