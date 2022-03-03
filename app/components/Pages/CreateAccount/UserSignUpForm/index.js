@@ -80,7 +80,13 @@ const UserSignUpForm = ({ emailValue }) => {
           onInputChange={handleInputChange}
           withBorder
         />
-        <Button primary fullWidth isLoading={isSubmitting} onClick={handleSubmit}>
+        <Button
+          primary
+          fullWidth
+          disabled={isSubmitting}
+          isLoading={isSubmitting}
+          onClick={handleSubmit}
+        >
           Create account
         </Button>
       </InputAndButtonWrapper>

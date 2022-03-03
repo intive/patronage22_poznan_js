@@ -24,6 +24,7 @@ const StyledButton = styled.button`
   :disabled {
     opacity: 0.4;
     background-color: #cecece;
+    color: #1f1d2b;
     cursor: not-allowed;
   }
 

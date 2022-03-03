@@ -12,7 +12,7 @@ const Button = ({ children, isLoading, href, className, ...props }) => (
         </StyledButton>
       </Link>
     ) : (
-      <StyledButton {...props} disabled={isLoading} className={className}>
+      <StyledButton {...props} className={className}>
         {isLoading ? <Spinner /> : children}
       </StyledButton>
     )}
