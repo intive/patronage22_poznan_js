@@ -1,7 +1,7 @@
-import UnLoggedPageContainer from 'components/Pages/UnloggedPageContainer';
+import AuthenticationPageContainer from 'components/Pages/AuthenticationPageContainer';
 
 export default function UserLogin() {
-  return <UnLoggedPageContainer />;
+  return <AuthenticationPageContainer />;
 }
 export async function getServerSideProps() {
   return {

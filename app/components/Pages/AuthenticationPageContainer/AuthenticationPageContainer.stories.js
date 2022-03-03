@@ -1,11 +1,11 @@
-import UnloggedPageContainer from './';
+import AuthenticationPageContainer from '.';
 
 export default {
-  title: 'Pages/UnloggedPageContainer',
-  component: UnloggedPageContainer,
+  title: 'Pages/AuthenticationPageContainer',
+  component: AuthenticationPageContainer,
 };
 
-const Template = (...args) => <UnloggedPageContainer {...args} />;
+const Template = (...args) => <AuthenticationPageContainer {...args} />;
 
 export const DesktopView = Template.bind({});
 
