@@ -24,8 +24,9 @@ Button.propTypes = {
   onClick: PropTypes.func,
   primary: PropTypes.bool,
   fullWidth: PropTypes.bool,
-  appended: PropTypes.bool,
-  loader: PropTypes.bool,
+  withIcon: PropTypes.bool,
+  onlyIcon: PropTypes.bool,
+  iconWithBg: PropTypes.bool,
 };
 
 export default Button;

@@ -1,25 +1,23 @@
 import Icon from 'components/Icon';
 import Button from '.';
-import Spinner from 'components/UI/Spinner';
 
 export default {
   title: 'UI/Button',
   component: Button,
 };
 
-const Template = ({ content, ...args }) => <Button {...args}>{content}</Button>;
+const templateStyles = {
+  backgroundColor: '#2A2535',
+  width: '300px',
+  height: '100px',
+  padding: '1rem',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
 
-const TemplateWithWrapper = ({ content, ...args }) => (
-  <div
-    style={{
-      width: '300px',
-      height: '100px',
-      backgroundColor: 'lightgrey',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}
-  >
+const Template = ({ content, ...args }) => (
+  <div style={templateStyles}>
     <Button {...args}>{content}</Button>
   </div>
 );
@@ -31,7 +29,7 @@ Default.args = {
 
 export const Primary = Template.bind({});
 Primary.args = {
-  content: 'Primary button',
+  content: 'Primary Button',
   primary: true,
 };
 
@@ -54,25 +52,20 @@ ButtonAsLink.args = {
   content: 'Button as Link',
 };
 
-export const FullWidth = TemplateWithWrapper.bind({});
+export const FullWidth = Template.bind({});
 FullWidth.args = {
-  content: 'FullWidth button',
+  content: 'Full Width Button',
   fullWidth: true,
 };
 
-export const ButtonAppended = Template.bind({});
-ButtonAppended.args = {
-  appended: true,
-  content: (
-    <>
-      Get started
-      <Icon style={{ marginLeft: '.6rem' }} type="chevron-right" />
-    </>
-  ),
+export const OnlyIcon = Template.bind({});
+OnlyIcon.args = {
+  onlyIcon: true,
+  content: <Icon type="search" />,
 };
 
-export const Loader = TemplateWithWrapper.bind({});
-Loader.args = {
-  loader: true,
-  content: <Spinner />,
+export const IconWithBg = Template.bind({});
+IconWithBg.args = {
+  iconWithBg: true,
+  content: <Icon type="x-mark" />,
 };
