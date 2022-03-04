@@ -10,12 +10,9 @@ export const Wrapper = styled.div`
     justify-content: flex-end;
     align-items: center;
     background-image: url('../images/background-image.jpg');
-    background-position: left;
+    background-position: top left;
     background-repeat: no-repeat;
     background-size: cover;
-  }
-  ${device.desktop} {
-    background-position: top;
   }
 `;
 
