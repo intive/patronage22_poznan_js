@@ -2,35 +2,20 @@ import styled from 'styled-components';
 import Button from 'components/Button';
 import { device } from 'consts/mediaQueries';
 
-export const LoginPageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  padding-top: 100px;
-  background-image: none;
-  background-color: rgb(0, 0, 0);
-  ${device.tablet} {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url('../images/background-movies.jpeg');
-  }
-`;
-
 export const FormContainer = styled.div`
-  width: 22rem;
+  max-width: 100%;
+  width: ${({ width }) => width || '22rem'};
   padding: 4rem 3rem 8rem;
-  color: rgb(255, 255, 255);
+  color: ${({ color }) => color || 'rgb(255, 255, 255)'};
   ${device.tablet} {
     padding-top: 5vh;
-    background-color: rgb(0, 0, 0, 0.5);
+    background-color: ${({ backgroundColor }) => backgroundColor || 'rgb(0, 0, 0, 0.5)'};
   }
 `;
 
 export const FormHeader = styled.h1`
-  padding-bottom: 0.8rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
   font-weight: 600;
 `;
 
@@ -52,6 +37,7 @@ export const CheckboxWrapper = styled.div`
 export const CheckboxContainer = styled.div``;
 
 export const SignUpLinkParagraph = styled.p`
+  margin-top: 0.5rem;
   color: #5e5d5d;
   font-weight: 600;
 `;
