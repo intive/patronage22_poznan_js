@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { device } from 'consts/mediaQueries';
-import LogoLink from '../LogoLink';
+import LogoLink from 'components/UI/LogoLink';
 import Button from 'components/Button';
 
 const userActions = {

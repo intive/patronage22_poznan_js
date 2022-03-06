@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import Link from 'next/link';
+import StyledLogoLink from './LogoLink.styles';
 import Image from 'next/image';
 import appLogoImg from '/public/app-logo.svg';
 
@@ -21,9 +21,3 @@ const LogoLink = () => {
 };
 
 export default LogoLink;
-
-const StyledLogoLink = styled.a`
-  width: clamp(110px, 20vw, 134px);
-  height: 100%;
-  position: relative;
-`;

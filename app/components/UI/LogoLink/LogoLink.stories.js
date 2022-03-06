@@ -12,7 +12,7 @@ const Template = ({ args }) => (
       width: '50vw',
       minWidth: '300px',
       height: '100px',
-      backgroundColor: 'lightgrey',
+      backgroundColor: '#2A2535',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
