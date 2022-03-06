@@ -6,8 +6,8 @@ export const StyledBtn = styled.button`
   font-size: 20px;
   border: none;
   position: absolute;
-  left: ${({ left }) => left && '0'};
-  right: ${({ right }) => right && '0'};
+  left: ${({ left }) => (left ? 0 : 'auto')};
+  right: ${({ right }) => (right ? 0 : 'auto')};
   top: 0;
   bottom: 0;
   width: 40px;
