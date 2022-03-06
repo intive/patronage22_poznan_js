@@ -25,8 +25,6 @@ export const CarouselItemWrapper = styled.div`
   width: calc(100% / ${(props) => props.tileCount});
   display: inline-block;
   padding-right: 12px;
-
-  cursor: pointer;
 `;
 
 export const CarouselItemInner = styled.div`
@@ -34,6 +32,7 @@ export const CarouselItemInner = styled.div`
   background-color: grey;
   text-align: center;
   border-radius: 5px;
+  cursor: pointer;
 `;
 
 export const NavButton = styled.button`
