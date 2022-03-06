@@ -42,7 +42,7 @@ export const NavButton = styled.button`
   border: none;
   position: absolute;
   left: ${({ left }) => (left ? 0 : 'auto')};
-  right: ${({ right }) => (right ? 0 : 'auto')};
+  right: 12px;
   top: 0;
   bottom: 0;
   width: 40px;
