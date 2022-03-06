@@ -23,11 +23,11 @@ const Carousel = ({ movies = [] }) => {
 
       let targetTileCount = 2;
 
-      if (windowWidth > 768) {
+      if (windowWidth >= 768) {
         targetTileCount = 3;
       }
 
-      if (windowWidth > 1024) {
+      if (windowWidth >= 1024) {
         targetTileCount = 6;
       }
 
