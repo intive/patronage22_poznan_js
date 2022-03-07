@@ -3,7 +3,7 @@ import Icon from 'components/Icon';
 import { validateUserEmail } from 'utils/validateFormInputs';
 import { FormTitle, InputAndButtonWrapper } from '../CreateAccount.styles';
 import FloatingLabelInput from '../FloatingLabelInput';
-import Button from 'components/Button';
+import Button from 'components/UI/Button';
 
 //TODO: this is only for test purpose; to remove after API is provided
 const doesUserExist = () => {
@@ -47,7 +47,7 @@ const UserPrevetForm = ({ onEmailVerified }) => {
           errorMsg={errorMsg}
           onInputChange={handleInputChange}
         />
-        <Button primary appended onClick={handleSubmit}>
+        <Button onClick={handleSubmit}>
           Get started
           <Icon style={{ marginLeft: '.6rem' }} type="chevron-right" />
         </Button>

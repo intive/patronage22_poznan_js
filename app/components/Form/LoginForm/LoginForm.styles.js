@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Button from 'components/Button';
+import Button from 'components/UI/Button';
 import { device } from 'consts/mediaQueries';
 
 export const FormContainer = styled.div`
