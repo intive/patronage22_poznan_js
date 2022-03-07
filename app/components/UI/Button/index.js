@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import StyledButton from './Button.styles';
 import Link from 'next/link';
+import Spinner from '../Spinner';
 
-const Button = ({ children, href, className, ...props }) => (
+const Button = ({ children, isLoading, href, className, ...props }) => (
   <>
     {href ? (
       <Link href={href} passHref className={className}>
@@ -12,7 +13,7 @@ const Button = ({ children, href, className, ...props }) => (
       </Link>
     ) : (
       <StyledButton {...props} className={className}>
-        {children}
+        {isLoading ? <Spinner /> : children}
       </StyledButton>
     )}
   </>
@@ -24,8 +25,8 @@ Button.propTypes = {
   onClick: PropTypes.func,
   primary: PropTypes.bool,
   fullWidth: PropTypes.bool,
-  appended: PropTypes.bool,
-  loader: PropTypes.bool,
+  onlyIcon: PropTypes.bool,
+  iconWithBg: PropTypes.bool,
 };
 
 export default Button;
