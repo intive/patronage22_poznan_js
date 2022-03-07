@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   ${device.tablet} {
     justify-content: flex-end;
     align-items: center;
-    background-image: url('../images/background-image.jpg');
+    background-image: url('../images/hero-background-image.jpg');
     background-position: top left;
     background-repeat: no-repeat;
     background-size: cover;

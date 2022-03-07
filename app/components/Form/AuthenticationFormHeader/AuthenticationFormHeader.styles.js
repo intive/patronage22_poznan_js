@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { device } from 'consts/mediaQueries';
 
 export const FormHeader = styled.div`
-  width: 80px;
-  height: 32px;
+  display: flex;
+  flex-direction: column;
+  height: 130px;
   ${device.tablet} {
-    width: 140px;
+    height: 140px;
   }
 `;
 
@@ -18,12 +19,13 @@ export const TabWrapper = styled.div`
   line-height: 32px;
 `;
 
-export const Underlined = styled.div`
-  height: 2px;
-  width: 65px;
-  padding-top: 4px;
-  background-color: #44ec52;
-  ${device.tablet} {
-    width: 72px;
-  }
+export const TabButton = styled.button`
+  padding: 0;
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: ${({ active }) => active && 'solid underline #44ec52 2px'};
+  text-underline-offset: 4px;
 `;

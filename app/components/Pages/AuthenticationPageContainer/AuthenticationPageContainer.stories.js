@@ -8,6 +8,11 @@ export default {
 const Template = (...args) => <AuthenticationPageContainer {...args} />;
 
 export const DesktopView = Template.bind({});
+DesktopView.parameters = {
+  viewport: {
+    defaultViewport: 'responsive',
+  },
+};
 
 export const MobileView = Template.bind({});
 MobileView.parameters = {
