@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { device } from 'consts/mediaQueries';
-import LogoLink from '../LogoLink';
-import Button from 'components/Button';
+import LogoLink from 'components/UI/LogoLink';
+import Button from 'components/UI/Button';
 
 const userActions = {
   signUp: { link: '/user/create-account', buttonText: 'Sign Up' },
