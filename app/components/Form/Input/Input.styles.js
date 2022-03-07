@@ -15,7 +15,7 @@ export const InputLabel = styled.label`
   transform: translateY(-50%);
 `;
 
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
   margin: 12px 0;
   width: 100%;
   height: 72px;
@@ -24,8 +24,7 @@ const StyledInput = styled.input`
   background-color: #272233;
   color: #e9e9e9;
   &:focus + ${InputLabel}, &:not([value='']) + ${InputLabel} {
-    font-size: 0.8rem;
-    transform: translateY(-1.8rem);
+    display: none;
   }
 `;
 
@@ -36,5 +35,3 @@ export const ErrorMessage = styled.div`
   font-size: 14px;
   color: #44ec52;
 `;
-
-export default StyledInput;

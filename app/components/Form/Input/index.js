@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import StyledInput, { InputLabel, InputWrapper, ErrorMessage } from './Input.styles';
+import { StyledInput, InputLabel, InputWrapper, ErrorMessage } from './Input.styles';
 
 const Input = ({ id, name, label, value, onInputChange, error, ...props }) => {
   return (
