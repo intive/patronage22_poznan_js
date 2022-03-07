@@ -1,14 +1,17 @@
 import PropTypes from 'prop-types';
-import StyledInput from './Input.styles';
-import { ErrorMessage } from './Input.styles';
+import StyledInput, { InputLabel, InputWrapper, ErrorMessage } from './Input.styles';
 
 const Input = ({ id, name, label, value, onInputChange, error, ...props }) => {
   return (
-    <>
-      {label && <label htmlFor={id}>{label}</label>}
+    <InputWrapper>
       <StyledInput value={value} onChange={onInputChange} name={name || id} id={id} {...props} />
+      {label && (
+        <InputLabel htmlFor={id} error={error}>
+          {label}
+        </InputLabel>
+      )}
       {error && <ErrorMessage>{error}</ErrorMessage>}
-    </>
+    </InputWrapper>
   );
 };
 

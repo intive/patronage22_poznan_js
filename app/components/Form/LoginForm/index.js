@@ -10,7 +10,8 @@ import {
   SignInButton,
 } from './LoginForm.styles';
 
-import { LoginInput } from './LoginInput.styles';
+// import { LoginInput } from './LoginInput.styles';
+import Input from '../Input';
 
 export default function LoginForm({ ...props }) {
   const [username, setUsername] = useState('');
@@ -30,20 +31,20 @@ export default function LoginForm({ ...props }) {
   return (
     <FormContainer {...props}>
       <FormHeader>Sign In</FormHeader>
-      <LoginInput
+      <Input
         id="username"
         type="text"
-        placeholder="Email or phone number"
         value={username}
         error={usernameError}
         onInputChange={(e) => setUsername(e.target.value)}
+        label="username"
       />
-      <LoginInput
+      <Input
         id="password"
         type="password"
-        placeholder="Password"
         value={password}
         onInputChange={(e) => setPassword(e.target.value)}
+        label="password"
       />
       <SignInButton primary onClick={userLogin}>
         Sign In
