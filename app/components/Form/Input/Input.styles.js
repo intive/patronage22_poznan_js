@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Icon from 'components/Icon';
 
 export const InputWrapper = styled.div`
   position: relative;
@@ -20,7 +21,7 @@ export const StyledInput = styled.input`
   padding-left: 20px;
   width: 100%;
   height: 72px;
-  border: 1.5px solid #3b334c;
+  border: ${({ error }) => (error && '2px solid #44ec52') || '1.5px solid #3b334c'};
   border-radius: 8px;
   background-color: #272233;
   color: #e9e9e9;
@@ -31,6 +32,10 @@ export const StyledInput = styled.input`
     font-size: 0.8rem;
     transform: translateY(-2rem);
   }
+  :disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+
 `;
 
 export const ErrorMessage = styled.p`
@@ -38,5 +43,10 @@ export const ErrorMessage = styled.p`
   bottom: 10px;
   line-height: 1.4rem;
   font-size: 0.9rem;
+  font-weight: bold;
   color: #44ec52;
+`;
+
+export const ErrorIcon = styled(Icon)`
+  padding: 0 5px;
 `;
