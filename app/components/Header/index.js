@@ -8,23 +8,23 @@ import {
   NavigationBar,
   ShowAccount,
 } from './Header.styles';
-import LogoLink from 'components/LogoLink';
-import Icon from 'components/Icon';
-
-import { useState } from 'react';
+import { useActions, openMenu, closeMenu } from 'actions/headerActions';
 
 export default function Header() {
-  const [isMobileMenuVisible, setMobileMenu] = useState(false);
+  const state = useActions({ isMenuOpen: true });
   return (
     <>
       <NavigationBar>
-        <MainNavigationBar>
-          <LogoLink />
-          <MobileMenuBtn onClick={() => setMobileMenu(!isMobileMenuVisible)}>
-            {mobileMenu}
+          {state.isMenuOpen ? (
+            <MobileMenuBtn onClick={() => openMenu}>
+              <OpenMenuIcon type="chevron-left" />
+              <Image src={iconMenu} alt="time" layout="fill" objectFit="contain" />
           </MobileMenuBtn>
-          <MainNav />
-        </MainNavigationBar>
+          ) : (
+            <MobileMenuBtn onClick={() => closeMenu}>
+              <Image src={iconMenu} alt="time" layout="fill" objectFit="contain" />
+            </MobileMenuBtn>
+          )}
         <UserPanel>
           {/* TODO search input */}
           <UserImg>{userImg}</UserImg>
