@@ -5,11 +5,7 @@ const Input = ({ id, name, label, value, onInputChange, error, ...props }) => {
   return (
     <InputWrapper>
       <StyledInput value={value} onChange={onInputChange} name={name || id} id={id} {...props} />
-      {label && (
-        <InputLabel htmlFor={id} error={error}>
-          {label}
-        </InputLabel>
-      )}
+      {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
       {error && <ErrorMessage>{error}</ErrorMessage>}
     </InputWrapper>
   );

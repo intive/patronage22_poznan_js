@@ -37,14 +37,14 @@ export default function LoginForm({ ...props }) {
         value={username}
         error={usernameError}
         onInputChange={(e) => setUsername(e.target.value)}
-        label="username"
+        label="Username"
       />
       <Input
         id="password"
         type="password"
         value={password}
         onInputChange={(e) => setPassword(e.target.value)}
-        label="password"
+        label="Password"
       />
       <SignInButton primary onClick={userLogin}>
         Sign In
