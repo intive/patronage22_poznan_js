@@ -5,5 +5,3 @@ export const navData = [
   { id: 4, name: 'new & popular', link: '/' },
   { id: 5, name: 'my list', link: '/' },
 ];
-export const userImg = ':)';
-export const mobileMenu = 'Explore';
