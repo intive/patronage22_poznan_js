@@ -19,19 +19,19 @@ export const InputLabel = styled.label`
 export const StyledInput = styled.input`
   margin-bottom: 35px;
   padding-left: 20px;
+  padding-top: 15px;
   width: 100%;
   height: 72px;
   border: ${({ error }) => (error && '2px solid #44ec52') || '1.5px solid #3b334c'};
   border-radius: 8px;
   background-color: #272233;
   color: #e9e9e9;
-  &:focus + ${InputLabel} {
-    display: none;
-  }
-  &:not([value='']) + ${InputLabel} {
+
+  &:focus + ${InputLabel}, &:not([value='']) + ${InputLabel} {
     font-size: 0.75rem;
-    transform: translateY(-1.7rem);
+    transform: translateY(-1.2rem);
   }
+
   :disabled {
     opacity: 0.4;
     cursor: not-allowed;
