@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import LogoLink from 'components/LogoLink';
+import LogoLink from 'components/UI/LogoLink';
 import userImg from '/public/Rectangle 10@2x.png';
 import iconMenu from '/public/Time.svg';
 import union from '/public/Union.svg';
