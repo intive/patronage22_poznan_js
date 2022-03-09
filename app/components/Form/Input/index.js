@@ -12,7 +12,7 @@ const Input = ({ id, name, label, value, onInputChange, error, ...props }) => {
         error={error}
         {...props}
       />
-      {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
+      <InputLabel htmlFor={id}>{label}</InputLabel>
       {error && (
         <ErrorMessage>
           <ErrorIcon type="x-mark" />

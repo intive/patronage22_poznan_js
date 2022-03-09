@@ -11,7 +11,7 @@ export const InputLabel = styled.label`
   position: absolute;
   top: 36px;
   left: 20px;
-  line-height: 1.5rem;
+  line-height: 1.5;
   transition: transform 0.2s ease-in-out;
   transform: translateY(-50%);
 `;
@@ -29,19 +29,19 @@ export const StyledInput = styled.input`
     display: none;
   }
   &:not([value='']) + ${InputLabel} {
-    font-size: 0.8rem;
-    transform: translateY(-2rem);
+    font-size: 0.75rem;
+    transform: translateY(-1.7rem);
   }
   :disabled {
     opacity: 0.4;
     cursor: not-allowed;
-
+  }
 `;
 
 export const ErrorMessage = styled.p`
   position: absolute;
   bottom: 10px;
-  line-height: 1.4rem;
+  line-height: 1.4;
   font-size: 0.9rem;
   font-weight: bold;
   color: #44ec52;
