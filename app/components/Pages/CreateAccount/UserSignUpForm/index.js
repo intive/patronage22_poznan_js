@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import validateSignUpFormInputs, { validateUserPassword } from 'utils/validateFormInputs';
 import { FormTitle, InputAndButtonWrapper } from '../CreateAccount.styles';
 import FloatingLabelInput from '../FloatingLabelInput';
-import Button from 'components/Button';
-import Spinner from 'components/UI/Spinner';
+import Button from 'components/UI/Button';
 
 const initialState = { password: '', email: '' };
 
@@ -13,7 +12,7 @@ const UserSignUpForm = ({ emailValue }) => {
     email: emailValue,
   });
   const [errorMsg, setErrorMsg] = useState(initialState);
-  const [loading, setLoading] = useState(false);
+  const [isSubmitting, setLoading] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -37,7 +36,7 @@ const UserSignUpForm = ({ emailValue }) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [loading]);
+  }, [isSubmitting]);
 
   const handleFormData = () => {
     setLoading(true);
@@ -81,15 +80,15 @@ const UserSignUpForm = ({ emailValue }) => {
           onInputChange={handleInputChange}
           withBorder
         />
-        {!loading ? (
-          <Button onClick={handleSubmit} primary fullWidth>
-            Create account
-          </Button>
-        ) : (
-          <Button onClick={handleSubmit} primary fullWidth disabled loader>
-            <Spinner />
-          </Button>
-        )}
+        <Button
+          primary
+          fullWidth
+          disabled={isSubmitting}
+          isLoading={isSubmitting}
+          onClick={handleSubmit}
+        >
+          Create account
+        </Button>
       </InputAndButtonWrapper>
     </form>
   );

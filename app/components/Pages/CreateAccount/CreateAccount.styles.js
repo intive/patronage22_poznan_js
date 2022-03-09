@@ -20,8 +20,8 @@ export const CreateAccountWrapper = styled.section`
           border-bottom: none;
         `
       : css`
-          background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
-            url('../images/background-movies.jpeg');
+          // background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+          //   url('../images/background-movies.jpeg');
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
