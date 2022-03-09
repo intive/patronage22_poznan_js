@@ -1,22 +1,36 @@
 import Link from 'next/link';
-import { DesktopMenuList, MobileMenuList, LinkStyle, LinkWrapper } from './Nav.styles';
+import PropTypes from 'prop-types';
+import { LinkStyle, MenuList } from './Nav.styles';
 import { navData } from '../menuData';
 
-const NavigationLink = ({ name, link }) => {
-  return (
-    <LinkWrapper>
+export const Navigation = ({ ...props }) => {
+  const NavigationLink = ({ name, link }) => {
+    return (
       <Link href={link} passHref>
-        {name}
+        <a>{name}</a>
       </Link>
-    </LinkWrapper>
-  );
+    );
+  };
+  const NavigationData = navData.map((navigationItem) => (
+    <LinkStyle key={navigationItem.id}>
+      <NavigationLink name={navigationItem.name} link={navigationItem.link} />
+    </LinkStyle>
+  ));
+
+  return <MenuList {...props}>{NavigationData}</MenuList>;
 };
-const NavigationData = navData.map((navigationItem) => (
-  <LinkStyle key={navigationItem.id}>
-    <NavigationLink name={navigationItem.name} link={navigationItem.link} />
-  </LinkStyle>
-));
 
-export const MainNav = () => <DesktopMenuList>{NavigationData}</DesktopMenuList>;
-
-export const MobileNav = () => <MobileMenuList>{NavigationData}</MobileMenuList>;
+Navigation.propTypes = {
+  displayView: PropTypes.oneOf(['none', 'flex']),
+  flexDirection: PropTypes.oneOf(['row', 'column']),
+  justifyContent: PropTypes.oneOf([
+    'flex-start',
+    'flex-end',
+    'center',
+    'space-between',
+    'space-around',
+    'space-evenly',
+  ]),
+  alignItems: PropTypes.oneOf(['flex-start', 'flex-end', 'center', 'strach', 'baseline']),
+  backgroundColor: PropTypes.string,
+};

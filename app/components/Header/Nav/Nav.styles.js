@@ -1,52 +1,37 @@
 import styled from 'styled-components';
 import { device } from '/app/consts/mediaQueries';
 
-export const DesktopMenuList = styled.ul`
-  display: none;
-  ${device.desktop} {
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    margin: 0 40px;
-  }
-`;
-
-export const MobileMenuList = styled.ul`
-  position: absolute;
-  left: 10px;
-  top: 60px;
-  padding: 0;
-  margin: 0;
-  max-width: 85vw;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  border: 1px solid white;
-  ${device.tablet} {
-    top: 70px;
-    max-width: 57vw;
-  }
-  ${device.desktop} {
+export const MenuList = styled.ul`
+  display: ${({ displayView }) => displayView || 'none'};
+  flex-direction: ${({ flexDirection }) => flexDirection || 'row'};
+  justify-content: ${({ justifyContent }) => justifyContent || 'center'};
+  align-items: ${({ alignItems }) => alignItems || 'center'};
+  margin: ${({ margin }) => margin || '60px 20px'};
+  padding: ${({ padding }) => padding || '0'};
+  background-color: ${({ backgroundColor }) => backgroundColor || 'transparent'};
+  font-size: ${({ fontSize }) => fontSize || '1rem'};
+  line-height: 24px;
+  list-style-type: none;
+  li:first-child {
     display: none;
+  }
+  ${device.desktop} {
+    display: ${({ displayView }) => displayView || 'flex'};
+    li:first-child {
+      display: block;
+    }
   }
 `;
 
 export const LinkStyle = styled.li`
-  text-transform: uppercase;
-  list-style: none;
+  text-transform: capitalize;
   text-align: center;
-  margin: 15px;
+  margin: 10px 16px;
   a {
-    font-size: 1.2rem;
+    color: white;
   }
-`;
-
-export const LinkWrapper = styled.span`
-  display: block;
-  color: white;
-  a {
-    display: inherit;
+  ${device.desktop} {
+    margin: 0 23px;
+    height: 20px;
   }
 `;
