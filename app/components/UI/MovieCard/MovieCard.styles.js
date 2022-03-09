@@ -1,57 +1,63 @@
 import styled from 'styled-components';
 
-export const StyledMovieCard = styled.button`
-  /* Figma - Tile XL */
+export const Wrapper = styled.div`
+  /* FLEX  */
 
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  /* pointer and hover effect should be here or in parent (Carousel)?   */
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
   padding: 0px;
-  position: static;
-  height: 376px;
-  left: 0px;
-  top: 0px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 12px;
+  position: relative;
+  border-radius: 16px;
+  height: 100%;
+  width: 100%;
 `;
 
-export const StyledMovieCardTitleWrapper = styled.div`
-  /* Figma - Title */
+export const PosterWrapper = styled.div`
+  /* FLEX */
+  display: flex;
+  order: 0;
+  flex-grow: 0;
+
+  height: 85%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 2px 12px rgba(26, 26, 26, 0.1), 0px 16px 24px -2px rgba(26, 26, 26, 0.12);
+  border-radius: 16px;
+`;
+
+export const TitleWrapper = styled.div`
+  /* FLEX  */
 
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 8px;
-  position: static;
-  height: 56px;
-  left: 0px;
-  top: 320px;
-  filter: drop-shadow(0px 2px 8px rgba(32, 37, 50, 0.08))
-    drop-shadow(0px 2px 4px rgba(32, 37, 50, 0.03));
-  flex: none;
   order: 1;
-  align-self: stretch;
   flex-grow: 0;
-  margin: 0px 0px;
+
+  height: 15%;
+  width: 100%;
+  padding-top: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
 `;
 
-export const StyledMovieCardTitle = styled.p`
-  position: static;
-  height: 40px;
-  left: 8px;
-  top: 8px;
+export const Title = styled.p`
+  /* FLEX  */
+
+  align-self: center;
+  order: 1;
+  flex-grow: 0;
+
+  font-size: 0.8em;
+  font-weight: 600;
+  line-height: 1.2em;
   color: #ffffff;
-  flex: none;
-  order: 0;
-  flex-grow: 1;
-  margin: 0px 8px;
+  filter: drop-shadow(0px 2px 8px rgba(32, 37, 50, 0.08))
+    drop-shadow(0px 2px 4px rgba(32, 37, 50, 0.03));
 `;
