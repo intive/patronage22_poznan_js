@@ -33,19 +33,16 @@ export const UserPanel = styled(div)`
   padding: 4px 0;
 `;
 
-const TransparentButton = styled.button`
-  border: none;
-  color: white;
-  background-color: transparent;
-  cursor: pointer;
-`;
-
-export const MobileMenuBtn = styled(TransparentButton)`
+export const MobileMenuBtn = styled.button`
   position: relative;
   height: 20px;
   width: 24px;
   margin-right: 15px;
   padding: 0;
+  border: none;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
   ${device.desktop} {
     display: none;
   }
@@ -54,6 +51,7 @@ export const MobileMenuBtn = styled(TransparentButton)`
 export const UserImg = styled.div`
   height: 70px;
   width: 70px;
+  line-height: 70px;
   border-radius: 4px;
   margin-top: 5px;
   position: relative;
