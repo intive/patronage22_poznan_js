@@ -37,6 +37,7 @@ const StyledButton = styled.button`
       background: #ffffff;
       color: #1f1d2b;
       border-radius: 12px;
+      padding: 1rem 4rem;
     `}
 
   ${({ onlyIcon, iconWithBg }) =>
