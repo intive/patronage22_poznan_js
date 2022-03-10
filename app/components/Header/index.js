@@ -12,7 +12,7 @@ import {
   MobileMenuBtn,
   MobileMenuPanel,
 } from './Header.styles';
-import { Navigation } from './Nav';
+import { ListItems, NavigationData } from './Nav';
 import { useActions, openMenu, closeMenu } from 'actions/headerActions';
 
 export default function Header() {
@@ -32,8 +32,13 @@ export default function Header() {
           )}
           <LogoLink />
         </MainPanel>
-        <Navigation alignItems="center" flexDirection="row" justifyContent="center" />
-
+        <ListItems
+          alignItems="center"
+          flexDirection="row"
+          justifyContent="center"
+          backGroundColor="transparent"
+          content={NavigationData}
+        />
         <UserPanel>
           {/* TODO search input */}
           <UserImg>
@@ -43,11 +48,13 @@ export default function Header() {
       </NavigationBar>
       {state.isMenuOpen ? (
         <MobileMenuPanel>
-          <Navigation
+          <ListItems
             displayView="flex"
             alignItems="flex-start"
             flexDirection="column"
             justifyContent="flex-start"
+            backGroundColor="transparent"
+            content={NavigationData}
           />
         </MobileMenuPanel>
       ) : null}
