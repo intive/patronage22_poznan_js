@@ -6,9 +6,9 @@ export const MenuList = styled.ul`
   flex-direction: ${({ flexDirection }) => flexDirection || 'row'};
   justify-content: ${({ justifyContent }) => justifyContent || 'center'};
   align-items: ${({ alignItems }) => alignItems || 'center'};
-  margin: ${({ margin }) => margin || '60px 20px'};
-  padding: ${({ padding }) => padding || '0'};
-  background-color: ${({ backgroundColor }) => backgroundColor || 'transparent'};
+  background-color: ${({ backGroundColor }) => backGroundColor || 'black'};
+  margin: 60px 16px;
+  padding: 0;
   font-size: ${({ fontSize }) => fontSize || '1rem'};
   line-height: 24px;
   list-style-type: none;
@@ -17,6 +17,7 @@ export const MenuList = styled.ul`
   }
   ${device.desktop} {
     display: ${({ displayView }) => displayView || 'flex'};
+    margin: 0;
     li:first-child {
       display: block;
     }
