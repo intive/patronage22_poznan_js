@@ -6,7 +6,7 @@ export default {
 };
 
 const Template = (args) => {
-  const [value, setValue] = useState(args.value ?? '');
+  const [value, setValue] = useState(args.value || '');
   return <Input {...args} onChange={(e) => setValue(e.target.value)} value={value} />;
 };
 
