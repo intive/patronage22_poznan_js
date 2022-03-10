@@ -7,16 +7,7 @@ export default {
 
 const Template = (args) => {
   const [value, setValue] = useState(args.value ?? '');
-  return (
-    <Input
-      {...args}
-      onChange={(e) => {
-        args.onInputChange(e.target.value);
-        setValue(e.target.value);
-      }}
-      value={value}
-    />
-  );
+  return <Input {...args} onChange={(e) => setValue(e.target.value)} value={value} />;
 };
 
 export const TextInput = Template.bind({});
