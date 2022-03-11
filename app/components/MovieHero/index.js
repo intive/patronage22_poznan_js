@@ -1,58 +1,30 @@
-import { useState } from 'react';
-import styled from 'styled-components';
-import MediaButton from './MediaButton';
-import { MuteIcon } from './MuteIcon';
+import Button from '../UI/Button';
+import { HeroWrapper, HeroGenres, HeroTitle, HeroContents } from './MovieHero.styles';
+import MovieMetadata from '../UI/MovieMetadata';
+import Icon from 'components/Icon';
 
-export default function MovieHero(props) {
-  const [isMute, setMute] = useState(false);
-
-  const toggleMute = () => setMute(!isMute);
+export default function MovieHero({ ...props }) {
+  const metaDataObj = {
+    release_date: props.movieData.release_date,
+    popularity: props.movieData.popularity,
+    vote_average: props.movieData.vote_average,
+  };
 
   return (
-    <HeroWrapper backgroundImg={props.heroObj.poster_path}>
+    <HeroWrapper
+      backgroundImg={'https://image.tmdb.org/t/p/original' + props.movieData.backdrop_path}
+    >
       <HeroContents>
-        <HeroTitle>{props.heroObj.title}</HeroTitle>
-        <MediaBox>
-          <MediaButton type="play" text={'Play'} />
-          <MuteIcon type={isMute ? 'volume-mute' : 'volume-up'} onClick={toggleMute} />
-        </MediaBox>
+        <HeroGenres>{props.movieData.genres[0].name}</HeroGenres>
+        <HeroTitle>{props.movieData.title}</HeroTitle>
+        <div style={{ paddingBottom: '14px' }}>
+          <MovieMetadata {...metaDataObj} />
+        </div>
+        <Button onClick={() => {}}>
+          <Icon type="play" style={{ marginRight: '1em' }} />
+          Watch
+        </Button>
       </HeroContents>
     </HeroWrapper>
   );
 }
-
-const HeroWrapper = styled.div`
-  background-image: url(${(props) => props.backgroundImg});
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
-  padding: 4em;
-  font-size: 18px;
-
-  @media (max-width: 480px) {
-    font-size: 15px;
-    padding: 2.5em;
-  }
-`;
-
-const HeroTitle = styled.h1`
-  color: white;
-  font-size: 3em;
-`;
-
-const HeroContents = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-`;
-
-const MediaBox = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: white;
-`;
