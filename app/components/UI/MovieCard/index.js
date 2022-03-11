@@ -8,20 +8,18 @@ export default function MovieCard({ src, title, alt, href, ...props }) {
   /* TODO placeholder for link to specific movie  */
   href = '#';
   return (
-    <>
-      <Link href={href} passHref>
-        <a>
-          <Wrapper>
-            <PosterWrapper>
-              <MoviePoster src={src} alt={alt} title={title} {...props}></MoviePoster>
-            </PosterWrapper>
-            <TitleWrapper>
-              <Title>{title}</Title>
-            </TitleWrapper>
-          </Wrapper>
-        </a>
-      </Link>
-    </>
+    <Link href={href}>
+      <a>
+        <Wrapper>
+          <PosterWrapper>
+            <MoviePoster src={src} alt={alt} title={title} {...props}></MoviePoster>
+          </PosterWrapper>
+          <TitleWrapper>
+            <Title>{title}</Title>
+          </TitleWrapper>
+        </Wrapper>
+      </a>
+    </Link>
   );
 }
 
