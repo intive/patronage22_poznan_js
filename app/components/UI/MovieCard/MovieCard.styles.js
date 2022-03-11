@@ -1,59 +1,50 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  /* FLEX  */
-
+export const flexDivStyle = styled.div`
   display: flex;
+  width: 100%;
+  position: relative;
+`;
+
+export const Wrapper = styled(flexDivStyle)`
   flex-direction: column;
   align-items: flex-start;
 
-  /* pointer and hover effect should be here or in parent (Carousel)?   */
+  padding: 0px;
+  border-radius: 16px;
+  height: 100%;
+`;
+
+export const PosterWrapper = styled(flexDivStyle)`
+  order: 0;
+  flex-grow: 0;
+
   cursor: pointer;
   &:hover {
     opacity: 0.8;
   }
-  padding: 0px;
-  position: relative;
-  border-radius: 16px;
-  height: 100%;
-  width: 100%;
-`;
-
-export const PosterWrapper = styled.div`
-  /* FLEX */
-  display: flex;
-  order: 0;
-  flex-grow: 0;
+  transition: opacity ease-in-out 0.2s;
 
   height: 85%;
-  width: 100%;
-  position: relative;
   overflow: hidden;
   box-shadow: 0px 2px 12px rgba(26, 26, 26, 0.1), 0px 16px 24px -2px rgba(26, 26, 26, 0.12);
   border-radius: 16px;
 `;
 
-export const TitleWrapper = styled.div`
-  /* FLEX  */
-
-  display: flex;
+export const TitleWrapper = styled(flexDivStyle)`
   order: 1;
   flex-grow: 0;
 
   height: 15%;
-  width: 100%;
-  padding-top: 2%;
-  padding-left: 2%;
-  padding-right: 2%;
+  padding: 2%;
 `;
 
 export const Title = styled.p`
-  /* FLEX  */
-
   align-self: center;
   order: 1;
   flex-grow: 0;
 
+  width: 100%;
   font-size: 0.8em;
   font-weight: 600;
   line-height: 1.2em;
