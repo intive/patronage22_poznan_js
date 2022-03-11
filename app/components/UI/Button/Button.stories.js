@@ -61,11 +61,11 @@ FullWidth.args = {
 export const OnlyIcon = Template.bind({});
 OnlyIcon.args = {
   onlyIcon: true,
-  content: <Icon type="search" />,
+  content: <Icon type="search" size="lg" />,
 };
 
 export const IconWithBg = Template.bind({});
 IconWithBg.args = {
   iconWithBg: true,
-  content: <Icon type="x-mark" />,
+  content: <Icon type="x-mark" size="2x" />,
 };
