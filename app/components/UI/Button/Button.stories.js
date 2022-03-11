@@ -67,5 +67,5 @@ OnlyIcon.args = {
 export const IconWithBg = Template.bind({});
 IconWithBg.args = {
   iconWithBg: true,
-  content: <Icon type="x-mark" size="2x" />,
+  content: <Icon type="x-mark" size="lg" />,
 };

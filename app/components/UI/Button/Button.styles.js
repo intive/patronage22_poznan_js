@@ -66,7 +66,7 @@ const StyledButton = styled.button`
        {
         background-color: #1e1b26;
         border-radius: 50%;
-        padding: ${({ padding }) => padding || '1.4rem'};
+        padding: ${({ padding }) => padding || '1rem'};
         width: 32px;
         height: 32px;
         ${device.tablet} {
