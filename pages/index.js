@@ -10,7 +10,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to inTiVi</h1>
         <p className={styles.description}>
-          Please <Link href={'/user/login'}>sign in</Link>.
+          Please <Link href={'/sign-in'}>sign in</Link>.
         </p>
         <p>
           isModalOpen: {`${state.isModalOpen}`} <br />

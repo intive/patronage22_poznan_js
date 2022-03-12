@@ -1,5 +1,5 @@
 import LogoLink from '.';
-import Button from 'components/Button';
+import Button from 'components/UI/Button';
 
 export default {
   title: 'UI/LogoLink',

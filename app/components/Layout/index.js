@@ -1,6 +1,6 @@
 import Footer from '../Footer';
 import Header from '../Header';
-import Button from '../Button/Button.styles';
+import Button from '../UI/Button/Button.styles';
 import SimpleHeader from 'components/SimpleHeader';
 
 import { useActions, logIn, logOut } from 'actions/user';
