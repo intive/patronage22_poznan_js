@@ -47,12 +47,7 @@ const StyledButton = styled.button`
         align-items: center;
         justify-content: center;
         border: none;
-
-        ${device.tablet} {
-          svg {
-            font-size: 2rem;
-          }
-        }
+        box-shadow: none;
       }
     `}
 
@@ -60,10 +55,8 @@ const StyledButton = styled.button`
     onlyIcon &&
     css`
        {
+        background-color: unset;
         padding: 0;
-        svg {
-          font-size: 1.6rem;
-        }
       }
     `}
 
@@ -71,14 +64,11 @@ const StyledButton = styled.button`
     iconWithBg &&
     css`
        {
-        background: #1e1b26;
+        background-color: #1e1b26;
         border-radius: 50%;
-        padding: 1rem;
+        padding: ${({ padding }) => padding || '1rem'};
         width: 32px;
         height: 32px;
-        svg {
-          font-size: 1.2rem;
-        }
         ${device.tablet} {
           width: 48px;
           height: 48px;
