@@ -10,6 +10,7 @@ export const PosterWrapper = styled(flexDivStyle)`
   order: 0;
   flex-grow: 0;
 
+  transition: opacity ease-in-out 0.2s;
   height: 85%;
   overflow: hidden;
   box-shadow: 0px 2px 12px rgba(26, 26, 26, 0.1), 0px 16px 24px -2px rgba(26, 26, 26, 0.12);
@@ -26,7 +27,6 @@ export const Wrapper = styled(flexDivStyle)`
 
   &:hover ${PosterWrapper} {
     opacity: 0.8;
-    transition: opacity ease-in-out 0.2s;
   }
 
   padding: 0px;
