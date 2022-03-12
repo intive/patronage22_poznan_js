@@ -6,24 +6,9 @@ export const flexDivStyle = styled.div`
   position: relative;
 `;
 
-export const Wrapper = styled(flexDivStyle)`
-  flex-direction: column;
-  align-items: flex-start;
-
-  padding: 0px;
-  border-radius: 16px;
-  height: 100%;
-`;
-
 export const PosterWrapper = styled(flexDivStyle)`
   order: 0;
   flex-grow: 0;
-
-  cursor: pointer;
-  &:hover {
-    opacity: 0.8;
-  }
-  transition: opacity ease-in-out 0.2s;
 
   height: 85%;
   overflow: hidden;
@@ -31,9 +16,31 @@ export const PosterWrapper = styled(flexDivStyle)`
   border-radius: 16px;
 `;
 
+export const Wrapper = styled(flexDivStyle)`
+  flex-direction: column;
+  align-items: flex-start;
+
+  /* &:hover {
+    opacity: 0.8;
+  } */
+
+  &:hover ${PosterWrapper} {
+    opacity: 0.8;
+    transition: opacity ease-in-out 0.2s;
+  }
+
+  padding: 0px;
+  border-radius: 16px;
+  height: 100%;
+`;
+
 export const TitleWrapper = styled(flexDivStyle)`
   order: 1;
   flex-grow: 0;
+
+  &:hover {
+    $PosterWrapper: opacity = '0.2';
+  }
 
   height: 15%;
   padding: 2%;
