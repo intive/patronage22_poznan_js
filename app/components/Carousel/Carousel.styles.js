@@ -19,6 +19,7 @@ export const CarouselOuter = styled.div`
 export const CarouselInner = styled.div`
   white-space: nowrap;
   transition: transform 0.3s;
+  transform: ${({ activeScreen }) => `translateX(-${activeScreen * 100}%)`};
 `;
 
 export const CarouselItemWrapper = styled.div`
@@ -35,6 +36,10 @@ export const CarouselItemInner = styled.div`
   cursor: pointer;
 `;
 
+export const MovieTitle = styled.div`
+  margin-top: 10px;
+`;
+
 export const NavButton = styled.button`
   background-color: rgba(0, 0, 0, 0.2);
   color: white;
@@ -42,9 +47,11 @@ export const NavButton = styled.button`
   border: none;
   position: absolute;
   left: ${({ left }) => (left ? 0 : 'auto')};
-  right: 12px;
+  right: ${({ right }) => (right ? 0 : 'auto')};
   top: 0;
   bottom: 0;
   width: 40px;
+  height: 320px;
+  margin-right: 12px;
   cursor: pointer;
 `;

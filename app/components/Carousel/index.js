@@ -4,8 +4,10 @@ import {
   CarouselItemWrapper,
   CarouselItemInner,
   CarouselInner,
+  MovieTitle,
   NavButton,
 } from 'components/Carousel/Carousel.styles';
+import Icon from 'components/Icon';
 
 import PropTypes from 'prop-types';
 
@@ -16,6 +18,19 @@ const Carousel = ({ movies = [] }) => {
   const tileCount = movies.length;
   const screenCount = Math.ceil(tileCount / tilesPerScreen);
   const lastScreenIndex = screenCount - 1;
+
+  const throttle = (fun, limit) => {
+    let wait = false;
+    return function () {
+      if (!wait) {
+        fun.call();
+        wait = true;
+        setTimeout(function () {
+          wait = false;
+        }, limit);
+      }
+    };
+  };
 
   useEffect(() => {
     const carouselWidth = () => {
@@ -37,32 +52,12 @@ const Carousel = ({ movies = [] }) => {
     };
     carouselWidth();
 
-    const throttle = (fun, limit) => {
-      let wait = false;
-      return function () {
-        if (!wait) {
-          fun.call();
-          wait = true;
-          setTimeout(function () {
-            wait = false;
-          }, limit);
-        }
-      };
-    };
+    const resizeListener = throttle;
 
-    window.addEventListener(
-      'resize',
-      throttle(() => {
-        carouselWidth();
-      }, 600)
-    );
-    window.removeEventListener(
-      'resize',
-      throttle(() => {
-        carouselWidth();
-      })
-    );
-  }, [tilesPerScreen]);
+    window.addEventListener('resize', resizeListener(carouselWidth, 600));
+
+    return () => window.removeEventListener('resize', resizeListener);
+  });
 
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
@@ -73,21 +68,18 @@ const Carousel = ({ movies = [] }) => {
     setActiveScreen(newIndex);
   };
 
-  const CarouselItem = ({ tileCount }) => (
-    <CarouselItemWrapper tileCount={tileCount}>
+  const CarouselItem = ({ tileCount, title }) => (
+    <CarouselItemWrapper tileCount={tileCount} title={title}>
       <CarouselItemInner>
         <div style={{ height: '320px' }}>MovieCard will be here</div>
       </CarouselItemInner>
+      <MovieTitle>{title}</MovieTitle>
     </CarouselItemWrapper>
   );
 
   return (
     <CarouselOuter>
-      <CarouselInner
-        style={{
-          transform: `translateX(-${activeScreen * 100}%)`,
-        }}
-      >
+      <CarouselInner activeScreen={activeScreen}>
         {movies.map(({ id, title }) => (
           <CarouselItem key={id} title={title} tileCount={tilesPerScreen} />
         ))}
@@ -101,7 +93,7 @@ const Carousel = ({ movies = [] }) => {
           }}
           className="carousel-nav-button"
         >
-          &#60;
+          <Icon type={'chevron-left'} />
         </NavButton>
       )}
 
@@ -113,7 +105,7 @@ const Carousel = ({ movies = [] }) => {
           }}
           className="carousel-nav-button"
         >
-          &#62;
+          <Icon type={'chevron-right'} />
         </NavButton>
       )}
     </CarouselOuter>
