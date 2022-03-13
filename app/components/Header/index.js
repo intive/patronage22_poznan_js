@@ -45,19 +45,19 @@ export default function Header() {
             <Image src={userImg} alt="userImage" layout="fill" objectFit="contain" />
           </UserImg>
         </UserPanel>
+        {state.isMenuOpen ? (
+          <MobileMenuPanel>
+            <ListItems
+              displayView="flex"
+              alignItems="flex-start"
+              flexDirection="column"
+              justifyContent="flex-start"
+              backGroundColor="transparent"
+              content={NavigationData}
+            />
+          </MobileMenuPanel>
+        ) : null}
       </NavigationBar>
-      {state.isMenuOpen ? (
-        <MobileMenuPanel>
-          <ListItems
-            displayView="flex"
-            alignItems="flex-start"
-            flexDirection="column"
-            justifyContent="flex-start"
-            backGroundColor="transparent"
-            content={NavigationData}
-          />
-        </MobileMenuPanel>
-      ) : null}
     </>
   );
 }
