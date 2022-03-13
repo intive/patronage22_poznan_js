@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { LinkStyle, MenuList } from './Nav.styles';
 import { navData } from '../menuData';
 
-const NavigationLink = ({ name, link }) => {
+const NavigationLink = ({ name, link, icon }) => {
   return (
     <Link href={link}>
-      <a>{name}</a>
+      <a>{name || icon}</a>
     </Link>
   );
 };
 export const NavigationData = navData.map((navigationItem) => (
   <LinkStyle key={navigationItem.id}>
-    <NavigationLink name={navigationItem.name} link={navigationItem.link} />
+    <NavigationLink name={navigationItem.name || navigationItem.icon} link={navigationItem.link} />
   </LinkStyle>
 ));
 export const ListItems = ({ content, ...props }) => {

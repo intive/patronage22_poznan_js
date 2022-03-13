@@ -10,7 +10,7 @@ const imageIcon = (
 export const navData = [
   {
     id: 1,
-    name: imageIcon,
+    icon: imageIcon,
     link: '/',
   },
   { id: 2, name: 'favourites', link: '/' },
