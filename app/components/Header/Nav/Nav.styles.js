@@ -15,6 +15,9 @@ export const MenuList = styled.ul`
   li:first-child {
     display: none;
   }
+  ${device.tablet} {
+    margin: 100px 16px;
+  }
   ${device.desktop} {
     display: ${({ displayView }) => displayView || 'flex'};
     margin: 0;
@@ -27,12 +30,20 @@ export const MenuList = styled.ul`
 export const LinkStyle = styled.li`
   text-transform: capitalize;
   text-align: center;
-  margin: 10px 16px;
+  margin: 14px 16px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
   a {
     color: white;
   }
+  ${device.tablet} {
+    font-size: 18px;
+    line-height: 28px;
+  }
   ${device.desktop} {
-    margin: 0 23px;
-    height: 20px;
+    margin: 0 28px;
+    font-size: 20px;
+    line-height: 32px;
   }
 `;

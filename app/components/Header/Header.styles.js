@@ -44,6 +44,9 @@ export const MobileMenuBtn = styled.button`
   color: white;
   background-color: transparent;
   cursor: pointer;
+  ${device.desktop} {
+    display: none;
+  }
 `;
 
 export const UserImg = styled.div`
