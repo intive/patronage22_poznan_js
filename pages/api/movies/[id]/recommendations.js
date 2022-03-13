@@ -1,17 +1,16 @@
-// import { getSimilarMoviesById } from '../../../lib/services/movieDb';
 import { getRecommendedMoviesById } from '../../../../lib/services/movieDb';
 
 /**
  * @swagger
  * /api/movies/{id}/recommendations:
  *   get:
- *     summary: Get a list of movies recommended to a movie with given Id
- *     description: Returns a list of movies recommended to a movie with given Id
+ *     summary: Get a list of recommended movies for a movie.
+ *     description: Returns a list of recommended movies for a movie.
  *     parameters:
  *     - in: path
  *       name: id
  *       required: true
- *       description: Id of the movie to get a list of recommended movies
+ *       description: Id of the movie to get a list of recommended movies for a movie.
  *     responses:
  *       200:
  *         description: movie object

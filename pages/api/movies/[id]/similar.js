@@ -4,13 +4,13 @@ import { getSimilarMoviesById } from '../../../../lib/services/movieDb';
  * @swagger
  * /api/movies/{id}/similar:
  *   get:
- *     summary:  Get a list of movies similar to a movie with given Id
- *     description: Returns a list of movies similar to a movie with given Id
+ *     summary:  Get a list of similar movies.
+ *     description: Returns a list of similar movies.
  *     parameters:
  *     - in: path
  *       name: id
  *       required: true
- *       description: Id of the movie to get a list of movies similar to
+ *       description: Id of the movie to get a list of similar movies.
  *     responses:
  *       200:
  *         description: movie object
