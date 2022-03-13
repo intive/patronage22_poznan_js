@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 import { device } from '../../../consts/mediaQueries';
 
-const Wrapper = styled.div`
-  color: #fff;
-`;
-
 const ItemList = styled.ul`
+  color: inherit;
   padding: 0;
   margin: 0;
 `;
@@ -25,7 +22,6 @@ const Separator = styled.span`
   background-color: #44ec52;
   border-radius: 50%;
   display: inline-block;
-  top: 50%;
   transform: translateY(-50%);
   margin: 0 16px;
 
@@ -35,4 +31,4 @@ const Separator = styled.span`
   }
 `;
 
-export { Wrapper, Item, Separator, ItemList };
+export { Item, Separator, ItemList };

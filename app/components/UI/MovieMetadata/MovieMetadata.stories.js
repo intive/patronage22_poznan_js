@@ -11,9 +11,6 @@ const metaDataObj = {
   vote_average: 8.4,
 };
 
-const Template = ({ ...args }) => <MovieMetadata {...args} {...metaDataObj} />;
+const Template = () => <MovieMetadata {...metaDataObj} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  marginBottom: '0',
-};

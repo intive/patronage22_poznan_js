@@ -1,16 +1,13 @@
 import { Wrapper, Item, Separator, ItemList } from './MovieMetadata.styles';
-import PropTypes from 'prop-types';
 
-export default function MovieMetadata({ ...props }) {
+export default function MovieMetadata({ release_date, vote_average, popularity }) {
   return (
-    <Wrapper>
-      <ItemList>
-        <Item>{props.release_date.slice(0, 4)}</Item>
-        <Separator />
-        <Item>{props.vote_average}/10</Item>
-        <Separator />
-        <Item>{Math.floor(props.popularity)}</Item>
-      </ItemList>
-    </Wrapper>
+    <ItemList>
+      <Item>{release_date.slice(0, 4)}</Item>
+      <Separator />
+      <Item>{vote_average}/10</Item>
+      <Separator />
+      <Item>{Math.floor(popularity)}</Item>
+    </ItemList>
   );
 }
