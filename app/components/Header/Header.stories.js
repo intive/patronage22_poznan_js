@@ -7,7 +7,12 @@ export default {
 
 const Template = (args) => <Header {...args} />;
 
-export const Default = Template.bind({});
+export const DesktopView = Template.bind({});
+DesktopView.parameters = {
+  viewport: {
+    defaultViewport: 'responsive',
+  },
+};
 
 export const TabletHeader = Template.bind({});
 TabletHeader.parameters = {
