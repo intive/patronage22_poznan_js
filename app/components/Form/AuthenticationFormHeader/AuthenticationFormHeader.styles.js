@@ -4,19 +4,26 @@ import { device } from 'consts/mediaQueries';
 export const FormHeader = styled.div`
   display: flex;
   flex-direction: column;
-  height: 130px;
+  height: 150px;
+  padding-bottom: 24px;
   ${device.tablet} {
-    height: 140px;
+    padding-bottom: 32px;
   }
+`;
+
+export const StyledLogo = styled.div`
+  width: clamp(70px, 10vw, 100px);
+  height: 100%;
+  position: relative;
 `;
 
 export const TabWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 170px;
-  padding-top: 50px;
-  font-size: 20px;
-  line-height: 32px;
+  padding-top: 48px;
+  font-size: 1.25rem;
+  line-height: 1.6;
 `;
 
 export const TabButton = styled.button`

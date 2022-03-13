@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
 export const FormContainer = styled.div`
   display: flex;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 35px 20px 25px;
   width: 100%;
   ${device.tablet} {
     width: auto;
@@ -27,23 +27,21 @@ export const FormContainer = styled.div`
     padding: 0 50px;
     background-color: #2a2535;
     border-radius: 12px;
+    padding: 50px 50px 70px;
   }
   ${device.desktop} {
     margin-right: 50px;
-    padding: 0px 100px;
+    padding: 80px 100px 80px;
   }
 `;
 export const Form = styled.div`
   width: 55vw;
   min-width: 270px;
-  max-height: 98vh;
   ${device.tablet} {
     width: 340px;
-    height: 600px;
-    padding-top: 30px;
+    height: 468px;
   }
   ${device.desktop} {
     width: 440px;
-    padding-top: 80px;
   }
 `;
