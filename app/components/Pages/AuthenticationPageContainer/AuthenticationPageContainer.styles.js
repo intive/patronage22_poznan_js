@@ -19,8 +19,8 @@ export const Wrapper = styled.div`
 export const FormContainer = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
   padding: 40px 20px;
+  width: 100%;
   ${device.tablet} {
     width: auto;
     margin-right: 10px;
