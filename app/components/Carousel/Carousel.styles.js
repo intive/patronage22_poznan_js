@@ -36,10 +36,6 @@ export const CarouselItemInner = styled.div`
   cursor: pointer;
 `;
 
-export const MovieTitle = styled.div`
-  margin-top: 10px;
-`;
-
 export const NavButton = styled.button`
   background-color: rgba(0, 0, 0, 0.2);
   color: white;

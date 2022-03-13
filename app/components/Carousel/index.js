@@ -4,7 +4,6 @@ import {
   CarouselItemWrapper,
   CarouselItemInner,
   CarouselInner,
-  MovieTitle,
   NavButton,
 } from 'components/Carousel/Carousel.styles';
 import Icon from 'components/Icon';
@@ -68,12 +67,11 @@ const Carousel = ({ movies = [] }) => {
     setActiveScreen(newIndex);
   };
 
-  const CarouselItem = ({ tileCount, title }) => (
-    <CarouselItemWrapper tileCount={tileCount} title={title}>
+  const CarouselItem = ({ tileCount }) => (
+    <CarouselItemWrapper tileCount={tileCount}>
       <CarouselItemInner>
         <div style={{ height: '320px' }}>MovieCard will be here</div>
       </CarouselItemInner>
-      <MovieTitle>{title}</MovieTitle>
     </CarouselItemWrapper>
   );
 
