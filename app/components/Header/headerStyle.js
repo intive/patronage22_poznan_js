@@ -26,7 +26,9 @@ export const MainNavigationBar = styled.div`
   }
 `;
 
-export const UserPanel = styled(MainNavigationBar)``;
+export const UserPanel = styled(MainNavigationBar)`
+  color: white;
+`;
 
 const TransparentButton = styled.button`
   border: none;
@@ -58,13 +60,13 @@ export const DesktopMenuList = styled.ul`
 
 export const UserImg = styled.div`
   background-color: black;
-  color: white;
   height: 30px;
   width: 30px;
   line-height: 30px;
   text-align: center;
   border-radius: 4px;
   margin: 0 5px;
+  cursor: pointer;
   ${device.tablet} {
     height: 40px;
     width: 40px;

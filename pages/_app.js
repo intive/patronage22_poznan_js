@@ -3,16 +3,19 @@ import '../styles/fonts.css';
 import '../styles/globals.css';
 import { useState } from 'react';
 import AppContext from 'context/app';
+import { SessionProvider } from 'next-auth/react';
 
 function MyApp({ Component, pageProps }) {
-  const { pageLayout } = pageProps;
+  const { pageLayout, session } = pageProps;
   const [appState] = useState({});
   return (
-    <AppContext.Provider value={appState}>
-      <Layout pageLayout={pageLayout}>
-        <Component {...pageProps} />
-      </Layout>
-    </AppContext.Provider>
+    <SessionProvider session={session}>
+      <AppContext.Provider value={appState}>
+        <Layout pageLayout={pageLayout}>
+          <Component {...pageProps} />
+        </Layout>
+      </AppContext.Provider>
+    </SessionProvider>
   );
 }
 

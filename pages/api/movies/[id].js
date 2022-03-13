@@ -1,4 +1,5 @@
 import { getMovieById } from '../../../lib/services/movieDb';
+import { getSession } from 'next-auth/react';
 
 /**
  * @swagger
@@ -22,6 +23,10 @@ import { getMovieById } from '../../../lib/services/movieDb';
  *         description: movie not found
  */
 export default async function handler(req, res) {
+  const session = await getSession({ req });
+  if (session) {
+    return res.status(401).send('Not authorized');
+  }
   try {
     const { id } = req.query;
     const movie = await getMovieById(id);
