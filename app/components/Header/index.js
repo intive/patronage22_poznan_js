@@ -17,6 +17,7 @@ import { useActions, openMenu, closeMenu } from 'actions/headerActions';
 
 export default function Header() {
   const state = useActions({ isMenuOpen: false });
+
   return (
     <>
       <NavigationBar>

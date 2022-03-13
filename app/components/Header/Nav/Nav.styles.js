@@ -19,7 +19,7 @@ export const MenuList = styled.ul`
     margin: 100px 16px;
   }
   ${device.desktop} {
-    display: ${({ displayView }) => displayView || 'flex'};
+    display: flex;
     margin: 0;
     li:first-child {
       display: block;
