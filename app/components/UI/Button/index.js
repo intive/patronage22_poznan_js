@@ -27,6 +27,7 @@ Button.propTypes = {
   fullWidth: PropTypes.bool,
   onlyIcon: PropTypes.bool,
   iconWithBg: PropTypes.bool,
+  padding: PropTypes.string,
 };
 
 export default Button;
