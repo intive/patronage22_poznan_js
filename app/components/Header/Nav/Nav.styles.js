@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { device } from '/app/consts/mediaQueries';
 
 export const MenuList = styled.ul`
-  display: ${({ displayView }) => displayView || 'none'};
+  display: flex;
   flex-direction: ${({ flexDirection }) => flexDirection || 'row'};
   justify-content: ${({ justifyContent }) => justifyContent || 'center'};
   align-items: ${({ alignItems }) => alignItems || 'center'};
@@ -16,7 +16,6 @@ export const MenuList = styled.ul`
     display: none;
   }
   ${device.desktop} {
-    display: ${({ displayView }) => displayView || 'flex'};
     margin: 0;
     li:first-child {
       display: block;
@@ -30,9 +29,12 @@ export const LinkStyle = styled.li`
   margin: 10px 16px;
   a {
     color: white;
+    font-size: 20px;
+    font-weight: 500;
   }
   ${device.desktop} {
-    margin: 0 23px;
-    height: 20px;
+    margin: 0 28px;
+    height: 32px;
+    line-height: 32px;
   }
 `;

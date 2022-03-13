@@ -14,50 +14,68 @@ import {
 } from './Header.styles';
 import { ListItems, NavigationData } from './Nav';
 import { useActions, openMenu, closeMenu } from 'actions/headerActions';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
   const state = useActions({ isMenuOpen: false });
+  const [isDesctopMenuVisable, setDesctopMenuVisable] = useState(false);
+
+  useEffect(() => {
+    const menuVisable = () => {
+      const windowWidth = window.innerWidth;
+
+      if (windowWidth >= 1024) {
+        setDesctopMenuVisable(!isDesctopMenuVisable);
+      }
+    };
+    <NavigationBar />;
+    menuVisable();
+  }, []);
+
   return (
     <>
       <NavigationBar>
         <MainPanel>
-          {state.isMenuOpen ? (
-            <MobileMenuBtn onClick={closeMenu}>
-              <Image src={union} alt="union" layout="fill" objectFit="contain" />
-            </MobileMenuBtn>
-          ) : (
-            <MobileMenuBtn onClick={openMenu}>
-              <Image src={iconMenu} alt="time" layout="fill" objectFit="contain" />
-            </MobileMenuBtn>
-          )}
+          {!isDesctopMenuVisable ? (
+            state.isMenuOpen ? (
+              <MobileMenuBtn onClick={closeMenu}>
+                <Image src={union} alt="union" layout="fill" objectFit="contain" />
+              </MobileMenuBtn>
+            ) : (
+              <MobileMenuBtn onClick={openMenu}>
+                <Image src={iconMenu} alt="time" layout="fill" objectFit="contain" />
+              </MobileMenuBtn>
+            )
+          ) : null}
           <LogoLink />
         </MainPanel>
-        <ListItems
-          alignItems="center"
-          flexDirection="row"
-          justifyContent="center"
-          backGroundColor="transparent"
-          content={NavigationData}
-        />
+        {isDesctopMenuVisable ? (
+          <ListItems
+            alignItems="center"
+            flexDirection="row"
+            justifyContent="center"
+            backGroundColor="transparent"
+            content={NavigationData}
+          />
+        ) : null}
         <UserPanel>
           {/* TODO search input */}
           <UserImg>
             <Image src={userImg} alt="userImage" layout="fill" objectFit="contain" />
           </UserImg>
         </UserPanel>
+        {state.isMenuOpen ? (
+          <MobileMenuPanel>
+            <ListItems
+              alignItems="flex-start"
+              flexDirection="column"
+              justifyContent="flex-start"
+              backGroundColor="transparent"
+              content={NavigationData}
+            />
+          </MobileMenuPanel>
+        ) : null}
       </NavigationBar>
-      {state.isMenuOpen ? (
-        <MobileMenuPanel>
-          <ListItems
-            displayView="flex"
-            alignItems="flex-start"
-            flexDirection="column"
-            justifyContent="flex-start"
-            backGroundColor="transparent"
-            content={NavigationData}
-          />
-        </MobileMenuPanel>
-      ) : null}
     </>
   );
 }
