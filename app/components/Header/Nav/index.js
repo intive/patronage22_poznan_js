@@ -20,7 +20,6 @@ export const ListItems = ({ content, ...props }) => {
 };
 
 ListItems.propTypes = {
-  displayView: PropTypes.oneOf(['none', 'flex']),
   flexDirection: PropTypes.oneOf(['row', 'column']),
   justifyContent: PropTypes.oneOf([
     'flex-start',

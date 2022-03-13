@@ -13,23 +13,24 @@ export const NavigationBar = styled.header`
   padding: 12px 0 8px 12px;
   z-index: 999;
   ${device.tablet} {
-    height: 72px;
+    height: 74px;
     padding: 18px 0 10px 18px;
   }
   ${device.desktop} {
     padding: 32px 48px;
+    height: 96px;
   }
 `;
-const div = styled.div`
+const FlexContainer = styled.div`
   display: flex;
   align-items: center;
   height: 32px;
 `;
-export const MainPanel = styled(div)`
+export const MainPanel = styled(FlexContainer)`
   padding: 0;
 `;
 
-export const UserPanel = styled(div)`
+export const UserPanel = styled(FlexContainer)`
   padding: 4px 0;
 `;
 
@@ -43,9 +44,6 @@ export const MobileMenuBtn = styled.button`
   color: white;
   background-color: transparent;
   cursor: pointer;
-  ${device.desktop} {
-    display: none;
-  }
 `;
 
 export const UserImg = styled.div`
@@ -55,6 +53,7 @@ export const UserImg = styled.div`
   border-radius: 4px;
   margin-top: 5px;
   position: relative;
+  cursor: pointer;
 `;
 
 export const MobileMenuPanel = styled.div`
@@ -63,7 +62,9 @@ export const MobileMenuPanel = styled.div`
   backdrop-filter: blur(48px);
   left: 0;
   right: 0;
-  height: 100vh;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
   ${device.desktop} {
     display: none;
   }
