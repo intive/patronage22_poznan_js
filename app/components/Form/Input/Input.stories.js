@@ -1,22 +1,25 @@
 import Input from '.';
-
+import { useState } from 'react';
 export default {
   title: 'Form/Input',
   component: Input,
 };
 
-const Template = (args) => <Input {...args} />;
+const Template = (args) => {
+  const [value, setValue] = useState(args.value || '');
+  return <Input {...args} onChange={(e) => setValue(e.target.value)} value={value} />;
+};
 
 export const TextInput = Template.bind({});
 TextInput.args = {
   id: 'text-input',
-  label: 'Text',
+  label: 'Label',
 };
 
 export const InputWithError = Template.bind({});
 InputWithError.args = {
   id: 'oops',
-  label: 'Oops',
+  label: 'Label',
   error: 'Validation error',
 };
 
@@ -30,6 +33,6 @@ EmailInput.args = {
 export const DisabledInput = Template.bind({});
 DisabledInput.args = {
   id: 'its-disabled',
-  label: 'Disabled',
+  label: 'Label',
   disabled: true,
 };
