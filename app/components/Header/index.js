@@ -10,7 +10,7 @@ import {
 } from './headerStyle';
 import LogoLink from 'components/UI/LogoLink';
 import Icon from 'components/Icon';
-import { SearchMoviesInput } from '../SearchMoviesInput/SearchMoviesInput';
+import SearchMoviesInput from 'components/UI/SearchMoviesInput';
 
 import { useState } from 'react';
 
