@@ -32,9 +32,10 @@ const StyledButton = styled.button`
     primary &&
     css`
       backdrop-filter: none;
+      border: none;
+      box-shadow: none;
       background: #ffffff;
       color: #1f1d2b;
-      border: none;
       border-radius: 12px;
     `}
 
@@ -43,11 +44,11 @@ const StyledButton = styled.button`
     css`
        {
         backdrop-filter: none;
+        border: none;
+        box-shadow: none;
         display: flex;
         align-items: center;
         justify-content: center;
-        border: none;
-        box-shadow: none;
       }
     `}
 
