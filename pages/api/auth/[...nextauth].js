@@ -37,6 +37,8 @@ export default NextAuth({
     }),
   ],
   callbacks: {
+    // for cross-platform use (Android and Web), the /api/login endpoint (instead of next-auth) would generate and return the JWT and we would use that pre-made token here
+    // so that Android can use the /api/login endpoint and then pass the JWT from there to /api/movies/* etc.
     async jwt({ token, user }) {
       if (user) {
         return {
