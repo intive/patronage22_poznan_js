@@ -1,4 +1,4 @@
-import { getMoviesPopular } from '../../../lib/services/movieDb';
+import { getListOfPopularMovies } from '../../../lib/services/movieDb';
 
 /**
  * @swagger
@@ -19,7 +19,7 @@ import { getMoviesPopular } from '../../../lib/services/movieDb';
 export default async function handler(req, res) {
   try {
     const { id } = req.query;
-    const movies = await getMoviesPopular(id);
+    const movies = await getListOfPopularMovies(id);
     if (!movies) {
       return res.status(404).json([]);
     }

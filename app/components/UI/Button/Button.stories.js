@@ -69,3 +69,10 @@ IconWithBg.args = {
   iconWithBg: true,
   content: <Icon type="x-mark" size="lg" />,
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+  primary: true,
+  isLoading: true,
+  fullWidth: true,
+};
