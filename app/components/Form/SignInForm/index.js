@@ -22,7 +22,7 @@ export default function SignInForm() {
       setEmailError('Please enter your email.');
     } else if (!emailPattern.test(email)) {
       isErrorOccured = true;
-      setEmailError('Please provide correct email address.');
+      setEmailError('Invalid email format.');
     }
 
     if (!password) {
@@ -30,7 +30,7 @@ export default function SignInForm() {
       setPasswordError('Please enter your password.');
     } else if (password.length < 5) {
       isErrorOccured = true;
-      setPasswordError('Password should have at least 5 characters.');
+      setPasswordError('Enter at least 5 characters.');
     }
 
     if (!isErrorOccured) {
