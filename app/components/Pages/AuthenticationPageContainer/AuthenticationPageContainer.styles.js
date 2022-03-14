@@ -17,12 +17,9 @@ export const Wrapper = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 40px 20px;
+  padding-left: 20px;
+  padding-top: 40px;
   ${device.tablet} {
-    width: auto;
     margin-right: 10px;
     padding: 0 50px;
     background-color: #2a2535;
@@ -34,8 +31,6 @@ export const FormContainer = styled.div`
   }
 `;
 export const Form = styled.div`
-  width: 55vw;
-  min-width: 270px;
   max-height: 98vh;
   ${device.tablet} {
     width: 340px;
