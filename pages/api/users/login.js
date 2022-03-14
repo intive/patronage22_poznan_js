@@ -1,4 +1,4 @@
-import mongoClient from 'lib/mongodb';
+import mongoClient from 'lib/mongoDb';
 import { getPassHash } from 'lib/hash';
 
 export default async function handler(req, res) {

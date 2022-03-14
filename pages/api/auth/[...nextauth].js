@@ -1,6 +1,5 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { apiUrl } from 'lib/config';
 
 const hour = 60 * 60;
 const day = 24 * hour;
@@ -11,10 +10,11 @@ export default NextAuth({
     CredentialsProvider({
       id: 'credentials',
       name: 'Credentials',
-      authorize: async (credentials) => {
+      authorize: async ({ email, password }) => {
         try {
-          const payload = { email: credentials.email, password: credentials.password };
-          const res = await fetch(`${apiUrl}/api/users/login`, {
+          const payload = { email, password };
+          const loginURL = `${process.env.NEXT_PUBLIC_API_URL}/api/users/login`;
+          const res = await fetch(loginURL, {
             method: 'POST',
             body: JSON.stringify(payload),
             headers: {

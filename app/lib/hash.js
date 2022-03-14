@@ -7,7 +7,7 @@ export function getPassHash(password) {
 }
 
 export function getSessionKey() {
-  const hash = createHash('sha256', 'patronage2022_session_secret')
+  const hash = createHash('sha256', process.env.NEXTAUTH_SECRET)
     .update(randomBytes(32))
     .digest('hex');
   return hash;

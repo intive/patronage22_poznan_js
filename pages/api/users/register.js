@@ -1,4 +1,4 @@
-import mongoClient from 'lib/mongodb';
+import mongoClient from 'lib/mongoDb';
 import { randomUUID } from 'crypto';
 import { getPassHash } from 'lib/hash';
 

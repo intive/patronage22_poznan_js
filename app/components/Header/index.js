@@ -1,20 +1,14 @@
 import { MainNav, MobileNav } from './Nav';
 import { mobileMenu, userImg } from './menuData';
-import {
-  MainNavigationBar,
-  UserPanel,
-  MobileMenuBtn,
-  UserImg,
-  NavigationBar,
-  ShowAccount,
-} from './headerStyle';
+import { MainNavigationBar, UserPanel, MobileMenuBtn, UserImg, NavigationBar } from './headerStyle';
 import LogoLink from 'components/UI/LogoLink';
-import Icon from 'components/Icon';
 
 import { useState } from 'react';
+import { signOut, useSession } from 'next-auth/react';
 
 export default function Header() {
   const [isMobileMenuVisible, setMobileMenu] = useState(false);
+  const { data: session } = useSession();
   return (
     <>
       <NavigationBar>
@@ -26,11 +20,8 @@ export default function Header() {
           <MainNav />
         </MainNavigationBar>
         <UserPanel>
-          {/* TODO search input */}
-          <UserImg>{userImg}</UserImg>
-          <ShowAccount>
-            <Icon type="sort-down" />
-          </ShowAccount>
+          {session.user?.name}
+          <UserImg onClick={() => signOut()}>{userImg}</UserImg>
         </UserPanel>
       </NavigationBar>
       {isMobileMenuVisible ? <MobileNav /> : null}

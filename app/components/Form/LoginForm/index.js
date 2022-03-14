@@ -1,43 +1,42 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import {
-  FormContainer,
-  FormHeader,
-  CheckboxWrapper,
-  SignUpLinkParagraph,
-  SignUpLink,
-  CheckboxContainer,
-  SignInButton,
-} from './LoginForm.styles';
+import { signIn } from 'next-auth/react';
+import { FormContainer, SignInButton } from './LoginForm.styles';
 
 // import { LoginInput } from './LoginInput.styles';
 import Input from '../Input';
-
+import { useRouter } from 'next/router';
 export default function LoginForm({ ...props }) {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [usernameError, setUsernameError] = useState('');
+  const [loginError, setLoginError] = useState(false);
+  const router = useRouter();
 
   const userLogin = async (e) => {
     e.preventDefault();
-    setUsernameError('');
-    if (!username || username.length < 5) {
-      setUsernameError('Invalid username');
-    }
+    setLoginError(false);
 
-    const user = { username, password };
-    console.log(user);
+    const user = { email, password };
+    const res = await signIn('credentials', { ...user, callbackUrl: '/', redirect: false });
+    if (res?.error) {
+      setLoginError(true);
+    } else {
+      setLoginError(false);
+    }
+    if (res.url) {
+      router.push(res.url);
+    }
   };
+
   return (
     <FormContainer {...props}>
-      <FormHeader>Sign In</FormHeader>
+      {loginError && <span style={{ color: 'red' }}>Invalid Credentials</span>}
       <Input
-        id="username"
+        id="email"
         type="text"
-        value={username}
-        error={usernameError}
-        onInputChange={(e) => setUsername(e.target.value)}
-        label="Username"
+        value={email}
+        onInputChange={(e) => setEmail(e.target.value)}
+        label="Email"
       />
       <Input
         id="password"
@@ -49,17 +48,6 @@ export default function LoginForm({ ...props }) {
       <SignInButton primary onClick={userLogin}>
         Sign In
       </SignInButton>
-      <CheckboxWrapper>
-        <CheckboxContainer>
-          <input type="checkbox" id="rememberMe" name="rememberMe" />
-          <label htmlFor="rememberMe">Remember me</label>
-        </CheckboxContainer>
-        <span>Need help?</span>
-      </CheckboxWrapper>
-      <SignUpLinkParagraph>
-        New to INTIVI?
-        <SignUpLink href="/create-account">Sign up now.</SignUpLink>
-      </SignUpLinkParagraph>
     </FormContainer>
   );
 }
