@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import useOnClickOutside from 'hooks/useOnClickOutside';
-import { SearchMoviesContainer, SearchInput } from './SearchMoviesInput.styles';
+import { SearchMoviesContainer, SearchInput, SearchButton } from './SearchMoviesInput.styles';
 import Button from 'components/UI/Button';
 import Icon from 'components/Icon';
 import PropTypes from 'prop-types';
@@ -38,9 +38,9 @@ export default function SearchMoviesInput() {
 
   return (
     <SearchMoviesContainer isExpanded={isExpanded} ref={containerRef}>
-      <Button onlyIcon onClick={toggleOpenSearchInput}>
+      <SearchButton onlyIcon onClick={toggleOpenSearchInput}>
         <Icon type="search" size="lg" />
-      </Button>
+      </SearchButton>
       {isExpanded && (
         <SearchInput
           isExpanded={isExpanded}
