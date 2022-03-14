@@ -1,4 +1,5 @@
 const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const namePattern = /^[A-Za-z0-9]*$/;
 const passwordPattern = /^(?!.*[\s])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
 const validateSignUpFormInputs = (inputValues) => {
@@ -32,6 +33,8 @@ export const validateUserEmail = (emailAdress) => {
 export const validateUserName = (name) => {
   if (!name) {
     return 'Name is required';
+  } else if (!namePattern.test(name)) {
+    return 'Name needs to contain letters and digits only';
   }
 
   return '';
