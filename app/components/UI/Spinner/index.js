@@ -9,10 +9,10 @@ to {
 }`;
 
 const Spinner = styled.span`
-  border: 4px solid #e6e6e6;
+  border: 4px solid #d2d0d0;
   border-left: 4px solid;
   border-radius: 50%;
-  color: #c2c2c2;
+  color: #8c8c8c;
   animation: ${rotate} 1s linear infinite;
   width: 24px;
   height: 24px;
