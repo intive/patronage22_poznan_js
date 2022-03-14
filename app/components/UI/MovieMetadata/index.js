@@ -1,4 +1,4 @@
-import { Wrapper, Item, Separator, ItemList } from './MovieMetadata.styles';
+import { Item, Separator, ItemList } from './MovieMetadata.styles';
 
 export default function MovieMetadata({ release_date, vote_average, popularity }) {
   return (
