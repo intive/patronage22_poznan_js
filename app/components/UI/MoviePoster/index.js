@@ -12,7 +12,7 @@ export default function MoviePoster({ src, alt, title, ...props }) {
       objectFit={'cover'}
       objectPosition={'50% 50%'}
       placeholder={'blur'}
-      blurDataURL={'public/images/placeholder-blur.png'}
+      blurDataURL={'images/placeholder-blur.png'}
       {...props}
     />
   );

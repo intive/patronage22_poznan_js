@@ -1,4 +1,4 @@
-import { getRecommendedMoviesById } from '../../../../lib/services/movieDb';
+import { getListOfRecommendedMoviesById } from '../../../../lib/services/movieDb';
 
 /**
  * @swagger
@@ -24,11 +24,11 @@ import { getRecommendedMoviesById } from '../../../../lib/services/movieDb';
 export default async function handler(req, res) {
   try {
     const { id } = req.query;
-    const movies = await getRecommendedMoviesById(id);
+    const movies = await getListOfRecommendedMoviesById(id);
     if (!movies) {
       return res.status(404).json();
     }
-    return res.status(200).json(movies);
+    return res.status(200).json(movies.results);
   } catch (e) {
     const message = e.response ? await e.response.text() : e.message;
     return res.status(400).json(message);
