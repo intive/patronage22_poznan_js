@@ -4,10 +4,9 @@ import { device } from 'consts/mediaQueries';
 export const FormHeader = styled.div`
   display: flex;
   flex-direction: column;
-  height: 150px;
-  padding-bottom: 24px;
+  height: 130px;
   ${device.tablet} {
-    padding-bottom: 32px;
+    height: 140px;
   }
 `;
 
