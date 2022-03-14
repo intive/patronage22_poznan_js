@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from 'consts/mediaQueries';
+
 export const Wrapper = styled.div`
   display: flex;
   height: 100vh;
@@ -17,28 +18,16 @@ export const Wrapper = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  padding-left: 20px;
-  padding-top: 40px;
+  padding: 20px;
+  min-width: 375px;
   ${device.tablet} {
     margin-right: 10px;
-    padding: 0 50px;
-    background-color: #2a2535;
+    padding: 50px;
+    background-color: inherit;
     border-radius: 12px;
   }
   ${device.desktop} {
     margin-right: 50px;
-    padding: 0px 100px;
-  }
-`;
-export const Form = styled.div`
-  max-height: 98vh;
-  ${device.tablet} {
-    width: 340px;
-    height: 600px;
-    padding-top: 30px;
-  }
-  ${device.desktop} {
-    width: 440px;
-    padding-top: 80px;
+    padding: 75px 100px;
   }
 `;
