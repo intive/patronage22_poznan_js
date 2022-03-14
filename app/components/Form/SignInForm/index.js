@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import Button from 'components/UI/Button';
 import Input from '../Input';
 import { FormContainer } from './SignInForm.styles';
 
-export default function SignInForm({ ...props }) {
+const emailPattern = /^[a-z\d]+[\w\d.-]*(\+[\w\d.-]*)?@(?:[a-z\d]+[a-z\d-]+\.){1,5}[a-z]{2,6}$/i;
+
+export default function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -14,21 +15,33 @@ export default function SignInForm({ ...props }) {
     e.preventDefault();
     setEmailError('');
     setPasswordError('');
-    if (!email || !password) {
-      if (!email) {
-        setEmailError('Please enter your email.');
-      }
-      if (!password) {
-        setPasswordError('Please enter your password.');
-      }
-    } else {
+    let isErrorOccured = false;
+
+    if (!email) {
+      isErrorOccured = true;
+      setEmailError('Please enter your email.');
+    } else if (!emailPattern.test(email)) {
+      isErrorOccured = true;
+      setEmailError('Please provide correct email address.');
+    }
+
+    if (!password) {
+      isErrorOccured = true;
+      setPasswordError('Please enter your password.');
+    } else if (password.length < 5) {
+      isErrorOccured = true;
+      setPasswordError('Password should have at least 5 characters.');
+    }
+
+    if (!isErrorOccured) {
       const user = { email, password };
+      // It's only temporary console.log:
       console.log(user);
     }
   };
 
   return (
-    <FormContainer {...props}>
+    <FormContainer>
       <Input
         id="email"
         type="email"
@@ -45,15 +58,9 @@ export default function SignInForm({ ...props }) {
         label="Password"
         error={passwordError}
       />
-      <Button style={{ width: '100%' }} primary onClick={userLogin}>
+      <Button fullWidth primary onClick={userLogin}>
         Sign in
       </Button>
     </FormContainer>
   );
 }
-
-SignInForm.propTypes = {
-  width: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  color: PropTypes.string,
-};
