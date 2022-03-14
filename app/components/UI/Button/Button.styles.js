@@ -33,7 +33,6 @@ const StyledButton = styled.button`
     css`
       backdrop-filter: none;
       border: none;
-      box-shadow: none;
       background-color: #ffffff;
       color: #1f1d2b;
       border-radius: 12px;
