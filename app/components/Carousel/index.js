@@ -111,7 +111,7 @@ const Carousel = ({ movies = [] }) => {
 };
 
 Carousel.propTypes = {
-  numOfChildren: PropTypes.oneOf([2, 3, 6]),
+  movies: PropTypes.array,
 };
 
 export default Carousel;
