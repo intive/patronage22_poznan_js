@@ -1,13 +1,9 @@
 import styled from 'styled-components';
-import { device } from 'consts/mediaQueries';
 
 export const FormHeader = styled.div`
   display: flex;
   flex-direction: column;
-  height: 130px;
-  ${device.tablet} {
-    height: 140px;
-  }
+  height: 135px;
 `;
 
 export const StyledLogo = styled.div`
