@@ -10,6 +10,19 @@ import Icon from 'components/Icon';
 
 import PropTypes from 'prop-types';
 
+const throttle = (fun, limit) => {
+  let wait = false;
+  return function () {
+    if (!wait) {
+      fun.call();
+      wait = true;
+      setTimeout(function () {
+        wait = false;
+      }, limit);
+    }
+  };
+};
+
 const Carousel = ({ movies = [] }) => {
   const [activeScreen, setActiveScreen] = useState(0);
   const [tilesPerScreen, setTilesPerScreen] = useState(1);
@@ -17,19 +30,6 @@ const Carousel = ({ movies = [] }) => {
   const tileCount = movies.length;
   const screenCount = Math.ceil(tileCount / tilesPerScreen);
   const lastScreenIndex = screenCount - 1;
-
-  const throttle = (fun, limit) => {
-    let wait = false;
-    return function () {
-      if (!wait) {
-        fun.call();
-        wait = true;
-        setTimeout(function () {
-          wait = false;
-        }, limit);
-      }
-    };
-  };
 
   useEffect(() => {
     const carouselWidth = () => {
