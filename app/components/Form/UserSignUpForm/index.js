@@ -4,6 +4,7 @@ import validateSignUpFormInputs, {
   validateUserPassword,
   validateUserName,
 } from 'utils/validateFormInputs';
+import { FormContainer } from '../Form.styles';
 import Input from '../Input';
 import Button from 'components/UI/Button';
 
@@ -28,23 +29,16 @@ const UserSignUpForm = () => {
     setErrorMsg({ ...errorMsg, [name]: error });
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsFormSubmitting(false), 3000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [isFormSubmitting]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const isError = checkForErrors();
-    if (!isError) {
+    const isFormValid = !validateInputs();
+    if (isFormValid) {
       handleFormData();
     }
   };
 
-  const checkForErrors = () => {
+  const validateInputs = () => {
     const errorMessages = validateSignUpFormInputs(inputValues);
     const isError = Object.values(errorMessages).some((input) => input !== '');
     isError ? setErrorMsg(errorMessages) : setErrorMsg(initialState);
@@ -53,21 +47,19 @@ const UserSignUpForm = () => {
 
   const handleFormData = async () => {
     setIsFormSubmitting(true);
-    // try {
-    //   const response = await fetch('/api/user', {
-    //     method: 'POST',
-    //     body: JSON.stringify(inputValues),
-    //   });
-    //   if (response.status !== 200) {
-    //     throw new Error(`Request failed: ${response.status}`);
-    //   }
-    // } catch (error) {
-    //   console.log(`Registration failed! ${error.message}`);
-    // }
+    console.log('Form submitted');
+    //TODO: send user data and handle response
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => setIsFormSubmitting(false), 3000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isFormSubmitting]);
+
   return (
-    <form>
+    <FormContainer>
       <Input
         id="email"
         type="email"
@@ -104,7 +96,7 @@ const UserSignUpForm = () => {
       >
         Sign up
       </Button>
-    </form>
+    </FormContainer>
   );
 };
 
