@@ -1,13 +1,13 @@
 import { Item, Separator, ItemList } from './MovieMetadata.styles';
 
-export default function MovieMetadata({ release_date, vote_average, popularity }) {
+export default function MovieMetadata({ movieData }) {
   return (
     <ItemList>
-      <Item>{release_date.slice(0, 4)}</Item>
+      <Item>{movieData.releaseDate.slice(0, 4)}</Item>
       <Separator />
-      <Item>{vote_average}/10</Item>
+      <Item>{movieData.voteAverage}/10</Item>
       <Separator />
-      <Item>{Math.floor(popularity)}</Item>
+      <Item>{Math.floor(movieData.popularity)}</Item>
     </ItemList>
   );
 }

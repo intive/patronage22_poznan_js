@@ -6,11 +6,14 @@ export default {
 };
 
 const metaDataObj = {
-  release_date: '1999-10-15',
+  releaseDate: '1999-10-15',
   popularity: 60.21,
-  vote_average: 8.4,
+  voteAverage: 8.4,
 };
 
-const Template = () => <MovieMetadata {...metaDataObj} />;
+const Template = ({ ...args }) => <MovieMetadata {...args} />;
 
 export const Default = Template.bind({});
+Default.args = {
+  movieData: metaDataObj,
+};
