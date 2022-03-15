@@ -1,6 +1,6 @@
-const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const emailPattern = /^[a-z\d]+[\w\d.-]*(\+[\w\d.-]*)?@(?:[a-z\d]+[a-z\d-]+\.){1,5}[a-z]{2,6}$/i;
 const namePattern = /^[A-Za-z0-9]*$/;
-const passwordPattern = /^(?!.*[\s])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+const passwordPattern = /^\S{6,}$/;
 
 const validateSignUpFormInputs = (inputValues) => {
   let errorMsg = {};
@@ -44,7 +44,7 @@ export const validateUserPassword = (password) => {
   if (!password) {
     return 'Password is required';
   } else if (!passwordPattern.test(password)) {
-    return 'Please provide password with at least one uppercase, digit and special sign, min. 8 characters long';
+    return 'Please provide one word min. 6 characters long';
   }
 
   return '';
