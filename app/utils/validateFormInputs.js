@@ -1,6 +1,6 @@
 const emailPattern = /^[a-z\d]+[\w\d.-]*(\+[\w\d.-]*)?@(?:[a-z\d]+[a-z\d-]+\.){1,5}[a-z]{2,6}$/i;
 const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,20}$/;
-
+const emailPatternSignIn = /^\S+@\S+\.\S+/;
 const validateSignUpFormInputs = (inputValues) => {
   let errorMsg = {};
 
@@ -34,4 +34,19 @@ export const validateUserPassword = (password) => {
   }
 
   return '';
+};
+
+export const validateSignInForm = (email, password) => {
+  const validationErrors = {};
+  if (!email) {
+    validationErrors.email = 'Please enter your email.';
+  } else if (!emailPatternSignIn.test(email)) {
+    validationErrors.email = 'Invalid email format.';
+  }
+  if (!password) {
+    validationErrors.password = 'Please enter your password.';
+  } else if (password.length < 5) {
+    validationErrors.password = 'Enter at least 5 characters.';
+  }
+  return validationErrors;
 };
