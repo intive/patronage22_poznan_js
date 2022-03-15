@@ -10,6 +10,7 @@ import {
 } from './headerStyle';
 import LogoLink from 'components/UI/LogoLink';
 import Icon from 'components/Icon';
+import SearchMoviesInput from 'components/UI/SearchMoviesInput';
 
 import { useState } from 'react';
 
@@ -26,7 +27,7 @@ export default function Header() {
           <MainNav />
         </MainNavigationBar>
         <UserPanel>
-          {/* TODO search input */}
+          <SearchMoviesInput />
           <UserImg>{userImg}</UserImg>
           <ShowAccount>
             <Icon type="sort-down" />
