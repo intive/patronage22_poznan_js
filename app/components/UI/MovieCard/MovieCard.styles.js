@@ -21,10 +21,6 @@ export const Wrapper = styled(flexDivStyle)`
   flex-direction: column;
   align-items: flex-start;
 
-  /* &:hover {
-    opacity: 0.8;
-  } */
-
   &:hover ${PosterWrapper} {
     opacity: 0.8;
   }
