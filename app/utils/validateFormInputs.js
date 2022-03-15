@@ -16,10 +16,10 @@ const validateSignUpFormInputs = (inputValues) => {
 
 export default validateSignUpFormInputs;
 
-export const validateUserEmail = (emailAdress) => {
-  if (!emailAdress) {
+export const validateUserEmail = (email) => {
+  if (!email) {
     return 'Email adress is required';
-  } else if (!emailPattern.test(emailAdress)) {
+  } else if (!emailPattern.test(email)) {
     return 'Please provide correct email adress';
   }
 
@@ -30,7 +30,7 @@ export const validateUserPassword = (password) => {
   if (!password) {
     return 'Password is required';
   } else if (!passwordPattern.test(password)) {
-    return 'Please provide password with at least one uppercase, digit and special sign, min. 8 and max. 20 characters long';
+    return 'Please provide password with at least one uppercase letter, digit and special sign, min. 8 and max. 20 characters long';
   }
 
   return '';

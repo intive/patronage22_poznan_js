@@ -29,6 +29,6 @@ export const FormContainer = styled.div`
 
   ${device.desktop} {
     margin-right: 50px;
-    padding: 100px;
+    padding: 75px 100px;
   }
 `;
