@@ -22,7 +22,7 @@ export const StyledInput = styled.input`
   padding-top: 15px;
   width: 100%;
   height: 72px;
-  border: ${({ error }) => (error && '2px solid #44ec52') || '1.5px solid #3b334c'};
+  border: ${({ error }) => (error && '1px solid #44ec52') || '1.5px solid #3b334c'};
   border-radius: 8px;
   background-color: #272233;
   color: #e9e9e9;
@@ -43,7 +43,7 @@ export const ErrorMessage = styled.p`
   bottom: 10px;
   line-height: 1.4;
   font-size: 0.9rem;
-  font-weight: bold;
+  font-weight: 400;
   color: #44ec52;
 `;
 

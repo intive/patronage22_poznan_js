@@ -1,12 +1,23 @@
 import { TabWrapper, FormHeader, TabButton } from './AuthenticationFormHeader.styles.js';
-import LogoLink from 'components/UI/LogoLink';
+import Image from 'next/image';
+import appLogoImg from '/public/app-logo.svg';
 import { useRouter } from 'next/router';
+import { StyledLogo } from './AuthenticationFormHeader.styles.js';
 
 export default function AuthenticationFormHeader({ active }) {
   const router = useRouter();
   return (
     <FormHeader>
-      <LogoLink />
+      <StyledLogo>
+        <Image
+          src={appLogoImg}
+          alt="InTiVi logo"
+          layout="fill"
+          objectFit="contain"
+          objectPosition="left"
+          priority="true"
+        />
+      </StyledLogo>
       <TabWrapper>
         <TabButton onClick={() => router.push('/sign-in')} active={active === 'sign-in'}>
           Sign in
