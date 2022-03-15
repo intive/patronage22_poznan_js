@@ -19,25 +19,34 @@ const Template = ({ numOfChildren, ...args }) => (
 );
 
 export const CarouselDesktop = Template.bind({});
-CarouselDesktop.args = {
+CarouselDesktop.parameters = {
   viewport: {
     defaultViewport: 'responsive',
   },
+};
+
+CarouselDesktop.args = {
   numOfChildren: 10,
 };
 
 export const CarouselTablet = Template.bind({});
-CarouselTablet.args = {
+CarouselTablet.parameters = {
   viewport: {
     defaultViewport: 'ipad',
   },
+};
+
+CarouselTablet.args = {
   numOfChildren: 10,
 };
 
 export const CarouselMobile = Template.bind({});
-CarouselMobile.args = {
+CarouselMobile.parameters = {
   viewport: {
     defaultViewport: 'iphonex',
   },
+};
+
+CarouselMobile.args = {
   numOfChildren: 10,
 };
