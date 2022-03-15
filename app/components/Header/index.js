@@ -15,6 +15,7 @@ import {
 import { NavigationData } from './Nav';
 import { MobileList, DesktopList } from './Nav/Nav.styles';
 import { useActions, openMenu, closeMenu } from 'actions/headerActions';
+import SearchMoviesInput from 'components/UI/SearchMoviesInput';
 
 export default function Header() {
   const state = useActions({ isMenuOpen: false });
@@ -37,7 +38,7 @@ export default function Header() {
         <DesktopList>{NavigationData}</DesktopList>
 
         <UserPanel>
-          {/* TODO search input */}
+          <SearchMoviesInput />
           <UserImg>
             <Image src={userImg} alt="userImage" layout="fill" objectFit="contain" />
           </UserImg>
