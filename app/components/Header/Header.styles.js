@@ -2,7 +2,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { device } from '/app/consts/mediaQueries';
 
 export const NavigationBar = styled.header`
-  height: 52px;
   background: linear-gradient(180deg, #1e1b26 0%, rgba(30, 27, 38, 0) 100%);
   position: fixed;
   left: 0;
@@ -10,11 +9,11 @@ export const NavigationBar = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0 8px 12px;
+  padding: 16px 12px;
   z-index: 999;
   ${device.tablet} {
     height: 74px;
-    padding: 18px 0 10px 18px;
+    padding: 24px 30px;
   }
   ${device.desktop} {
     padding: 32px 48px;
@@ -28,10 +27,17 @@ const FlexContainer = styled.div`
 `;
 export const MainPanel = styled(FlexContainer)`
   padding: 0;
+  ${device.desktop} {
+    width: 15vw;
+  }
 `;
 
 export const UserPanel = styled(FlexContainer)`
-  padding: 4px 0;
+  padding: 0;
+  justify-content: flex-end;
+  ${device.desktop} {
+    width: 15vw;
+  }
 `;
 
 export const MobileMenuBtn = styled.button`

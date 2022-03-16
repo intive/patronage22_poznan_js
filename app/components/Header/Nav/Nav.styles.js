@@ -9,6 +9,7 @@ export const DesktopList = styled.ul`
     justify-content: center;
     align-items: center;
     margin: 0;
+    padding: 0;
     list-style-type: none;
   }
 `;
@@ -25,7 +26,7 @@ export const MobileList = styled.ul`
     display: none;
   }
   ${device.tablet} {
-    margin: 100px 16px;
+    margin: 100px 30px;
   }
 `;
 export const LinkStyle = styled.li`
@@ -33,17 +34,14 @@ export const LinkStyle = styled.li`
   text-align: center;
   margin: 14px 0;
   font-size: 16px;
-  line-height: 24px;
   font-weight: 500;
   color: white;
 
   ${device.tablet} {
     font-size: 18px;
-    line-height: 28px;
   }
   ${device.desktop} {
     margin: 0 28px;
     font-size: 20px;
-    line-height: 32px;
   }
 `;
