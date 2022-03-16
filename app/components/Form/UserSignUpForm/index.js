@@ -9,10 +9,11 @@ import Input from '../Input';
 import Button from 'components/UI/Button';
 
 const initialState = { email: '', password: '', name: '' };
+Object.freeze(initialState);
 
 const UserSignUpForm = () => {
   const [inputValues, setInputValues] = useState(initialState);
-  const [errorMsg, setErrorMsg] = useState(initialState);
+  const [inputErrors, setInputErrors] = useState({});
   const [isFormSubmitting, setIsFormSubmitting] = useState(false);
 
   const handleInputChange = (event) => {
@@ -26,13 +27,13 @@ const UserSignUpForm = () => {
   const handleBlur = (event, errorHandler) => {
     const { name } = event.target;
     const error = errorHandler(inputValues[name]);
-    setErrorMsg({ ...errorMsg, [name]: error });
+    setInputErrors({ ...inputErrors, [name]: error });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const isFormValid = !validateInputs();
+    const isFormValid = validateInputs();
     if (isFormValid) {
       handleFormData();
     }
@@ -40,9 +41,9 @@ const UserSignUpForm = () => {
 
   const validateInputs = () => {
     const errorMessages = validateSignUpFormInputs(inputValues);
-    const isError = Object.values(errorMessages).some((input) => input !== '');
-    isError ? setErrorMsg(errorMessages) : setErrorMsg(initialState);
-    return isError;
+    const isError = Object.values(errorMessages).some((errorMessage) => Boolean(errorMessage));
+    setInputErrors(isError ? errorMessages : {});
+    return !isError;
   };
 
   const handleFormData = async () => {
@@ -65,7 +66,7 @@ const UserSignUpForm = () => {
         type="email"
         label="Email adress"
         value={inputValues.email}
-        error={errorMsg.email}
+        error={inputErrors.email}
         onInputChange={handleInputChange}
         onBlur={(e) => handleBlur(e, validateUserEmail)}
       />
@@ -74,7 +75,7 @@ const UserSignUpForm = () => {
         type="text"
         label="Name"
         value={inputValues.name}
-        error={errorMsg.name}
+        error={inputErrors.name}
         onInputChange={handleInputChange}
         onBlur={(e) => handleBlur(e, validateUserName)}
       />
@@ -83,7 +84,7 @@ const UserSignUpForm = () => {
         type="password"
         label="Password"
         value={inputValues.password}
-        error={errorMsg.password}
+        error={inputErrors.password}
         onInputChange={handleInputChange}
         onBlur={(e) => handleBlur(e, validateUserPassword)}
       />
