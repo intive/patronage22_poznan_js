@@ -1,6 +1,6 @@
 import render, { screen } from '../../../../testUtils/setup';
 
-import Input from '../Input/index';
+import Input from '.';
 
 describe('Input', () => {
   it('has the given label', () => {

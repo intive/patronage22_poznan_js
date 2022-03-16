@@ -3,7 +3,7 @@ import { device } from 'consts/mediaQueries';
 
 export const Wrapper = styled.div`
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background-color: #2a2535;
   color: white;
@@ -26,6 +26,7 @@ export const FormContainer = styled.div`
     background-color: inherit;
     border-radius: 12px;
   }
+
   ${device.desktop} {
     margin-right: 50px;
     padding: 75px 100px;
