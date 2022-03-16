@@ -8,7 +8,6 @@ export default function AuthenticationPageContainer({ active }) {
     <Wrapper>
       <FormContainer>
         <AuthenticationFormHeader active={active} />
-        {/* It's only a temporary div. Here will be sign-in and sign-up component */}
         {active === 'sign-in' ? <SignInForm /> : <UserSignUpForm />}
       </FormContainer>
     </Wrapper>

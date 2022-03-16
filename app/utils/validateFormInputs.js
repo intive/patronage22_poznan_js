@@ -2,6 +2,7 @@ const emailSignUpPattern =
   /^[a-z\d]+[\w\d.-]*(\+[\w\d.-]*)?@(?:[a-z\d]+[a-z\d-]+\.){1,5}[a-z]{2,6}$/i;
 const nameSignUpPattern = /^[A-Za-z0-9]*$/;
 const passwordSignUpPattern = /^\S{6,}$/;
+const emailPatternSignIn = /^\S+@\S+\.\S+/;
 
 const validateSignUpFormInputs = (inputValues) => {
   let errorMsg = {};
