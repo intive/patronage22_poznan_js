@@ -4,14 +4,17 @@ import { Avatar } from './UserAvatar.styles';
 
 // useSession prop is passed in stories only to mock user session, do not use in app
 export default function UserAvatar({ size = 40, useSession = useSessionActual }) {
-  const { data: session = {} } = useSession();
-
-  const avatarSrc = `/images/avatars/${session.user?.avatar}.png`;
+  const { data: session } = useSession();
 
   return (
-    <Avatar size={size} blank={!session.user}>
-      {session.user?.avatar && (
-        <Image src={avatarSrc} layout="fill" objectFit="contain" alt="User avatar" />
+    <Avatar size={size} blank={!session?.user}>
+      {session?.user?.avatar && (
+        <Image
+          src={`/images/avatars/${session.user.avatar}.png`}
+          layout="fill"
+          objectFit="contain"
+          alt="User avatar"
+        />
       )}
     </Avatar>
   );
