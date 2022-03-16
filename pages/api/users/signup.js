@@ -23,7 +23,7 @@ import { validateSignUpUserEmail, validateSignUpUserPassword } from 'utils/valid
  *       required: true
  *       description: email
  *     responses:
- *       200:
+ *       201:
  *         description: "new user object (refer to api/users/signin schema)"
  *         content:
  *           application/json:
@@ -69,5 +69,5 @@ export default async function handler(req, res) {
   };
 
   await db.collection('users').insertOne(newUser);
-  return res.status(200).json({ ...newUser, passHash: undefined });
+  return res.status(201).json({ ...newUser, passHash: undefined });
 }
