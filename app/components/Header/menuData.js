@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import homeIcon from '/public/Home (Stroke).svg';
+import homeIcon from '/public/home.svg';
 
 const imageIcon = (
   <>
