@@ -26,7 +26,7 @@ export default function SignInForm() {
     }
   };
   useEffect(() => {
-    const timer = setTimeout(() => setIsFormSubmitting(false), 200);
+    const timer = setTimeout(() => setIsFormSubmitting(false), 300);
     return () => {
       clearTimeout(timer);
     };
