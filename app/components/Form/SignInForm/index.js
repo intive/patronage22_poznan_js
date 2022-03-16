@@ -5,19 +5,19 @@ import { FormContainer } from '../Form.styles';
 import { validateSignInForm } from 'utils/validateFormInputs';
 
 const initialState = { email: '', password: '' };
-
+Object.freeze(initialState);
 export default function SignInForm() {
   const [inputValues, setInputValues] = useState(initialState);
-  const [inputErrors, setInputErrors] = useState(initialState);
+  const [inputErrors, setInputErrors] = useState({});
 
   const userLogin = async (e) => {
     e.preventDefault();
-    setInputErrors({ initialState });
-    let validationErrors = validateSignInForm(inputValues.email, inputValues.password);
+    setInputErrors({});
+    let validationErrors = validateSignInForm(inputValues);
     if (Object.values(validationErrors).length > 0) {
       setInputErrors(validationErrors);
     } else {
-      const user = { inputValues };
+      const user = inputValues;
       // It's only temporary console.log:
       console.log(user);
     }

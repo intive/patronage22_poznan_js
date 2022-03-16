@@ -36,17 +36,17 @@ export const validateUserPassword = (password) => {
   return '';
 };
 
-export const validateSignInForm = (email, password) => {
+export const validateSignInForm = (inputValues) => {
   const validationErrors = {};
-  if (!email) {
+  if (!inputValues.email) {
     validationErrors.email = 'Please enter your email.';
-  } else if (!emailPatternSignIn.test(email)) {
+  } else if (!emailPatternSignIn.test(inputValues.email)) {
     validationErrors.email = 'Invalid email format.';
   }
-  if (!password) {
+  if (!inputValues.password) {
     validationErrors.password = 'Please enter your password.';
-  } else if (password.length < 5) {
-    validationErrors.password = 'Enter at least 5 characters.';
+  } else if (inputValues.password.length < 5) {
+    validationErrors.password = 'Password must contain at least 5 characters.';
   }
   return validationErrors;
 };
