@@ -10,15 +10,18 @@ import {
   faQuestionCircle,
   faArrowDown,
   faChevronRight,
+  faChevronLeft,
   faChevronDown,
   faGear,
   faSortDown,
+  faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 const iconMap = {
   'arrow-down': faArrowDown,
   'chevron-down': faChevronDown,
   'chevron-right': faChevronRight,
+  'chevron-left': faChevronLeft,
   'question-circle': faQuestionCircle,
   'volume-mute': faVolumeMute,
   'volume-up': faVolumeUp,
@@ -31,6 +34,7 @@ const iconMap = {
   twitter: faTwitter,
   youtube: faYoutube,
   'sort-down': faSortDown,
+  'chevron-left': faChevronLeft,
 };
 
 export default function Icon({ type, ...props }) {

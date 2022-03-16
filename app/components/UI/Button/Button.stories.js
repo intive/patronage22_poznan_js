@@ -75,4 +75,5 @@ Loading.args = {
   primary: true,
   isLoading: true,
   fullWidth: true,
+  disabled: true,
 };

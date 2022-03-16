@@ -1,32 +1,57 @@
-import { MainNav, MobileNav } from './Nav';
-import { mobileMenu, userImg } from './menuData';
-import { MainNavigationBar, UserPanel, MobileMenuBtn, UserImg, NavigationBar } from './headerStyle';
+import { useState } from 'react';
+import Image from 'next/image';
+
 import LogoLink from 'components/UI/LogoLink';
+import userImg from '/public/profile-icon.png';
+import iconMenu from '/public/time.svg';
+import union from '/public/union.svg';
+import {
+  UserPanel,
+  MainPanel,
+  UserImg,
+  NavigationBar,
+  MobileMenuBtn,
+  MobileMenuPanel,
+  GlobalStyle,
+} from './Header.styles';
+import { NavigationData } from './Nav';
+import { MobileList, DesktopList } from './Nav/Nav.styles';
 import SearchMoviesInput from 'components/UI/SearchMoviesInput';
 
-import { useState } from 'react';
-import { signOut, useSession } from 'next-auth/react';
-
 export default function Header() {
-  const [isMobileMenuVisible, setMobileMenu] = useState(false);
-  const { data: session } = useSession();
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
   return (
     <>
       <NavigationBar>
-        <MainNavigationBar>
+        <MainPanel>
+          {isMenuOpen ? (
+            <MobileMenuBtn onClick={() => setMenuOpen(!isMenuOpen)}>
+              <Image src={union} alt="union" layout="fill" objectFit="contain" />
+            </MobileMenuBtn>
+          ) : (
+            <MobileMenuBtn onClick={() => setMenuOpen(!isMenuOpen)}>
+              <Image src={iconMenu} alt="time" layout="fill" objectFit="contain" />
+            </MobileMenuBtn>
+          )}
           <LogoLink />
-          <MobileMenuBtn onClick={() => setMobileMenu(!isMobileMenuVisible)}>
-            {mobileMenu}
-          </MobileMenuBtn>
-          <MainNav />
-        </MainNavigationBar>
+        </MainPanel>
+        <DesktopList>{NavigationData}</DesktopList>
         <UserPanel>
           <SearchMoviesInput />
-          {session.user?.name}
-          <UserImg onClick={() => signOut()}>{userImg}</UserImg>
+          <UserImg>
+            <Image src={userImg} alt="userImage" layout="fill" objectFit="contain" />
+          </UserImg>
         </UserPanel>
+        {isMenuOpen ? (
+          <>
+            <GlobalStyle />
+            <MobileMenuPanel>
+              <MobileList>{NavigationData}</MobileList>
+            </MobileMenuPanel>
+          </>
+        ) : null}
       </NavigationBar>
-      {isMobileMenuVisible ? <MobileNav /> : null}
     </>
   );
 }

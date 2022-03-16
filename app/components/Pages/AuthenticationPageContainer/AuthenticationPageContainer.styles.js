@@ -3,7 +3,7 @@ import { device } from 'consts/mediaQueries';
 
 export const Wrapper = styled.div`
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background-color: #2a2535;
   color: white;
