@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Button from 'components/UI/Button';
 import Input from '../Input';
 import { FormContainer } from '../Form.styles';
@@ -9,11 +9,14 @@ Object.freeze(initialState);
 export default function SignInForm() {
   const [inputValues, setInputValues] = useState(initialState);
   const [inputErrors, setInputErrors] = useState({});
+  const [isFormSubmitting, setIsFormSubmitting] = useState(false);
 
   const userLogin = async (e) => {
     e.preventDefault();
     setInputErrors({});
+    setIsFormSubmitting(true);
     let validationErrors = validateSignInForm(inputValues);
+
     if (Object.values(validationErrors).length > 0) {
       setInputErrors(validationErrors);
     } else {
@@ -22,6 +25,12 @@ export default function SignInForm() {
       console.log(user);
     }
   };
+  useEffect(() => {
+    const timer = setTimeout(() => setIsFormSubmitting(false), 200);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isFormSubmitting]);
 
   return (
     <FormContainer>
@@ -43,7 +52,7 @@ export default function SignInForm() {
         label="Password"
         error={inputErrors.password}
       />
-      <Button fullWidth primary onClick={userLogin}>
+      <Button fullWidth primary isLoading={isFormSubmitting} onClick={userLogin}>
         Sign in
       </Button>
     </FormContainer>
