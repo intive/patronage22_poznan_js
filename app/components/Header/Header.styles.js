@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { device } from '/app/consts/mediaQueries';
 
 export const NavigationBar = styled.header`
@@ -71,4 +71,9 @@ export const MobileMenuPanel = styled.div`
   ${device.desktop} {
     display: none;
   }
+`;
+export const GlobalStyle = createGlobalStyle`
+body{
+overflow: ${({ overflow }) => overflow || 'hidden'}
+}
 `;

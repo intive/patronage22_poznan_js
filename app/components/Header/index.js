@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Image from 'next/image';
 
 import LogoLink from 'components/UI/LogoLink';
@@ -11,6 +12,7 @@ import {
   NavigationBar,
   MobileMenuBtn,
   MobileMenuPanel,
+  GlobalStyle,
 } from './Header.styles';
 import { NavigationData } from './Nav';
 import { MobileList, DesktopList } from './Nav/Nav.styles';
@@ -35,7 +37,6 @@ export default function Header() {
           <LogoLink />
         </MainPanel>
         <DesktopList>{NavigationData}</DesktopList>
-
         <UserPanel>
           <SearchMoviesInput />
           <UserImg>
@@ -43,9 +44,12 @@ export default function Header() {
           </UserImg>
         </UserPanel>
         {isMenuOpen ? (
-          <MobileMenuPanel>
-            <MobileList>{NavigationData}</MobileList>
-          </MobileMenuPanel>
+          <>
+            <GlobalStyle />
+            <MobileMenuPanel>
+              <MobileList>{NavigationData}</MobileList>
+            </MobileMenuPanel>
+          </>
         ) : null}
       </NavigationBar>
     </>
