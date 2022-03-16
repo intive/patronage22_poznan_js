@@ -24,11 +24,11 @@ import { getListOfMoviesByCategoryId } from '../../../../lib/services/movieDb';
 export default async function handler(req, res) {
   try {
     const { id } = req.query;
-    const movie = await getListOfMoviesByCategoryId(id);
-    if (!movie) {
+    const movies = await getListOfMoviesByCategoryId(id);
+    if (!movies) {
       return res.status(404).json();
     }
-    return res.status(200).json(movie.results);
+    return res.status(200).json(movies.results);
   } catch (e) {
     const message = e.response ? await e.response.text() : e.message;
     return res.status(400).json(message);
