@@ -4,8 +4,8 @@ import Input from '../Input';
 import { FormContainer } from '../Form.styles';
 import { validateSignInForm } from 'utils/validateFormInputs';
 
-const initialState = { email: '', password: '' };
-Object.freeze(initialState);
+const initialState = Object.freeze({ email: '', password: '' });
+
 export default function SignInForm() {
   const [inputValues, setInputValues] = useState(initialState);
   const [inputErrors, setInputErrors] = useState({});
