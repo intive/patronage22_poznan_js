@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import validateSignUpFormInputs, {
-  validateUserEmail,
-  validateUserPassword,
-  validateUserName,
+  validateSignUpUserEmail,
+  validateSignUpUserPassword,
+  validateSignUpUserName,
 } from 'utils/validateFormInputs';
 import { FormContainer } from '../Form.styles';
 import Input from '../Input';
-import Button from 'components/UI/Button';
+import { SignUpButton } from './UserSignUpForm.styles';
 
 const initialState = { email: '', password: '', name: '' };
 Object.freeze(initialState);
@@ -68,7 +68,7 @@ const UserSignUpForm = () => {
         value={inputValues.email}
         error={inputErrors.email}
         onInputChange={handleInputChange}
-        onBlur={(e) => handleBlur(e, validateUserEmail)}
+        onBlur={(e) => handleBlur(e, validateSignUpUserEmail)}
       />
       <Input
         id="name"
@@ -77,7 +77,7 @@ const UserSignUpForm = () => {
         value={inputValues.name}
         error={inputErrors.name}
         onInputChange={handleInputChange}
-        onBlur={(e) => handleBlur(e, validateUserName)}
+        onBlur={(e) => handleBlur(e, validateSignUpUserName)}
       />
       <Input
         id="password"
@@ -86,9 +86,9 @@ const UserSignUpForm = () => {
         value={inputValues.password}
         error={inputErrors.password}
         onInputChange={handleInputChange}
-        onBlur={(e) => handleBlur(e, validateUserPassword)}
+        onBlur={(e) => handleBlur(e, validateSignUpUserPassword)}
       />
-      <Button
+      <SignUpButton
         isLoading={isFormSubmitting}
         disabled={isFormSubmitting}
         primary
@@ -96,7 +96,7 @@ const UserSignUpForm = () => {
         onClick={handleSubmit}
       >
         Sign up
-      </Button>
+      </SignUpButton>
     </FormContainer>
   );
 };
