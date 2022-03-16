@@ -14,22 +14,21 @@ import {
 } from './Header.styles';
 import { NavigationData } from './Nav';
 import { MobileList, DesktopList } from './Nav/Nav.styles';
-import { useActions, openMenu, closeMenu } from 'actions/headerActions';
 import SearchMoviesInput from 'components/UI/SearchMoviesInput';
 
 export default function Header() {
-  const state = useActions({ isMenuOpen: false });
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
       <NavigationBar>
         <MainPanel>
-          {state.isMenuOpen ? (
-            <MobileMenuBtn onClick={closeMenu}>
+          {isMenuOpen ? (
+            <MobileMenuBtn onClick={() => setMenuOpen(!isMenuOpen)}>
               <Image src={union} alt="union" layout="fill" objectFit="contain" />
             </MobileMenuBtn>
           ) : (
-            <MobileMenuBtn onClick={openMenu}>
+            <MobileMenuBtn onClick={() => setMenuOpen(!isMenuOpen)}>
               <Image src={iconMenu} alt="time" layout="fill" objectFit="contain" />
             </MobileMenuBtn>
           )}
@@ -43,7 +42,7 @@ export default function Header() {
             <Image src={userImg} alt="userImage" layout="fill" objectFit="contain" />
           </UserImg>
         </UserPanel>
-        {state.isMenuOpen ? (
+        {isMenuOpen ? (
           <MobileMenuPanel>
             <MobileList>{NavigationData}</MobileList>
           </MobileMenuPanel>
