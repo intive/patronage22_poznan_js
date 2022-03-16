@@ -1,23 +1,37 @@
-import Link from 'next/link';
-import styles from '../styles/Home.module.css';
+import { useSession } from 'next-auth/react';
+import { getListOfPopularMovies } from '../lib/services/movieDb';
 
-import { useActions, openModal, closeModal } from '../examples/actions/app';
-
-export default function Home() {
-  const state = useActions({ isModalOpen: false });
+export default function Home({ popularMovies }) {
+  const { data: session } = useSession();
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to inTiVi</h1>
-        <p className={styles.description}>
-          Please <Link href={'/sign-in'}>sign in</Link>.
-        </p>
-        <p>
-          isModalOpen: {`${state.isModalOpen}`} <br />
-          <button onClick={() => openModal('Hi')}>action openModal</button>{' '}
-          <button onClick={closeModal}>action closeModal</button>
-        </p>
-      </main>
-    </div>
+    <main
+      style={{
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}
+    >
+      <div>
+        {session?.user ? (
+          <>
+            Signed in as {session.user.name} - {session.user.email}
+          </>
+        ) : (
+          <>Not signed in :(</>
+        )}
+      </div>
+      {popularMovies && <div>Popular movies: {popularMovies.join(', ')}</div>}
+    </main>
   );
+}
+
+export async function getServerSideProps({ req }) {
+  try {
+    const list = await getListOfPopularMovies(req);
+    return { props: { popularMovies: list.results?.map((movie) => movie.title) } };
+  } catch (e) {
+    return { props: {} };
+  }
 }

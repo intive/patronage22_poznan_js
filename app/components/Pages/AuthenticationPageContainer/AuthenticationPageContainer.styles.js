@@ -26,6 +26,7 @@ export const FormContainer = styled.div`
     background-color: inherit;
     border-radius: 12px;
   }
+
   ${device.desktop} {
     margin-right: 50px;
     padding: 75px 100px;

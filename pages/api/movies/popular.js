@@ -18,8 +18,7 @@ import { getListOfPopularMovies } from '../../../lib/services/movieDb';
  */
 export default async function handler(req, res) {
   try {
-    const { id } = req.query;
-    const movies = await getListOfPopularMovies(id);
+    const movies = await getListOfPopularMovies(req);
     if (!movies) {
       return res.status(404).json([]);
     }
