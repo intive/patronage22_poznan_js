@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import mongoClient from 'lib/mongoDb';
-import { getPassHash } from 'lib/hash';
+import mongoClient from 'server/mongoDb';
+import { getPassHash } from 'server/hash';
 
 /**
  * @swagger

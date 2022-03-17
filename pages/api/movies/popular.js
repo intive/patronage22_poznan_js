@@ -1,5 +1,5 @@
-import withAuth from 'lib/withAuth';
-import { getListOfPopularMovies } from '../../../lib/services/movieDb';
+import withAuth from 'server/withAuth';
+import { getListOfPopularMovies } from 'server/services/movieDb';
 
 /**
  * @swagger

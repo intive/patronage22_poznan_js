@@ -1,5 +1,5 @@
-import withAuth from 'lib/withAuth';
-import { getMovieById } from '../../../lib/services/movieDb';
+import withAuth from 'server/withAuth';
+import { getMovieById } from 'server/services/movieDb';
 
 /**
  * @swagger
