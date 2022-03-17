@@ -4,22 +4,22 @@ import { getListOfMoviesByCategoryId } from '../../../../lib/services/movieDb';
  * @swagger
  * /api/movies/category/{id}:
  *   get:
- *     summary: Get a list of movies belonging to given category.
- *     description: Returns a list of movies belonging to given category.
+ *     summary: Get a list of movies belonging to given genre
+ *     description: Returns a list of movies belonging to given genre
  *     parameters:
  *     - in: path
  *       name: id
  *       required: true
- *       description: Id of the category to get a list of movies belonging to given category.
+ *       description: Comma separated value of genre ids that you want to include in the results.
  *     responses:
  *       200:
- *         description: movie object
+ *         description: list of movies
  *         content:
  *           application/json:
  *             schema:
- *               type: object
+ *               type: array
  *       404:
- *         description: movie not found
+ *         description: movies not found
  */
 export default async function handler(req, res) {
   try {
