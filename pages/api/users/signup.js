@@ -60,10 +60,14 @@ export default async function handler(req, res) {
   }
   const passHash = getPassHash(password);
 
+  // random avatar from 1 to 10
+  const randomAvatar = Math.floor(Math.random() * 10 + 1);
+
   const newUser = {
     username,
     email,
     passHash,
+    avatar: randomAvatar,
     id: randomUUID(),
     createdAt: new Date(),
   };
