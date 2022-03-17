@@ -69,7 +69,7 @@ export default function SignInForm() {
       {loginError && (
         <GeneralErrorMessage>
           <ErrorIcon type="x-mark" style={{ paddingTop: '2px' }} />
-          <span>Please enter correct login data.</span>
+          <span>Invalid email or password.</span>
         </GeneralErrorMessage>
       )}
       <Button fullWidth primary isLoading={isFormSubmitting} onClick={userLogin}>
