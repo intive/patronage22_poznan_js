@@ -1,4 +1,5 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { SessionProvider } from 'next-auth/react';
 import '../styles/fonts.css';
 import '../styles/globals.css';
 
@@ -32,3 +33,11 @@ export const parameters = {
     defaultViewport: 'responsive',
   },
 };
+
+export const decorators = [
+  (Story) => (
+    <SessionProvider session={{}}>
+      <Story />
+    </SessionProvider>
+  ),
+];

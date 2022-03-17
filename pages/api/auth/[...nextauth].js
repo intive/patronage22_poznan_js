@@ -44,13 +44,23 @@ export default NextAuth({
         return {
           ...token,
           name: user.username,
+          createdAt: user.createdAt,
+          avatar: user.avatar,
         };
       }
       return token;
     },
     // session is visible on the client - unsafe
     async session({ session, token }) {
-      return { ...session, user: { name: token.name, email: token.email } };
+      return {
+        ...session,
+        user: {
+          name: token.name,
+          email: token.email,
+          avatar: token.avatar,
+          createdAt: token.createdAt,
+        },
+      };
     },
   },
   session: {

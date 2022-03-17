@@ -1,8 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 import Button from 'components/UI/Button';
 import Input from '../Input';
 import { FormContainer } from '../Form.styles';
 import { validateSignInForm } from 'utils/validateFormInputs';
+import { ErrorIcon } from '../Input/Input.styles';
+import { GeneralErrorMessage } from './SignInForm.styles';
 
 const initialState = Object.freeze({ email: '', password: '' });
 
@@ -10,27 +14,37 @@ export default function SignInForm() {
   const [inputValues, setInputValues] = useState(initialState);
   const [inputErrors, setInputErrors] = useState({});
   const [isFormSubmitting, setIsFormSubmitting] = useState(false);
+  const [loginError, setLoginError] = useState(false);
+  const router = useRouter();
 
   const userLogin = async (e) => {
     e.preventDefault();
     setInputErrors({});
-    setIsFormSubmitting(true);
+    setLoginError(false);
     let validationErrors = validateSignInForm(inputValues);
 
     if (Object.values(validationErrors).length > 0) {
       setInputErrors(validationErrors);
     } else {
+      setIsFormSubmitting(true);
       const user = inputValues;
-      // It's only temporary console.log:
-      console.log(user);
+      const res = await signIn('credentials', { ...user, callbackUrl: '/', redirect: false });
+      authenticateUser(res);
+      setIsFormSubmitting(false);
     }
   };
-  useEffect(() => {
-    const timer = setTimeout(() => setIsFormSubmitting(false), 300);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [isFormSubmitting]);
+
+  const authenticateUser = (res) => {
+    if (res?.error) {
+      setLoginError(true);
+      setInputValues(initialState);
+    } else {
+      setLoginError(false);
+    }
+    if (res.url) {
+      router.push(res.url);
+    }
+  };
 
   return (
     <FormContainer>
@@ -52,6 +66,12 @@ export default function SignInForm() {
         label="Password"
         error={inputErrors.password}
       />
+      {loginError && (
+        <GeneralErrorMessage>
+          <ErrorIcon type="x-mark" style={{ paddingTop: '2px' }} />
+          <span>Invalid email or password.</span>
+        </GeneralErrorMessage>
+      )}
       <Button fullWidth primary isLoading={isFormSubmitting} onClick={userLogin}>
         Sign in
       </Button>

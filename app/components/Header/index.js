@@ -2,13 +2,11 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 import LogoLink from 'components/UI/LogoLink';
-import userImg from '/public/profile-icon.png';
 import iconMenu from '/public/time.svg';
 import union from '/public/union.svg';
 import {
   UserPanel,
   MainPanel,
-  UserImg,
   NavigationBar,
   MobileMenuBtn,
   MobileMenuPanel,
@@ -17,6 +15,7 @@ import {
 import { NavigationData } from './Nav';
 import { MobileList, DesktopList } from './Nav/Nav.styles';
 import SearchMoviesInput from 'components/UI/SearchMoviesInput';
+import UserAvatar from 'components/UI/UserAvatar';
 
 export default function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -39,9 +38,7 @@ export default function Header() {
         <DesktopList>{NavigationData}</DesktopList>
         <UserPanel>
           <SearchMoviesInput />
-          <UserImg>
-            <Image src={userImg} alt="userImage" layout="fill" objectFit="contain" />
-          </UserImg>
+          <UserAvatar />
         </UserPanel>
         {isMenuOpen ? (
           <>
