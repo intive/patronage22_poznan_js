@@ -28,8 +28,6 @@ export default function SignInForm() {
     } else {
       setIsFormSubmitting(true);
       const user = inputValues;
-      // It's only temporary console.log:
-      console.log(user);
       const res = await signIn('credentials', { ...user, callbackUrl: '/', redirect: false });
       authenticateUser(res);
       setIsFormSubmitting(false);
