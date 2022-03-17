@@ -20,11 +20,13 @@ export const NavigationBar = styled.header`
     height: 96px;
   }
 `;
+
 const FlexContainer = styled.div`
   display: flex;
   align-items: center;
   height: 32px;
 `;
+
 export const MainPanel = styled(FlexContainer)`
   padding: 0;
   ${device.desktop} {
@@ -55,16 +57,6 @@ export const MobileMenuBtn = styled.button`
   }
 `;
 
-export const UserImg = styled.div`
-  height: 70px;
-  width: 70px;
-  line-height: 70px;
-  border-radius: 4px;
-  margin-top: 5px;
-  position: relative;
-  cursor: pointer;
-`;
-
 export const MobileMenuPanel = styled.div`
   position: fixed;
   background: linear-gradient(180deg, rgba(30, 27, 38, 0.56) 0%, rgba(30, 27, 38, 0.4) 100%);
@@ -78,8 +70,9 @@ export const MobileMenuPanel = styled.div`
     display: none;
   }
 `;
+
 export const GlobalStyle = createGlobalStyle`
-body{
-overflow: ${({ overflow }) => overflow || 'hidden'}
-}
+  body {
+      overflow: ${({ overflow }) => overflow || 'hidden'}
+  }
 `;
