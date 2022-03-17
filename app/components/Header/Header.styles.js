@@ -10,7 +10,6 @@ export const NavigationBar = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 16px 12px;
-  z-index: 999;
   ${device.tablet} {
     height: 74px;
     padding: 24px 30px;
