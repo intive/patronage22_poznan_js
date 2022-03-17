@@ -32,11 +32,14 @@ import { getPassHash } from 'lib/hash';
  *                   type: string
  *                 createdAt:
  *                   type: string
+ *                 avatar:
+ *                   type: number
  *               example:
  *                 username: "John"
  *                 email: "john@test.com"
  *                 id: "123"
  *                 createdAt: "2022-03-14T01:28:33.957Z"
+ *                 avatar: 7
  *       400:
  *         description: "error - bad request: missing required fields"
  *       401:

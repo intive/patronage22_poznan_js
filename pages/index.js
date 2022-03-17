@@ -1,3 +1,4 @@
+import UserAvatar from 'components/UI/UserAvatar';
 import { useSession } from 'next-auth/react';
 import { getListOfPopularMovies } from '../lib/services/movieDb';
 
@@ -16,7 +17,11 @@ export default function Home({ popularMovies }) {
       <div>
         {session?.user ? (
           <>
+            <UserAvatar size={200} />
+            <br />
             Signed in as {session.user.name} - {session.user.email}
+            <br />
+            Account created at {new Date(session.user.createdAt).toDateString()}
           </>
         ) : (
           <>Not signed in :(</>
