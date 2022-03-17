@@ -1,3 +1,4 @@
+import withAuth from 'lib/withAuth';
 import { getListOfSimilarMoviesById } from '../../../../lib/services/movieDb';
 
 /**
@@ -21,7 +22,7 @@ import { getListOfSimilarMoviesById } from '../../../../lib/services/movieDb';
  *       404:
  *         description: movie not found
  */
-export default async function handler(req, res) {
+async function handler(req, res) {
   try {
     const { id } = req.query;
     const movies = await getListOfSimilarMoviesById(id);
@@ -34,3 +35,5 @@ export default async function handler(req, res) {
     return res.status(400).json(message);
   }
 }
+
+export default withAuth(handler);

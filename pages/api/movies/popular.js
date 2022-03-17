@@ -1,3 +1,4 @@
+import withAuth from 'lib/withAuth';
 import { getListOfPopularMovies } from '../../../lib/services/movieDb';
 
 /**
@@ -16,7 +17,7 @@ import { getListOfPopularMovies } from '../../../lib/services/movieDb';
  *       404:
  *         description: list not found (shouldn't happen)
  */
-export default async function handler(req, res) {
+async function handler(req, res) {
   try {
     const movies = await getListOfPopularMovies(req);
     if (!movies) {
@@ -28,3 +29,5 @@ export default async function handler(req, res) {
     return res.status(400).json(message);
   }
 }
+
+export default withAuth(handler);
