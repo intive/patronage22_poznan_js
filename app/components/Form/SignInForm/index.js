@@ -37,6 +37,7 @@ export default function SignInForm() {
   const authenticateUser = (res) => {
     if (res?.error) {
       setLoginError(true);
+      setInputValues(initialState);
     } else {
       setLoginError(false);
     }
@@ -68,7 +69,7 @@ export default function SignInForm() {
       {loginError && (
         <GeneralErrorMessage>
           <ErrorIcon type="x-mark" style={{ paddingTop: '2px' }} />
-          <span>Please enter correct login data</span>
+          <span>Please enter correct login data.</span>
         </GeneralErrorMessage>
       )}
       <Button fullWidth primary isLoading={isFormSubmitting} onClick={userLogin}>
