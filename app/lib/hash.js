@@ -1,4 +1,5 @@
-import { createHash, randomBytes } from 'crypto';
+import { createHash } from 'crypto';
+import jsonwebtoken from 'jsonwebtoken';
 
 export function getPassHash(password) {
   const salt = process.env.PASS_SALT || '';
@@ -6,9 +7,16 @@ export function getPassHash(password) {
   return hash;
 }
 
-export function getSessionKey() {
-  const hash = createHash('sha256', process.env.NEXTAUTH_SECRET)
-    .update(randomBytes(32))
-    .digest('hex');
-  return hash;
+export function verifyJwtInRequest(req) {
+  try {
+    const authHeader = req.headers['authorization'] || '';
+    const cookieJWT = req.cookies['next-auth.session-token'];
+    const headerMatch = authHeader.match(/(bearer ){1}(.+)/i);
+    const headerJWT = headerMatch && headerMatch[2];
+    const input = headerJWT || cookieJWT;
+    if (!input) return null;
+    return jsonwebtoken.verify(input, process.env.NEXTAUTH_SECRET);
+  } catch (e) {
+    return null;
+  }
 }
