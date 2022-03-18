@@ -1,4 +1,4 @@
-import { getMovieSearchOutcome } from '../../../lib/services/movieDb';
+import { getMovieSearchOutcome } from 'server/services/movieDb';
 
 /**
  * @swagger
