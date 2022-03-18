@@ -5,8 +5,8 @@ import { getListOfMoviesByCategoryId } from 'server/services/movieDb';
  * @swagger
  * /api/movies/category/{id}:
  *   get:
- *     summary: Get a list of movies belonging to given genre
- *     description: Returns a list of movies belonging to given genre
+ *     summary: Get a list of movies belonging to given genre.
+ *     description: Returns a list of movies belonging to given genre.
  *     parameters:
  *     - in: path
  *       name: id

@@ -5,11 +5,11 @@ import { getListOfPopularMovies } from 'server/services/movieDb';
  * @swagger
  * /api/movies/popular:
  *   get:
- *     summary: Get a list of popular movies
- *     description: Returns a list of popular movies
+ *     summary: Get a list of popular movies.
+ *     description: Returns a list of popular movies.
  *     responses:
  *       200:
- *         description: list of movies
+ *         description: list of movies.
  *         content:
  *           application/json:
  *             schema:

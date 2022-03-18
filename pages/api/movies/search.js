@@ -6,7 +6,7 @@ import { getMovieSearchOutcome } from 'server/services/movieDb';
  * /api/movies/search:
  *   get:
  *     summary: Search for movies.
- *     description: Returns a list of movies by used query
+ *     description: Returns a list of movies by used query.
  *     parameters:
  *     - in: query
  *       name: query

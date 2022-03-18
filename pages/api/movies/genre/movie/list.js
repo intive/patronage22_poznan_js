@@ -5,11 +5,11 @@ import { getListOfGenres } from 'server/services/movieDb';
  * @swagger
  * /api/movies/genre/movie/list:
  *   get:
- *     summary: Get the list of official genres for movies
- *     description: Returns the list of official genres for movies
+ *     summary: Get the list of official genres for movies.
+ *     description: Returns the list of official genres for movies.
  *     responses:
  *       200:
- *         description: list of official genres for movies
+ *         description: list of official genres for movies.
  *         content:
  *           application/json:
  *             schema:
