@@ -18,6 +18,7 @@ export const FullScreenWrapper = styled.div`
 export const ContentWrapper = styled.div`
   min-height: 100%;
   min-width: 100%;
+  max-width: 100%;
   position: relative;
   overflow: hidden;
   background-color: #1e1b26;
@@ -25,8 +26,6 @@ export const ContentWrapper = styled.div`
     border-radius: 8px;
     min-height: 500px;
     min-width: 500px;
-  }
-  ${device.desktop} {
   }
 `;
 
