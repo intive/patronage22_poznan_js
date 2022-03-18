@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import useOnClickOutside from 'hooks/useOnClickOutside';
 import { SearchMoviesContainer, SearchInput, SearchButton } from './SearchMoviesInput.styles';
 import Button from 'components/UI/Button';
-import Icon from 'components/Icon';
+import Icon from 'components/UI/Icon';
 import PropTypes from 'prop-types';
 
 export default function SearchMoviesInput() {

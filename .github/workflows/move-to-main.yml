@@ -2,16 +2,26 @@ name: "Deploy main"
 
 on: 
   workflow_dispatch:
+    inputs:
+      force:
+        type: boolean
+        description: "Use --force when pushing to main"
+        required: true
+        default: false
 
 jobs:
   sync-branch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Merge develop -> main
-        uses: devmasx/merge-branch@master
+      - uses: actions/checkout@v3
+        name: Git checkout
         with:
-          type: now
-          from_branch: develop
-          target_branch: main
-          github_token: ${{ github.token }}
+          token: ${{ github.token }}
+          fetch-depth: 0
+      - name: Merge develop into main
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "wojciech.lechowicz@intive.com"
+          git checkout develop
+          git pull
+          git push origin main ${{ github.event.inputs.force == true ? '--force' : '' }}

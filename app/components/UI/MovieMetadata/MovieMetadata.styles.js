@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { device } from '../../../consts/mediaQueries';
+import { device } from 'consts/mediaQueries';
 
 const ItemList = styled.ul`
   color: inherit;

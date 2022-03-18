@@ -4,11 +4,11 @@ import LogoLink from 'components/UI/LogoLink';
 import Button from 'components/UI/Button';
 
 const userActions = {
-  signUp: { link: '/user/create-account', buttonText: 'Sign Up' },
-  signIn: { link: '/user/login', buttonText: 'Sign In' },
+  signUp: { link: '/sign-up', buttonText: 'Sign Up' },
+  signIn: { link: '/sign-in', buttonText: 'Sign In' },
 };
 const SimpleHeader = ({ mode }) => {
-  const { link, buttonText } = userActions[mode] || {};
+  const { link, buttonText } = userActions[mode] || userActions.signIn;
 
   return (
     <HeaderContainer>

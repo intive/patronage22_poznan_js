@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import { StyledInput, InputLabel, InputWrapper, ErrorMessage, ErrorIcon } from './Input.styles';
 
-const Input = ({ id, name, label, value, onInputChange, error, ...props }) => {
+const Input = ({ id, name, label, value, onInputChange, onInputBlur, error, ...props }) => {
   return (
     <InputWrapper>
       <StyledInput
         value={value}
         onChange={onInputChange}
+        onBlur={onInputBlur}
         name={name || id}
         id={id}
         error={error}
