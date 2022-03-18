@@ -1,45 +1,35 @@
-import mongoClient from 'lib/mongoDb';
-import { getPassHash } from 'lib/hash';
+import jwt from 'jsonwebtoken';
+import mongoClient from 'server/mongoDb';
+import { getPassHash } from 'server/hash';
 
 /**
  * @swagger
  * /api/users/signin:
  *   post:
  *     summary:  "Sign in with an existing user account."
- *     description: "Sign in with an existing user account."
- *     parameters:
- *     - in: body
- *       name: email
+ *     requestBody:
  *       required: true
- *       description: email
- *     - in: body
- *       name: password
- *       required: true
- *       description: password
+ *       content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *          examples:
+ *            john:
+ *              value:
+ *                email: "john@test.com"
+ *                password: "123456"
  *     responses:
  *       200:
  *         description: "user object"
  *         content:
  *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 email:
- *                   type: string
- *                 username:
- *                   type: string
- *                 id:
- *                   type: string
- *                 createdAt:
- *                   type: string
- *                 avatar:
- *                   type: number
- *               example:
- *                 username: "John"
- *                 email: "john@test.com"
- *                 id: "123"
- *                 createdAt: "2022-03-14T01:28:33.957Z"
- *                 avatar: 7
+ *             example:
+ *               username: "John"
+ *               email: "john@test.com"
+ *               id: "123"
+ *               createdAt: "2022-03-14T01:28:33.957Z"
+ *               avatar: 7
+ *               token: "lettersandnumbers.morelttersandnumbers.maybesomespecialcharstoo"
  *       400:
  *         description: "error - bad request: missing required fields"
  *       401:
@@ -67,5 +57,11 @@ export default async function handler(req, res) {
     return res.status(401).json();
   }
 
-  return res.status(200).json({ ...user, passHash: undefined, _id: undefined });
+  const userSanitized = { ...user, passHash: undefined, _id: undefined };
+
+  const token = jwt.sign(userSanitized, process.env.NEXTAUTH_SECRET, { expiresIn: '30d' });
+
+  // mobile clients are unable to decode our token (we would have to give them our secret)
+  // so we will be nice and give them some basic user info
+  return res.status(200).json({ ...userSanitized, token });
 }

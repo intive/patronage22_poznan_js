@@ -22,6 +22,6 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "wojciech.lechowicz@intive.com"
-          git checkout develop
-          git pull
-          git push origin main ${{ github.event.inputs.force == true ? '--force' : '' }}
+          git checkout main
+          git pull origin develop
+          git push origin main ${{ github.event.inputs.force == true && '--force' || '' }}

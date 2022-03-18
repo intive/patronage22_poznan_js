@@ -1,5 +1,4 @@
 import fetch from 'node-fetch';
-import { getSession } from 'next-auth/react';
 
 // wrapper class for fetch HTTP errors
 class HTTPResponseError extends Error {
@@ -108,11 +107,7 @@ export async function getMovieById(id) {
  * @export
  * @return {Promise<Object|null>} list of movies
  */
-export async function getListOfPopularMovies(req) {
-  const session = await getSession({ req });
-  if (!session) {
-    return null;
-  }
+export async function getListOfPopularMovies() {
   return movieDbClient('movie/popular');
 }
 
@@ -146,6 +141,20 @@ export async function getListOfRecommendedMoviesById(id) {
  * @return {Promise<Object|null>}  movie object
  */
 export async function getListOfMoviesByCategoryId(id) {
+  if (!id) return null;
   const query = `&with_genres=${id}`;
   return movieDbClient(`discover/movie`, query);
+}
+
+/**
+ * Search for movies.
+ *
+ * @export
+ * @param {string} query Pass a text query to search.
+ * @return {Promise<Object|null>}  movie object
+ */
+export async function getMovieSearchOutcome(queryText) {
+  if (!queryText) return null;
+  const query = `&query=${queryText}`;
+  return movieDbClient(`search/movie`, query);
 }
