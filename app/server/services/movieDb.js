@@ -42,9 +42,9 @@ const movieDbClient = async (url, query = '', method = 'GET', body) => {
 
   const data = await res.json();
 
-  if (url != 'genre/movie/list') {
-    if (Array.isArray(data.results)) {
-      data.results = data.results.map((movie) => {
+  if (Array.isArray(data.results)) {
+    data.results = data.results.map((movie) => {
+      if (movie.poster_path || movie.backdrop_path) {
         movie.images = {};
         if (movie.poster_path) {
           movie.images.poster = getFullImageURLs(movie.poster_path);
@@ -53,8 +53,10 @@ const movieDbClient = async (url, query = '', method = 'GET', body) => {
           movie.images.backdrop = getFullImageURLs(movie.backdrop_path);
         }
         return makeKeysCamelCase(movie);
-      });
-    } else {
+      }
+    });
+  } else {
+    if (data.poster_path || data.backdrop_path) {
       data.images = {};
       if (data.poster_path) {
         data.images.poster = getFullImageURLs(data.poster_path);
@@ -159,10 +161,10 @@ export async function getListOfMoviesByCategoryId(id) {
 }
 
 /**
- * Search for movies.
+ * Search for movies
  *
  * @export
- * @param {string} query Pass a text query to search.
+ * @param {string} query Pass a text query to search
  * @return {Promise<Object|null>}  movie object
  */
 export async function getMovieSearchOutcome(queryText) {
