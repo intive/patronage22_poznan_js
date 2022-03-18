@@ -1,4 +1,5 @@
-import { getListOfGenres } from '../../../../../lib/services/movieDb';
+import withAuth from 'server/withAuth';
+import { getListOfGenres } from 'server/services/movieDb';
 
 /**
  * @swagger
@@ -16,7 +17,7 @@ import { getListOfGenres } from '../../../../../lib/services/movieDb';
  *       404:
  *         description: list not found (shouldn't happen)
  */
-export default async function handler(req, res) {
+async function handler(req, res) {
   try {
     const listOfGenres = await getListOfGenres(req);
     if (!listOfGenres) {
@@ -28,3 +29,5 @@ export default async function handler(req, res) {
     return res.status(400).json(message);
   }
 }
+
+export default withAuth(handler);
