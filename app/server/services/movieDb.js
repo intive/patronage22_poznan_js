@@ -42,26 +42,28 @@ const movieDbClient = async (url, query = '', method = 'GET', body) => {
 
   const data = await res.json();
 
-  if (Array.isArray(data.results)) {
-    data.results = data.results.map((movie) => {
-      movie.images = {};
-      if (movie.poster_path) {
-        movie.images.poster = getFullImageURLs(movie.poster_path);
+  if (url != 'genre/movie/list') {
+    if (Array.isArray(data.results)) {
+      data.results = data.results.map((movie) => {
+        movie.images = {};
+        if (movie.poster_path) {
+          movie.images.poster = getFullImageURLs(movie.poster_path);
+        }
+        if (movie.backdrop_path) {
+          movie.images.backdrop = getFullImageURLs(movie.backdrop_path);
+        }
+        return makeKeysCamelCase(movie);
+      });
+    } else {
+      data.images = {};
+      if (data.poster_path) {
+        data.images.poster = getFullImageURLs(data.poster_path);
       }
-      if (movie.backdrop_path) {
-        movie.images.backdrop = getFullImageURLs(movie.backdrop_path);
+      if (data.backdrop_path) {
+        data.images.backdrop = getFullImageURLs(data.backdrop_path);
       }
-      return makeKeysCamelCase(movie);
-    });
-  } else {
-    data.images = {};
-    if (data.poster_path) {
-      data.images.poster = getFullImageURLs(data.poster_path);
+      return makeKeysCamelCase(data);
     }
-    if (data.backdrop_path) {
-      data.images.backdrop = getFullImageURLs(data.backdrop_path);
-    }
-    return makeKeysCamelCase(data);
   }
 
   return data;
