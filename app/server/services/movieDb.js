@@ -147,10 +147,10 @@ export async function getListOfMoviesByCategoryId(id) {
 }
 
 /**
- * Search for movies.
+ * Search for movies
  *
  * @export
- * @param {string} query Pass a text query to search.
+ * @param {string} query Pass a text query to search
  * @return {Promise<Object|null>}  movie object
  */
 export async function getMovieSearchOutcome(queryText) {
