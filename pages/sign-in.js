@@ -1,4 +1,4 @@
-import AuthenticationPageContainer from 'components/Pages/AuthenticationPageContainer';
+import AuthenticationPageContainer from 'components/Pages/AuthPageContainer';
 
 export default function Login() {
   return <AuthenticationPageContainer active="sign-in" />;

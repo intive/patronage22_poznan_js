@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import StyledButton from './Button.styles';
 import Link from 'next/link';
-import Spinner from '../Spinner';
+import Spinner from 'components/UI/Spinner';
 
 const Button = ({ children, isLoading, href, className, ...props }) => (
   <>
