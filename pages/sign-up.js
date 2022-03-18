@@ -1,4 +1,4 @@
-import AuthenticationPageContainer from 'components/Pages/AuthenticationPageContainer';
+import AuthenticationPageContainer from 'components/Pages/AuthPageContainer';
 
 export default function Register() {
   return <AuthenticationPageContainer active="sign-up" />;

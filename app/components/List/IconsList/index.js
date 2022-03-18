@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Icon from 'components/Icon';
+import Icon from 'components/UI/Icon';
 import { mockIcons } from 'components/Footer/mockLists';
 import { IconWrapper, IconList } from './IconsList.style';
 

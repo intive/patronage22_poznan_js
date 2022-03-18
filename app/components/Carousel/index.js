@@ -6,7 +6,7 @@ import {
   CarouselInner,
   NavButton,
 } from 'components/Carousel/Carousel.styles';
-import Icon from 'components/Icon';
+import Icon from 'components/UI/Icon';
 
 import PropTypes from 'prop-types';
 

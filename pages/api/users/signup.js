@@ -1,6 +1,6 @@
-import mongoClient from 'lib/mongoDb';
+import mongoClient from 'server/mongoDb';
 import { randomUUID } from 'crypto';
-import { getPassHash } from 'lib/hash';
+import { getPassHash } from 'server/hash';
 import { validateSignUpUserEmail, validateSignUpUserPassword } from 'utils/validateFormInputs';
 
 /**
