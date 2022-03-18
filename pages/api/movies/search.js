@@ -1,3 +1,4 @@
+import withAuth from 'server/withAuth';
 import { getMovieSearchOutcome } from 'server/services/movieDb';
 
 /**
@@ -21,7 +22,7 @@ import { getMovieSearchOutcome } from 'server/services/movieDb';
  *       404:
  *         description: movies not found
  */
-export default async function handler(req, res) {
+async function handler(req, res) {
   try {
     const { query } = req.query;
     const movies = await getMovieSearchOutcome(query);
@@ -34,3 +35,5 @@ export default async function handler(req, res) {
     return res.status(400).json(message);
   }
 }
+
+export default withAuth(handler);
