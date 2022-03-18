@@ -141,6 +141,7 @@ export async function getListOfRecommendedMoviesById(id) {
  * @return {Promise<Object|null>}  movie object
  */
 export async function getListOfMoviesByCategoryId(id) {
+  if (!id) return null;
   const query = `&with_genres=${id}`;
   return movieDbClient(`discover/movie`, query);
 }
@@ -153,6 +154,7 @@ export async function getListOfMoviesByCategoryId(id) {
  * @return {Promise<Object|null>}  movie object
  */
 export async function getMovieSearchOutcome(queryText) {
+  if (!queryText) return null;
   const query = `&query=${queryText}`;
   return movieDbClient(`search/movie`, query);
 }
