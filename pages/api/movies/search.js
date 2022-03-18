@@ -1,12 +1,17 @@
 import withAuth from 'server/withAuth';
-import { getListOfPopularMovies } from 'server/services/movieDb';
+import { getMovieSearchOutcome } from 'server/services/movieDb';
 
 /**
  * @swagger
- * /api/movies/popular:
+ * /api/movies/search:
  *   get:
- *     summary: Get a list of popular movies
- *     description: Returns a list of popular movies
+ *     summary: Search for movies.
+ *     description: Returns a list of movies by used query
+ *     parameters:
+ *     - in: query
+ *       name: query
+ *       required: true
+ *       description: Pass a text query to search.
  *     responses:
  *       200:
  *         description: list of movies
@@ -15,13 +20,14 @@ import { getListOfPopularMovies } from 'server/services/movieDb';
  *             schema:
  *               type: array
  *       404:
- *         description: list not found (shouldn't happen)
+ *         description: movies not found
  */
 async function handler(req, res) {
   try {
-    const movies = await getListOfPopularMovies(req);
+    const { query } = req.query;
+    const movies = await getMovieSearchOutcome(query);
     if (!movies) {
-      return res.status(404).json([]);
+      return res.status(404).json();
     }
     return res.status(200).json(movies.results);
   } catch (e) {

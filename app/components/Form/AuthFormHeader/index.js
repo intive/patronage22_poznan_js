@@ -1,8 +1,8 @@
-import { TabWrapper, FormHeader, TabButton } from './AuthenticationFormHeader.styles.js';
+import { TabWrapper, FormHeader, TabButton } from './AuthFormHeader.styles.js';
 import Image from 'next/image';
 import appLogoImg from '/public/app-logo.svg';
 import { useRouter } from 'next/router';
-import { StyledLogo } from './AuthenticationFormHeader.styles.js';
+import { StyledLogo } from './AuthFormHeader.styles.js';
 
 export default function AuthenticationFormHeader({ active }) {
   const router = useRouter();

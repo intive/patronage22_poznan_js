@@ -1,8 +1,7 @@
 import UserAvatar from 'components/UI/UserAvatar';
 import { useSession } from 'next-auth/react';
-import { getListOfPopularMovies } from '../lib/services/movieDb';
 
-export default function Home({ popularMovies }) {
+export default function Home() {
   const { data: session } = useSession();
   return (
     <main
@@ -27,16 +26,6 @@ export default function Home({ popularMovies }) {
           <>Not signed in :(</>
         )}
       </div>
-      {popularMovies && <div>Popular movies: {popularMovies.join(', ')}</div>}
     </main>
   );
-}
-
-export async function getServerSideProps({ req }) {
-  try {
-    const list = await getListOfPopularMovies(req);
-    return { props: { popularMovies: list.results?.map((movie) => movie.title) } };
-  } catch (e) {
-    return { props: {} };
-  }
 }

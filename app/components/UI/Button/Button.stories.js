@@ -1,4 +1,4 @@
-import Icon from 'components/Icon';
+import Icon from 'components/UI/Icon';
 import Button from '.';
 
 export default {
