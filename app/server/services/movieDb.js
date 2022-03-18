@@ -44,24 +44,28 @@ const movieDbClient = async (url, query = '', method = 'GET', body) => {
 
   if (Array.isArray(data.results)) {
     data.results = data.results.map((movie) => {
-      movie.images = {};
-      if (movie.poster_path) {
-        movie.images.poster = getFullImageURLs(movie.poster_path);
+      if (movie.poster_path || movie.backdrop_path) {
+        movie.images = {};
+        if (movie.poster_path) {
+          movie.images.poster = getFullImageURLs(movie.poster_path);
+        }
+        if (movie.backdrop_path) {
+          movie.images.backdrop = getFullImageURLs(movie.backdrop_path);
+        }
+        return makeKeysCamelCase(movie);
       }
-      if (movie.backdrop_path) {
-        movie.images.backdrop = getFullImageURLs(movie.backdrop_path);
-      }
-      return makeKeysCamelCase(movie);
     });
   } else {
-    data.images = {};
-    if (data.poster_path) {
-      data.images.poster = getFullImageURLs(data.poster_path);
+    if (data.poster_path || data.backdrop_path) {
+      data.images = {};
+      if (data.poster_path) {
+        data.images.poster = getFullImageURLs(data.poster_path);
+      }
+      if (data.backdrop_path) {
+        data.images.backdrop = getFullImageURLs(data.backdrop_path);
+      }
+      return makeKeysCamelCase(data);
     }
-    if (data.backdrop_path) {
-      data.images.backdrop = getFullImageURLs(data.backdrop_path);
-    }
-    return makeKeysCamelCase(data);
   }
 
   return data;
@@ -109,6 +113,16 @@ export async function getMovieById(id) {
  */
 export async function getListOfPopularMovies() {
   return movieDbClient('movie/popular');
+}
+
+/**
+ * Get the list of official genres for movies
+ *
+ * @export
+ * @return {Promise<Object|null>} list of official genres for movies
+ */
+export async function getListOfGenres() {
+  return movieDbClient('genre/movie/list');
 }
 
 /**
