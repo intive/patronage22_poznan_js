@@ -5,16 +5,9 @@ export default {
   component: Modal,
 };
 
-const Template = ({ content, ...args }) => (
-  <div style={{ backgroundColor: 'grey', width: '100vw', height: '100vh' }}>
-    <Modal {...args}>{content}</Modal>;
-  </div>
-);
+const Template = ({ modalContent }) => <Modal>{modalContent}</Modal>;
 
 export const Default = Template.bind({});
-Default.args = {
-  backGroundColor: 'red',
-};
 
 export const TabletHeader = Template.bind({});
 TabletHeader.parameters = {
@@ -22,16 +15,10 @@ TabletHeader.parameters = {
     defaultViewport: 'ipad',
   },
 };
-TabletHeader.args = {
-  backGroundColor: 'red',
-};
 
 export const MobileHeader = Template.bind({});
 MobileHeader.parameters = {
   viewport: {
     defaultViewport: 'iphonex',
   },
-};
-MobileHeader.args = {
-  backGroundColor: 'red',
 };
