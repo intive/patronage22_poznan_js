@@ -4,11 +4,11 @@ import { getListOfPopularMovies } from '../lib/services/movieDb';
 import Modal from 'components/Modal';
 import { useActions, openModal } from 'actions/app';
 import Button from 'components/UI/Button';
-import MoviePoster from 'components/UI/MoviePoster';
 
 export default function Home({ popularMovies }) {
   const { data: session } = useSession();
   const state = useActions({ isModalOpen: false, content: '' });
+  const { isModalOpen, content } = state;
   return (
     <main
       style={{
@@ -33,16 +33,8 @@ export default function Home({ popularMovies }) {
         )}
       </div>
       {popularMovies && <div>Popular movies: {popularMovies.join(', ')}</div>}
-      <Button
-        onClick={() =>
-          openModal(
-            <MoviePoster src={'https://image.tmdb.org/t/p/w342/yreqWiQ7IOkXWVB2Tz4LJIs7xqA.jpg'} />
-          )
-        }
-      >
-        OpenModal with Poster
-      </Button>
-      {state.isModalOpen && <Modal content={state.content} />}
+      <Button onClick={() => openModal(<h2>Modal</h2>)}>OpenModal</Button>
+      {isModalOpen && <Modal content={content} />}
     </main>
   );
 }
