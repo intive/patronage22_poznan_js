@@ -5,30 +5,28 @@ import Button from 'components/UI/Button';
 
 export const FullScreenWrapper = styled.div`
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
+  z-index: 1001;
   background: linear-gradient(180deg, rgba(30, 27, 38, 0.56) 0%, rgba(30, 27, 38, 0.08) 100%);
 `;
 export const ContentWrapper = styled.div`
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: ${({ backGroundColor }) => backGroundColor || 'transparent'};
+  min-height: 100%;
+  min-width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #1e1b26;
   ${device.tablet} {
-    left: 10%;
-    right: 10%;
-    top: 10%;
-    bottom: 5%;
+    border-radius: 8px;
+    min-height: 500px;
+    min-width: 500px;
   }
   ${device.desktop} {
-    left: 15%;
-    right: 15%;
-    top: 7%;
-    bottom: 3%;
   }
 `;
 
