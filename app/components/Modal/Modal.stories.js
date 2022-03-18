@@ -8,16 +8,21 @@ export default {
 const Template = ({ modalContent }) => <Modal>{modalContent}</Modal>;
 
 export const Default = Template.bind({});
+Default.parameters = {
+  viewport: {
+    defaultViewport: 'responsive',
+  },
+};
 
-export const TabletHeader = Template.bind({});
-TabletHeader.parameters = {
+export const TabletModal = Template.bind({});
+TabletModal.parameters = {
   viewport: {
     defaultViewport: 'ipad',
   },
 };
 
-export const MobileHeader = Template.bind({});
-MobileHeader.parameters = {
+export const MobileModal = Template.bind({});
+MobileModal.parameters = {
   viewport: {
     defaultViewport: 'iphonex',
   },
