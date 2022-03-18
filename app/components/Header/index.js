@@ -10,8 +10,8 @@ import {
   NavigationBar,
   MobileMenuBtn,
   MobileMenuPanel,
-  GlobalStyle,
 } from './Header.styles';
+import { GlobalStyle } from 'consts/bodystyles';
 import { NavigationData } from './Nav';
 import { MobileList, DesktopList } from './Nav/Nav.styles';
 import SearchMoviesInput from 'components/UI/SearchMoviesInput';

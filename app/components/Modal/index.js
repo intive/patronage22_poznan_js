@@ -1,6 +1,6 @@
 import Icon from 'components/UI/Icon';
 
-import { GlobalStyle } from 'components/Header/Header.styles';
+import { GlobalStyle } from 'consts/bodystyles';
 import { FullScreenWrapper, ContentWrapper, ButtonClose } from './Modal.styles';
 import { closeModal } from 'actions/app';
 
