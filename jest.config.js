@@ -144,7 +144,7 @@ module.exports = {
   testMatch: ['**/*.tests.@(js|ts)'],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: ['/node_modules/'],
+  testPathIgnorePatterns: ['/node_modules/', '/.next/'],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
@@ -177,7 +177,14 @@ module.exports = {
   verbose: true,
 
   // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
-  watchPathIgnorePatterns: ['/.storybook/', '/coverage/', '/node_modules/', '/.next/'],
+  watchPathIgnorePatterns: [
+    '/.storybook/',
+    '/coverage/',
+    '/node_modules/',
+    '/.next/',
+    '/.vercel/',
+    '/.github/',
+  ],
 
   // Whether to use watchman for file crawling
   // watchman: true,

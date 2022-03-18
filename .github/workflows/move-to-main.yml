@@ -24,4 +24,4 @@ jobs:
           git config user.email "wojciech.lechowicz@intive.com"
           git checkout develop
           git pull
-          git push origin main ${{ github.event.inputs.force == true ? '--force' : '' }}
+          git push origin main ${{ github.event.inputs.force == true && '--force' || '' }}

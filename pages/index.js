@@ -1,11 +1,10 @@
 import UserAvatar from 'components/UI/UserAvatar';
 import { useSession } from 'next-auth/react';
-import { getListOfPopularMovies } from '../lib/services/movieDb';
 import Modal from 'components/Modal';
 import { useActions, openModal } from 'actions/app';
 import Button from 'components/UI/Button';
 
-export default function Home({ popularMovies }) {
+export default function Home() {
   const { data: session } = useSession();
   const state = useActions({ isModalOpen: false, content: '' });
   const { isModalOpen, content } = state;
@@ -31,19 +30,9 @@ export default function Home({ popularMovies }) {
         ) : (
           <>Not signed in :(</>
         )}
+        <Button onClick={() => openModal(<h2>Modal</h2>)}>OpenModal</Button>
+        {isModalOpen && <Modal content={content} />}
       </div>
-      {popularMovies && <div>Popular movies: {popularMovies.join(', ')}</div>}
-      <Button onClick={() => openModal(<h2>Modal</h2>)}>OpenModal</Button>
-      {isModalOpen && <Modal content={content} />}
     </main>
   );
-}
-
-export async function getServerSideProps({ req }) {
-  try {
-    const list = await getListOfPopularMovies(req);
-    return { props: { popularMovies: list.results?.map((movie) => movie.title) } };
-  } catch (e) {
-    return { props: {} };
-  }
 }

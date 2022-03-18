@@ -1,4 +1,4 @@
-import Carousel from 'components/Carousel/index';
+import Carousel from '.';
 
 export default {
   title: 'UI/Carousel',

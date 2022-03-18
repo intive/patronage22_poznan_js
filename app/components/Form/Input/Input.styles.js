@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Icon from 'components/Icon';
+import Icon from 'components/UI/Icon';
 
 export const InputWrapper = styled.div`
   position: relative;

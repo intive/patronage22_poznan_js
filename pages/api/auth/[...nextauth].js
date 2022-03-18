@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import jwt from 'jsonwebtoken';
 
 const hour = 60 * 60;
 const day = 24 * hour;
@@ -37,16 +38,9 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    // for cross-platform use (Android and Web), the /api/login endpoint (instead of next-auth) would generate and return the JWT and we would use that pre-made token here
-    // so that Android can use the /api/login endpoint and then pass the JWT from there to /api/movies/* etc.
     async jwt({ token, user }) {
       if (user) {
-        return {
-          ...token,
-          name: user.username,
-          createdAt: user.createdAt,
-          avatar: user.avatar,
-        };
+        return user.token;
       }
       return token;
     },
@@ -73,5 +67,15 @@ export default NextAuth({
   },
   jwt: {
     encryption: true,
+    async encode({ token, secret }) {
+      if (typeof token === 'string') {
+        return token;
+      }
+      return jwt.sign(token, secret);
+    },
+    async decode({ token, secret }) {
+      const data = jwt.verify(token, secret);
+      return data;
+    },
   },
 });

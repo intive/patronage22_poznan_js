@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import { Wrapper, PosterWrapper, TitleWrapper, Title } from './MovieCard.styles';
 import Link from 'next/link';
-import MoviePoster from '../MoviePoster';
+import MoviePoster from 'components/UI/MoviePoster';
+import { Wrapper, PosterWrapper, TitleWrapper, Title } from './MovieCard.styles';
 
 export default function MovieCard({ src, title, alt, href, ...props }) {
   /* TODO placeholder for link to specific movie  */
