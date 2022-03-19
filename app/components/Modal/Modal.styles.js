@@ -8,10 +8,7 @@ export const FullScreenWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1001;
   background: linear-gradient(180deg, rgba(30, 27, 38, 0.56) 0%, rgba(30, 27, 38, 0.08) 100%);
 `;
