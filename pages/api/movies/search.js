@@ -10,7 +10,6 @@ import { getMovieSearchOutcome } from 'server/services/movieDb';
  *     parameters:
  *     - in: query
  *       name: query
- *       required: true
  *       description: Pass a text query to search.
  *     responses:
  *       200:
