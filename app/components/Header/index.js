@@ -11,7 +11,7 @@ import {
   MobileMenuBtn,
   MobileMenuPanel,
 } from './Header.styles';
-import { GlobalStyle } from 'consts/bodystyles';
+import { HiddenOverflow } from 'consts/bodystyles';
 import { NavigationData } from './Nav';
 import { MobileList, DesktopList } from './Nav/Nav.styles';
 import SearchMoviesInput from 'components/UI/SearchMoviesInput';
@@ -42,7 +42,7 @@ export default function Header() {
         </UserPanel>
         {isMenuOpen ? (
           <>
-            <GlobalStyle />
+            <HiddenOverflow />
             <MobileMenuPanel>
               <MobileList>{NavigationData}</MobileList>
             </MobileMenuPanel>
