@@ -1,7 +1,7 @@
 import Modal from './';
 
 export default {
-  title: 'Modal/modal',
+  title: 'Modal/Modal',
   component: Modal,
 };
 
