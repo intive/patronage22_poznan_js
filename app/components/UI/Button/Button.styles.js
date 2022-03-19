@@ -65,7 +65,7 @@ const StyledButton = styled.button`
     iconWithBg &&
     css`
        {
-        background-color: #1e1b26;
+        background-color: #272233;
         border-radius: 50%;
         padding: ${({ padding }) => padding || '1rem'};
         width: 32px;
