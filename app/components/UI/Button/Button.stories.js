@@ -7,7 +7,7 @@ export default {
 };
 
 const templateStyles = {
-  backgroundColor: '#2A2535',
+  backgroundColor: '#1E1B26',
   width: '300px',
   height: '100px',
   padding: '1rem',

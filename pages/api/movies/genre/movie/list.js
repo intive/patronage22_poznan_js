@@ -1,29 +1,29 @@
 import withAuth from 'server/withAuth';
-import { getListOfPopularMovies } from 'server/services/movieDb';
+import { getListOfGenres } from 'server/services/movieDb';
 
 /**
  * @swagger
- * /api/movies/popular:
+ * /api/movies/genre/movie/list:
  *   get:
- *     summary: Get a list of popular movies.
- *     description: Returns a list of popular movies.
+ *     summary: Get the list of official genres for movies.
+ *     description: Returns the list of official genres for movies.
  *     responses:
  *       200:
- *         description: list of movies.
+ *         description: list of official genres for movies.
  *         content:
  *           application/json:
  *             schema:
- *               type: array
+ *               type: object
  *       404:
  *         description: list not found (shouldn't happen)
  */
 async function handler(req, res) {
   try {
-    const movies = await getListOfPopularMovies(req);
-    if (!movies) {
+    const listOfGenres = await getListOfGenres(req);
+    if (!listOfGenres) {
       return res.status(404).json([]);
     }
-    return res.status(200).json(movies.results);
+    return res.status(200).json(listOfGenres);
   } catch (e) {
     const message = e.response ? await e.response.text() : e.message;
     return res.status(400).json(message);

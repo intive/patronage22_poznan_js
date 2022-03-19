@@ -1,17 +1,17 @@
 import withAuth from 'server/withAuth';
-import { getListOfRecommendedMoviesById } from 'server/services/movieDb';
+import { getListOfMoviesByCategoryId } from 'server/services/movieDb';
 
 /**
  * @swagger
- * /api/movies/{id}/recommendations:
+ * /api/movies/category/{id}:
  *   get:
- *     summary: Get a list of recommended movies for a movie.
- *     description: Returns a list of recommended movies for a movie.
+ *     summary: Get a list of movies belonging to given genre.
+ *     description: Returns a list of movies belonging to given genre.
  *     parameters:
  *     - in: path
  *       name: id
  *       required: true
- *       description: Id of the movie to get a list of recommended movies for a movie.
+ *       description: Comma separated value of genre ids that you want to include in the results.
  *     responses:
  *       200:
  *         description: list of movies
@@ -25,7 +25,7 @@ import { getListOfRecommendedMoviesById } from 'server/services/movieDb';
 async function handler(req, res) {
   try {
     const { id } = req.query;
-    const movies = await getListOfRecommendedMoviesById(id);
+    const movies = await getListOfMoviesByCategoryId(id);
     if (!movies) {
       return res.status(404).json();
     }

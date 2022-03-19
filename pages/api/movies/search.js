@@ -1,17 +1,17 @@
 import withAuth from 'server/withAuth';
-import { getListOfRecommendedMoviesById } from 'server/services/movieDb';
+import { getMovieSearchOutcome } from 'server/services/movieDb';
 
 /**
  * @swagger
- * /api/movies/{id}/recommendations:
+ * /api/movies/search:
  *   get:
- *     summary: Get a list of recommended movies for a movie.
- *     description: Returns a list of recommended movies for a movie.
+ *     summary: Search for movies.
+ *     description: Returns a list of movies by used query.
  *     parameters:
- *     - in: path
- *       name: id
+ *     - in: query
+ *       name: query
  *       required: true
- *       description: Id of the movie to get a list of recommended movies for a movie.
+ *       description: Pass a text query to search.
  *     responses:
  *       200:
  *         description: list of movies
@@ -24,8 +24,8 @@ import { getListOfRecommendedMoviesById } from 'server/services/movieDb';
  */
 async function handler(req, res) {
   try {
-    const { id } = req.query;
-    const movies = await getListOfRecommendedMoviesById(id);
+    const { query } = req.query;
+    const movies = await getMovieSearchOutcome(query);
     if (!movies) {
       return res.status(404).json();
     }
