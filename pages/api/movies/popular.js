@@ -1,22 +1,6 @@
 import withAuth from 'server/withAuth';
 import { getListOfPopularMovies } from 'server/services/movieDb';
 
-/**
- * @swagger
- * /api/movies/popular:
- *   get:
- *     summary: Get a list of popular movies.
- *     description: Returns a list of popular movies.
- *     responses:
- *       200:
- *         description: list of movies.
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *       404:
- *         description: list not found (shouldn't happen)
- */
 async function handler(req, res) {
   try {
     const movies = await getListOfPopularMovies(req);

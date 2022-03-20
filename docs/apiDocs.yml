@@ -1,0 +1,253 @@
+openapi: 3.0.1
+info:
+  title: inTiVi API docs
+  description: "inTiVi docs for your pleasure. Please use 'Authorize' with valid JWT to access protected endpoints."
+  version: 1.0.0
+tags:
+  - name: movies
+    description: for fetching movie related data
+  - name: users
+    description: sign in and sign up
+paths:
+  /api/movies/{id}:
+    get:
+      tags:
+        - movies
+      summary: Get a movie by Id.
+      description: Returns a movie with a given Id.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: Id of the movie to get.
+          schema:
+            type: integer
+      responses:
+        200:
+          description: movie object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MovieFull"
+        404:
+          description: movie not found
+
+  /api/movies/{id}/recommendations:
+    get:
+      tags:
+        - movies
+      summary: Get a list of recommended movies for a movie.
+      description: Returns a list of recommended movies for a movie.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: Id of the movie to get a list of recommended movies for a movie.
+          schema:
+            type: integer
+      responses:
+        200:
+          description: list of movies
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListOfMovies"
+        404:
+          description: movies not found
+
+  /api/movies/{id}/similar:
+    get:
+      tags:
+        - movies
+      summary: Get a list of similar movies.
+      description: Returns a list of similar movies.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: Id of the movie to get a list of similar movies.
+          schema:
+            type: integer
+      responses:
+        200:
+          description: list of movies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ListOfMovies"
+        404:
+          description: movies not found
+
+  /api/movies/category/{id}:
+    get:
+      tags:
+        - movies
+      summary: Get a list of movies belonging to given genre.
+      description: Returns a list of movies belonging to given genre.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: Comma separated value of genre ids that you want to include in the results.
+          schema:
+            type: integer
+      responses:
+        200:
+          description: list of movies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ListOfMovies"
+        404:
+          description: movies not found
+
+  /api/movies/popular:
+    get:
+      tags:
+        - movies
+      summary: Get a list of popular movies.
+      description: Returns a list of popular movies.
+      responses:
+        200:
+          description: list of movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ListOfMovies"
+        404:
+          description: list not found (shouldn't happen)
+
+  /api/movies/search:
+    get:
+      tags:
+        - movies
+      summary: Search for movies.
+      description: Returns a list of movies by used query.
+      parameters:
+        - in: query
+          name: query
+          description: Pass a text query to search.
+          schema:
+            type: string
+      responses:
+        200:
+          description: list of movies
+          content:
+            application/json:
+              schema:
+                type: array
+        404:
+          description: movies not found
+
+  /api/movies/genre/movie/list:
+    get:
+      tags:
+        - movies
+      summary: Get the list of official genres for movies.
+      description: Returns the list of official genres for movies.
+      responses:
+        200:
+          description: list of official genres for movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                # add array items as a ref to ListOfGenres
+        404:
+          description: list not found (shouldn't happen)
+
+  /api/users/signin:
+    post:
+      tags:
+        - users
+      summary: "Sign in with an existing user account."
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+            examples:
+              john:
+                value:
+                  email: "john@test.com"
+                  password: "aaabbb"
+      responses:
+        200:
+          description: "user object"
+          content:
+            application/json:
+              example:
+                username: "John"
+                email: "john@test.com"
+                id: "123"
+                createdAt: "2022-03-14T01:28:33.957Z"
+                avatar: 7
+                token: JWT
+        400:
+          description: "error - bad request: missing required fields"
+        401:
+          description: "error - bad request: invalid credentials"
+
+  /api/users/signup:
+    post:
+      tags:
+        - users
+      summary: Register new user account.
+      description: Saves new user in DB.
+      security: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        201:
+          description: "new user object (refer to api/users/signin schema)"
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: "error - bad request: missing required fields or invalid values"
+        409:
+          description: "error - user with this email already exists"
+
+components:
+  schemas:
+    ListOfMovies:
+      type: array
+      items:
+        $ref: "#/components/schemas/MovieShort"
+    MovieShort:
+      type: object
+      description: "Shortened Movie object returned as part of lists"
+    MovieFull:
+      type: object
+      description: "Full version of the movie object"
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
