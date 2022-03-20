@@ -1,24 +1,22 @@
 import Button from '../UI/Button';
 import { HeroWrapper, HeroGenres, HeroTitle, HeroContents } from './MovieHero.styles';
 import MovieMetadata from '../UI/MovieMetadata';
-import Icon from 'components/Icon';
+import Icon from '../UI/Icon';
 
-export default function MovieHero({ ...props }) {
+export default function MovieHero({ movieData }) {
   const metaDataObj = {
-    releaseDate: props.movieData.release_date,
-    popularity: props.movieData.popularity,
-    voteAverage: props.movieData.vote_average,
+    releaseDate: movieData.release_date,
+    popularity: movieData.popularity,
+    voteAverage: movieData.vote_average,
   };
 
-  console.log(metaDataObj);
   return (
-    <HeroWrapper
-      backgroundImg={'https://image.tmdb.org/t/p/original' + props.movieData.backdrop_path}
-    >
+    //line 15 will be changed in next commit
+    <HeroWrapper backgroundImg={'https://image.tmdb.org/t/p/original' + movieData.backdrop_path}>
       <HeroContents>
-        <HeroGenres>{props.movieData.genres[0].name}</HeroGenres>
-        <HeroTitle>{props.movieData.title}</HeroTitle>
-        <div style={{ paddingBottom: '14px' }}>
+        <HeroGenres>{movieData.genres[0].name}</HeroGenres>
+        <HeroTitle>{movieData.title}</HeroTitle>
+        <div style={{ paddingBottom: '24px' }}>
           <MovieMetadata movieData={metaDataObj} />
         </div>
         <Button onClick={() => {}}>

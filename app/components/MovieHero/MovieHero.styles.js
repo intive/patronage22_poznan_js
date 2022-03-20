@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { device } from '../../consts/mediaQueries';
+import { device } from 'consts/mediaQueries';
 
 const HeroWrapper = styled.div`
-  background-image: url(${(props) => props.backgroundImg});
+  background-image: linear-gradient(180deg, transparent 50%, #1e1b26),
+    url(${(props) => props.backgroundImg});
   background-size: cover;
   background-position: center;
   background-color: #4e564e;
@@ -11,8 +12,8 @@ const HeroWrapper = styled.div`
 `;
 
 const HeroContents = styled.div`
-  //TO CONSIDER:text color could change to white or black based on actual background color
   color: #fff;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,20 +21,18 @@ const HeroContents = styled.div`
   height: 50%;
   position: absolute;
   top: 50%;
-  background: linear-gradient(180deg, rgba(32, 32, 32, 0) 0%, #1e1b26 75%, #1e1b26 100%);
 
   ${device.tablet} {
     align-items: flex-start;
-    margin-left: 161px;
-    background: 0;
-    top: 268px;
+    margin-left: 15%;
+    transform: translateY(-50%);
     width: initial;
     height: initial;
   }
 `;
 
 const HeroGenres = styled.span`
-  font-size: 0.75em;
+  font-size: 1.15em;
   margin-bottom: 4px;
 
   ${device.tablet} {
@@ -43,7 +42,7 @@ const HeroGenres = styled.span`
 
 const HeroTitle = styled.h1`
   color: #fff;
-  font-size: 2.5em;
+  font-size: 3.5em;
   margin-bottom: 4px;
 
   ${device.tablet} {

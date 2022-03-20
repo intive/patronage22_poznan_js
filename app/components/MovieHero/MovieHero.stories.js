@@ -5,7 +5,7 @@ export default {
   component: MovieHero,
 };
 
-const Template = (args) => <MovieHero {...args} />;
+const Template = (args) => <MovieHero movieData={movieMockData} {...args} />;
 
 const movieMockData = {
   backdrop_path: '/xRyINp9KfMLVjRiO5nCsoRDdvvF.jpg',
