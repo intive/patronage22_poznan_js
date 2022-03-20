@@ -14,13 +14,13 @@ import { getListOfSimilarMoviesById } from 'server/services/movieDb';
  *       description: Id of the movie to get a list of similar movies.
  *     responses:
  *       200:
- *         description: movie object
+ *         description: list of movies
  *         content:
  *           application/json:
  *             schema:
- *               type: object
+ *               type: array
  *       404:
- *         description: movie not found
+ *         description: movies not found
  */
 async function handler(req, res) {
   try {

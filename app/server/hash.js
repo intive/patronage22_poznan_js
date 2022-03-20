@@ -10,7 +10,8 @@ export function getPassHash(password) {
 export function verifyJwtInRequest(req) {
   try {
     const authHeader = req.headers['authorization'] || '';
-    const cookieJWT = req.cookies['next-auth.session-token'];
+    const cookieJWT =
+      req.cookies['next-auth.session-token'] || req.cookies['__Secure-next-auth.session-token'];
     const headerMatch = authHeader.match(/(bearer ){1}(.+)/i);
     const headerJWT = headerMatch && headerMatch[2];
     const input = headerJWT || cookieJWT;

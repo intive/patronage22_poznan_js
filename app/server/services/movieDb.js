@@ -12,15 +12,16 @@ class HTTPResponseError extends Error {
  * The Movie Database API Client
  *
  * @param {string} url the TMDB endpoint you want to talk to
+ * @param {string} query additional query
  * @param {string} [method='GET'] request method
  * @param {Object} [body] request body
  * @return {Promise<Object|null>} response body
  * @throws {HTTPResponseError}
  */
-const movieDbClient = async (url, method = 'GET', body) => {
+const movieDbClient = async (url, query = '', method = 'GET', body) => {
   const token = process.env.MOVIEDB_API_KEY;
   const baseUrl = 'https://api.themoviedb.org/3';
-  const wholeUrl = `${baseUrl}/${url}?api_key=${token}&language=en-US`;
+  const wholeUrl = `${baseUrl}/${url}?api_key=${token}&language=en-US${query}`;
   const options = { method };
   if (method === 'POST') {
     options.headers = { 'Content-Type': 'application/json' };
@@ -43,24 +44,30 @@ const movieDbClient = async (url, method = 'GET', body) => {
 
   if (Array.isArray(data.results)) {
     data.results = data.results.map((movie) => {
-      movie.images = {};
-      if (movie.poster_path) {
-        movie.images.poster = getFullImageURLs(movie.poster_path);
+      if (movie.poster_path || movie.backdrop_path) {
+        movie.images = {};
+        if (movie.poster_path) {
+          movie.images.poster = getFullImageURLs(movie.poster_path);
+        }
+        if (movie.backdrop_path) {
+          movie.images.backdrop = getFullImageURLs(movie.backdrop_path);
+        }
+        return makeKeysCamelCase(movie);
       }
-      if (movie.backdrop_path) {
-        movie.images.backdrop = getFullImageURLs(data.poster_path);
-      }
-      return movie;
     });
   } else {
-    data.images = {};
-    if (data.poster_path) {
-      data.images.poster = getFullImageURLs(data.poster_path);
-    }
-    if (data.backdrop_path) {
-      data.images.backdrop = getFullImageURLs(data.backdrop_path);
+    if (data.poster_path || data.backdrop_path) {
+      data.images = {};
+      if (data.poster_path) {
+        data.images.poster = getFullImageURLs(data.poster_path);
+      }
+      if (data.backdrop_path) {
+        data.images.backdrop = getFullImageURLs(data.backdrop_path);
+      }
+      return makeKeysCamelCase(data);
     }
   }
+
   return data;
 };
 
@@ -76,6 +83,15 @@ export function getFullImageURLs(imgUrl) {
     xl: `${baseImgUrl}w780${imgUrl}`,
     original: `${baseImgUrl}original${imgUrl}`,
   };
+}
+
+export function makeKeysCamelCase(data) {
+  const toCamelCase = (str) =>
+    str
+      .toLowerCase()
+      .replace(/([-_][a-z])/g, (group) => group.toUpperCase().replace('-', '').replace('_', ''));
+  const dataToCamelCase = Object.keys(data).map((key) => [toCamelCase(key), data[key]]);
+  return Object.fromEntries(dataToCamelCase);
 }
 
 /**
@@ -100,6 +116,16 @@ export async function getListOfPopularMovies() {
 }
 
 /**
+ * Get the list of official genres for movies
+ *
+ * @export
+ * @return {Promise<Object|null>} list of official genres for movies
+ */
+export async function getListOfGenres() {
+  return movieDbClient('genre/movie/list');
+}
+
+/**
  * Get a list of similar movies
  *
  * @export
@@ -119,4 +145,30 @@ export async function getListOfSimilarMoviesById(id) {
  */
 export async function getListOfRecommendedMoviesById(id) {
   return movieDbClient(`movie/${id}/recommendations`);
+}
+
+/**
+ * Get a list of movies belonging to given genre
+ *
+ * @export
+ * @param {string|number} id Comma separated value of genre ids that you want to include in the results
+ * @return {Promise<Object|null>}  movie object
+ */
+export async function getListOfMoviesByCategoryId(id) {
+  if (!id) return null;
+  const query = `&with_genres=${id}`;
+  return movieDbClient(`discover/movie`, query);
+}
+
+/**
+ * Search for movies
+ *
+ * @export
+ * @param {string} query Pass a text query to search
+ * @return {Promise<Object|null>}  movie object
+ */
+export async function getMovieSearchOutcome(queryText) {
+  if (!queryText) return null;
+  const query = `&query=${queryText}`;
+  return movieDbClient(`search/movie`, query);
 }

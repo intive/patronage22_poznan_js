@@ -5,13 +5,13 @@ import { getMovieById } from 'server/services/movieDb';
  * @swagger
  * /api/movies/{id}:
  *   get:
- *     summary: Get a movie by Id
- *     description: Returns a movie with a given Id
+ *     summary: Get a movie by Id.
+ *     description: Returns a movie with a given Id.
  *     parameters:
  *     - in: path
  *       name: id
  *       required: true
- *       description: Id of the movie to get
+ *       description: Id of the movie to get.
  *     responses:
  *       200:
  *         description: movie object
