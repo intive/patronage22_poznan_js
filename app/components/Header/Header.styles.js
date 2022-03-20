@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import { device } from '/app/consts/mediaQueries';
 
 export const NavigationBar = styled.header`
@@ -10,7 +10,6 @@ export const NavigationBar = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 16px 12px;
-  z-index: 999;
   ${device.tablet} {
     height: 74px;
     padding: 24px 30px;
@@ -68,11 +67,5 @@ export const MobileMenuPanel = styled.div`
   z-index: -1;
   ${device.desktop} {
     display: none;
-  }
-`;
-
-export const GlobalStyle = createGlobalStyle`
-  body {
-      overflow: ${({ overflow }) => overflow || 'hidden'}
   }
 `;
