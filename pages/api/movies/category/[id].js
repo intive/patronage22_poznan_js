@@ -1,27 +1,6 @@
 import withAuth from 'server/withAuth';
 import { getListOfMoviesByCategoryId } from 'server/services/movieDb';
 
-/**
- * @swagger
- * /api/movies/category/{id}:
- *   get:
- *     summary: Get a list of movies belonging to given genre.
- *     description: Returns a list of movies belonging to given genre.
- *     parameters:
- *     - in: path
- *       name: id
- *       required: true
- *       description: Comma separated value of genre ids that you want to include in the results.
- *     responses:
- *       200:
- *         description: list of movies
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *       404:
- *         description: movies not found
- */
 async function handler(req, res) {
   try {
     const { id } = req.query;
