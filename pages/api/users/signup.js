@@ -42,5 +42,5 @@ export default async function handler(req, res) {
   };
 
   await db.collection('users').insertOne(newUser);
-  return res.status(201).json({ ...newUser, passHash: undefined });
+  return res.status(201).json({ ...newUser, passHash: undefined, _id: undefined });
 }
