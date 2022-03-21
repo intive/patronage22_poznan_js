@@ -5,6 +5,7 @@ import validateSignUpFormInputs, {
   validateSignUpUserPassword,
   validateSignUpUserName,
 } from 'utils/validateFormInputs';
+import { signUpURL } from 'consts/urls';
 import { FormContainer } from '../Form.styles';
 import Input from '../Input';
 import { SignUpButton, StyledLink } from './UserSignUpForm.styles';
@@ -79,9 +80,7 @@ const UserSignUpForm = () => {
   };
 
   useEffect(() => {
-    console.log('dupa');
     if (isFormSubmitting) {
-      console.log('effecto');
       const timer = setTimeout(() => {
         if (registerError !== null) {
           setIsFormSubmitting(false);
