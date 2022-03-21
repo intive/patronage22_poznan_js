@@ -1,22 +1,30 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import validateSignUpFormInputs, {
   validateSignUpUserEmail,
   validateSignUpUserPassword,
   validateSignUpUserName,
 } from 'utils/validateFormInputs';
+import { signUpURL } from 'consts/urls';
 import { FormContainer } from '../Form.styles';
 import Input from '../Input';
-import { SignUpButton } from './UserSignUpForm.styles';
+import { SignUpButton, ServersideMessage, StyledLink } from './UserSignUpForm.styles';
+import { fetchWrapper } from 'utils/fetchWrapper';
 
-const initialState = { email: '', password: '', name: '' };
+const initialState = { email: '', password: '', username: '' };
 Object.freeze(initialState);
 
 const UserSignUpForm = () => {
   const [inputValues, setInputValues] = useState(initialState);
   const [inputErrors, setInputErrors] = useState({});
   const [isFormSubmitting, setIsFormSubmitting] = useState(false);
+  const [registerError, setRegisterError] = useState(null);
+
+  const router = useRouter();
 
   const handleInputChange = (event) => {
+    setRegisterError(null);
     const { name, value } = event.target;
     setInputValues({
       ...inputValues,
@@ -33,10 +41,30 @@ const UserSignUpForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    setRegisterError(null);
     const isFormValid = validateInputs();
     if (isFormValid) {
-      handleFormData();
+      setIsFormSubmitting(true);
+      signUp();
     }
+  };
+
+  const signUp = async () => {
+    try {
+      const response = await fetchWrapper.post(signUpURL, inputValues);
+      handleServerResponse(response);
+    } catch (error) {
+      setRegisterError('Something went wrong');
+    }
+  };
+
+  const handleServerResponse = (response) => {
+    const { status } = response;
+    if (status === 404) router.push('/404');
+    if (status === 400 || status === 409) {
+      response.json().then((data) => setRegisterError(data.error));
+    }
+    if (status === 201) setRegisterError('');
   };
 
   const validateInputs = () => {
@@ -46,18 +74,18 @@ const UserSignUpForm = () => {
     return !isError;
   };
 
-  const handleFormData = async () => {
-    setIsFormSubmitting(true);
-    console.log('Form submitted');
-    //TODO: send user data and handle response
-  };
-
   useEffect(() => {
-    const timer = setTimeout(() => setIsFormSubmitting(false), 3000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [isFormSubmitting]);
+    if (isFormSubmitting) {
+      const timer = setTimeout(() => {
+        if (registerError !== null) {
+          setIsFormSubmitting(false);
+        }
+      }, 1500);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [isFormSubmitting, registerError]);
 
   return (
     <FormContainer>
@@ -71,11 +99,11 @@ const UserSignUpForm = () => {
         onBlur={(e) => handleBlur(e, validateSignUpUserEmail)}
       />
       <Input
-        id="name"
+        id="username"
         type="text"
         label="Name"
-        value={inputValues.name}
-        error={inputErrors.name}
+        value={inputValues.username}
+        error={inputErrors.username}
         onInputChange={handleInputChange}
         onBlur={(e) => handleBlur(e, validateSignUpUserName)}
       />
@@ -88,6 +116,17 @@ const UserSignUpForm = () => {
         onInputChange={handleInputChange}
         onBlur={(e) => handleBlur(e, validateSignUpUserPassword)}
       />
+      {registerError && !isFormSubmitting && (
+        <ServersideMessage error>{registerError}</ServersideMessage>
+      )}
+      {registerError === '' && !isFormSubmitting && (
+        <ServersideMessage>
+          {'Now you can '}
+          <Link href="/sign-in" passHref>
+            <StyledLink>sign in</StyledLink>
+          </Link>
+        </ServersideMessage>
+      )}
       <SignUpButton
         isLoading={isFormSubmitting}
         disabled={isFormSubmitting}
