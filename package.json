@@ -27,7 +27,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "styled-components": "^5.3.3",
-    "swagger-ui-react": "^4.5.1",
+    "swagger-ui-react": "^4.6.2",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
