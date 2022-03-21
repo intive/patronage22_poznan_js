@@ -27,7 +27,7 @@ export const Wrapper = styled(flexDivStyle)`
 
   padding: 0px;
   border-radius: 16px;
-  height: 100%;
+  height: 320px;
 `;
 
 export const TitleWrapper = styled(flexDivStyle)`

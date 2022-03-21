@@ -9,6 +9,7 @@ import {
 import Icon from 'components/UI/Icon';
 
 import PropTypes from 'prop-types';
+import MovieCard from 'components/UI/MovieCard';
 
 const throttle = (fun, limit) => {
   let wait = false;
@@ -23,7 +24,7 @@ const throttle = (fun, limit) => {
   };
 };
 
-const Carousel = ({ movies = [] }) => {
+const Carousel = ({ movies }) => {
   const [activeScreen, setActiveScreen] = useState(0);
   const [tilesPerScreen, setTilesPerScreen] = useState(1);
 
@@ -67,10 +68,11 @@ const Carousel = ({ movies = [] }) => {
     setActiveScreen(newIndex);
   };
 
-  const CarouselItem = ({ tileCount }) => (
+  const CarouselItem = ({ tileCount, src, title }) => (
     <CarouselItemWrapper tileCount={tileCount}>
       <CarouselItemInner>
-        <div style={{ height: '320px' }}>MovieCard will be here</div>
+        <MovieCard src={src} title={title} />
+        {/* <div style={{ height: '320px' }}>MovieCard will be here</div> */}
       </CarouselItemInner>
     </CarouselItemWrapper>
   );
@@ -78,8 +80,8 @@ const Carousel = ({ movies = [] }) => {
   return (
     <CarouselOuter>
       <CarouselInner activeScreen={activeScreen}>
-        {movies.map(({ id, title }) => (
-          <CarouselItem key={id} title={title} tileCount={tilesPerScreen} />
+        {movies.map(({ id, title, images }) => (
+          <CarouselItem key={id} title={title} tileCount={tilesPerScreen} src={images.poster.xl} />
         ))}
       </CarouselInner>
 
