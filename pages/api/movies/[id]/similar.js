@@ -1,27 +1,6 @@
 import withAuth from 'server/withAuth';
 import { getListOfSimilarMoviesById } from 'server/services/movieDb';
 
-/**
- * @swagger
- * /api/movies/{id}/similar:
- *   get:
- *     summary:  Get a list of similar movies.
- *     description: Returns a list of similar movies.
- *     parameters:
- *     - in: path
- *       name: id
- *       required: true
- *       description: Id of the movie to get a list of similar movies.
- *     responses:
- *       200:
- *         description: list of movies
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *       404:
- *         description: movies not found
- */
 async function handler(req, res) {
   try {
     const { id } = req.query;

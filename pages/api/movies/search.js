@@ -1,26 +1,6 @@
 import withAuth from 'server/withAuth';
 import { getMovieSearchOutcome } from 'server/services/movieDb';
 
-/**
- * @swagger
- * /api/movies/search:
- *   get:
- *     summary: Search for movies.
- *     description: Returns a list of movies by used query.
- *     parameters:
- *     - in: query
- *       name: query
- *       description: Pass a text query to search.
- *     responses:
- *       200:
- *         description: list of movies
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *       404:
- *         description: movies not found
- */
 async function handler(req, res) {
   try {
     const { query } = req.query;
