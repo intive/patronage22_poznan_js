@@ -1,6 +1,6 @@
 name: "Chromatic"
 
-on: 
+on:
   push:
     branches:
       - main
@@ -43,5 +43,3 @@ jobs:
               repo: context.repo.repo,
               body: `${{ steps.template.outputs.result }}`
             })
-
-        

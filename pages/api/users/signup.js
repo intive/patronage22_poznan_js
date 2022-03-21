@@ -3,37 +3,6 @@ import { randomUUID } from 'crypto';
 import { getPassHash } from 'server/hash';
 import { validateSignUpUserEmail, validateSignUpUserPassword } from 'utils/validateFormInputs';
 
-/**
- * @swagger
- * /api/users/signup:
- *   post:
- *     summary:  Register new user account.
- *     description: Saves new user in DB.
- *     parameters:
- *     - in: body
- *       name: username
- *       required: true
- *       description: username
- *     - in: body
- *       name: password
- *       required: true
- *       description: password
- *     - in: body
- *       name: email
- *       required: true
- *       description: email
- *     responses:
- *       201:
- *         description: "new user object (refer to api/users/signin schema)"
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *       400:
- *         description: "error - bad request: missing required fields or invalid values"
- *       409:
- *         description: "error - user with this email already exists"
- */
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(404).send();
@@ -73,5 +42,5 @@ export default async function handler(req, res) {
   };
 
   await db.collection('users').insertOne(newUser);
-  return res.status(201).json({ ...newUser, passHash: undefined });
+  return res.status(201).json({ ...newUser, passHash: undefined, _id: undefined });
 }

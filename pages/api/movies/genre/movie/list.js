@@ -1,22 +1,6 @@
 import withAuth from 'server/withAuth';
 import { getListOfGenres } from 'server/services/movieDb';
 
-/**
- * @swagger
- * /api/movies/genre/movie/list:
- *   get:
- *     summary: Get the list of official genres for movies.
- *     description: Returns the list of official genres for movies.
- *     responses:
- *       200:
- *         description: list of official genres for movies.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *       404:
- *         description: list not found (shouldn't happen)
- */
 async function handler(req, res) {
   try {
     const listOfGenres = await getListOfGenres(req);
