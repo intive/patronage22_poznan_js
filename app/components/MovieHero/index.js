@@ -5,14 +5,14 @@ import Icon from '../UI/Icon';
 
 export default function MovieHero({ movieData }) {
   const metaDataObj = {
-    releaseDate: movieData.release_date,
+    releaseDate: movieData.releaseDate,
     popularity: movieData.popularity,
-    voteAverage: movieData.vote_average,
+    voteAverage: movieData.voteAverage,
   };
 
   return (
     //line 15 will be changed in next commit
-    <HeroWrapper backgroundImg={'https://image.tmdb.org/t/p/original' + movieData.backdrop_path}>
+    <HeroWrapper backgroundImg={movieData.backdrop.original}>
       <HeroContents>
         <HeroGenres>{movieData.genres[0].name}</HeroGenres>
         <HeroTitle>{movieData.title}</HeroTitle>
