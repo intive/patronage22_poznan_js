@@ -6,7 +6,7 @@ async function handler(req, res) {
     const { id } = req.query;
     const movies = await getListOfRecommendedMoviesById(id);
     if (!movies) {
-      return res.status(404).json();
+      return res.json([]);
     }
     return res.status(200).json(movies.results);
   } catch (e) {
