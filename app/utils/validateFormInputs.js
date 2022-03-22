@@ -10,8 +10,8 @@ const validateSignUpFormInputs = (inputValues) => {
   if ('email' in inputValues) {
     errorMsg.email = validateSignUpUserEmail(inputValues.email);
   }
-  if ('name' in inputValues) {
-    errorMsg.name = validateSignUpUserName(inputValues.name);
+  if ('username' in inputValues) {
+    errorMsg.username = validateSignUpUserName(inputValues.username);
   }
   if ('password' in inputValues) {
     errorMsg.password = validateSignUpUserPassword(inputValues.password);
