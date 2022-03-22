@@ -10,6 +10,6 @@ export const GeneralErrorMessage = styled.div`
   height: 2rem;
   border-radius: 15px;
   font-size: 1.1rem;
-  background-color: #eb1c1c;
+  background-color: #ff5c00;
   color: #fff;
 `;
