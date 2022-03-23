@@ -1,32 +1,30 @@
 import styled from 'styled-components';
 import Icon from '../Icon';
 
+const printStars = (vote) => {
+  // vote is 0 - 10
+  // cap score to 10, round and divide by 2 to adjust to 5 star rating
+  let amount = Math.min(Math.round(vote), 10) / 2;
+  const stars = [];
+  // generate full stars
+  while (amount > 0.5) {
+    stars.push(<Icon type="star" />);
+    amount--;
+  }
+  // add a half star if necessary
+  if (amount > 0) {
+    stars.push(<Icon type="starHalf" />);
+  }
+  // fill the rest (5 - stars.length) with empty stars
+  const emptyStars = Array.from({ length: 5 - stars.length }, () => <Icon type="starOutline" />);
+  // concat stars and empty stars
+  return [...stars, ...emptyStars];
+};
+
 export default function StarRating({ vote }) {
-  const printStars = (amount) => {
-    const content = [];
-    const voteDivided = vote / 2; //vote scale from API is 10, but our scale is only 5 since we use 5 stars for rating
-
-    for (var i = 1; i <= amount; i++) {
-      if (i <= voteDivided) {
-        content.push(<Icon type="star" />);
-      } else if (
-        i - voteDivided < 1 &&
-        (voteDivided % 1).toFixed(2) >= 0.3 &&
-        (voteDivided % 1).toFixed(2) <= 0.7
-      ) {
-        content.push(<Icon type="starHalf" />);
-      } else if (i - voteDivided < 1 && (voteDivided % 1).toFixed(1) > 0.7) {
-        content.push(<Icon type="star" />);
-      } else {
-        content.push(<Icon type="starOutline" />);
-      }
-    }
-    return content;
-  };
-
   return (
     <Wrapper>
-      <div>{printStars(5)}</div>
+      <div>{printStars(vote)}</div>
     </Wrapper>
   );
 }
