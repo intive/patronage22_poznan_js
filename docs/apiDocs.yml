@@ -8,6 +8,8 @@ tags:
     description: for fetching movie related data
   - name: users
     description: sign in and sign up
+  - name: my list
+    description: for managing user's movie list
 paths:
   /api/movies/{id}:
     get:
@@ -229,6 +231,96 @@ paths:
           description: "error - bad request: missing required fields or invalid values"
         409:
           description: "error - user with this email already exists"
+
+  # WORK IN PROGRESS
+
+  /api/mylist:
+    get:
+      tags:
+        - my list
+      summary: Get user's movie list.
+      description: Get user's movie list.
+      security: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                user_id:
+                  type: string
+                movieId:
+                  type: string
+      responses:
+        201:
+          description: "new user object (refer to api/users/signin schema)"
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: "error - bad request: missing required fields or invalid values"
+        409:
+          description: "error - user with this email already exists"
+
+  /api/mylist/{movieId}:
+    put:
+      tags:
+        - my list
+      summary: Insert movie into user's movie list.
+      description: Insert movie into user's movie list.
+      security: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                user_id:
+                  type: string
+                movieId:
+                  type: string
+      responses:
+        201:
+          description: "new user object (refer to api/users/signin schema)"
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: "error - bad request: missing required fields or invalid values"
+        409:
+          description: "error - user with this email already exists"
+
+    delete:
+      tags:
+        - my list
+      summary: Delete movie from user's movie list.
+      description: Delete movie from user's movie list.
+      security: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                user_id:
+                  type: string
+                movieId:
+                  type: string
+      responses:
+        201:
+          description: "new user object (refer to api/users/signin schema)"
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: "error - bad request: missing required fields or invalid values"
+        409:
+          description: "error - user with this email already exists"
+
+
+
+
+  # WORK IN PROGRESS
 
 components:
   schemas:
