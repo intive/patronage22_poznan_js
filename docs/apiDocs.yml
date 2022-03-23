@@ -54,9 +54,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ListOfMovies"
-        404:
-          description: movies not found
-
+      
   /api/movies/{id}/similar:
     get:
       tags:
@@ -79,8 +77,6 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/ListOfMovies"
-        404:
-          description: movies not found
 
   /api/movies/category/{id}:
     get:
@@ -104,8 +100,6 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/ListOfMovies"
-        404:
-          description: movies not found
 
   /api/movies/popular:
     get:
@@ -122,8 +116,6 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/ListOfMovies"
-        404:
-          description: list not found (shouldn't happen)
 
   /api/movies/search:
     get:
@@ -144,8 +136,6 @@ paths:
             application/json:
               schema:
                 type: array
-        404:
-          description: movies not found
 
   /api/movies/genre/movie/list:
     get:
@@ -161,8 +151,6 @@ paths:
               schema:
                 type: array
                 # add array items as a ref to ListOfGenres
-        404:
-          description: list not found (shouldn't happen)
 
   /api/users/signin:
     post:
