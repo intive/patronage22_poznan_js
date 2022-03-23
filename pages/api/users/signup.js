@@ -1,7 +1,8 @@
-import mongoClient from 'server/mongoDb';
 import { randomUUID } from 'crypto';
+import mongoClient from 'server/mongoDb';
 import { getPassHash } from 'server/hash';
 import { validateSignUpUserEmail, validateSignUpUserPassword } from 'utils/validateFormInputs';
+import avatarList from 'consts/avatars';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -30,7 +31,7 @@ export default async function handler(req, res) {
   const passHash = getPassHash(password);
 
   // random avatar from 1 to 10
-  const randomAvatar = Math.floor(Math.random() * 10 + 1);
+  const randomAvatar = Math.floor(Math.random() * avatarList.length + 1);
 
   const newUser = {
     username,
