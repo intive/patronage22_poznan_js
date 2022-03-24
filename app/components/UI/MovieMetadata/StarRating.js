@@ -3,7 +3,7 @@ import Icon from '../Icon';
 
 const printStars = (vote) => {
   // vote is 0 - 10
-  // cap score to 10, round and divide by 2 to adjust to 5 star rating
+  // cap score to 10, round and divide by 2 to adjust to 5 star range
   let amount = Math.min(Math.round(vote), 10) / 2;
   const stars = [];
   // generate full stars
