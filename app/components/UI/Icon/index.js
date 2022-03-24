@@ -14,6 +14,7 @@ import {
   faChevronDown,
   faGear,
   faSortDown,
+  faPencil,
 } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 const iconMap = {
@@ -33,6 +34,7 @@ const iconMap = {
   twitter: faTwitter,
   youtube: faYoutube,
   'sort-down': faSortDown,
+  pencil: faPencil,
 };
 
 export default function Icon({ type, ...props }) {
