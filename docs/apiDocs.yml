@@ -228,17 +228,23 @@ paths:
         - my list
       summary: Get user's movie list.
       description: Get user's movie list.
-      security: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              properties:
-                user_id:
-                  type: string
-                movieId:
-                  type: string
+      # security: []
+      # requestBody:
+      #   content:
+      #     application/json:
+      #       schema:
+      #         properties:
+      #           movieId:
+      #             type: string
       responses:
+        200:
+        # TODO
+          description: list of official genres for movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                # add array items as a ref to ListOfGenres
         201:
           description: "new user object (refer to api/users/signin schema)"
           content:
@@ -256,17 +262,30 @@ paths:
         - my list
       summary: Insert movie into user's movie list.
       description: Insert movie into user's movie list.
-      security: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              properties:
-                user_id:
-                  type: string
-                movieId:
-                  type: string
+      parameters:
+        - in: path
+          name: movieId
+          required: true
+          description: Id of a movie to insert into user's list of movies.
+          schema:
+            type: number
+      # security: []
+      # requestBody:
+      #   content:
+      #     application/json:
+      #       schema:
+      #         properties:
+      #           movieId:
+      #             type: string
       responses:
+        200:
+        # TODO
+          description: list of official genres for movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                # add array items as a ref to ListOfGenres
         201:
           description: "new user object (refer to api/users/signin schema)"
           content:
@@ -283,17 +302,30 @@ paths:
         - my list
       summary: Delete movie from user's movie list.
       description: Delete movie from user's movie list.
-      security: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              properties:
-                user_id:
-                  type: string
-                movieId:
-                  type: string
+      parameters:
+        - in: path
+          name: movieId
+          required: true
+          description: Id of a movie to delete from user's list of movies.
+          schema:
+            type: number
+      # security: []
+      # requestBody:
+      #   content:
+      #     application/json:
+      #       schema:
+      #         properties:
+      #           movieId:
+      #             type: string
       responses:
+        200:
+        # TODO
+          description: List of user's movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                # add array items as a ref to ListOfGenres
         201:
           description: "new user object (refer to api/users/signin schema)"
           content:
