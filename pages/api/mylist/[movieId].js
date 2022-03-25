@@ -15,7 +15,7 @@ async function handler(req, res) {
     const options = { upsert: true };
     const userList = await db.collection('user_lists').findOne({ _id: req.session.id });
     const numberOfMoviesOnList = userList?.items.length;
-    if (!userList && movieId.length > 0 && movieId.length) {
+    if (!userList && movieId.length > 0 && movieId.length < 50) {
       db.collection('user_lists').updateOne(query, command, options);
       return res.status(201).json({});
     } else if (movieId.length > 0 && movieId.length < 50 && numberOfMoviesOnList < 5) {
