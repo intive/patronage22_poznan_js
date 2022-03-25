@@ -11,11 +11,12 @@ export default function MovieHero({ movieData }) {
   };
 
   return (
-    //line 15 will be changed in next commit
     <HeroWrapper backgroundImg={movieData.backdrop.original}>
       <HeroContents>
         <HeroGenres>{movieData.genres[0].name}</HeroGenres>
-        <HeroTitle>{movieData.title}</HeroTitle>
+        <HeroTitle medium={movieData.title.length > 12} long={movieData.title.length > 18}>
+          {movieData.title}
+        </HeroTitle>
         <div style={{ paddingBottom: '24px' }}>
           <MovieMetadata movieData={metaDataObj} />
         </div>

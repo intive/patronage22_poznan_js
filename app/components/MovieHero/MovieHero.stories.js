@@ -33,8 +33,23 @@ const movieMockData = {
   voteAverage: 8.4,
 };
 
-export const Default = Template.bind();
+const dataWithLongTitle = {
+  ...movieMockData,
+  title: "Fight Club but it's very long witch looks strange",
+};
 
+export const Default = Template.bind();
+Default.args = {
+  movieData: movieMockData,
+};
 Default.parameters = {
+  layout: 'fullscreen',
+};
+
+export const LongTitle = Template.bind();
+LongTitle.args = {
+  movieData: dataWithLongTitle,
+};
+LongTitle.parameters = {
   layout: 'fullscreen',
 };

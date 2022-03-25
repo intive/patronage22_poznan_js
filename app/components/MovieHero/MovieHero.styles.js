@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { device } from 'consts/mediaQueries';
 
 const HeroWrapper = styled.div`
@@ -13,20 +13,19 @@ const HeroWrapper = styled.div`
 
 const HeroContents = styled.div`
   color: #fff;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow: 1px 2px 5px black;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 50%;
   position: absolute;
-  top: 50%;
+  bottom: 20%;
 
   ${device.tablet} {
+    bottom: 35%;
     align-items: flex-start;
     margin-left: 15%;
-    transform: translateY(-50%);
-    width: initial;
+    max-width: 60%;
     height: initial;
   }
 `;
@@ -43,11 +42,28 @@ const HeroGenres = styled.span`
 const HeroTitle = styled.h1`
   color: #fff;
   font-size: 3.5em;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
+  max-width: 90%;
+  line-height: 1.1;
+  text-align: center;
+  word-wrap: break-word;
 
   ${device.tablet} {
     margin-bottom: 24px;
+    text-align: initial;
   }
+
+  ${({ medium }) =>
+    medium &&
+    css`
+      font-size: 2.75em;
+    `}
+
+  ${({ long }) =>
+    long &&
+    css`
+      font-size: 2.25em;
+    `}
 `;
 
 export { HeroWrapper, HeroGenres, HeroTitle, HeroContents };
