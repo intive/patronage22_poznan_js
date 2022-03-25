@@ -7,7 +7,10 @@ async function handler(req, res) {
 
   if (req.method == 'GET') {
     const list = await db.collection('user_lists').findOne({ _id: req.session.id });
-    return res.status(200).json(list);
+    if (!list) {
+      return res.status(200).json([]);
+    }
+    return res.status(200).json(list?.items);
   }
 }
 export default withAuth(handler);

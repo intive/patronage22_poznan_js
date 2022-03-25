@@ -1,55 +1,38 @@
 import mongoClient from 'server/mongoDb';
-// import { randomUUID } from 'crypto';
-// import { getPassHash } from 'server/hash';
-// import { validateSignUpUserEmail, validateSignUpUserPassword } from 'utils/validateFormInputs';
+import withAuth from 'server/withAuth';
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   const client = await mongoClient;
   const db = client.db(process.env.MONGODB_DB);
 
   const { movieId } = req.query;
+  const userId = req.session.id;
+  const query = { _id: userId };
 
-  if (req.method == 'GET') {
-    // TODO zwraca całą listę
-    db.collection('user_lists').findOne({ user_id: req.session.id });
+  // different approach with implementation of Set would be nice
+  if (req.method == 'PUT' && movieId > 0) {
+    const command = { $addToSet: { items: movieId } };
+    const options = { upsert: true };
+    const userList = await db.collection('user_lists').findOne({ _id: req.session.id });
+    const numberOfMoviesOnList = userList?.items.length;
+    if (!userList && movieId.length > 0 && movieId.length) {
+      db.collection('user_lists').updateOne(query, command, options);
+      return res.status(201).json({});
+    } else if (movieId.length > 0 && movieId.length < 50 && numberOfMoviesOnList < 5) {
+      db.collection('user_lists').updateOne(query, command, options);
+      return res.status(201).json({});
+    } else {
+      return res.status(200).json({});
+    }
   }
-  if (req.method == 'PUT') {
-    // TODO dodaje film o danym ID do listy / tu ma być insert document z opcją upsert
-    db.user_lists.insertOne({
-      user_id: req.session.id,
-      items: [movieId],
-    });
-  }
+
+  // different approach with implementation of Array.filter would be nice
   if (req.method == 'DELETE') {
-    // TODO usuwa film o danym ID z listy
-    db.collection('user_lists').deleteOne({ items: [movieId] });
+    const command = { $pull: { items: movieId } };
+    db.collection('user_lists').updateOne(query, command);
+    return res.status(200).json({});
+  } else {
+    return res.status(200).json({});
   }
-
-  const { username, password, email } = req.body;
-
-  if (!(username && password && email)) {
-    return res.status(400).json({ error: 'Missing required fields' });
-  }
-
-  const userByEmail = await db.collection('users').countDocuments({ email }, { limit: 1 });
-
-  if (userByEmail > 0) {
-    return res.status(409).json({ error: 'Email already in use' });
-  }
-  const passHash = getPassHash(password);
-
-  // random avatar from 1 to 10
-  const randomAvatar = Math.floor(Math.random() * 10 + 1);
-
-  const newUser = {
-    username,
-    email,
-    passHash,
-    avatar: randomAvatar,
-    id: randomUUID(),
-    createdAt: new Date(),
-  };
-
-  await db.collection('users').insertOne(newUser);
-  return res.status(201).json({ ...newUser, passHash: undefined, _id: undefined });
 }
+export default withAuth(handler);

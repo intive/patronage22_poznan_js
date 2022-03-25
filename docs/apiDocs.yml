@@ -220,7 +220,7 @@ paths:
         409:
           description: "error - user with this email already exists"
 
-  # WORK IN PROGRESS
+  # WORK IN PROGRESS STARTS HERE
 
   /api/mylist:
     get:
@@ -228,33 +228,14 @@ paths:
         - my list
       summary: Get user's movie list.
       description: Get user's movie list.
-      # security: []
-      # requestBody:
-      #   content:
-      #     application/json:
-      #       schema:
-      #         properties:
-      #           movieId:
-      #             type: string
       responses:
         200:
         # TODO
-          description: list of official genres for movies.
+          description: List of user's movies.
           content:
             application/json:
               schema:
                 type: array
-                # add array items as a ref to ListOfGenres
-        201:
-          description: "new user object (refer to api/users/signin schema)"
-          content:
-            application/json:
-              schema:
-                type: object
-        400:
-          description: "error - bad request: missing required fields or invalid values"
-        409:
-          description: "error - user with this email already exists"
 
   /api/mylist/{movieId}:
     put:
@@ -285,17 +266,13 @@ paths:
             application/json:
               schema:
                 type: array
-                # add array items as a ref to ListOfGenres
         201:
-          description: "new user object (refer to api/users/signin schema)"
+        # TODO
+          description: list of official genres for movies.
           content:
             application/json:
               schema:
-                type: object
-        400:
-          description: "error - bad request: missing required fields or invalid values"
-        409:
-          description: "error - user with this email already exists"
+                type: array  
 
     delete:
       tags:
@@ -319,28 +296,15 @@ paths:
       #             type: string
       responses:
         200:
-        # TODO
+        # TODO 
           description: List of user's movies.
           content:
             application/json:
               schema:
                 type: array
-                # add array items as a ref to ListOfGenres
-        201:
-          description: "new user object (refer to api/users/signin schema)"
-          content:
-            application/json:
-              schema:
-                type: object
-        400:
-          description: "error - bad request: missing required fields or invalid values"
-        409:
-          description: "error - user with this email already exists"
+               
 
 
-
-
-  # WORK IN PROGRESS
 
 components:
   schemas:
@@ -354,6 +318,8 @@ components:
     MovieFull:
       type: object
       description: "Full version of the movie object"
+
+  # WORK IN PROGRESS ENDS HERE
 
   securitySchemes:
     bearerAuth:
