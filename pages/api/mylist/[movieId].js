@@ -18,7 +18,7 @@ async function handler(req, res) {
     if (!userList && movieId.length > 0 && movieId.length < 50) {
       db.collection('user_lists').updateOne(query, command, options);
       return res.status(201).json({});
-    } else if (movieId.length > 0 && movieId.length < 50 && numberOfMoviesOnList < 5) {
+    } else if (movieId.length > 0 && movieId.length < 50 && numberOfMoviesOnList < 50) {
       db.collection('user_lists').updateOne(query, command, options);
       return res.status(201).json({});
     } else {
