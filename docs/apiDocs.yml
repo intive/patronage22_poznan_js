@@ -86,7 +86,7 @@ paths:
         - in: path
           name: id
           required: true
-          description: Comma separated value of genre ids that you want to include in the results.
+          description: Id of genre that you want to get a list of movies belonging to.
           schema:
             type: integer
       responses:
