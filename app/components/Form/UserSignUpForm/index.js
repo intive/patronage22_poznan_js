@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import validateSignUpFormInputs, {
   validateSignUpUserEmail,
   validateSignUpUserPassword,
   validateSignUpUserName,
 } from 'utils/validateFormInputs';
-import { signUpURL } from 'consts/urls';
 import { FormContainer } from '../Form.styles';
 import Input from '../Input';
-import { SignUpButton, ServersideMessage, StyledLink } from './UserSignUpForm.styles';
+import { SignUpButton, StyledLink } from './UserSignUpForm.styles';
+import { ServersideMessage } from '../Form.styles';
 import { fetchWrapper } from 'utils/fetchWrapper';
+import Icon from 'components/UI/Icon';
 
 const initialState = { email: '', password: '', username: '' };
 Object.freeze(initialState);
@@ -20,8 +20,6 @@ const UserSignUpForm = () => {
   const [inputErrors, setInputErrors] = useState({});
   const [isFormSubmitting, setIsFormSubmitting] = useState(false);
   const [registerError, setRegisterError] = useState(null);
-
-  const router = useRouter();
 
   const handleInputChange = (event) => {
     setRegisterError(null);
@@ -50,21 +48,27 @@ const UserSignUpForm = () => {
   };
 
   const signUp = async () => {
-    try {
-      const response = await fetchWrapper.post(signUpURL, inputValues);
-      handleServerResponse(response);
-    } catch (error) {
-      setRegisterError('Something went wrong');
-    }
+    const response = await fetchWrapper.post('api/users/signup', inputValues);
+    handleServerResponse(response);
   };
 
   const handleServerResponse = (response) => {
-    const { status } = response;
-    if (status === 404) router.push('/404');
-    if (status === 400 || status === 409) {
-      response.json().then((data) => setRegisterError(data.error));
+    if (response?.error) {
+      setRegisterError(response.error);
+      setInputValues(initialState);
+      return;
     }
-    if (status === 201) setRegisterError('');
+
+    const { status } = response;
+    if (status === 409) {
+      setRegisterError('Email address already in use. Try signing in instead.');
+      return;
+    }
+    if (status === 201) {
+      setRegisterError('');
+      return;
+    }
+    setRegisterError("Something went wrong and it's not your fault. Please come back to us later.");
   };
 
   const validateInputs = () => {
@@ -75,7 +79,9 @@ const UserSignUpForm = () => {
   };
 
   useEffect(() => {
+    console.log('dupa');
     if (isFormSubmitting) {
+      console.log('effecto');
       const timer = setTimeout(() => {
         if (registerError !== null) {
           setIsFormSubmitting(false);
@@ -116,17 +122,36 @@ const UserSignUpForm = () => {
         onInputChange={handleInputChange}
         onBlur={(e) => handleBlur(e, validateSignUpUserPassword)}
       />
-      {registerError && !isFormSubmitting && (
-        <ServersideMessage error>{registerError}</ServersideMessage>
+      {!isFormSubmitting &&
+        (registerError !== null ? (
+          <ServersideMessage>
+            <Icon type="check-mark" style={{ padding: '0 5px' }} />
+            {'Success! Now you can '}
+            <Link href="/sign-in" passHref>
+              <StyledLink>sign in</StyledLink>
+            </Link>
+          </ServersideMessage>
+        ) : (
+          <ServersideMessage error>
+            <Icon type="x-mark" style={{ padding: '0 5px' }} />
+            {registerError}
+          </ServersideMessage>
+        ))}
+      {/* {registerError && !isFormSubmitting && (
+        <ServersideMessage error>
+          <Icon type="x-mark" style={{ padding: '0 5px' }} />
+          {registerError}
+        </ServersideMessage>
       )}
       {registerError === '' && !isFormSubmitting && (
         <ServersideMessage>
-          {'Now you can '}
+          <Icon type="check-mark" style={{ padding: '0 5px' }} />
+          {'Success! Now you can '}
           <Link href="/sign-in" passHref>
             <StyledLink>sign in</StyledLink>
           </Link>
         </ServersideMessage>
-      )}
+      )} */}
       <SignUpButton
         isLoading={isFormSubmitting}
         disabled={isFormSubmitting}
