@@ -123,7 +123,13 @@ const UserSignUpForm = () => {
         onBlur={(e) => handleBlur(e, validateSignUpUserPassword)}
       />
       {!isFormSubmitting &&
-        (registerError !== null ? (
+        registerError !== null &&
+        (registerError ? (
+          <ServersideMessage error>
+            <Icon type="x-mark" style={{ padding: '0 5px' }} />
+            {registerError}
+          </ServersideMessage>
+        ) : (
           <ServersideMessage>
             <Icon type="check-mark" style={{ padding: '0 5px' }} />
             {'Success! Now you can '}
@@ -131,27 +137,7 @@ const UserSignUpForm = () => {
               <StyledLink>sign in</StyledLink>
             </Link>
           </ServersideMessage>
-        ) : (
-          <ServersideMessage error>
-            <Icon type="x-mark" style={{ padding: '0 5px' }} />
-            {registerError}
-          </ServersideMessage>
         ))}
-      {/* {registerError && !isFormSubmitting && (
-        <ServersideMessage error>
-          <Icon type="x-mark" style={{ padding: '0 5px' }} />
-          {registerError}
-        </ServersideMessage>
-      )}
-      {registerError === '' && !isFormSubmitting && (
-        <ServersideMessage>
-          <Icon type="check-mark" style={{ padding: '0 5px' }} />
-          {'Success! Now you can '}
-          <Link href="/sign-in" passHref>
-            <StyledLink>sign in</StyledLink>
-          </Link>
-        </ServersideMessage>
-      )} */}
       <SignUpButton
         isLoading={isFormSubmitting}
         disabled={isFormSubmitting}
