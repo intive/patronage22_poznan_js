@@ -1,13 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const FormContainer = styled.form`
   min-width: 200px;
   width: 400px;
   max-width: 100%;
-  padding-top: 40px;
-`;
+  margin-top: 40px;
 
-export const ServersideMessage = styled.p`
-  color: ${({ error }) => (error ? '#ff5c00' : '#44ec52')};
-  font-size: 0.9rem;
+  ${({ hasError }) =>
+    hasError &&
+    css`
+      outline: 2px solid #ff5c00;
+      outline-offset: 8px;
+      border-radius: 8px;
+    `}
 `;

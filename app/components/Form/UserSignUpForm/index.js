@@ -5,16 +5,19 @@ import validateSignUpFormInputs, {
   validateSignUpUserPassword,
   validateSignUpUserName,
 } from 'utils/validateFormInputs';
-import { signUpURL } from 'consts/urls';
 import { FormContainer } from '../Form.styles';
 import Input from '../Input';
 import { SignUpButton, StyledLink } from './UserSignUpForm.styles';
-import { ServersideMessage } from '../Form.styles';
+import ServerSideMessage from '../ServerSideMessage';
 import { fetchWrapper } from 'utils/fetchWrapper';
-import Icon from 'components/UI/Icon';
 
 const initialState = { email: '', password: '', username: '' };
 Object.freeze(initialState);
+
+const endpoint = 'api/users/signup';
+const generalErrorMessage =
+  "Something went wrong and it's not your fault. Please come back to us later.";
+const on409ErrorMessage = 'Email address already in use. Try signing in instead.';
 
 const UserSignUpForm = () => {
   const [inputValues, setInputValues] = useState(initialState);
@@ -42,6 +45,7 @@ const UserSignUpForm = () => {
 
     setRegisterError(null);
     const isFormValid = validateInputs();
+
     if (isFormValid) {
       setIsFormSubmitting(true);
       signUp();
@@ -49,7 +53,7 @@ const UserSignUpForm = () => {
   };
 
   const signUp = async () => {
-    const response = await fetchWrapper.post('api/users/signup', inputValues);
+    const response = await fetchWrapper.post(endpoint, inputValues);
     handleServerResponse(response);
   };
 
@@ -61,14 +65,16 @@ const UserSignUpForm = () => {
 
     const { status } = response;
     if (status === 409) {
-      setRegisterError('Email address already in use. Try signing in instead.');
+      setRegisterError(on409ErrorMessage);
       return;
     }
+
     if (status === 201) {
       setRegisterError('');
       return;
     }
-    setRegisterError("Something went wrong and it's not your fault. Please come back to us later.");
+
+    setRegisterError(generalErrorMessage);
   };
 
   const validateInputs = () => {
@@ -93,7 +99,7 @@ const UserSignUpForm = () => {
   }, [isFormSubmitting, registerError]);
 
   return (
-    <FormContainer>
+    <FormContainer hasError={!isFormSubmitting && registerError}>
       <Input
         id="email"
         type="email"
@@ -124,18 +130,14 @@ const UserSignUpForm = () => {
       {!isFormSubmitting &&
         registerError !== null &&
         (registerError ? (
-          <ServersideMessage error>
-            <Icon type="x-mark" style={{ padding: '0 5px' }} />
-            {registerError}
-          </ServersideMessage>
+          <ServerSideMessage errorType>{registerError}</ServerSideMessage>
         ) : (
-          <ServersideMessage>
-            <Icon type="check-mark" style={{ padding: '0 5px' }} />
+          <ServerSideMessage>
             {'Success! Now you can '}
             <Link href="/sign-in" passHref>
               <StyledLink>sign in</StyledLink>
             </Link>
-          </ServersideMessage>
+          </ServerSideMessage>
         ))}
       <SignUpButton
         isLoading={isFormSubmitting}
