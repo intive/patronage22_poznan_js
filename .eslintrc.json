@@ -6,6 +6,11 @@
     "plugin:storybook/recommended",
     "prettier"
   ],
+  "env": {
+    "browser": true,
+    "es2018": true
+  },
+  "root": true,
   "plugins": ["jest"],
   "settings": {
     "import/resolver": {
