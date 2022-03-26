@@ -56,7 +56,6 @@ const UserSignUpForm = () => {
   const handleServerResponse = (response) => {
     if (response?.error) {
       setRegisterError(response.error);
-      setInputValues(initialState);
       return;
     }
 
@@ -84,6 +83,7 @@ const UserSignUpForm = () => {
       const timer = setTimeout(() => {
         if (registerError !== null) {
           setIsFormSubmitting(false);
+          setInputValues(initialState);
         }
       }, 1500);
       return () => {
