@@ -14,8 +14,11 @@ import {
   faChevronDown,
   faGear,
   faSortDown,
+  faStar,
+  faStarHalfAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 const iconMap = {
   'arrow-down': faArrowDown,
   'chevron-down': faChevronDown,
@@ -33,6 +36,9 @@ const iconMap = {
   twitter: faTwitter,
   youtube: faYoutube,
   'sort-down': faSortDown,
+  star: faStar,
+  starOutline: farStar,
+  starHalf: faStarHalfAlt,
 };
 
 export default function Icon({ type, ...props }) {
