@@ -16,39 +16,51 @@ import { NavigationData } from './Nav';
 import { MobileList, DesktopList } from './Nav/Nav.styles';
 import SearchMoviesInput from 'components/UI/SearchMoviesInput';
 import UserAvatar from 'components/UI/UserAvatar';
+import { CarouselWrapper } from 'components/Pages/HomePage/HomePage.styles';
 
-export default function Header() {
+export default function Header({ remove }) {
   const [isMenuOpen, setMenuOpen] = useState(false);
-
+  const [isCarouselSection, setIsCarouselSection] = useState(false);
+  const carouselWrapper = document.querySelector(CarouselWrapper);
+  window.onscroll = function () {
+    if (window.pageYOffset < carouselWrapper.offsetTop) {
+      setIsCarouselSection(false);
+    } else {
+      setIsCarouselSection(true);
+    }
+  };
   return (
     <>
-      <NavigationBar>
-        <MainPanel>
+      {!isCarouselSection ? (
+        <NavigationBar remove={remove}>
+          <MainPanel>
+            {isMenuOpen ? (
+              <MobileMenuBtn onClick={() => setMenuOpen(!isMenuOpen)}>
+                <Image src={union} alt="union" layout="fill" objectFit="contain" />
+              </MobileMenuBtn>
+            ) : (
+              <MobileMenuBtn onClick={() => setMenuOpen(!isMenuOpen)}>
+                <Image src={iconMenu} alt="time" layout="fill" objectFit="contain" />
+              </MobileMenuBtn>
+            )}
+            <LogoLink />
+          </MainPanel>
+          <DesktopList>{NavigationData}</DesktopList>
+          <UserPanel>
+            <SearchMoviesInput />
+            <UserAvatar />
+          </UserPanel>
           {isMenuOpen ? (
-            <MobileMenuBtn onClick={() => setMenuOpen(!isMenuOpen)}>
-              <Image src={union} alt="union" layout="fill" objectFit="contain" />
-            </MobileMenuBtn>
-          ) : (
-            <MobileMenuBtn onClick={() => setMenuOpen(!isMenuOpen)}>
-              <Image src={iconMenu} alt="time" layout="fill" objectFit="contain" />
-            </MobileMenuBtn>
-          )}
-          <LogoLink />
-        </MainPanel>
-        <DesktopList>{NavigationData}</DesktopList>
-        <UserPanel>
-          <SearchMoviesInput />
-          <UserAvatar />
-        </UserPanel>
-        {isMenuOpen ? (
-          <>
-            <HiddenOverflow />
-            <MobileMenuPanel>
-              <MobileList>{NavigationData}</MobileList>
-            </MobileMenuPanel>
-          </>
-        ) : null}
-      </NavigationBar>
+            <>
+              <HiddenOverflow />
+              <MobileMenuPanel>
+                <MobileList>{NavigationData}</MobileList>
+              </MobileMenuPanel>
+            </>
+          ) : null}
+        </NavigationBar>
+      ) : null}
+      ;
     </>
   );
 }

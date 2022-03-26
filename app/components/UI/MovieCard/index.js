@@ -3,11 +3,12 @@ import Link from 'next/link';
 import MoviePoster from 'components/UI/MoviePoster';
 import { Wrapper, PosterWrapper, TitleWrapper, Title } from './MovieCard.styles';
 
-export default function MovieCard({ src, title, alt, href, ...props }) {
+export default function MovieCard({ src, title, alt, href, movieId, ...props }) {
   /* TODO placeholder for link to specific movie  */
   href = '#';
   return (
-    <Link href={href}>
+    // I prepared movieID for future use
+    <Link href={href} movieId={movieId}>
       <a>
         <Wrapper>
           <PosterWrapper>

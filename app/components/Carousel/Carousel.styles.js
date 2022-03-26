@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CarouselOuter = styled.div`
-  margin: 80px 30px;
+  margin: 0px 30px;
   border: none;
   overflow: hidden;
   position: relative;

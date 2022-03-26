@@ -1,10 +1,39 @@
 import styled from 'styled-components';
+import { NavigationBar } from 'components/Header/Header.styles';
 
 export const HomePageWrapper = styled.div`
   padding-top: 100px;
   display: flex;
   flex-direction: column;
-  padding-left: 30px;
+  background: linear-gradient(180deg, rgba(32, 32, 32, 0) 0%, #1e1b26 13%, #1e1b26 100%); ;
 `;
 
-export const MovieHeroContainer = styled.div``;
+export const MovieHeroContainer = styled.div`
+  width: 100%;
+  height: 80vh;
+`;
+
+export const CarouselWrapper = styled.div`
+  color: #fff;
+`;
+export const CarouselInstance = styled.div``;
+export const CarouselHeader = styled.h5`
+  margin-left: 30px;
+  height: 0;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  font-weight: 700;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+export const HomePageFooter = styled.div`
+  height: 200px;
+  background-color: #272233;
+  margin-top: 40px;
+`;
+export const DisabledStickyHeader = styled(NavigationBar)`
+  display: none;
+`;

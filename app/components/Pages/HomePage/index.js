@@ -1,22 +1,30 @@
-import { HomePageWrapper, MovieHeroContainer } from './HomePage.styles';
+import {
+  HomePageWrapper,
+  MovieHeroContainer,
+  CarouselHeader,
+  CarouselWrapper,
+  CarouselInstance,
+  HomePageFooter,
+} from './HomePage.styles';
+
 import Carousel from 'components/Carousel';
-export default function HomePage({
-  popularMovies,
-  comedyList,
-  dramaList,
-  horrorList,
-  familyList,
-  romanceList,
-}) {
+import Link from 'next/link';
+
+export default function HomePage({ listOfCategories }) {
   return (
     <HomePageWrapper>
       <MovieHeroContainer></MovieHeroContainer>
-      <Carousel movies={popularMovies}></Carousel>
-      <Carousel movies={familyList}></Carousel>
-      <Carousel movies={comedyList}></Carousel>
-      <Carousel movies={romanceList}></Carousel>
-      <Carousel movies={dramaList}></Carousel>
-      <Carousel movies={horrorList}></Carousel>
+      <CarouselWrapper>
+        {listOfCategories.map((list) => (
+          <CarouselInstance key={list.id}>
+            <Link href="/#" passHref>
+              <CarouselHeader categoryId={list.id}>{list.name}</CarouselHeader>
+            </Link>
+            <Carousel movies={list.listOfMovies}></Carousel>
+          </CarouselInstance>
+        ))}
+      </CarouselWrapper>
+      <HomePageFooter></HomePageFooter>
     </HomePageWrapper>
   );
 }

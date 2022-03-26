@@ -68,11 +68,10 @@ const Carousel = ({ movies }) => {
     setActiveScreen(newIndex);
   };
 
-  const CarouselItem = ({ tileCount, src, title }) => (
+  const CarouselItem = ({ tileCount, src, title, movieId }) => (
     <CarouselItemWrapper tileCount={tileCount}>
       <CarouselItemInner>
-        <MovieCard src={src} title={title} />
-        {/* <div style={{ height: '320px' }}>MovieCard will be here</div> */}
+        <MovieCard src={src} title={title} movieId={movieId} />
       </CarouselItemInner>
     </CarouselItemWrapper>
   );
@@ -81,7 +80,13 @@ const Carousel = ({ movies }) => {
     <CarouselOuter>
       <CarouselInner activeScreen={activeScreen}>
         {movies.map(({ id, title, images }) => (
-          <CarouselItem key={id} title={title} tileCount={tilesPerScreen} src={images.poster.xl} />
+          <CarouselItem
+            key={id}
+            title={title}
+            tileCount={tilesPerScreen}
+            src={images.poster.original}
+            movieId={id}
+          />
         ))}
       </CarouselInner>
 

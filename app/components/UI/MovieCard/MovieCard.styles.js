@@ -3,13 +3,13 @@ import styled from 'styled-components';
 export const flexDivStyle = styled.div`
   display: flex;
   width: 100%;
+
   position: relative;
 `;
 
 export const PosterWrapper = styled(flexDivStyle)`
   order: 0;
   flex-grow: 0;
-
   transition: opacity ease-in-out 0.2s;
   height: 85%;
   overflow: hidden;
@@ -20,19 +20,19 @@ export const PosterWrapper = styled(flexDivStyle)`
 export const Wrapper = styled(flexDivStyle)`
   flex-direction: column;
   align-items: flex-start;
-
+  aspect-ratio: 1 / 1.8;
   &:hover ${PosterWrapper} {
     opacity: 0.8;
   }
 
   padding: 0px;
   border-radius: 16px;
-  height: 320px;
 `;
 
 export const TitleWrapper = styled(flexDivStyle)`
   order: 1;
   flex-grow: 0;
+  white-space: normal;
 
   &:hover {
     $PosterWrapper: opacity = '0.2';
