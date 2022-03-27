@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const flexDivStyle = styled.div`
   display: flex;
   width: 100%;
-
   position: relative;
 `;
 
