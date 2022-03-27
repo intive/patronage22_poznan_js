@@ -2,7 +2,6 @@ import {
   HomePageWrapper,
   CarouselHeader,
   CarouselWrapper,
-  CarouselInstance,
   HomePageFooter,
   MovieHeroWrapper,
 } from './HomePage.styles';
@@ -23,12 +22,12 @@ export default function HomePage({ listOfCategories, listOfHeroMovies }) {
       </MovieHeroWrapper>
       <CarouselWrapper>
         {listOfCategories.map((list) => (
-          <CarouselInstance key={list.id}>
+          <div key={list.id}>
             <Link href="/#" passHref>
               <CarouselHeader categoryId={list.id}>{list.name}</CarouselHeader>
             </Link>
             <Carousel movies={list.listOfMovies}></Carousel>
-          </CarouselInstance>
+          </div>
         ))}
       </CarouselWrapper>
       <HomePageFooter></HomePageFooter>
