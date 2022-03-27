@@ -11,8 +11,7 @@ import { SignUpButton, StyledLink } from './UserSignUpForm.styles';
 import ServerSideMessage from '../ServerSideMessage';
 import { fetchWrapper } from 'utils/fetchWrapper';
 
-const initialState = { email: '', password: '', username: '' };
-Object.freeze(initialState);
+const initialState = Object.freeze({ email: '', password: '', username: '' });
 
 const endpoint = 'api/users/signup';
 const generalErrorMessage =
@@ -25,8 +24,8 @@ const UserSignUpForm = () => {
   const [isFormSubmitting, setIsFormSubmitting] = useState(false);
   const [registerError, setRegisterError] = useState(null);
 
-  const onSuccess = !isFormSubmitting && registerError === '';
-  const onError = !isFormSubmitting && registerError;
+  const onSuccess = Boolean(!isFormSubmitting && registerError === '');
+  const onError = Boolean(!isFormSubmitting && registerError);
 
   const handleInputChange = (event) => {
     setRegisterError(null);
@@ -101,7 +100,7 @@ const UserSignUpForm = () => {
   }, [isFormSubmitting, registerError]);
 
   return (
-    <FormContainer hasError={!isFormSubmitting && registerError}>
+    <FormContainer hasError={onError} hasSuccess={onSuccess}>
       <Input
         id="email"
         type="email"
