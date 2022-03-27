@@ -16,14 +16,13 @@ import { NavigationData } from './Nav';
 import { MobileList, DesktopList } from './Nav/Nav.styles';
 import SearchMoviesInput from 'components/UI/SearchMoviesInput';
 import UserAvatar from 'components/UI/UserAvatar';
-import { CarouselWrapper } from 'components/Pages/HomePage/HomePage.styles';
 
 export default function Header({ remove }) {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isCarouselSection, setIsCarouselSection] = useState(false);
-  const carouselWrapper = document.querySelector(CarouselWrapper);
+
   window.onscroll = function () {
-    if (window.pageYOffset < carouselWrapper.offsetTop) {
+    if (window.pageYOffset < 460) {
       setIsCarouselSection(false);
     } else {
       setIsCarouselSection(true);

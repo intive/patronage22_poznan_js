@@ -2,18 +2,19 @@ import styled from 'styled-components';
 import { NavigationBar } from 'components/Header/Header.styles';
 
 export const HomePageWrapper = styled.div`
-  padding-top: 100px;
+  margin-top: -20px;
   display: flex;
   flex-direction: column;
   background: linear-gradient(180deg, rgba(32, 32, 32, 0) 0%, #1e1b26 13%, #1e1b26 100%); ;
 `;
 
-export const MovieHeroContainer = styled.div`
+export const MovieHeroWrapper = styled.div`
+  height: 100vh;
   width: 100%;
-  height: 80vh;
 `;
 
 export const CarouselWrapper = styled.div`
+  margin-top: -35vh;
   color: #fff;
 `;
 export const CarouselInstance = styled.div``;
