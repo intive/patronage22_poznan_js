@@ -26,7 +26,7 @@ export default function Header({ remove }) {
   const avatar = session?.user?.avatar ?? null;
 
   window.onscroll = function () {
-    if (window.pageYOffset < 460) {
+    if (window.pageYOffset < 380) {
       setIsCarouselSection(false);
     } else {
       setIsCarouselSection(true);

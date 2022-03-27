@@ -10,7 +10,7 @@ import {
 } from 'server/services/movieDb';
 import { genresList } from 'components/Pages/HomePage/genresList';
 
-export default function Home({ listOfCategories, listOfHeroMovies }) {
+export default function Home({ listOfCategories, heroMovie }) {
   const { data: session } = useSession();
   const state = useActions({ isModalOpen: false, content: '' });
   const { isModalOpen, content } = state;
@@ -18,7 +18,7 @@ export default function Home({ listOfCategories, listOfHeroMovies }) {
   return (
     <>
       {session?.user ? (
-        <HomePage listOfCategories={listOfCategories} listOfHeroMovies={listOfHeroMovies} />
+        <HomePage listOfCategories={listOfCategories} heroMovie={heroMovie} />
       ) : (
         <>Not signed in :(</>
       )}
@@ -38,25 +38,18 @@ export async function getServerSideProps({ req }) {
         return { ...category, listOfMovies };
       })
     );
-    const firstMovie = await getMovieById(508947);
-    const secondMovie = await getMovieById(634649);
-    const thirdMovie = await getMovieById(823625);
-    const fourthMovie = await getMovieById(568124);
-    const fifthMovie = await getMovieById(414906);
-    const listOfHeroMovies = [
-      { id: 1, movie: firstMovie },
-      { id: 2, movie: secondMovie },
-      { id: 3, movie: thirdMovie },
-      { id: 4, movie: fourthMovie },
-      { id: 5, movie: fifthMovie },
-    ];
+
+    const listOfHeroMoviesId = [508947, 634649, 696806, 568124, 414906];
+    const chosenMovieId = listOfHeroMoviesId[Math.floor(Math.random() * listOfHeroMoviesId.length)];
+
+    const heroMovie = await getMovieById(chosenMovieId);
     const popularList = await getListOfPopularMovies(req);
     const popularCategory = { id: 1, name: 'Popular', listOfMovies: popularList.results };
     listOfCategories.unshift(popularCategory);
 
     return {
       props: {
-        listOfHeroMovies,
+        heroMovie,
         listOfCategories,
         pageLayout: { header: true, footer: false },
       },

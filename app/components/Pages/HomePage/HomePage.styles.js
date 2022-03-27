@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'consts/mediaQueries';
 
 export const HomePageWrapper = styled.div`
   margin-top: -20px;
@@ -13,18 +14,28 @@ export const MovieHeroWrapper = styled.div`
 `;
 
 export const CarouselWrapper = styled.div`
-  margin-top: -35vh;
+  margin-top: -25vh;
   color: #fff;
+  ${device.tablet} {
+    margin-top: -35vh;
+  }
 `;
 
 export const CarouselHeader = styled.h5`
   margin-left: 30px;
   height: 0;
-  padding-bottom: 16px;
-  padding-top: 40px;
-  font-size: 1.25rem;
-  font-weight: 700;
+  padding-top: 24px;
+  padding-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  ${device.tablet} {
+    padding-top: 40px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding-bottom: 16px;
+  }
+
   &:hover {
     text-decoration: underline;
   }

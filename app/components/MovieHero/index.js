@@ -5,19 +5,16 @@ import Icon from '../UI/Icon';
 
 export default function MovieHero({ movieData }) {
   const metaDataObj = {
-    releaseDate: movieData.movie.releaseDate,
-    popularity: movieData.movie.popularity,
-    voteAverage: movieData.movie.voteAverage,
+    releaseDate: movieData.releaseDate,
+    popularity: movieData.popularity,
+    voteAverage: movieData.voteAverage,
   };
 
   return (
-    <HeroWrapper backgroundImg={movieData.movie.images.backdrop.original}>
+    <HeroWrapper backgroundImg={movieData.images.backdrop.original}>
       <HeroContents>
-        <HeroGenres>{movieData.movie.genres[0].name}</HeroGenres>
-        <HeroTitle
-          medium={movieData.movie.title.length > 12}
-          long={movieData.movie.title.length > 18}
-        >
+        <HeroGenres>{movieData.genres[0].name}</HeroGenres>
+        <HeroTitle medium={movieData.title.length > 12} long={movieData.title.length > 18}>
           {movieData.title}
         </HeroTitle>
         <div style={{ paddingBottom: '24px' }}>

@@ -10,15 +10,11 @@ import Carousel from 'components/Carousel';
 import Link from 'next/link';
 import MovieHero from 'components/MovieHero';
 
-export default function HomePage({ listOfCategories, listOfHeroMovies }) {
-  const getRandomMovie = (listOfHeroMovies) => {
-    return listOfHeroMovies[Math.floor(Math.random() * listOfHeroMovies.length)];
-  };
-  const randomMovie = getRandomMovie(listOfHeroMovies);
+export default function HomePage({ listOfCategories, heroMovie }) {
   return (
     <HomePageWrapper>
       <MovieHeroWrapper>
-        <MovieHero movieData={randomMovie} />
+        <MovieHero movieData={heroMovie} />
       </MovieHeroWrapper>
       <CarouselWrapper>
         {listOfCategories.map((list) => (
