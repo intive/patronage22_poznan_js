@@ -25,6 +25,9 @@ const UserSignUpForm = () => {
   const [isFormSubmitting, setIsFormSubmitting] = useState(false);
   const [registerError, setRegisterError] = useState(null);
 
+  const onSuccess = !isFormSubmitting && registerError === '';
+  const onError = !isFormSubmitting && registerError;
+
   const handleInputChange = (event) => {
     setRegisterError(null);
     const { name, value } = event.target;
@@ -89,7 +92,6 @@ const UserSignUpForm = () => {
       const timer = setTimeout(() => {
         if (registerError !== null) {
           setIsFormSubmitting(false);
-          setInputValues(initialState);
         }
       }, 1500);
       return () => {
@@ -127,18 +129,16 @@ const UserSignUpForm = () => {
         onInputChange={handleInputChange}
         onBlur={(e) => handleBlur(e, validateSignUpUserPassword)}
       />
-      {!isFormSubmitting &&
-        registerError !== null &&
-        (registerError ? (
-          <ServerSideMessage errorType>{registerError}</ServerSideMessage>
-        ) : (
-          <ServerSideMessage>
-            {'Success! Now you can '}
-            <Link href="/sign-in" passHref>
-              <StyledLink>sign in</StyledLink>
-            </Link>
-          </ServerSideMessage>
-        ))}
+      {onError && <ServerSideMessage errorType>{registerError}</ServerSideMessage>}
+      {onSuccess && (
+        <ServerSideMessage>
+          {'Success! Now you can '}
+          <Link href="/sign-in" passHref>
+            <StyledLink>sign in</StyledLink>
+          </Link>
+        </ServerSideMessage>
+      )}
+
       <SignUpButton
         isLoading={isFormSubmitting}
         disabled={isFormSubmitting}
