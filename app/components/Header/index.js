@@ -16,10 +16,14 @@ import { NavigationData } from './Nav';
 import { MobileList, DesktopList } from './Nav/Nav.styles';
 import SearchMoviesInput from 'components/UI/SearchMoviesInput';
 import UserAvatar from 'components/UI/UserAvatar';
+import { useSession } from 'next-auth/react';
 
 export default function Header({ remove }) {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isCarouselSection, setIsCarouselSection] = useState(false);
+  const { data: session } = useSession();
+
+  const avatar = session?.user?.avatar ?? null;
 
   window.onscroll = function () {
     if (window.pageYOffset < 460) {
@@ -47,7 +51,7 @@ export default function Header({ remove }) {
           <DesktopList>{NavigationData}</DesktopList>
           <UserPanel>
             <SearchMoviesInput />
-            <UserAvatar />
+            <UserAvatar avatar={avatar} />
           </UserPanel>
           {isMenuOpen ? (
             <>

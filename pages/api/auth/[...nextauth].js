@@ -49,7 +49,7 @@ export default NextAuth({
       return {
         ...session,
         user: {
-          name: token.name,
+          name: token.username,
           email: token.email,
           avatar: token.avatar,
           createdAt: token.createdAt,

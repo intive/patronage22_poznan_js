@@ -14,10 +14,13 @@ export default {
         step: 10,
       },
     },
-    useSession: {
-      control: false,
-      table: {
-        disable: true,
+    avatar: {
+      defaultValue: 5,
+      control: {
+        type: 'range',
+        min: 1,
+        max: 20,
+        step: 1,
       },
     },
   },
@@ -27,23 +30,20 @@ const Template = (args) => <UserAvatar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  useSession: () => ({ data: { user: { avatar: 8 } } }),
+  avatar: 8,
 };
 
 export const Blank = Template.bind({});
 Blank.args = {
-  // no session data
-  useSession: () => ({ data: {} }),
+  avatar: 0,
 };
+Blank.parameters = { controls: { exclude: ['avatar'] } };
 
 export const Sizes = (args) => (
   <>
-    <UserAvatar {...args} size={40} />
-    <UserAvatar {...args} size={100} />
-    <UserAvatar {...args} size={200} />
+    <UserAvatar {...args} size={40} avatar={11} />
+    <UserAvatar {...args} size={100} avatar={3} />
+    <UserAvatar {...args} size={200} avatar={19} />
   </>
 );
-
-Sizes.args = {
-  useSession: () => ({ data: { user: { avatar: 3 } } }),
-};
+Sizes.parameters = { controls: { exclude: ['size', 'avatar'] } };

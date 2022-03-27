@@ -27,10 +27,9 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  layout: 'centered',
+  // layout: 'centered',
   viewport: {
     viewports: INITIAL_VIEWPORTS,
-    defaultViewport: 'responsive',
   },
 };
 
