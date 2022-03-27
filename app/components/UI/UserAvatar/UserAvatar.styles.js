@@ -11,6 +11,7 @@ export const Avatar = styled.div`
   min-height: 40px;
   max-width: 200px;
   max-height: 200px;
+
   ${({ size }) =>
     size &&
     css`
@@ -23,5 +24,12 @@ export const Avatar = styled.div`
     css`
       background-color: #fff;
       border: 2px dashed #000;
+    `}
+
+    ${({ selected }) =>
+    selected &&
+    css`
+      border: none;
+      outline: 3px solid #44ec52;
     `}
 `;

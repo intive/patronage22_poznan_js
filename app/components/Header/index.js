@@ -16,9 +16,13 @@ import { NavigationData } from './Nav';
 import { MobileList, DesktopList } from './Nav/Nav.styles';
 import SearchMoviesInput from 'components/UI/SearchMoviesInput';
 import UserAvatar from 'components/UI/UserAvatar';
+import { useSession } from 'next-auth/react';
 
 export default function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const { data: session } = useSession();
+
+  const avatar = session?.user?.avatar ?? null;
 
   return (
     <>
@@ -38,7 +42,7 @@ export default function Header() {
         <DesktopList>{NavigationData}</DesktopList>
         <UserPanel>
           <SearchMoviesInput />
-          <UserAvatar />
+          <UserAvatar avatar={avatar} />
         </UserPanel>
         {isMenuOpen ? (
           <>

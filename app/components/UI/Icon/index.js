@@ -14,6 +14,7 @@ import {
   faChevronDown,
   faGear,
   faSortDown,
+  faPencil,
   faStar,
   faStarHalfAlt,
 } from '@fortawesome/free-solid-svg-icons';
@@ -36,6 +37,7 @@ const iconMap = {
   twitter: faTwitter,
   youtube: faYoutube,
   'sort-down': faSortDown,
+  pencil: faPencil,
   star: faStar,
   starOutline: farStar,
   starHalf: faStarHalfAlt,
