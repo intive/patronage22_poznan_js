@@ -5,11 +5,12 @@ export const FormContainer = styled.form`
   width: 400px;
   max-width: 100%;
   margin-top: 40px;
+  outline: ${({ hasError, hasSuccess }) =>
+    hasError ? '2px solid #ff5c00' : hasSuccess ? '2px solid #44ec52' : 'unset'};
 
-  ${({ hasError }) =>
-    hasError &&
+  ${({ hasError, hasSuccess }) =>
+    (hasError || hasSuccess) &&
     css`
-      outline: 2px solid #ff5c00;
       outline-offset: 8px;
       border-radius: 8px;
     `}
