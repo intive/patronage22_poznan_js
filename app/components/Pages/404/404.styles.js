@@ -20,6 +20,6 @@ export const Message404 = styled.h2`
 
 export const ImageWrapper = styled.div`
   position: relative;
-  width: 90px;
-  height: 50px;
+  width: 250px;
+  height: 100px;
 `;
