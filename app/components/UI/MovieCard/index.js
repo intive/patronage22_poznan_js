@@ -12,7 +12,11 @@ export default function MovieCard({ src, title, alt, href, movieId, ...props }) 
       <a>
         <Wrapper>
           <PosterWrapper>
-            <MoviePoster src={src} alt={alt} title={title} {...props}></MoviePoster>
+            {src ? (
+              <MoviePoster src={src} alt={alt} title={title} {...props}></MoviePoster>
+            ) : (
+              <div>Image not found</div>
+            )}
           </PosterWrapper>
           <TitleWrapper>
             <Title>{title}</Title>

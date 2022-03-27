@@ -84,7 +84,7 @@ const Carousel = ({ movies }) => {
             key={id}
             title={title}
             tileCount={tilesPerScreen}
-            src={images.poster.original}
+            src={images?.poster?.original}
             movieId={id}
           />
         ))}
