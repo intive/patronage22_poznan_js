@@ -220,8 +220,6 @@ paths:
         409:
           description: "error - user with this email already exists"
 
-  # WORK IN PROGRESS STARTS HERE
-
   /api/mylist:
     get:
       tags:
@@ -230,8 +228,7 @@ paths:
       description: Get user's movie list.
       responses:
         200:
-        # TODO
-          description: List of user's movies.
+          description: List of user's movies (my list).
           content:
             application/json:
               schema:
@@ -241,38 +238,29 @@ paths:
     put:
       tags:
         - my list
-      summary: Insert movie into user's movie list.
-      description: Insert movie into user's movie list.
+      summary: Add movie to user's movie list.
+      description: Add movie to user's movie list.
       parameters:
         - in: path
           name: movieId
           required: true
-          description: Id of a movie to insert into user's list of movies.
+          description: Id of a movie to add to user's list of movies.
           schema:
-            type: number
-      # security: []
-      # requestBody:
-      #   content:
-      #     application/json:
-      #       schema:
-      #         properties:
-      #           movieId:
-      #             type: string
+            type: integer
+      security: []
       responses:
         200:
-        # TODO
-          description: list of official genres for movies.
+          description: ""
           content:
             application/json:
               schema:
                 type: array
-        201:
-        # TODO
-          description: list of official genres for movies.
+        400:
+          description: "error - bad request: missing required fields or invalid values."
           content:
             application/json:
               schema:
-                type: array  
+                type: array
 
     delete:
       tags:
@@ -285,24 +273,21 @@ paths:
           required: true
           description: Id of a movie to delete from user's list of movies.
           schema:
-            type: number
-      # security: []
-      # requestBody:
-      #   content:
-      #     application/json:
-      #       schema:
-      #         properties:
-      #           movieId:
-      #             type: string
+            type: integer
+      security: []
       responses:
         200:
-        # TODO 
-          description: List of user's movies.
+          description: ""
           content:
             application/json:
               schema:
                 type: array
-               
+        400:
+          description: "error - bad request: missing required fields or invalid values."
+          content:
+            application/json:
+              schema:
+                type: array
 
 
 
@@ -318,8 +303,6 @@ components:
     MovieFull:
       type: object
       description: "Full version of the movie object"
-
-  # WORK IN PROGRESS ENDS HERE
 
   securitySchemes:
     bearerAuth:
