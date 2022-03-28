@@ -2,12 +2,12 @@ import React from 'react';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
 
-export default function MoviePoster({ src, alt, title, ...props }) {
+export default function MoviePoster({ ...props }) {
   return (
     <Image
-      src={src}
-      alt={alt}
-      title={title}
+      src={props.src}
+      alt={props.alt}
+      title={props.title}
       layout={'fill'}
       objectFit={'cover'}
       objectPosition={'50% 50%'}

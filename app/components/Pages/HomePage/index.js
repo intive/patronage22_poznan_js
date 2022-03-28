@@ -1,32 +1,30 @@
+import Link from 'next/link';
 import {
   HomePageWrapper,
   CarouselHeader,
-  CarouselWrapper,
-  HomePageFooter,
+  CarouselsWrapper,
   MovieHeroWrapper,
+  CarouselContainer,
 } from './HomePage.styles';
-
 import Carousel from 'components/Carousel';
-import Link from 'next/link';
 import MovieHero from 'components/MovieHero';
 
-export default function HomePage({ listOfCategories, heroMovie }) {
+export default function HomePage({ listOfCarousels, heroMovie }) {
   return (
     <HomePageWrapper>
       <MovieHeroWrapper>
         <MovieHero movieData={heroMovie} />
       </MovieHeroWrapper>
-      <CarouselWrapper>
-        {listOfCategories.map((list) => (
-          <div key={list.id}>
-            <Link href="/#" passHref>
-              <CarouselHeader categoryId={list.id}>{list.name}</CarouselHeader>
+      <CarouselsWrapper>
+        {listOfCarousels.map(({ id, name, listOfMovies }) => (
+          <CarouselContainer key={id}>
+            <Link href={'/category/' + id} passHref>
+              <CarouselHeader categoryId={id}>{name}</CarouselHeader>
             </Link>
-            <Carousel movies={list.listOfMovies}></Carousel>
-          </div>
+            <Carousel movies={listOfMovies}></Carousel>
+          </CarouselContainer>
         ))}
-      </CarouselWrapper>
-      <HomePageFooter></HomePageFooter>
+      </CarouselsWrapper>
     </HomePageWrapper>
   );
 }

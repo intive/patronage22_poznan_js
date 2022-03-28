@@ -1,18 +1,21 @@
 import styled from 'styled-components';
+import { device } from 'consts/mediaQueries';
 
 export const CarouselOuter = styled.div`
-  margin: 0px 30px;
   border: none;
   overflow: hidden;
   position: relative;
-  width: 90vw;
-
+  padding-top: 8px;
   & .carousel-nav-button {
     display: none;
   }
 
   &:hover .carousel-nav-button {
     display: block;
+  }
+
+  ${device.tablet} {
+    padding-top: 16px;
   }
 `;
 

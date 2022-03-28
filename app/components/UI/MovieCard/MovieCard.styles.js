@@ -14,16 +14,15 @@ export const PosterWrapper = styled(flexDivStyle)`
   overflow: hidden;
   box-shadow: 0px 2px 12px rgba(26, 26, 26, 0.1), 0px 16px 24px -2px rgba(26, 26, 26, 0.12);
   border-radius: 16px;
+  aspect-ratio: 1 / 1.5;
 `;
 
 export const Wrapper = styled(flexDivStyle)`
   flex-direction: column;
   align-items: flex-start;
-  aspect-ratio: 1 / 1.8;
   &:hover ${PosterWrapper} {
     opacity: 0.8;
   }
-
   padding: 0px;
   border-radius: 16px;
 `;
@@ -45,7 +44,6 @@ export const Title = styled.p`
   align-self: center;
   order: 1;
   flex-grow: 0;
-
   width: 100%;
   font-size: 0.8em;
   font-weight: 600;

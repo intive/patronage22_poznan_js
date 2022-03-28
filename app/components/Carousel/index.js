@@ -68,10 +68,10 @@ const Carousel = ({ movies }) => {
     setActiveScreen(newIndex);
   };
 
-  const CarouselItem = ({ tileCount, src, title, movieId }) => (
+  const CarouselItem = ({ tileCount, ...props }) => (
     <CarouselItemWrapper tileCount={tileCount}>
       <CarouselItemInner>
-        <MovieCard src={src} title={title} movieId={movieId} />
+        <MovieCard {...props} />
       </CarouselItemInner>
     </CarouselItemWrapper>
   );
@@ -84,8 +84,8 @@ const Carousel = ({ movies }) => {
             key={id}
             title={title}
             tileCount={tilesPerScreen}
-            src={images?.poster?.original}
-            movieId={id}
+            src={images?.poster?.m}
+            id={id}
           />
         ))}
       </CarouselInner>
