@@ -24,8 +24,8 @@ const UserSignUpForm = () => {
   const [isFormSubmitting, setIsFormSubmitting] = useState(false);
   const [registerError, setRegisterError] = useState(null);
 
-  const onSuccess = Boolean(!isFormSubmitting && registerError === '');
-  const onError = Boolean(!isFormSubmitting && registerError);
+  const isSuccess = Boolean(!isFormSubmitting && registerError === '');
+  const isError = Boolean(!isFormSubmitting && registerError);
 
   const handleInputChange = (event) => {
     setRegisterError(null);
@@ -100,7 +100,7 @@ const UserSignUpForm = () => {
   }, [isFormSubmitting, registerError]);
 
   return (
-    <FormContainer hasError={onError} hasSuccess={onSuccess}>
+    <FormContainer hasError={isError} hasSuccess={isSuccess}>
       <Input
         id="email"
         type="email"
@@ -128,8 +128,8 @@ const UserSignUpForm = () => {
         onInputChange={handleInputChange}
         onBlur={(e) => handleBlur(e, validateSignUpUserPassword)}
       />
-      {onError && <ServerSideMessage errorType>{registerError}</ServerSideMessage>}
-      {onSuccess && (
+      {isError && <ServerSideMessage hasError>{registerError}</ServerSideMessage>}
+      {isSuccess && (
         <ServerSideMessage>
           {'Success! Now you can '}
           <Link href="/sign-in" passHref>

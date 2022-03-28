@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { StyledServerSideMessage, ServerSideMessageIcon } from './ServerSideMessage.styles';
 
-const ServerSideMessage = ({ children, errorType, ...props }) => {
+const ServerSideMessage = ({ children, hasError, ...props }) => {
   return (
-    <StyledServerSideMessage errorType={errorType} {...props}>
-      <ServerSideMessageIcon type={errorType ? 'x-mark' : 'check-mark'} />
+    <StyledServerSideMessage hasError={hasError} {...props}>
+      <ServerSideMessageIcon hasError={hasError} />
       {children}
     </StyledServerSideMessage>
   );
