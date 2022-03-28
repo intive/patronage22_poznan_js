@@ -10,11 +10,11 @@ const Template = ({ children, ...args }) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  errorType: false,
+  hasError: false,
   children: 'On success',
 };
-export const ServerSideMessageErrorType = Template.bind({});
-ServerSideMessageErrorType.args = {
-  errorType: true,
+export const ServerSideErrorMessage = Template.bind({});
+ServerSideErrorMessage.args = {
+  hasError: true,
   children: 'On error',
 };
