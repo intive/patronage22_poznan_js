@@ -2,7 +2,7 @@ import withAuth from 'server/withAuth';
 import { getMyList } from 'server/services/myListClient';
 
 async function handler(req, res) {
-  if (req.method == 'GET') {
+  if (req.method === 'GET') {
     try {
       const list = await getMyList(req);
       if (!list) {

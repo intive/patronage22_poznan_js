@@ -244,7 +244,7 @@ paths:
         - in: path
           name: movieId
           required: true
-          description: Id of a movie to add to user's list of movies.
+          description: Id of a movie to add to user's movie list.
           schema:
             type: integer
       security: []
