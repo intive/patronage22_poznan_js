@@ -247,10 +247,9 @@ paths:
           description: Id of a movie to add to user's movie list.
           schema:
             type: integer
-      security: []
       responses:
         200:
-          description: ""
+          description: Movie added to user's movie list.
           content:
             application/json:
               schema:
@@ -274,10 +273,9 @@ paths:
           description: Id of a movie to delete from user's list of movies.
           schema:
             type: integer
-      security: []
       responses:
         200:
-          description: ""
+          description: Movie deleted from user's movie list.
           content:
             application/json:
               schema:
