@@ -12,9 +12,14 @@ export async function getMyList(req) {
   const db = client.db(process.env.MONGODB_DB);
   const userList = await db.collection('user_lists').findOne({ user_id: req.session.id });
 
-  let myList = new Array();
-  for (let index = 0; index < userList.items.length; index++) {
-    myList.push(await getMovieById(userList.items[index]));
+  if (Array.isArray(userList.items)) {
+    const myList = await Promise.all(
+      userList.items.map(async (id) => {
+        return await getMovieById(id);
+      })
+    );
+    return myList;
+  } else {
+    return;
   }
-  return myList;
 }
