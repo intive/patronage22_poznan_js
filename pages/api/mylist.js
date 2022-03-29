@@ -3,7 +3,7 @@ import { getMyList } from 'server/services/myListClient';
 
 async function handler(req, res) {
   const method = req.method.toLowerCase();
-  if (!'get'.includes(method)) {
+  if (!['get'].includes(method)) {
     return res.status(405).send();
   }
   try {

@@ -16,7 +16,7 @@ async function handler(req, res) {
   const userId = req.session.id;
   const query = { user_id: userId };
 
-  if ('put'.includes(method)) {
+  if (['put'].includes(method)) {
     const command = { $addToSet: { items: id } };
     const options = { upsert: true };
     const userList = await db.collection('user_lists').findOne(query);
@@ -28,7 +28,7 @@ async function handler(req, res) {
       return res.status(200).json();
     }
   }
-  if ('delete'.includes(method)) {
+  if (['delete'].includes(method)) {
     const command = { $pull: { items: id } };
     db.collection('user_lists').updateOne(query, command);
     return res.status(200).json();
