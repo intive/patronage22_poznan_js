@@ -5,7 +5,6 @@ import { getMovieById } from './movieDb';
  * Get user's movie list
  *
  * @export
- * @param {string|number} req Request containing user's session id
  * @return {Promise<Object|null>} list of movies
  */
 export async function getMyList(req) {
