@@ -17,6 +17,6 @@ export async function getMyList(req) {
     const myFilteredList = myList.filter((element) => element !== null);
     return myFilteredList;
   } else {
-    return;
+    return [];
   }
 }

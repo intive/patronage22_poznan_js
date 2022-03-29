@@ -1,7 +1,8 @@
 import mongoClient from 'server/mongoDb';
 import withAuth from 'server/withAuth';
 async function handler(req, res) {
-  if (!['put', 'delete'].includes(req.method.toLowerCase())) {
+  const method = req.method.toLowerCase();
+  if (!['put', 'delete'].includes(method)) {
     return res.status(405).send();
   }
   const { movieId } = req.query;
@@ -15,7 +16,7 @@ async function handler(req, res) {
   const userId = req.session.id;
   const query = { user_id: userId };
 
-  if (req.method === 'PUT') {
+  if ('put'.includes(method)) {
     const command = { $addToSet: { items: id } };
     const options = { upsert: true };
     const userList = await db.collection('user_lists').findOne(query);
@@ -27,7 +28,7 @@ async function handler(req, res) {
       return res.status(200).json();
     }
   }
-  if (req.method === 'DELETE') {
+  if ('delete'.includes(method)) {
     const command = { $pull: { items: id } };
     db.collection('user_lists').updateOne(query, command);
     return res.status(200).json();
