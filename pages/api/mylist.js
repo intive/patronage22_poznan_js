@@ -10,8 +10,7 @@ async function handler(req, res) {
       }
       return res.status(200).json(list);
     } catch (e) {
-      const message = e.response ? await e.response.text() : e.message;
-      return res.status(400).json(message);
+      return res.status(200).json([]);
     }
   }
 }
