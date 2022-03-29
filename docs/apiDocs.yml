@@ -270,7 +270,7 @@ paths:
         - in: path
           name: movieId
           required: true
-          description: Id of a movie to delete from user's list of movies.
+          description: Id of a movie to delete from user's movie list.
           schema:
             type: integer
       responses:
