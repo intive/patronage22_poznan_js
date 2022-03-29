@@ -18,7 +18,10 @@ export async function getMyList(req) {
         return await getMovieById(id);
       })
     );
-    return myList;
+    const myFilteredList = myList.filter((element) => {
+      return element !== null;
+    });
+    return myFilteredList;
   } else {
     return;
   }
