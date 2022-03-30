@@ -52,8 +52,7 @@ export const DescriptionWrapper = styled.div`
   }
   ${device.desktop} {
     display: flex;
-    padding: 0 72px;
-    padding-bottom: 20px;
+    padding: 0 72px 20px 72px;
   }
 `;
 

@@ -4,7 +4,6 @@ import { device } from 'consts/mediaQueries';
 export const Production = styled.section`
   display: none;
   ${device.tablet} {
-    display: block;
     h2 {
       margin-top: 20px;
       font-size: 1.8rem;
@@ -12,6 +11,7 @@ export const Production = styled.section`
     }
   }
   ${device.desktop} {
+    display: block;
     h2 {
       font-size: 1.7rem;
       line-height: 1.7rem;
@@ -39,6 +39,5 @@ export const StyledItem = styled.li`
   }
   ${device.desktop} {
     padding: 2px 0;
-    font-size: 1.2rem;
   }
 `;
