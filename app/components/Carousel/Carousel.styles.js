@@ -30,7 +30,7 @@ export const CarouselItemWrapper = styled.div`
 
 export const CarouselItemInner = styled.div`
   width: 100%;
-  background-color: grey;
+  background-color: transparent;
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
@@ -47,7 +47,7 @@ export const NavButton = styled.button`
   top: 0;
   bottom: 0;
   width: 40px;
-  height: 320px;
+  height: 100%;
   margin-right: 12px;
   cursor: pointer;
 `;
