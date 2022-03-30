@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import Image from 'next/image';
 import { device } from 'consts/mediaQueries';
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   min-height: 100vh;
   width: 100vw;
@@ -10,10 +12,13 @@ export const Wrapper = styled.div`
   ${device.tablet} {
     justify-content: flex-end;
     align-items: center;
-    background-image: url('images/hero-background-image.jpg');
-    background-position: top left;
-    background-repeat: no-repeat;
-    background-size: cover;
+  }
+`;
+
+export const AuthBackground = styled(Image)`
+  display: none !important;
+  ${device.tablet} {
+    display: block !important;
   }
 `;
 
@@ -25,6 +30,7 @@ export const FormContainer = styled.div`
     padding: 50px;
     background-color: inherit;
     border-radius: 12px;
+    z-index: 1;
   }
 
   ${device.desktop} {

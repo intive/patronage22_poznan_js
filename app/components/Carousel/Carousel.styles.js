@@ -1,18 +1,21 @@
 import styled from 'styled-components';
+import { device } from 'consts/mediaQueries';
 
 export const CarouselOuter = styled.div`
-  margin: 80px 30px;
   border: none;
   overflow: hidden;
   position: relative;
-  width: 90vw;
-
+  padding-top: 8px;
   & .carousel-nav-button {
     display: none;
   }
 
   &:hover .carousel-nav-button {
     display: block;
+  }
+
+  ${device.tablet} {
+    padding-top: 16px;
   }
 `;
 
@@ -30,24 +33,29 @@ export const CarouselItemWrapper = styled.div`
 
 export const CarouselItemInner = styled.div`
   width: 100%;
-  background-color: grey;
+  background-color: transparent;
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
 `;
 
 export const NavButton = styled.button`
-  background-color: rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.7) 30%,
+    rgba(0, 0, 0, 0.7) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
   color: white;
   font-size: 20px;
   border: none;
   position: absolute;
   left: ${({ left }) => (left ? 0 : 'auto')};
   right: ${({ right }) => (right ? 0 : 'auto')};
-  top: 0;
-  bottom: 0;
+  top: 10%;
   width: 40px;
-  height: 320px;
+  height: 70%;
   margin-right: 12px;
   cursor: pointer;
 `;
