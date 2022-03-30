@@ -1,5 +1,5 @@
 import { PlayIcon } from '../MovieDetails.styles';
-import { TitleWrapper, MovieTitile } from './Heading.style';
+import { TitleWrapper, MovieTitile } from './Heading.styles';
 
 import Button from 'components/UI/Button';
 
