@@ -2,17 +2,17 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import MovieMetadata from 'components/UI/MovieMetadata';
-import MoviePoster from 'components/UI/MoviePoster';
+
 import Icon from 'components/UI/Icon';
 import TitleComponent from './Heading';
 import { ProductionCompanies } from './Companies';
 import {
-  MovieDescription,
-  DescriptionWrapper,
-  Wrapper,
+  MovieBackDrop,
   LoadingWrapper,
   WatchBtn,
   PlayIcon,
+  DescriptionWrapper,
+  MovieDescription,
 } from './MovieDetails.styles';
 
 export const MovieDetails = ({ movieId, movieData: preloadedMovieData }) => {
@@ -41,27 +41,26 @@ export const MovieDetails = ({ movieId, movieData: preloadedMovieData }) => {
     if (preloadedMovieData) {
       setMovieData(preloadedMovieData);
     }
-  });
-
+  }, [preloadedMovieData]);
+  console.log(movieData);
   return (
     <>
       {movieData ? (
         <>
-          <MoviePoster src={images.poster.l} />
-          <Wrapper>
+          <MovieBackDrop backgroundImg={images?.backdrop?.original}>
             <TitleComponent title={title} />
-            <DescriptionWrapper>
-              <MovieDescription>
-                <MovieMetadata movieData={movieData} />
-                <p>{overview}</p>
-              </MovieDescription>
-              <ProductionCompanies productionCompanies={productionCompanies} />
-              <WatchBtn fullWidth>
-                <PlayIcon />
-                watch
-              </WatchBtn>
-            </DescriptionWrapper>
-          </Wrapper>
+          </MovieBackDrop>
+          <DescriptionWrapper>
+            <MovieDescription>
+              <MovieMetadata movieData={movieData} />
+              <p>{overview}</p>
+            </MovieDescription>
+            <ProductionCompanies productionCompanies={productionCompanies} />
+            <WatchBtn fullWidth>
+              <PlayIcon />
+              watch
+            </WatchBtn>
+          </DescriptionWrapper>
         </>
       ) : (
         <LoadingWrapper>

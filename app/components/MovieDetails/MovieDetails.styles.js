@@ -3,26 +3,37 @@ import { device } from 'consts/mediaQueries';
 import Button from 'components/UI/Button';
 import Icon from 'components/UI/Icon';
 
-export const Wrapper = styled.div`
-  max-height: 55vh;
-  z-index: 1;
-  ${device.tablet} {
-    max-height: 35vh;
-  }
+export const MovieBackDrop = styled.div`
+  position: relative;
+  min-height: 50vh;
+  background-image: url(${(props) => props.backgroundImg});
+  background-size: cover;
+  background-position: center top;
+  width: 100%;
+  height: 100%;
+  color: white;
   ${device.desktop} {
-    max-height: 50vh;
+    height: 60vh;
   }
 `;
 export const LoadingWrapper = styled.div`
+  height: 100vh;
+  position: relative;
+  background: #1e1b26;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  flex-grow: 2;
+  color: white;
+  ${device.tablet} {
+    height: 80vh;
+    width: 100%;
+  }
 `;
 export const DescriptionWrapper = styled.div`
+  color: white;
   background: #1e1b26;
   z-index: 1;
-  padding: 0 16px 24px 16px;
+  padding: 0 16px 10px 16px;
   li {
     font-size: 1.2rem;
   }
@@ -34,13 +45,15 @@ export const DescriptionWrapper = styled.div`
       font-size: 1.3rem;
     }
   }
+  ${device.tablet} {
+    button {
+      display: none;
+    }
+  }
   ${device.desktop} {
     display: flex;
     padding: 0 72px;
     padding-bottom: 20px;
-    button {
-      display: none;
-    }
   }
 `;
 
@@ -48,6 +61,12 @@ export const MovieDescription = styled.section`
   p {
     font-size: 0.9rem;
     margin-top: 24px;
+  }
+  ${device.tablet} {
+    p {
+      margin-top: 23px;
+      font-size: 1.2rem;
+    }
   }
   ${device.desktop} {
     margin: 0;

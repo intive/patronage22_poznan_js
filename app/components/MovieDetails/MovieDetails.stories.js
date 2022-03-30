@@ -1,8 +1,4 @@
 import { MovieDetails } from '.';
-import Modal from 'components/Modal';
-
-import { useState } from 'react';
-import Button from 'components/UI/Button';
 
 export default {
   title: 'MovieDetails/MovieDetails',
@@ -76,17 +72,12 @@ const data = {
 };
 
 const Template = ({ ...args }) => {
-  return <Modal content={<MovieDetails {...args} />} />;
+  return <MovieDetails {...args} />;
 };
 
 export const Default = Template.bind({});
 Default.args = {
   movieData: data,
-};
-Default.parameters = {
-  viewport: {
-    defaultViewport: 'responsive',
-  },
 };
 
 export const TabletView = Template.bind({});
