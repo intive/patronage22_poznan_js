@@ -11,7 +11,7 @@ export default function MovieHero({ movieData }) {
   };
 
   return (
-    <HeroWrapper backgroundImg={movieData.backdrop.original}>
+    <HeroWrapper backgroundImg={movieData?.images?.backdrop?.original}>
       <HeroContents>
         <HeroGenres>{movieData.genres[0].name}</HeroGenres>
         <HeroTitle medium={movieData.title.length > 12} long={movieData.title.length > 18}>

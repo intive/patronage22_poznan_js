@@ -6,10 +6,13 @@ export const NavigationBar = styled.header`
   position: fixed;
   left: 0;
   right: 0;
+  top: ${({ isClosed }) => (isClosed ? '-300px' : 0)};
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 12px;
+  z-index: 1;
+  transition: top 1.2s ease;
   ${device.tablet} {
     height: 74px;
     padding: 24px 30px;

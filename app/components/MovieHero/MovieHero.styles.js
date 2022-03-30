@@ -5,10 +5,10 @@ const HeroWrapper = styled.div`
   background-image: linear-gradient(180deg, transparent 50%, #1e1b26),
     url(${(props) => props.backgroundImg});
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   background-color: #4e564e;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 `;
 
 const HeroContents = styled.div`
