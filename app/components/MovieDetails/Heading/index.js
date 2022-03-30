@@ -1,9 +1,9 @@
 import { PlayIcon } from '../MovieDetails.styles';
-import { TitleWrapper, MovieTitile } from './TitleComponent.style';
+import { TitleWrapper, MovieTitile } from './Heading.style';
 
 import Button from 'components/UI/Button';
 
-export default function TitleComponent({ title }) {
+export default function Heading({ title }) {
   return (
     <TitleWrapper>
       <MovieTitile>{title}</MovieTitile>

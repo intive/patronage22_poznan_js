@@ -1,8 +1,8 @@
-import TitleComponent from '.';
+import Heading from '.';
 
 export default {
-  title: 'MovieDetails/TitleComponent',
-  component: TitleComponent,
+  title: 'MovieDetails/Heading',
+  component: Heading,
 };
 
 const movieName = 'StarWars';
@@ -15,7 +15,7 @@ const templateStyles = {
 
 const Template = ({ ...args }) => (
   <div style={templateStyles}>
-    <TitleComponent {...args} />
+    <Heading {...args} />
   </div>
 );
 
