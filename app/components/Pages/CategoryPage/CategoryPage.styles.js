@@ -3,19 +3,25 @@ import { device } from 'consts/mediaQueries';
 
 export const WrapperGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  column-width: 30%;
+  grid-template-columns: 1fr 1fr;
+  column-width: 20%;
+  justify-content: center;
   padding: 0 50px;
-  /* ${device.tablet} {
+
+  ${device.tablet} {
     grid-template-columns: 1fr 1fr 1fr;
     column-width: 30%;
-  } */
-  // changes column grid to 3 on responsive mode
+  }
+  ${device.desktop} {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    column-width: 50%;
+  }
 `;
 
 export const MovieCardWrapper = styled.div`
-  width: 80%;
-  height: 500px;
+  width: 70%;
+  height: 400px;
+  margin: 0 auto;
 `;
 
 export const SearchDiv = styled.div`
@@ -25,15 +31,17 @@ export const SearchDiv = styled.div`
 `;
 
 export const SearchStyle = styled.form`
-  margin: 0rem 1rem;
   position: relative;
   width: 100%;
-  padding-top: 30px;
+  padding-top: 100px;
+
   input {
     width: 100%;
+    height: 35px;
     border: none;
-    background: black;
-    font-size: 24px;
+    border-radius: 6px;
+    background: #000;
+    font-size: 18px;
     color: #fff;
     padding: 1px 3px;
     outline: none;
