@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import MovieMetadata from 'components/UI/MovieMetadata';
 
 import Icon from 'components/UI/Icon';
-import TitleComponent from './Heading';
+import Heading from './Heading';
 import { ProductionCompanies } from './Companies';
 import {
   MovieBackDrop,
@@ -42,13 +42,13 @@ export const MovieDetails = ({ movieId, movieData: preloadedMovieData }) => {
       setMovieData(preloadedMovieData);
     }
   }, [preloadedMovieData]);
-  console.log(movieData);
+
   return (
     <>
       {movieData ? (
         <>
           <MovieBackDrop backgroundImg={images?.backdrop?.original}>
-            <TitleComponent title={title} />
+            <Heading title={title} />
           </MovieBackDrop>
           <DescriptionWrapper>
             <MovieDescription>
