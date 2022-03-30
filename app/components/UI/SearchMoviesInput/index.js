@@ -24,10 +24,11 @@ export default function SearchMoviesInput() {
   }, [isExpanded, searchInputValue]);
 
   useEffect(() => {
-    if (pathName === null) return;
-    if (pathName !== '/search') {
-      setSearchInputValue('');
-      setExpanded(false);
+    if (pathName) {
+      if (pathName !== '/search') {
+        setSearchInputValue('');
+        setExpanded(false);
+      }
     }
   }, [pathName]);
 
