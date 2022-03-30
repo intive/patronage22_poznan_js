@@ -5,7 +5,7 @@ import MovieMetadata from 'components/UI/MovieMetadata';
 
 import Icon from 'components/UI/Icon';
 import Heading from './Heading';
-import { ProductionCompanies } from './Companies';
+import { ProductionCompanies } from './ProductionCompanies';
 import {
   MovieBackDrop,
   LoadingWrapper,
