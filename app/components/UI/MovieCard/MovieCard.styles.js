@@ -15,6 +15,10 @@ export const PosterWrapper = styled(flexDivStyle)`
   box-shadow: 0px 2px 12px rgba(26, 26, 26, 0.1), 0px 16px 24px -2px rgba(26, 26, 26, 0.12);
   border-radius: 16px;
   aspect-ratio: 1 / 1.5;
+  /* aspect-ratio: ${({ ratio }) => ratio || 'unset'}; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Wrapper = styled(flexDivStyle)`
