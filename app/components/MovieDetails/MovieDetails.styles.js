@@ -76,6 +76,17 @@ export const MovieDescription = styled.section`
     }
   }
 `;
+export const CarouselWrapper = styled.div`
+  width: 90%;
+  margin: 20px auto 0 auto;
+  p {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  ${device.desktop} {
+    margin: 20px auto 20px auto;
+  }
+`;
 
 export const WatchBtn = styled(Button)`
   text-transform: capitalize;
