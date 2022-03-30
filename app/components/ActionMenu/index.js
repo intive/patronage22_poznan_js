@@ -1,40 +1,27 @@
-import { Wrapper, UserInfo, ActionList, ActionBtn } from './ActionMenu.styles';
+import { Wrapper, UserInfo, Username, ActionList, ListItem, ActionBtn } from './ActionMenu.styles';
 import Button from '../UI/Button';
-import { useSession as useSessionActual } from 'next-auth/react';
 import UserAvatar from 'components/UI/UserAvatar';
 import Icon from '../UI/Icon';
-import Modal from 'components/Modal';
-import { useActions, openModal } from 'actions/app';
+import { signOut } from 'next-auth/react';
 
-export default function ActionMenu({ isOpen, useSession = useSessionActual }) {
-  const { data: session } = useSession();
-  const state = useActions({ isModalOpen: false, content: '' });
-  const { isModalOpen, content } = state;
-
+export default function ActionMenu({ userData }) {
   return (
-    <>
-      <Wrapper>
-        <UserInfo>
-          {session?.user ? (
-            <>
-              <UserAvatar size={100} />
-              <div className="username">{session.user.name}</div>
-            </>
-          ) : (
-            <>Not signed in :(</>
-          )}
-        </UserInfo>
-        <ActionList>
-          <ActionBtn onlyIcon fullWidth onClick={() => openModal(<h2>Account</h2>)}>
+    <Wrapper>
+      <UserInfo>
+        <UserAvatar size={100} avatar={userData.user.avatar} />
+        <Username>{userData.user.name}</Username>
+      </UserInfo>
+      <ActionList>
+        <ListItem>
+          <ActionBtn onlyIcon fullWidth onClick={() => {}}>
             Account
             <Icon size="lg" rotation={270} type="arrow-down" />
           </ActionBtn>
-        </ActionList>
-        {isModalOpen && <Modal content={content} />}
-        <Button fullWidth href="#">
-          Log out
-        </Button>
-      </Wrapper>
-    </>
+        </ListItem>
+      </ActionList>
+      <Button fullWidth onClick={signOut}>
+        Log out
+      </Button>
+    </Wrapper>
   );
 }

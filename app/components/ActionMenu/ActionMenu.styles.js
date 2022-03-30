@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   padding: 32px 16px;
   width: 300px;
-  height: 100%;
   color: #fff;
   background-color: #1e1b26;
   border-radius: 8px;
@@ -15,10 +14,10 @@ const UserInfo = styled.div`
   flex-direction: column;
   align-items: center;
   font-size: 1.25em;
+`;
 
-  .username {
-    margin: 16px 0;
-  }
+const Username = styled.div`
+  margin: 16px 0;
 `;
 
 const ActionList = styled.ul`
@@ -26,6 +25,8 @@ const ActionList = styled.ul`
   margin: 0;
   padding: 0;
 `;
+
+const ListItem = styled.li``;
 
 const ActionBtn = styled(Button)`
   justify-content: space-between;
@@ -41,4 +42,4 @@ const ActionBtn = styled(Button)`
   }
 `;
 
-export { Wrapper, UserInfo, ActionList, ActionBtn };
+export { Wrapper, UserInfo, Username, ActionList, ListItem, ActionBtn };

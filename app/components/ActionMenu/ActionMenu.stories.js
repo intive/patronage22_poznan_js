@@ -1,5 +1,4 @@
 import ActionMenu from '.';
-import { SessionProvider } from 'next-auth/react';
 
 export default {
   title: 'ActionMenu',
@@ -16,10 +15,9 @@ const mockSession = {
   },
 };
 
-const Template = (args) => (
-  <SessionProvider session={mockSession}>
-    <ActionMenu {...args} />
-  </SessionProvider>
-);
+const Template = (args) => <ActionMenu {...args} />;
 
 export const Default = Template.bind();
+Default.args = {
+  userData: mockSession,
+};
