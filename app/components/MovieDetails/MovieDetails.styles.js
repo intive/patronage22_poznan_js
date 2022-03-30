@@ -3,17 +3,20 @@ import { device } from 'consts/mediaQueries';
 import Button from 'components/UI/Button';
 import Icon from 'components/UI/Icon';
 
+export const MovieDetailsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: #1e1b26;
+`;
 export const MovieBackDrop = styled.div`
   position: relative;
-  min-height: 50vh;
   background-image: url(${(props) => props.backgroundImg});
   background-size: cover;
   background-position: center top;
-  width: 100%;
-  height: 100%;
   color: white;
+  height: 50vh;
   ${device.desktop} {
-    height: 60vh;
+    height: 80vh;
   }
 `;
 export const LoadingWrapper = styled.div`
@@ -32,7 +35,6 @@ export const LoadingWrapper = styled.div`
 export const DescriptionWrapper = styled.div`
   color: white;
   background: #1e1b26;
-  z-index: 1;
   padding: 0 16px 10px 16px;
   li {
     font-size: 1.2rem;
@@ -52,7 +54,7 @@ export const DescriptionWrapper = styled.div`
   }
   ${device.desktop} {
     display: flex;
-    padding: 0 72px 20px 72px;
+    padding: 8px 72px 20px 72px;
   }
 `;
 
