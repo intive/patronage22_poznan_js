@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import MoviePoster from 'components/UI/MoviePoster';
-import { Wrapper, PosterWrapper, TitleWrapper, Title } from './MovieCard.styles';
+import { Wrapper, PosterWrapper, ImagePlaceholder, TitleWrapper, Title } from './MovieCard.styles';
 
 export default function MovieCard({ ...props }) {
   return (
@@ -10,7 +10,11 @@ export default function MovieCard({ ...props }) {
       <a>
         <Wrapper>
           <PosterWrapper>
-            {props.src ? <MoviePoster {...props}></MoviePoster> : <div>Image not found</div>}
+            {props.src ? (
+              <MoviePoster {...props}></MoviePoster>
+            ) : (
+              <ImagePlaceholder>Image not found</ImagePlaceholder>
+            )}
           </PosterWrapper>
           <TitleWrapper>
             <Title>{props.title}</Title>

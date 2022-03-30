@@ -21,6 +21,10 @@ export const PosterWrapper = styled(flexDivStyle)`
   align-items: center;
 `;
 
+export const ImagePlaceholder = styled.p`
+  color: #ffffff;
+`;
+
 export const Wrapper = styled(flexDivStyle)`
   flex-direction: column;
   align-items: flex-start;
