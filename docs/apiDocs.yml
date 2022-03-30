@@ -8,6 +8,8 @@ tags:
     description: for fetching movie related data
   - name: users
     description: sign in and sign up
+  - name: my list
+    description: for managing user's movie list
 paths:
   /api/movies/{id}:
     get:
@@ -217,6 +219,75 @@ paths:
           description: "error - bad request: missing required fields or invalid values"
         409:
           description: "error - user with this email already exists"
+
+  /api/mylist:
+    get:
+      tags:
+        - my list
+      summary: Get user's movie list.
+      description: Get user's movie list.
+      responses:
+        200:
+          description: List of user's movies (my list).
+          content:
+            application/json:
+              schema:
+                type: array
+
+  /api/mylist/{movieId}:
+    put:
+      tags:
+        - my list
+      summary: Add movie to user's movie list.
+      description: Add movie to user's movie list.
+      parameters:
+        - in: path
+          name: movieId
+          required: true
+          description: Id of a movie to add to user's movie list.
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Movie added to user's movie list.
+          content:
+            application/json:
+              schema:
+                type: array
+        400:
+          description: "error - bad request: missing required fields or invalid values."
+          content:
+            application/json:
+              schema:
+                type: array
+
+    delete:
+      tags:
+        - my list
+      summary: Delete movie from user's movie list.
+      description: Delete movie from user's movie list.
+      parameters:
+        - in: path
+          name: movieId
+          required: true
+          description: Id of a movie to delete from user's movie list.
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Movie deleted from user's movie list.
+          content:
+            application/json:
+              schema:
+                type: array
+        400:
+          description: "error - bad request: missing required fields or invalid values."
+          content:
+            application/json:
+              schema:
+                type: array
+
+
 
 components:
   schemas:
