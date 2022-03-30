@@ -45,6 +45,7 @@ export const Title = styled.p`
   order: 1;
   flex-grow: 0;
   width: 100%;
+  text-align: left;
   font-size: 0.8em;
   font-weight: 600;
   line-height: 1.2em;
