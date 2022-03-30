@@ -10,7 +10,7 @@ export default function Category({ moviesData }) {
 }
 
 export async function getServerSideProps({ params }) {
-  const { id } = params.id;
+  const { id } = params;
 
   try {
     const movies = await getListOfMoviesByCategoryId(id);
