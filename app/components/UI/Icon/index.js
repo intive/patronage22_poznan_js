@@ -17,6 +17,7 @@ import {
   faPencil,
   faStar,
   faStarHalfAlt,
+  faCheck,
 } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
@@ -41,6 +42,7 @@ const iconMap = {
   star: faStar,
   starOutline: farStar,
   starHalf: faStarHalfAlt,
+  'check-mark': faCheck,
 };
 
 export default function Icon({ type, ...props }) {
