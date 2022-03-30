@@ -15,6 +15,7 @@ export default function SearchMoviesInput() {
   const inputRef = useRef();
   const containerRef = useRef();
   const router = useRouter();
+  const pathName = router.pathname;
 
   useEffect(() => {
     if (isExpanded && !searchInputValue) {
@@ -23,11 +24,12 @@ export default function SearchMoviesInput() {
   }, [isExpanded, searchInputValue]);
 
   useEffect(() => {
-    if (router.pathname !== '/search') {
+    if (pathName === null) return;
+    if (pathName !== '/search') {
       setSearchInputValue('');
       setExpanded(false);
     }
-  }, [router.pathname]);
+  }, [pathName]);
 
   useEffect(() => {
     if (isThrottling) {
