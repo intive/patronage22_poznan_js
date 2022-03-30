@@ -18,52 +18,49 @@ import SearchMoviesInput from 'components/UI/SearchMoviesInput';
 import UserAvatar from 'components/UI/UserAvatar';
 import { useSession } from 'next-auth/react';
 
-export default function Header({ remove }) {
+export default function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [isCarouselSection, setIsCarouselSection] = useState(false);
+  const [isClosed, setIsClosed] = useState(false);
   const { data: session } = useSession();
 
   const avatar = session?.user?.avatar ?? null;
 
   window.onscroll = function () {
-    if (window.pageYOffset < 380) {
-      setIsCarouselSection(false);
+    if (window.pageYOffset < 450) {
+      setIsClosed(false);
     } else {
-      setIsCarouselSection(true);
+      setIsClosed(true);
     }
   };
   return (
     <>
-      {!isCarouselSection ? (
-        <NavigationBar remove={remove}>
-          <MainPanel>
-            {isMenuOpen ? (
-              <MobileMenuBtn onClick={() => setMenuOpen(!isMenuOpen)}>
-                <Image src={union} alt="union" layout="fill" objectFit="contain" />
-              </MobileMenuBtn>
-            ) : (
-              <MobileMenuBtn onClick={() => setMenuOpen(!isMenuOpen)}>
-                <Image src={iconMenu} alt="time" layout="fill" objectFit="contain" />
-              </MobileMenuBtn>
-            )}
-            <LogoLink />
-          </MainPanel>
-          <DesktopList>{NavigationData}</DesktopList>
-          <UserPanel>
-            <SearchMoviesInput />
-            <UserAvatar avatar={avatar} />
-          </UserPanel>
+      <NavigationBar isClosed={isClosed}>
+        <MainPanel>
           {isMenuOpen ? (
-            <>
-              <HiddenOverflow />
-              <MobileMenuPanel>
-                <MobileList>{NavigationData}</MobileList>
-              </MobileMenuPanel>
-            </>
-          ) : null}
-        </NavigationBar>
-      ) : null}
-      ;
+            <MobileMenuBtn onClick={() => setMenuOpen(!isMenuOpen)}>
+              <Image src={union} alt="union" layout="fill" objectFit="contain" />
+            </MobileMenuBtn>
+          ) : (
+            <MobileMenuBtn onClick={() => setMenuOpen(!isMenuOpen)}>
+              <Image src={iconMenu} alt="time" layout="fill" objectFit="contain" />
+            </MobileMenuBtn>
+          )}
+          <LogoLink />
+        </MainPanel>
+        <DesktopList>{NavigationData}</DesktopList>
+        <UserPanel>
+          <SearchMoviesInput />
+          <UserAvatar avatar={avatar} />
+        </UserPanel>
+        {isMenuOpen ? (
+          <>
+            <HiddenOverflow />
+            <MobileMenuPanel>
+              <MobileList>{NavigationData}</MobileList>
+            </MobileMenuPanel>
+          </>
+        ) : null}
+      </NavigationBar>
     </>
   );
 }

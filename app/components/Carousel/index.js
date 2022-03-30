@@ -24,7 +24,7 @@ const throttle = (fun, limit) => {
   };
 };
 
-const Carousel = ({ movies }) => {
+const Carousel = ({ movies = [] }) => {
   const [activeScreen, setActiveScreen] = useState(0);
   const [tilesPerScreen, setTilesPerScreen] = useState(1);
 

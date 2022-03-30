@@ -6,7 +6,7 @@ import { Wrapper, PosterWrapper, TitleWrapper, Title } from './MovieCard.styles'
 export default function MovieCard({ ...props }) {
   return (
     // I prepared movieID for future use
-    <Link href={'/movie-details/' + props.id} movieId={props.id}>
+    <Link href={`/movie/${props.id}`} movieId={props.id}>
       <a>
         <Wrapper>
           <PosterWrapper>

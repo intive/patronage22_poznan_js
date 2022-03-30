@@ -34,6 +34,8 @@ export async function getServerSideProps({ req }) {
     const resultsOfPopularList = popularList.results;
     const popularCategory = { id: 1, name: 'Popular', listOfMovies: popularList.results };
     const listOfCarousels = [popularCategory, ...listOfCategories];
+
+    // This method draw an index from the list of popular movies and then take the id of the randomly selected movie
     const randomIdFromMostPopularTop10 =
       resultsOfPopularList[Math.floor(Math.random() * Math.min(10, resultsOfPopularList.length))]
         .id;

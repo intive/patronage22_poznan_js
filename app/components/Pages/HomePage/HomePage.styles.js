@@ -28,10 +28,7 @@ export const CarouselContainer = styled.div`
   }
 `;
 
-export const CarouselHeader = styled.h5`
-  margin: 0;
-  padding: 0;
-  font-size: 1rem;
+export const CarouselHeader = styled.p`
   font-weight: 600;
   cursor: pointer;
   ${device.tablet} {
