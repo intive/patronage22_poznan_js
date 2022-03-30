@@ -9,6 +9,7 @@ import {
 import Icon from 'components/UI/Icon';
 
 import PropTypes from 'prop-types';
+import MovieCard from 'components/UI/MovieCard';
 
 const throttle = (fun, limit) => {
   let wait = false;
@@ -67,10 +68,10 @@ const Carousel = ({ movies = [] }) => {
     setActiveScreen(newIndex);
   };
 
-  const CarouselItem = ({ tileCount }) => (
+  const CarouselItem = ({ tileCount, ...props }) => (
     <CarouselItemWrapper tileCount={tileCount}>
       <CarouselItemInner>
-        <div style={{ height: '320px' }}>MovieCard will be here</div>
+        <MovieCard {...props} />
       </CarouselItemInner>
     </CarouselItemWrapper>
   );
@@ -78,8 +79,14 @@ const Carousel = ({ movies = [] }) => {
   return (
     <CarouselOuter>
       <CarouselInner activeScreen={activeScreen}>
-        {movies.map(({ id, title }) => (
-          <CarouselItem key={id} title={title} tileCount={tilesPerScreen} />
+        {movies.map(({ id, title, images }) => (
+          <CarouselItem
+            key={id}
+            title={title}
+            tileCount={tilesPerScreen}
+            src={images?.poster?.m}
+            id={id}
+          />
         ))}
       </CarouselInner>
 

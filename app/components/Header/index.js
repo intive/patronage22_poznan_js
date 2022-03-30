@@ -20,13 +20,21 @@ import { useSession } from 'next-auth/react';
 
 export default function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isClosed, setIsClosed] = useState(false);
   const { data: session } = useSession();
 
   const avatar = session?.user?.avatar ?? null;
 
+  window.onscroll = function () {
+    if (window.pageYOffset < 450) {
+      setIsClosed(false);
+    } else {
+      setIsClosed(true);
+    }
+  };
   return (
     <>
-      <NavigationBar>
+      <NavigationBar isClosed={isClosed}>
         <MainPanel>
           {isMenuOpen ? (
             <MobileMenuBtn onClick={() => setMenuOpen(!isMenuOpen)}>

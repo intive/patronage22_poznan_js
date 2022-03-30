@@ -3,18 +3,17 @@ import Link from 'next/link';
 import MoviePoster from 'components/UI/MoviePoster';
 import { Wrapper, PosterWrapper, TitleWrapper, Title } from './MovieCard.styles';
 
-export default function MovieCard({ src, title, alt, href, ...props }) {
-  /* TODO placeholder for link to specific movie  */
-  href = '#';
+export default function MovieCard({ ...props }) {
   return (
-    <Link href={href}>
+    // I prepared movieID for future use
+    <Link href={`/movie/${props.id}`} movieId={props.id}>
       <a>
         <Wrapper>
           <PosterWrapper>
-            <MoviePoster src={src} alt={alt} title={title} {...props}></MoviePoster>
+            {props.src ? <MoviePoster {...props}></MoviePoster> : <div>Image not found</div>}
           </PosterWrapper>
           <TitleWrapper>
-            <Title>{title}</Title>
+            <Title>{props.title}</Title>
           </TitleWrapper>
         </Wrapper>
       </a>
