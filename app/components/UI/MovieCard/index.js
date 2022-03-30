@@ -9,7 +9,7 @@ export default function MovieCard({ ...props }) {
     <Link href={`/movie/${props.id}`} movieId={props.id}>
       <a>
         <Wrapper>
-          <PosterWrapper>
+          <PosterWrapper ratio={props.ratio}>
             {props.src ? (
               <MoviePoster {...props}></MoviePoster>
             ) : (

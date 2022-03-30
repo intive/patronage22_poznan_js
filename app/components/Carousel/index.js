@@ -71,7 +71,7 @@ const Carousel = ({ movies = [] }) => {
   const CarouselItem = ({ tileCount, ...props }) => (
     <CarouselItemWrapper tileCount={tileCount}>
       <CarouselItemInner>
-        <MovieCard {...props} />
+        <MovieCard ratio="1/1.5" {...props} />
       </CarouselItemInner>
     </CarouselItemWrapper>
   );
