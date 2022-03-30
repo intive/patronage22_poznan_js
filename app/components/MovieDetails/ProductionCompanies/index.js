@@ -1,8 +1,8 @@
 import { Production, StyledList, StyledItem } from './ProductionCompanies.styles';
 
 export const ProductionCompanies = ({ productionCompanies }) => {
-  const companies = productionCompanies.map((companie) => {
-    return <StyledItem key={companie.id}>{companie.name}</StyledItem>;
+  const companies = productionCompanies.map((company) => {
+    return <StyledItem key={company.id}>{company.name}</StyledItem>;
   });
 
   return (
