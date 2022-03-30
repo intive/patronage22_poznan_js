@@ -8,7 +8,9 @@ async function handler(req, res) {
   const { movieId } = req.query;
   const id = parseInt(movieId, 10);
 
-  if (isNaN(id) || id < 1) {
+  const movieIdLimit = 99999999;
+
+  if (isNaN(id) || id < 1 || id > movieIdLimit) {
     return res.status(400).json();
   }
   const client = await mongoClient;
