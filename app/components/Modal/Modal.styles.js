@@ -17,9 +17,6 @@ export const ContentWrapper = styled.div`
   min-height: 100%;
   min-width: 100%;
   max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   position: relative;
   color: white;
   background-color: #1e1b26;
@@ -28,14 +25,11 @@ export const ContentWrapper = styled.div`
     min-height: 80%;
     min-width: 500px;
     max-width: 70%;
+    overflow: hidden;
   }
   ${device.desktop} {
     max-width: 50%;
     min-width: 850px;
-    min-height: 90%;
-    img {
-      border-radius: 8px;
-    }
   }
 `;
 
