@@ -1,4 +1,4 @@
-import { Production, StyledList, StyledItem } from './ProductionCompanies.style';
+import { Production, StyledList, StyledItem } from './ProductionCompanies.styles';
 
 export const ProductionCompanies = ({ productionCompanies }) => {
   const companies = productionCompanies.map((companie) => {
