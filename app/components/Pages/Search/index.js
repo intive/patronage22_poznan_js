@@ -32,14 +32,14 @@ export default function Search() {
     handleServerResponse(response, query);
   };
 
-  const handleServerResponse = (response, query) => {
-    if (response.error) {
-      setMessageForUser(response.error);
+  const handleServerResponse = ({ error, data }, query) => {
+    if (error) {
+      setMessageForUser(error);
       setListOfMovies([]);
     }
-    if (response.data) {
+    if (data) {
       //TODO: delete the code line below after backend fix
-      const filteredMovies = response.filter((movie) => movie !== null);
+      const filteredMovies = data.filter((movie) => movie !== null);
 
       if (filteredMovies.length < 1) {
         setMessageForUser(`Your search for "${query}" did not have any matches.`);
