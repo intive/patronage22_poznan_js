@@ -8,7 +8,7 @@ export default {
 const mockMovieList = [
   {
     images: {
-      backdrop: {
+      poster: {
         l: 'https://image.tmdb.org/t/p/w500/7tNTPZMb13W0AhkcuoL6myRrNRr.jpg',
       },
     },
@@ -17,7 +17,7 @@ const mockMovieList = [
   },
   {
     images: {
-      backdrop: {
+      poster: {
         l: 'https://image.tmdb.org/t/p/w500/vRQnzOn4HjIMX4LBq9nHhFXbsSu.jpg',
       },
     },
@@ -26,7 +26,7 @@ const mockMovieList = [
   },
   {
     images: {
-      backdrop: {
+      poster: {
         l: 'https://image.tmdb.org/t/p/w500/lXhgCODAbBXL5buk9yEmTpOoOgR.jpg',
       },
     },
@@ -35,7 +35,7 @@ const mockMovieList = [
   },
   {
     images: {
-      backdrop: {
+      poster: {
         l: 'https://image.tmdb.org/t/p/w500/gioXMobK8vbD6bcTsjKYKfgacNt.jpg',
       },
     },
@@ -44,7 +44,7 @@ const mockMovieList = [
   },
   {
     images: {
-      backdrop: {
+      poster: {
         l: 'https://image.tmdb.org/t/p/w500/bSQjIZO9aJCJBqxGX3Sx2xtujzT.jpg',
       },
     },
@@ -53,7 +53,7 @@ const mockMovieList = [
   },
   {
     images: {
-      backdrop: {
+      poster: {
         l: 'https://image.tmdb.org/t/p/w500/zn13a7U9eMTJq8sHthe3bCgsVm4.jpg',
       },
     },

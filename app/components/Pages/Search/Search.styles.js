@@ -3,7 +3,7 @@ import { device } from 'consts/mediaQueries';
 
 export const MessageForUser = styled.p`
   color: #ffffff;
-  font-size: 24px;
+  font-size: 1.5rem;
   text-align: center;
   align-self: center;
 `;

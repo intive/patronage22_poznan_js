@@ -10,10 +10,10 @@ export const StyledMovieGrid = styled.div`
   align-content: start;
 
   ${device.tablet} {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   ${device.desktop} {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 `;
