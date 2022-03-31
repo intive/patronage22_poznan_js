@@ -10,7 +10,7 @@ import {
 } from './CategoryPage.styles';
 import { Input } from 'components/Form';
 
-export default function CategoryPage({ moviesData, ...props }) {
+export default function CategoryPage({ moviesData }) {
   if (moviesData.length === 0) {
     return (
       <ErrorWrapper>
@@ -22,7 +22,7 @@ export default function CategoryPage({ moviesData, ...props }) {
   const [searchQ, setSearchQ] = useState('');
 
   const filteredList = searchQ
-    ? moviesData.filter((movie) => movie.title.includes(searchQ))
+    ? moviesData.filter((movie) => movie.title?.toLowerCase().includes(searchQ.toLowerCase()))
     : moviesData;
 
   return (
@@ -41,12 +41,11 @@ export default function CategoryPage({ moviesData, ...props }) {
         {filteredList.map((film, id) => (
           <MovieCardWrapper key={id}>
             <MovieCard
-              href={`/movie/${props.id}`}
+              href={`/movies/${film.id}`}
               movieId={film.id}
               title={film.title}
               src={film.images.poster.m}
               alt={film.title}
-              {...props}
             ></MovieCard>
           </MovieCardWrapper>
         ))}
