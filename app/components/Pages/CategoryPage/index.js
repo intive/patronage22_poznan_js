@@ -11,6 +11,8 @@ import {
 import { Input } from 'components/Form';
 
 export default function CategoryPage({ moviesData }) {
+  const [searchQ, setSearchQ] = useState('');
+
   if (moviesData.length === 0) {
     return (
       <ErrorWrapper>
@@ -18,8 +20,6 @@ export default function CategoryPage({ moviesData }) {
       </ErrorWrapper>
     );
   }
-
-  const [searchQ, setSearchQ] = useState('');
 
   const filteredList = searchQ
     ? moviesData.filter((movie) => movie.title?.toLowerCase().includes(searchQ.toLowerCase()))
@@ -31,7 +31,7 @@ export default function CategoryPage({ moviesData }) {
         <SearchStyle>
           <Input
             id="search"
-            placeholder="Enter the title..."
+            placeholder="Search the movies in this category..."
             onChange={(event) => setSearchQ(event.target.value)}
             value={searchQ}
           />
