@@ -7,6 +7,7 @@ export const WrapperGrid = styled.div`
   column-width: 20%;
   justify-content: center;
   padding: 0 50px;
+  background: linear-gradient(180deg, rgba(32, 32, 32, 0) 0%, #1e1b26 13%, #1e1b26 100%);
 
   ${device.tablet} {
     grid-template-columns: 1fr 1fr 1fr;
