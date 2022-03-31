@@ -2,11 +2,7 @@ import { getListOfMoviesByCategoryId } from 'server/services/movieDb';
 import CategoryPage from 'components/Pages/CategoryPage';
 
 export default function Category({ moviesData }) {
-  return (
-    <div>
-      <CategoryPage moviesData={moviesData} />
-    </div>
-  );
+  return <CategoryPage moviesData={moviesData} />;
 }
 
 export async function getServerSideProps({ params }) {
