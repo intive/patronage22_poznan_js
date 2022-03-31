@@ -1,5 +1,5 @@
 import { getListOfMoviesByCategoryId } from 'server/services/movieDb';
-import { CategoryPage } from 'components/Pages/CategoryPage/CategoryPage';
+import CategoryPage from 'components/Pages/CategoryPage';
 
 export default function Category({ moviesData }) {
   return (
