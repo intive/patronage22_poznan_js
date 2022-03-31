@@ -1,5 +1,5 @@
-import MovieCard from 'components/UI/MovieCard';
 import { useState } from 'react';
+import MovieCard from 'components/UI/MovieCard';
 import {
   WrapperGrid,
   MovieCardWrapper,
