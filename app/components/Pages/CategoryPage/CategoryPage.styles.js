@@ -38,7 +38,7 @@ export const SearchStyle = styled.form`
     border: none;
     border-radius: 6px;
     background: #000;
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #fff;
     padding: 1px 3px;
     outline: none;
