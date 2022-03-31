@@ -24,11 +24,9 @@ export default function SearchMoviesInput() {
   }, [isExpanded, searchInputValue]);
 
   useEffect(() => {
-    if (pathName) {
-      if (pathName !== '/search') {
-        setSearchInputValue('');
-        setExpanded(false);
-      }
+    if (pathName !== '/search') {
+      setSearchInputValue('');
+      setExpanded(false);
     }
   }, [pathName]);
 
