@@ -29,10 +29,8 @@ export default function Search() {
 
   const getMovies = async (query) => {
     const response = await fetchWrapper.get(`api/movies/search?query=${query}`);
-    handleServerResponse(response, query);
-  };
+    const { error, data } = response;
 
-  const handleServerResponse = ({ error, data }, query) => {
     if (error) {
       setMessageForUser(error);
       setListOfMovies([]);
