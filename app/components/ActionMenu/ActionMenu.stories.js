@@ -1,4 +1,8 @@
 import ActionMenu from '.';
+import Button from 'components/UI/Button';
+import { useState, useRef, useEffect } from 'react';
+import useOnClickOutside from 'hooks/useOnClickOutside';
+import UserAvatar from 'components/UI/UserAvatar';
 
 export default {
   title: 'ActionMenu',
@@ -15,7 +19,27 @@ const mockSession = {
   },
 };
 
-const Template = (args) => <ActionMenu {...args} />;
+const Template = (args) => {
+  const [open, setOpen] = useState(false);
+
+  const containerRef = useRef();
+
+  useOnClickOutside(containerRef, () => setOpen(false));
+
+  return (
+    <>
+      <Button
+        onlyIcon
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        <UserAvatar size={200} avatar={mockSession.user.avatar} />
+      </Button>
+      {open && <ActionMenu {...args} />}
+    </>
+  );
+};
 
 export const Default = Template.bind();
 Default.args = {

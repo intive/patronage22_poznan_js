@@ -1,8 +1,8 @@
+import { signOut } from 'next-auth/react';
 import { Wrapper, UserInfo, Username, ActionList, ListItem, ActionBtn } from './ActionMenu.styles';
 import Button from '../UI/Button';
 import UserAvatar from 'components/UI/UserAvatar';
 import Icon from '../UI/Icon';
-import { signOut } from 'next-auth/react';
 
 export default function ActionMenu({ userData }) {
   return (
