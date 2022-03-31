@@ -24,16 +24,6 @@ export const MovieDetails = ({ movieId, movieData: preloadedMovieData }) => {
   const router = useRouter();
   const { images, title, overview, productionCompanies } = movieData;
 
-  async function fetchSimilarMovieData() {
-    try {
-      const resp = await fetch(`/api/movies/${movieId}/similar`);
-      const data = await resp.json();
-      setSimilarMoviesData(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   useEffect(() => {
     async function fetchData() {
       try {
@@ -44,7 +34,15 @@ export const MovieDetails = ({ movieId, movieData: preloadedMovieData }) => {
         router.push('/404');
       }
     }
-
+    async function fetchSimilarMovieData() {
+      try {
+        const resp = await fetch(`/api/movies/${movieId}/similar`);
+        const data = await resp.json();
+        setSimilarMoviesData(data);
+      } catch (error) {
+        router.push('/404');
+      }
+    }
     if (movieId && !preloadedMovieData) {
       setTimeout(() => {
         fetchData();
@@ -56,7 +54,6 @@ export const MovieDetails = ({ movieId, movieData: preloadedMovieData }) => {
   useEffect(() => {
     if (preloadedMovieData) {
       setMovieData(preloadedMovieData);
-      fetchSimilarMovieData();
     }
   }, [preloadedMovieData]);
 
@@ -79,7 +76,7 @@ export const MovieDetails = ({ movieId, movieData: preloadedMovieData }) => {
             </WatchBtn>
           </DescriptionWrapper>
           <CarouselWrapper>
-            <Carousel movies={similarMoviesData} />
+            <Carousel movies={[...similarMoviesData]} />
           </CarouselWrapper>
         </MovieDetailsWrapper>
       ) : (
