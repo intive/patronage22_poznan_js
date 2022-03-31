@@ -40,7 +40,7 @@ export default function Search() {
     if (data) {
       //TODO: delete the code line below after backend fix
       const filteredMovies = data.filter((movie) => movie !== null);
-
+      console.log(filteredMovies);
       if (filteredMovies.length < 1) {
         setMessageForUser(`Your search for "${query}" did not have any matches.`);
       }
