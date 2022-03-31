@@ -14,7 +14,7 @@ export default function CategoryPage({ moviesData, ...props }) {
   if (moviesData.length === 0) {
     return (
       <ErrorWrapper>
-        <NoMovieError>Oops looks like there are no movies in this category! :(</NoMovieError>
+        <NoMovieError>Oops, looks like there are no movies in this category! :(</NoMovieError>
       </ErrorWrapper>
     );
   }
