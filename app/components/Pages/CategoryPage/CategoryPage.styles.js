@@ -4,25 +4,21 @@ import { device } from 'consts/mediaQueries';
 export const WrapperGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-width: 20%;
   justify-content: center;
   padding: 0 50px;
   background: linear-gradient(180deg, rgba(32, 32, 32, 0) 0%, #1e1b26 13%, #1e1b26 100%);
 
   ${device.tablet} {
     grid-template-columns: 1fr 1fr 1fr;
-    column-width: 30%;
   }
   ${device.desktop} {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    column-width: 50%;
   }
 `;
 
 export const MovieCardWrapper = styled.div`
   width: 70%;
-  height: 400px;
-  margin: 0 auto;
+  margin: 20px auto;
 `;
 
 export const SearchDiv = styled.div`
@@ -47,4 +43,19 @@ export const SearchStyle = styled.form`
     padding: 1px 3px;
     outline: none;
   }
+`;
+
+export const ErrorWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: linear-gradient(180deg, rgba(32, 32, 32, 0) 0%, #1e1b26 13%, #1e1b26 100%);
+  color: white;
+`;
+
+export const NoMovieError = styled.h2`
+  margin: 0 auto;
 `;
