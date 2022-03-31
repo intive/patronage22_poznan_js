@@ -72,7 +72,6 @@ export const MovieDescription = styled.section`
   ${device.desktop} {
     margin: 0;
     padding-right: 48px;
-    width: 80%;
     p {
       margin-top: 23px;
     }
