@@ -77,11 +77,12 @@ export const MovieDescription = styled.section`
     }
   }
 `;
+
 export const CarouselWrapper = styled.div`
   width: 90%;
   margin: 20px auto 0 auto;
   p {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     text-align: center;
   }
   ${device.desktop} {
@@ -101,4 +102,15 @@ export const WatchBtn = styled(Button)`
 
 export const PlayIcon = styled(Icon).attrs({ type: 'caret-right' })`
   margin-right: 1rem;
+`;
+export const CarouselTitle = styled.h3`
+  color: white;
+  text-align: left;
+  font-size: 1rem;
+  ${device.tablet} {
+    font-size: 1.2rem;
+  }
+  ${device.desktop} {
+    font-size: 1.5rem;
+  }
 `;
