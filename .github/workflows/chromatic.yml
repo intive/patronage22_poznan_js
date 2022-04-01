@@ -11,6 +11,9 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    outputs:
+      buildUrl: ${{ steps.chromatic.outputs.buildUrl }}
+      storybookUrl: ${{ steps.chromatic.outputs.storybookUrl }}
     steps:
       - uses: actions/checkout@v1
       - name: Install dependencies
