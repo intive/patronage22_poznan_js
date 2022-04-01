@@ -15,11 +15,18 @@ import {
   DescriptionWrapper,
   MovieDescription,
   CarouselWrapper,
+  CarouselTitle,
 } from './MovieDetails.styles';
 
-export const MovieDetails = ({ movieId, movieData: preloadedMovieData }) => {
+export const MovieDetails = ({
+  movieId,
+  similarMovies,
+  recommendedMovies,
+  movieData: preloadedMovieData,
+}) => {
   const [movieData, setMovieData] = useState('');
   const [similarMoviesData, setSimilarMoviesData] = useState([]);
+  const [recommendedMoviesData, setRecommendedMoviesData] = useState([]);
 
   const router = useRouter();
   const { images, title, overview, productionCompanies } = movieData;
@@ -33,8 +40,6 @@ export const MovieDetails = ({ movieId, movieData: preloadedMovieData }) => {
       } catch (error) {
         router.push('/404');
       }
-    }
-    async function fetchSimilarMovieData() {
       try {
         const resp = await fetch(`/api/movies/${movieId}/similar`);
         const data = await resp.json();
@@ -42,20 +47,28 @@ export const MovieDetails = ({ movieId, movieData: preloadedMovieData }) => {
       } catch (error) {
         router.push('/404');
       }
+      try {
+        const resp = await fetch(`/api/movies/${movieId}/recommendations`);
+        const data = await resp.json();
+        setRecommendedMoviesData(data);
+      } catch (error) {
+        router.push('/404');
+      }
     }
     if (movieId && !preloadedMovieData) {
       setTimeout(() => {
         fetchData();
-        fetchSimilarMovieData();
       }, 500);
     }
   }, [movieId, preloadedMovieData, router]);
 
   useEffect(() => {
-    if (preloadedMovieData) {
+    if (preloadedMovieData && similarMovies && recommendedMovies) {
       setMovieData(preloadedMovieData);
+      setSimilarMoviesData(similarMovies);
+      setRecommendedMoviesData(recommendedMovies);
     }
-  }, [preloadedMovieData]);
+  }, [preloadedMovieData, similarMovies, recommendedMovies]);
 
   return (
     <>
@@ -76,7 +89,10 @@ export const MovieDetails = ({ movieId, movieData: preloadedMovieData }) => {
             </WatchBtn>
           </DescriptionWrapper>
           <CarouselWrapper>
-            <Carousel movies={[...similarMoviesData]} />
+            <CarouselTitle>Recommended Movies</CarouselTitle>
+            <Carousel movies={recommendedMoviesData} />
+            <CarouselTitle>Similar Movies</CarouselTitle>
+            <Carousel movies={similarMoviesData} />
           </CarouselWrapper>
         </MovieDetailsWrapper>
       ) : (
