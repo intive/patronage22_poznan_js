@@ -1,9 +1,10 @@
-name: "Branch"
+name: "PR"
 
 on:
   push:
-    branches-ignore:
-      - main
+    branches:
+      - develop
+  pull_request:
 
 jobs:
   install:
@@ -82,13 +83,26 @@ jobs:
   deploy:
     needs: [lint, test]
     runs-on: ubuntu-latest
+    outputs:
+      preview-url: ${{ steps.vercel-deploy.outputs.preview-url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy to Vercel
+        id: vercel-deploy
         uses: amondnet/vercel-action@v20
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+          github-comment: false
+
+  comment:
+    needs: [deploy]
+    name: Comment
+    uses: ./.github/workflows/comment.yml
+    with:
+      comment_secret: e283ce82-0cf8-4055-bc5c-8e93da828c8e
+      template: .github/vercel-comment-template.md
+      variable1: ${{ needs.deploy.outputs.preview-url }}

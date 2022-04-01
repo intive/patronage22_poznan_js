@@ -8,9 +8,12 @@ on:
   pull_request:
 
 jobs:
-  chromatic-deployment:
+  deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    outputs:
+      buildUrl: ${{ steps.chromatic.outputs.buildUrl }}
+      storybookUrl: ${{ steps.chromatic.outputs.storybookUrl }}
     steps:
       - uses: actions/checkout@v1
       - name: Install dependencies
@@ -22,24 +25,13 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           exitZeroOnChanges: true
-      - name: Render comment template
-        if: github.event_name == 'pull_request'
-        id: template
-        uses: chuhlomin/render-template@v1.2
-        with:
-          template: .github/chromatic-comment-template.md
-          vars: |
-            chromaticUrl: ${{ steps.chromatic.outputs.buildUrl }}
-            storybookUrl: ${{ steps.chromatic.outputs.storybookUrl }}
-      - name: Comment Chromatic & Storybook URL
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `${{ steps.template.outputs.result }}`
-            })
+
+  comment:
+    needs: [deploy]
+    name: Comment
+    uses: ./.github/workflows/comment.yml
+    with:
+      comment_secret: af509cd3-e034-490e-9a0e-93625c124f76
+      template: .github/chromatic-comment-template.md
+      variable1: ${{ needs.deploy.outputs.buildUrl }}
+      variable2: ${{ needs.deploy.outputs.storybookUrl }}
