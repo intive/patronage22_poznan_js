@@ -6,9 +6,9 @@ export const fetchWrapper = {
 async function post(endpoint, body) {
   const requestOptions = {
     method: 'POST',
-    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://patronage22-poznan-js-seven.vercel.app',
     },
     body: JSON.stringify(body),
   };
