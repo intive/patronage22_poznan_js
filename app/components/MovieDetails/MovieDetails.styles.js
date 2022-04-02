@@ -54,6 +54,7 @@ export const DescriptionWrapper = styled.div`
   }
   ${device.desktop} {
     display: flex;
+    justify-content: space-between;
     padding: 8px 72px 20px 72px;
   }
 `;

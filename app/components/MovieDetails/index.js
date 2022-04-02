@@ -37,25 +37,21 @@ export const MovieDetails = ({
         const resp = await fetch(`/api/movies/${movieId}`);
         const data = await resp.json();
         setMovieData(data);
-      } catch (error) {
-        router.push('/404');
-      }
-      try {
-        const resp = await fetch(`/api/movies/${movieId}/similar`);
-        const data = await resp.json();
-        setSimilarMoviesData(data);
-      } catch (error) {
-        router.push('/404');
-      }
-      try {
-        const resp = await fetch(`/api/movies/${movieId}/recommendations`);
-        const data = await resp.json();
-        setRecommendedMoviesData(data);
+
+        const reqSmilar = await fetch(`/api/movies/${movieId}/similar`);
+        const similarMovieData = await reqSmilar.json();
+        setSimilarMoviesData(similarMovieData);
+
+        const reqRecomandation = await fetch(`/api/movies/${movieId}/recommendations`);
+        const recomandationData = await reqRecomandation.json();
+        setRecommendedMoviesData(recomandationData);
       } catch (error) {
         router.push('/404');
       }
     }
+
     if (movieId && !preloadedMovieData) {
+      setMovieData('');
       setTimeout(() => {
         fetchData();
       }, 500);
@@ -64,12 +60,17 @@ export const MovieDetails = ({
 
   useEffect(() => {
     if (preloadedMovieData && similarMovies && recommendedMovies) {
-      setMovieData(preloadedMovieData);
       setSimilarMoviesData(similarMovies);
       setRecommendedMoviesData(recommendedMovies);
+      setMovieData(preloadedMovieData);
     }
   }, [preloadedMovieData, similarMovies, recommendedMovies]);
 
+  useEffect(() => {
+    if (movieId) {
+      router.push(`/movie/${movieId}`, `/movie/${movieId}`, { shallow: true });
+    }
+  }, []);
   return (
     <>
       {movieData ? (
