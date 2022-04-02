@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Image from 'next/image';
 import { device } from 'consts/mediaQueries';
 
 export const Wrapper = styled.div`
@@ -9,16 +8,15 @@ export const Wrapper = styled.div`
   width: 100vw;
   background-color: #2a2535;
   color: white;
+  > span {
+    display: none !important;
+  }
   ${device.tablet} {
     justify-content: flex-end;
     align-items: center;
-  }
-`;
-
-export const AuthBackground = styled(Image)`
-  display: none !important;
-  ${device.tablet} {
-    display: block !important;
+    > span {
+      display: block !important;
+    }
   }
 `;
 
