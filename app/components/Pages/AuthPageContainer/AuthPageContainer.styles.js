@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   > span {
     display: none !important;
   }
+
   ${device.tablet} {
     justify-content: flex-end;
     align-items: center;
