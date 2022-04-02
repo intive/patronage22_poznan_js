@@ -6,7 +6,10 @@ export const fetchWrapper = {
 async function post(endpoint, body) {
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(body),
   };
   try {
