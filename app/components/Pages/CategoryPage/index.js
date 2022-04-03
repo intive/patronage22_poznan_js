@@ -7,11 +7,14 @@ import {
   SearchStyle,
   ErrorWrapper,
   NoMovieError,
+  TitleWrapper,
+  CategoryTitle,
 } from './CategoryPage.styles';
 import { Input } from 'components/Form';
 
-export default function CategoryPage({ moviesData }) {
+export default function CategoryPage({ moviesData, categoryName }) {
   const [searchQ, setSearchQ] = useState('');
+  console.log(moviesData);
 
   if (moviesData.length === 0) {
     return (
@@ -37,6 +40,9 @@ export default function CategoryPage({ moviesData }) {
           />
         </SearchStyle>
       </SearchDiv>
+      <TitleWrapper>
+        <CategoryTitle>{categoryName}</CategoryTitle>
+      </TitleWrapper>
       <WrapperGrid>
         {filteredList.map((film, id) => (
           <MovieCardWrapper key={id}>
