@@ -1,0 +1,68 @@
+name: "Comment on PR"
+
+on:
+  workflow_call:
+    inputs:
+      comment_secret:
+        required: true
+        type: string
+      template:
+        required: true
+        type: string
+      variable1:
+        required: false
+        type: string
+      variable2:
+        required: false
+        type: string
+
+jobs:
+  comment:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Render comment template
+        id: template
+        uses: chuhlomin/render-template@v1.4
+        with:
+          template: ${{ inputs.template }}
+          vars: |
+            variable1: ${{ inputs.variable1 }} 
+            variable2: ${{ inputs.variable2 }}
+            hash: ${{ github.event.pull_request.head.sha }}
+      - name: Find existing comment
+        uses: peter-evans/find-comment@v2
+        id: findcomment
+        with:
+          issue-number: ${{ github.event.number }}
+          body-includes: ${{ inputs.comment_secret }}
+          comment-author: github-actions[bot]
+          direction: last
+      - name: Add new comment
+        if: steps.findcomment.outputs.comment-id == null
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `${{ steps.template.outputs.result }}`
+            })
+      - name: Modify existing comment
+        if: steps.findcomment.outputs.comment-id
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.updateComment({
+              comment_id: ${{ steps.findcomment.outputs.comment-id }},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `${{ steps.template.outputs.result }}`
+            })
