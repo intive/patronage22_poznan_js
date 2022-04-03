@@ -6,7 +6,7 @@ export const WrapperGrid = styled.div`
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   padding: 0 50px;
-  background: linear-gradient(180deg, rgba(32, 32, 32, 0) 0%, #1e1b26 13%, #1e1b26 100%);
+  background: #000;
 
   ${device.tablet} {
     grid-template-columns: 1fr 1fr 1fr;
@@ -52,10 +52,28 @@ export const ErrorWrapper = styled.div`
   position: relative;
   margin: 0 auto;
   min-height: 100vh;
-  background: linear-gradient(180deg, rgba(32, 32, 32, 0) 0%, #1e1b26 13%, #1e1b26 100%);
+  background: #000;
   color: white;
 `;
 
 export const NoMovieError = styled.h2`
   margin: 0 auto;
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  min-height: 100px;
+  background: #000;
+  color: white;
+  border: 1px solid red;
+`;
+
+export const CategoryTitle = styled.h2`
+  margin: 0 auto;
+  font-size: 15px;
+  color: #fff;
 `;
