@@ -4,7 +4,7 @@ import Button from 'components/UI/Button';
 export const SearchMoviesContainer = styled.div`
   display: flex;
   justify-content: flex-start;
-  width: ${({ isExpanded }) => (isExpanded ? '210px' : '30px')};
+  width: ${({ isExpanded }) => (isExpanded ? '200px' : '30px')};
   transition: width 0.3s ease-in-out;
   overflow: hidden;
   margin-right: 10px;

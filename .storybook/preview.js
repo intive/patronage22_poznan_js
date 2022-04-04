@@ -1,4 +1,5 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { SessionProvider } from 'next-auth/react';
 import '../styles/fonts.css';
 import '../styles/globals.css';
@@ -30,6 +31,9 @@ export const parameters = {
   // layout: 'centered',
   viewport: {
     viewports: INITIAL_VIEWPORTS,
+  },
+  nextRouter: {
+    Provider: RouterContext.Provider,
   },
 };
 
