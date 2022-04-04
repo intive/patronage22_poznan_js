@@ -31,6 +31,7 @@ export async function getServerSideProps({ req }) {
         return { ...category, listOfMovies };
       })
     );
+
     const session = await verifyJwtInRequest(req);
     const myList = await getMyList({ session });
     const popularList = await getListOfPopularMovies(req);
