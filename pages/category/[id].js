@@ -28,12 +28,12 @@ export async function getServerSideProps({ params }) {
     }
 
     const categoryList = await getListOfGenres();
-    // if (categoryList.find((category) => category.id === id)) {
-    //   const categoryName = categoryList.name;
-    //   return categoryName;
-    // }
+    if (categoryList.find((category) => category.id === id)) {
+      const categoryName = categoryList.name;
+      return categoryName;
+    }
+    // this above makes moviesData to be undefined :(
 
-    //this above makes moviesData to be undefined :(
     return { props: { categoryList, moviesData: movies ? movies.results : [] } };
   } catch (e) {
     console.error(e);
