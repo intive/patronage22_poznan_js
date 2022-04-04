@@ -3,13 +3,6 @@ import { device } from 'consts/mediaQueries';
 
 export const Production = styled.section`
   display: none;
-  ${device.tablet} {
-    h2 {
-      margin-top: 20px;
-      font-size: 1.8rem;
-      line-height: 1.8rem;
-    }
-  }
   ${device.desktop} {
     display: block;
     h2 {

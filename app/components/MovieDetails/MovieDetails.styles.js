@@ -96,6 +96,8 @@ export const WatchBtn = styled(Button)`
   font-size: 1.3rem;
   margin-top: 32px;
   padding: 16px 32px 16px 24px;
+  background-color: #ffffff;
+  color: black;
   ${device.desktop} {
     display: none;
   }
@@ -104,7 +106,7 @@ export const WatchBtn = styled(Button)`
 export const PlayIcon = styled(Icon).attrs({ type: 'caret-right' })`
   margin-right: 1rem;
 `;
-export const CarouselTitle = styled.h3`
+export const CarouselTitle = styled.h2`
   color: white;
   text-align: left;
   font-size: 1rem;

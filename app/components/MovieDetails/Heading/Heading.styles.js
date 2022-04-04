@@ -8,6 +8,7 @@ export const TitleWrapper = styled.div`
   width: 100%;
   padding: 20px 16px 0px 16px;
   border-radius: 8px 8px 0 0;
+  text-shadow: 2px 3px 5px black;
   button {
     display: none;
     text-transform: capitalize;
