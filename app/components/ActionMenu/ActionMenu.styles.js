@@ -2,6 +2,9 @@ import Button from 'components/UI/Button';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+  position: absolute;
+  right: 48px;
+  top: 72px;
   padding: 32px 16px;
   width: 300px;
   color: #fff;

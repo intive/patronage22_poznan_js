@@ -20,25 +20,7 @@ const mockSession = {
 };
 
 const Template = (args) => {
-  const [open, setOpen] = useState(false);
-
-  const containerRef = useRef();
-
-  useOnClickOutside(containerRef, () => setOpen(false));
-
-  return (
-    <>
-      <Button
-        onlyIcon
-        onClick={() => {
-          setOpen(!open);
-        }}
-      >
-        <UserAvatar size={200} avatar={mockSession.user.avatar} />
-      </Button>
-      {open && <ActionMenu {...args} />}
-    </>
-  );
+  return <ActionMenu {...args} />;
 };
 
 export const Default = Template.bind();

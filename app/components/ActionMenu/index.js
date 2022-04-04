@@ -4,12 +4,12 @@ import Button from '../UI/Button';
 import UserAvatar from 'components/UI/UserAvatar';
 import Icon from '../UI/Icon';
 
-export default function ActionMenu({ userData }) {
+export default function ActionMenu({ userData, reference }) {
   return (
-    <Wrapper>
+    <Wrapper ref={reference}>
       <UserInfo>
-        <UserAvatar size={100} avatar={userData.user.avatar} />
-        <Username>{userData.user.name}</Username>
+        <UserAvatar size={100} avatar={userData?.user.avatar} />
+        <Username>{userData?.user.name}</Username>
       </UserInfo>
       <ActionList>
         <ListItem>
