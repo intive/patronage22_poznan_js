@@ -3,8 +3,11 @@ import mongoClient from 'server/mongoDb';
 import { getPassHash } from 'server/hash';
 import { validateSignUpUserEmail, validateSignUpUserPassword } from 'utils/validateFormInputs';
 import avatarList from 'consts/avatars';
+import { cors } from '../cors';
 
 export default async function handler(req, res) {
+  await cors(req, res);
+
   if (req.method !== 'POST') {
     return res.status(404).send();
   }
