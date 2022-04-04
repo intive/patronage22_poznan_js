@@ -53,7 +53,7 @@ export const ErrorWrapper = styled.div`
   margin: 0 auto;
   min-height: 100vh;
   background: #000;
-  color: white;
+  color: #fff;
 `;
 
 export const NoMovieError = styled.h2`
@@ -68,12 +68,12 @@ export const TitleWrapper = styled.div`
   margin: 0 auto;
   min-height: 100px;
   background: #000;
-  color: white;
+  color: #fff;
   border: 1px solid red;
 `;
 
 export const CategoryTitle = styled.h2`
   margin: 0 auto;
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: #fff;
 `;
