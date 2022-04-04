@@ -44,8 +44,8 @@ export default function CategoryPage({ moviesData, categoryName }) {
         <CategoryTitle>{categoryName}</CategoryTitle>
       </TitleWrapper>
       <WrapperGrid>
-        {filteredList.map((film, id) => (
-          <MovieCardWrapper key={id}>
+        {filteredList.map((film) => (
+          <MovieCardWrapper key={film.id}>
             <MovieCard
               href={`/movies/${film.id}`}
               movieId={film.id}
