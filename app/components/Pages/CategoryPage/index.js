@@ -48,7 +48,7 @@ export default function CategoryPage({ moviesData, categoryName }) {
           <MovieCardWrapper key={film.id}>
             <MovieCard
               href={`/movies/${film.id}`}
-              movieId={film.id}
+              movieid={film.id}
               title={film.title}
               src={film.images.poster.m}
               alt={film.title}
