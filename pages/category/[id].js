@@ -10,9 +10,15 @@ export default function Category({ moviesData, categoryName }) {
 }
 
 export async function getServerSideProps({ params }) {
-  const { id } = params;
-
   try {
+    const id = parseInt(params.id);
+
+    if (isNaN(id)) {
+      return {
+        notFound: true,
+      };
+    }
+
     if (id === 1) {
       const popularMovies = await getListOfPopularMovies();
       const categoryName = 'Popular';
@@ -24,12 +30,18 @@ export async function getServerSideProps({ params }) {
       };
     }
     const movies = await getListOfMoviesByCategoryId(id);
-    const categoryList = await getListOfGenres();
-    const categoryName = categoryList.find((category) => category.id === id);
+    const { genres } = await getListOfGenres();
+    const category = genres.find((category) => category.id === id);
+
+    if (!category?.name) {
+      return {
+        notFound: true,
+      };
+    }
 
     return {
       props: {
-        categoryName,
+        categoryName: category.name,
         moviesData: movies ? movies.results : [],
       },
     };
