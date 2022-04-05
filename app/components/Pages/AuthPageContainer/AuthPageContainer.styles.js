@@ -7,17 +7,16 @@ export const Wrapper = styled.div`
   min-height: 100vh;
   width: 100vw;
   background-color: #2a2535;
-  color: white;
-  > span {
-    display: none !important;
-  }
+  color: #fff;
 
   ${device.tablet} {
     justify-content: flex-end;
     align-items: center;
-    > span {
-      display: block !important;
-    }
+    background-image: url('images/hero-background-image.jpg'),
+      url('images/placeholder-auth-container.jpg');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 `;
 
