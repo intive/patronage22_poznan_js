@@ -1,28 +1,16 @@
 import styled from 'styled-components';
-import { device } from 'consts/mediaQueries';
 
-export const WrapperGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  padding: 0 50px;
+export const CategoryPageWrapper = styled.div`
   background: #000;
-
-  ${device.tablet} {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  ${device.desktop} {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  }
 `;
 
-export const MovieCardWrapper = styled.div`
-  width: 70%;
-  margin: 20px auto;
+export const WrapperGrid = styled.div`
+  width: 90%;
+  margin: 0 auto;
 `;
 
 export const SearchDiv = styled.div`
-  height: 200px;
+  height: 160px;
   margin: 0 auto;
   max-width: 90vw;
 `;
@@ -30,18 +18,18 @@ export const SearchDiv = styled.div`
 export const SearchStyle = styled.form`
   position: relative;
   width: 100%;
-  padding-top: 100px;
+  padding-top: 120px;
 
   input {
     width: 100%;
-    height: 35px;
+    height: 40px;
     border: none;
     border-radius: 6px;
-    background: #000;
     font-size: 1.125rem;
     color: #fff;
     padding: 1px 3px;
     outline: none;
+    text-indent: 15px;
   }
 `;
 
@@ -67,13 +55,11 @@ export const TitleWrapper = styled.div`
   position: relative;
   margin: 0 auto;
   min-height: 100px;
-  background: #000;
   color: #fff;
-  border: 1px solid red;
 `;
 
-export const CategoryTitle = styled.h2`
+export const CategoryTitle = styled.h1`
   margin: 0 auto;
-  font-size: 0.9375rem;
+  font-size: 1.5rem;
   color: #fff;
 `;
