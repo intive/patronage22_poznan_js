@@ -1,25 +1,24 @@
 import { useState } from 'react';
-import MovieCard from 'components/UI/MovieCard';
+import MovieGrid from 'components/UI/MovieGrid';
 import {
   WrapperGrid,
-  MovieCardWrapper,
   SearchDiv,
   SearchStyle,
   ErrorWrapper,
   NoMovieError,
   TitleWrapper,
   CategoryTitle,
+  CategoryPageWrapper,
 } from './CategoryPage.styles';
 import { Input } from 'components/Form';
 
-export default function CategoryPage({ moviesData, categoryName }) {
+export default function CategoryPage({ moviesData = [], categoryName }) {
   const [searchQ, setSearchQ] = useState('');
-  console.log(moviesData);
 
   if (moviesData.length === 0) {
     return (
       <ErrorWrapper>
-        <NoMovieError>Oops, looks like there are no movies in this category! :(</NoMovieError>
+        <NoMovieError>Oops, looks like there are no movies in this {categoryName}! :(</NoMovieError>
       </ErrorWrapper>
     );
   }
@@ -30,32 +29,24 @@ export default function CategoryPage({ moviesData, categoryName }) {
 
   return (
     <>
-      <SearchDiv>
-        <SearchStyle>
-          <Input
-            id="search"
-            placeholder="Search the movies in this category..."
-            onChange={(event) => setSearchQ(event.target.value)}
-            value={searchQ}
-          />
-        </SearchStyle>
-      </SearchDiv>
-      <TitleWrapper>
-        <CategoryTitle>{categoryName}</CategoryTitle>
-      </TitleWrapper>
-      <WrapperGrid>
-        {filteredList.map((film) => (
-          <MovieCardWrapper key={film.id}>
-            <MovieCard
-              href={`/movies/${film.id}`}
-              movieid={film.id}
-              title={film.title}
-              src={film.images.poster.m}
-              alt={film.title}
-            ></MovieCard>
-          </MovieCardWrapper>
-        ))}
-      </WrapperGrid>
+      <CategoryPageWrapper>
+        <SearchDiv>
+          <SearchStyle>
+            <Input
+              id="search"
+              placeholder="Search the movies in this category..."
+              onChange={(event) => setSearchQ(event.target.value)}
+              value={searchQ}
+            />
+          </SearchStyle>
+        </SearchDiv>
+        <TitleWrapper>
+          <CategoryTitle>{categoryName}</CategoryTitle>
+        </TitleWrapper>
+        <WrapperGrid>
+          <MovieGrid listOfMovies={filteredList} />
+        </WrapperGrid>
+      </CategoryPageWrapper>
     </>
   );
 }
