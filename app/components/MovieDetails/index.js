@@ -24,12 +24,11 @@ export const MovieDetails = ({
   recommendedMovies,
   movieData: preloadedMovieData,
 }) => {
-  const [movieData, setMovieData] = useState('');
+  const [movieData, setMovieData] = useState({});
   const [similarMoviesData, setSimilarMoviesData] = useState([]);
   const [recommendedMoviesData, setRecommendedMoviesData] = useState([]);
 
   const router = useRouter();
-  const { images, title, overview, productionCompanies } = movieData;
 
   useEffect(() => {
     async function fetchData() {
@@ -50,32 +49,31 @@ export const MovieDetails = ({
       }
     }
 
-    if (movieId && !preloadedMovieData) {
+    if (movieId && (!preloadedMovieData || !similarMovies || !recommendedMovies)) {
       setMovieData('');
-      setTimeout(() => {
-        fetchData();
-      }, 500);
+      fetchData();
     }
-  }, [movieId, preloadedMovieData, router]);
+  }, [movieId, preloadedMovieData, recommendedMovies, similarMovies, router]);
 
   useEffect(() => {
-    if (preloadedMovieData && similarMovies && recommendedMovies) {
-      setSimilarMoviesData(similarMovies);
-      setRecommendedMoviesData(recommendedMovies);
+    if (preloadedMovieData) {
       setMovieData(preloadedMovieData);
     }
-  }, [preloadedMovieData, similarMovies, recommendedMovies]);
+  }, [preloadedMovieData]);
 
   useEffect(() => {
     if (movieId) {
       router.push(`/movie/${movieId}`, `/movie/${movieId}`, { shallow: true });
     }
-  }, []);
+  }, [movieId, router]);
+
+  const { images, title, overview, productionCompanies } = movieData;
+
   return (
     <>
-      {movieData ? (
+      {movieData?.id ? (
         <MovieDetailsWrapper>
-          <MovieBackDrop backgroundImg={images?.backdrop?.original}>
+          <MovieBackDrop backgroundImg={images.backdrop.original}>
             <Heading title={title} />
           </MovieBackDrop>
           <DescriptionWrapper>
@@ -91,9 +89,9 @@ export const MovieDetails = ({
           </DescriptionWrapper>
           <CarouselWrapper>
             <CarouselTitle>Recommended Movies</CarouselTitle>
-            <Carousel movies={recommendedMoviesData} />
+            <Carousel movies={recommendedMovies || recommendedMoviesData} />
             <CarouselTitle>Similar Movies</CarouselTitle>
-            <Carousel movies={similarMoviesData} />
+            <Carousel movies={similarMovies || similarMoviesData} />
           </CarouselWrapper>
         </MovieDetailsWrapper>
       ) : (
