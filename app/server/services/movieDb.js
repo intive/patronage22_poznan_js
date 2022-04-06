@@ -53,11 +53,11 @@ const movieDbClient = async (url, query = '', method = 'GET', body) => {
         movie.images = {};
         if (movie.poster_path) {
           movie.images.poster = getFullImageURLs(movie.poster_path);
-          movie.poster_path = undefined;
+          delete movie.poster_path;
         }
         if (movie.backdrop_path) {
           movie.images.backdrop = getFullImageURLs(movie.backdrop_path);
-          movie.backdrop_path = undefined;
+          delete movie.backdrop_path;
         }
         return makeKeysCamelCase(movie);
       });
