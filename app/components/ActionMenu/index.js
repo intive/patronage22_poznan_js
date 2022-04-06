@@ -11,9 +11,9 @@ import {
 import UserAvatar from 'components/UI/UserAvatar';
 import Icon from '../UI/Icon';
 
-export default function ActionMenu({ userData, reference }) {
+export default function ActionMenu({ userData }) {
   return (
-    <Wrapper ref={reference}>
+    <Wrapper>
       <UserInfo>
         <UserAvatar size={100} avatar={userData?.user.avatar} />
         <Username>{userData?.user.name}</Username>

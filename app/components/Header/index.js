@@ -68,17 +68,19 @@ export default function Header() {
         <DesktopList>{NavigationData}</DesktopList>
         <UserPanel>
           <SearchMoviesInput />
-          <Button onlyIcon onClick={handleActionMenuOpen}>
-            <UserAvatar avatar={avatar} />
-          </Button>
-          {isActionMenuOpen && (
-            <>
-              <CloseMenuBtn iconWithBg onClick={handleActionMenuOpen}>
-                <Icon size="2x" type="x-mark" />
-              </CloseMenuBtn>
-              <ActionMenu userData={session} reference={containerRef} />
-            </>
-          )}
+          <div ref={containerRef}>
+            <Button onlyIcon onClick={handleActionMenuOpen}>
+              <UserAvatar avatar={avatar} />
+            </Button>
+            {isActionMenuOpen && (
+              <>
+                <CloseMenuBtn iconWithBg onClick={handleActionMenuOpen}>
+                  <Icon size="2x" type="x-mark" />
+                </CloseMenuBtn>
+                <ActionMenu userData={session} />
+              </>
+            )}
+          </div>
         </UserPanel>
         {isMenuOpen ? (
           <>
