@@ -43,19 +43,23 @@ const movieDbClient = async (url, query = '', method = 'GET', body) => {
   const data = await res.json();
 
   if (Array.isArray(data.results)) {
-    data.results = data.results.map((movie) => {
-      if (movie.poster_path || movie.backdrop_path) {
-        movie.images = {};
-        if (movie.poster_path) {
-          movie.images.poster = getFullImageURLs(movie.poster_path);
+    // result is a list
+    data.results = data.results
+      .filter((movie) => movie !== null)
+      .map((movie) => {
+        if (movie.poster_path || movie.backdrop_path) {
+          movie.images = {};
+          if (movie.poster_path) {
+            movie.images.poster = getFullImageURLs(movie.poster_path);
+          }
+          if (movie.backdrop_path) {
+            movie.images.backdrop = getFullImageURLs(movie.backdrop_path);
+          }
+          return makeKeysCamelCase(movie);
         }
-        if (movie.backdrop_path) {
-          movie.images.backdrop = getFullImageURLs(movie.backdrop_path);
-        }
-        return makeKeysCamelCase(movie);
-      }
-    });
+      });
   } else {
+    // result is a single movie
     if (data.poster_path || data.backdrop_path) {
       data.images = {};
       if (data.poster_path) {
