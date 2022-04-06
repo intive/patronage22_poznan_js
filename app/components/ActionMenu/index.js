@@ -10,6 +10,8 @@ import {
 } from './ActionMenu.styles';
 import UserAvatar from 'components/UI/UserAvatar';
 import Icon from '../UI/Icon';
+import { openModal } from 'actions/app';
+import Account from 'components/Account';
 
 export default function ActionMenu({ userData }) {
   return (
@@ -20,7 +22,13 @@ export default function ActionMenu({ userData }) {
       </UserInfo>
       <ActionList>
         <ListItem>
-          <ActionBtn onlyIcon fullWidth onClick={() => {}}>
+          <ActionBtn
+            onlyIcon
+            fullWidth
+            onClick={() => {
+              openModal(<Account />);
+            }}
+          >
             Account
             <Icon size="lg" rotation={270} type="arrow-down" />
           </ActionBtn>
