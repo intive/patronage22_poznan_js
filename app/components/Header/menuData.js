@@ -17,4 +17,5 @@ export const navData = [
   { id: 3, name: 'movies', link: '/' },
   { id: 4, name: 'series', link: '/' },
   { id: 5, name: 'kids', link: '/' },
+  { id: 0, name: 'My List', link: '/mylist' },
 ];
