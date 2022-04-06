@@ -220,8 +220,6 @@ paths:
         409:
           description: "error - user with this email already exists"
 
-  # WORK IN PROGRESS
-
   /api/users/edit:
     put:
       tags:
@@ -248,8 +246,6 @@ paths:
                 type: object
         400:
           description: "Error - bad request."
-
-          # WORK IN PROGRESS
 
   /api/mylist:
     get:
