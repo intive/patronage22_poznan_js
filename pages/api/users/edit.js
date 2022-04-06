@@ -29,6 +29,10 @@ export default async function handler(req, res) {
 
     let errorMessage = '';
 
+    if (!newUsername && !newPassword) {
+      return res.status(400).json({ error: 'New username and new password are empty strings. ' });
+    }
+
     // validate new username
     if (newUsername) {
       const usernameValidationError = validateSignUpUserName(newUsername);
