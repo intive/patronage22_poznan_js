@@ -18,6 +18,8 @@ import SearchMoviesInput from 'components/UI/SearchMoviesInput';
 import UserAvatar from 'components/UI/UserAvatar';
 import Button from 'components/UI/Button';
 import ActionMenu from 'components/ActionMenu';
+import { CloseMenuBtn } from 'components/ActionMenu/ActionMenu.styles';
+import Icon from 'components/UI/Icon';
 import useOnClickOutside from 'hooks/useOnClickOutside';
 import { useSession } from 'next-auth/react';
 
@@ -32,6 +34,7 @@ export default function Header() {
   const avatar = session?.user?.avatar ?? null;
 
   window.onscroll = function () {
+    setActionMenuOpen(false);
     if (window.pageYOffset < 450) {
       setIsClosed(false);
     } else {
@@ -68,7 +71,14 @@ export default function Header() {
           <Button onlyIcon onClick={handleActionMenuOpen}>
             <UserAvatar avatar={avatar} />
           </Button>
-          {isActionMenuOpen && <ActionMenu userData={session} reference={containerRef} />}
+          {isActionMenuOpen && (
+            <>
+              <CloseMenuBtn iconWithBg onClick={handleActionMenuOpen}>
+                <Icon size="2x" type="x-mark" />
+              </CloseMenuBtn>
+              <ActionMenu userData={session} reference={containerRef} />
+            </>
+          )}
         </UserPanel>
         {isMenuOpen ? (
           <>

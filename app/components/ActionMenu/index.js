@@ -1,6 +1,13 @@
 import { signOut } from 'next-auth/react';
-import { Wrapper, UserInfo, Username, ActionList, ListItem, ActionBtn } from './ActionMenu.styles';
-import Button from '../UI/Button';
+import {
+  Wrapper,
+  UserInfo,
+  Username,
+  ActionList,
+  ListItem,
+  ActionBtn,
+  LogOutBtn,
+} from './ActionMenu.styles';
 import UserAvatar from 'components/UI/UserAvatar';
 import Icon from '../UI/Icon';
 
@@ -19,9 +26,9 @@ export default function ActionMenu({ userData, reference }) {
           </ActionBtn>
         </ListItem>
       </ActionList>
-      <Button fullWidth onClick={signOut}>
+      <LogOutBtn fullWidth onClick={signOut}>
         Log out
-      </Button>
+      </LogOutBtn>
     </Wrapper>
   );
 }
