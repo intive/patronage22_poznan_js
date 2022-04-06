@@ -28,7 +28,7 @@ export const CarouselContainer = styled.div`
   }
 `;
 
-export const CarouselHeader = styled.p`
+export const CarouselHeader = styled.a`
   font-weight: 600;
   cursor: pointer;
   ${device.tablet} {

@@ -18,8 +18,8 @@ export default function HomePage({ listOfCarousels, heroMovie }) {
       <CarouselsWrapper>
         {listOfCarousels.map(({ id, name, listOfMovies }) => (
           <CarouselContainer key={id}>
-            <Link href={`/category/${id}`} passHref>
-              <CarouselHeader categoryId={id}>{name}</CarouselHeader>
+            <Link href={id === 0 ? '/mylist' : `/category/${id}`} passHref>
+              <CarouselHeader>{name}</CarouselHeader>
             </Link>
             <Carousel movies={listOfMovies}></Carousel>
           </CarouselContainer>

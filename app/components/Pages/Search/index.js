@@ -36,13 +36,10 @@ export default function Search() {
       setListOfMovies([]);
     }
     if (data) {
-      //TODO: delete the code line below after backend fix
-      const filteredMovies = data.filter((movie) => movie !== null);
-
-      if (filteredMovies.length < 1) {
+      if (data.length < 1) {
         setMessageForUser(`Your search for "${query}" did not have any matches.`);
       }
-      setListOfMovies(filteredMovies);
+      setListOfMovies(data);
     }
     setIsFetching(false);
   };
