@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 
 import LogoLink from 'components/UI/LogoLink';
@@ -16,22 +16,40 @@ import { NavigationData } from './Nav';
 import { MobileList, DesktopList } from './Nav/Nav.styles';
 import SearchMoviesInput from 'components/UI/SearchMoviesInput';
 import UserAvatar from 'components/UI/UserAvatar';
+import Button from 'components/UI/Button';
+import ActionMenu from 'components/ActionMenu';
+import { CloseMenuBtn } from 'components/ActionMenu/ActionMenu.styles';
+import Icon from 'components/UI/Icon';
+import useOnClickOutside from 'hooks/useOnClickOutside';
 import { useSession } from 'next-auth/react';
 
 export default function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isActionMenuOpen, setActionMenuOpen] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
   const { data: session } = useSession();
+
+  const containerRef = useRef();
 
   const avatar = session?.user?.avatar ?? null;
 
   window.onscroll = function () {
+    setActionMenuOpen(false);
     if (window.pageYOffset < 450) {
       setIsClosed(false);
     } else {
       setIsClosed(true);
     }
   };
+
+  const handleActionMenuOpen = () => {
+    setActionMenuOpen(!isActionMenuOpen);
+  };
+
+  useOnClickOutside(containerRef, () => {
+    setActionMenuOpen(false);
+  });
+
   return (
     <>
       <NavigationBar isClosed={isClosed}>
@@ -50,7 +68,19 @@ export default function Header() {
         <DesktopList>{NavigationData}</DesktopList>
         <UserPanel>
           <SearchMoviesInput />
-          <UserAvatar avatar={avatar} />
+          <div ref={containerRef}>
+            <Button onlyIcon onClick={handleActionMenuOpen}>
+              <UserAvatar avatar={avatar} />
+            </Button>
+            {isActionMenuOpen && (
+              <>
+                <CloseMenuBtn iconWithBg onClick={handleActionMenuOpen}>
+                  <Icon size="2x" type="x-mark" />
+                </CloseMenuBtn>
+                <ActionMenu userData={session} />
+              </>
+            )}
+          </div>
         </UserPanel>
         {isMenuOpen ? (
           <>
