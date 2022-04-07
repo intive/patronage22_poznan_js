@@ -220,6 +220,31 @@ paths:
         409:
           description: "error - user with this email already exists"
 
+  /api/users/avatar/{id}:
+    put:
+      tags:
+        - users
+      summary: Update avatar Id in user object. 
+      description: Updates avatar Id in user object. 
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: Id of avatar in user object. 
+          schema:
+            type: integer
+      responses:
+        200:
+          description: "Avatar updated."
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: "Error - bad request."
+        404:
+          description: "Error - avatar not found."
+        
   /api/mylist:
     get:
       tags:
