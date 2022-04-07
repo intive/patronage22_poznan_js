@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const CategoryPageWrapper = styled.div`
   background: #000;
+  min-height: 100vh;
 `;
 
 export const WrapperGrid = styled.div`
