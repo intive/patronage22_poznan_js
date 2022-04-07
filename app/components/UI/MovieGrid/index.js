@@ -6,7 +6,7 @@ export default function MovieGrid({ listOfMovies = [] }) {
   return (
     <StyledMovieGrid>
       {listOfMovies.map(({ id, title, images }) => (
-        <MovieCard ratio="1/1.5" key={id} id={id} title={title} src={images?.poster?.l} />
+        <MovieCard key={id} id={id} title={title} src={images?.poster?.l} />
       ))}
     </StyledMovieGrid>
   );
