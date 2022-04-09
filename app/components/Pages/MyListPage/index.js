@@ -19,7 +19,9 @@ export default function MyListPage({ moviesData = [] }) {
   if (moviesData.length === 0) {
     return (
       <ErrorWrapper>
-        <NoMovieError>Oops, looks like there are no movies in your list! :(</NoMovieError>
+        <NoMovieError>
+          Oops, looks like there are no movies in your list!Add some first! :(
+        </NoMovieError>
       </ErrorWrapper>
     );
   }
