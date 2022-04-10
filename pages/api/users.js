@@ -43,25 +43,29 @@ export default async function handler(req, res) {
       if (currentUsernameFromDB === newUsername) {
         return res.status(400).json({ error: 'New username is the same as current username.' });
       }
-      db.collection('users').updateOne(query, { $set: { username: newUsername } });
     }
 
     // validate password
     if (currentPassword && newPassword) {
       const currentPassHashFromDB = user.passHash;
       const currentPassHash = getPassHash(currentPassword);
-      const newPassHash = getPassHash(newPassword);
       if (currentPassHashFromDB !== currentPassHash) {
         return res.status(400).json({ error: 'Wrong password.' });
       }
-      if (currentPassHashFromDB === newPassHash) {
+      if (currentPassHashFromDB === getPassHash(newPassword)) {
         return res.status(400).json({ error: 'New password is the same as current password.' });
       }
       const passwordValidationError = validateSignUpUserPassword(newPassword);
       if (passwordValidationError) {
         return res.status(400).json({ error: 'New password is invalid.' });
       }
-      db.collection('users').updateOne(query, { $set: { passHash: newPassHash } });
+    }
+
+    if (newUsername) {
+      db.collection('users').updateOne(query, { $set: { username: newUsername } });
+    }
+    if (newPassword) {
+      db.collection('users').updateOne(query, { $set: { passHash: getPassHash(newPassword) } });
     }
 
     return res.status(200).json({});
