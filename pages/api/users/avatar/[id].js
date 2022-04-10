@@ -1,5 +1,4 @@
 import { getSession } from 'next-auth/react';
-import { verifyJwtInRequest } from 'server/hash';
 import mongoClient from 'server/mongoDb';
 import avatars from 'consts/avatars';
 
