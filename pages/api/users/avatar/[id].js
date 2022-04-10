@@ -20,7 +20,7 @@ export default async function handler(req, res) {
       const client = await mongoClient;
       const db = client.db(process.env.MONGODB_DB);
       const query = { id: session.user.id };
-      const user = await db.collection('users').findOne(query, { limit: 1 });
+      const user = await db.collection('users').findOne(query);
 
       if (!avatars.includes(newAvatarId)) {
         return res.status(404).json({ error: 'Cannot find avatar with given id. ' });
