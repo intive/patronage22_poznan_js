@@ -1,3 +1,4 @@
+import { getSession } from 'next-auth/react';
 import { verifyJwtInRequest } from 'server/hash';
 import mongoClient from 'server/mongoDb';
 import avatars from 'consts/avatars';
@@ -9,17 +10,19 @@ export default async function handler(req, res) {
   }
 
   try {
-    const session = verifyJwtInRequest(req);
-
-    const client = await mongoClient;
-    const db = client.db(process.env.MONGODB_DB);
-    const query = { id: session.id };
-    const user = (await db.collection('users').find(query, { limit: 1 }).toArray())[0];
-
     const { id } = req.query;
     const newAvatarId = parseInt(id);
 
     if (Number.isInteger(newAvatarId)) {
+      const session = await getSession({ req });
+      if (!session?.user) {
+        throw new Error('Unauthorized');
+      }
+      const client = await mongoClient;
+      const db = client.db(process.env.MONGODB_DB);
+      const query = { id: session.user.id };
+      const user = await db.collection('users').findOne(query, { limit: 1 });
+
       if (!avatars.includes(newAvatarId)) {
         return res.status(404).json({ error: 'Cannot find avatar with given id. ' });
       } else if (newAvatarId === user.avatar) {
