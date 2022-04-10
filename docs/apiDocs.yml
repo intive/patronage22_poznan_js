@@ -220,7 +220,7 @@ paths:
         409:
           description: "error - user with this email already exists"
 
-  /api/users/edit:
+  /api/users:
     put:
       tags:
         - users
@@ -232,6 +232,9 @@ paths:
             schema:
               properties:
                 newUsername:
+                  type: string
+                  default: ''
+                currentPassword:
                   type: string
                   default: ''
                 newPassword:
