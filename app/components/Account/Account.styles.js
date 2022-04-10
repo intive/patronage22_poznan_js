@@ -81,3 +81,12 @@ export const Header = styled.h1`
     margin-bottom: none;
   }
 `;
+
+export const ChangePass = styled.span`
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+  margin: 12px;
+  color: #44ec52;
+`;
