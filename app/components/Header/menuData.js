@@ -13,7 +13,7 @@ export const navData = [
     icon: imageIcon,
     link: '/',
   },
-  { id: 2, name: 'favourites', link: '/' },
+  { id: 0, name: 'My List', link: '/mylist' },
   { id: 3, name: 'movies', link: '/' },
   { id: 4, name: 'series', link: '/' },
   { id: 5, name: 'kids', link: '/' },

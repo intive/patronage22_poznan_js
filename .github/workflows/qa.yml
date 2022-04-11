@@ -30,6 +30,8 @@ jobs:
         env:
           CI: true
       - run: npm run build
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
   lint:
     needs: install

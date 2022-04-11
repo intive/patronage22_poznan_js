@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Image from 'next/image';
 import { device } from 'consts/mediaQueries';
 
 export const Wrapper = styled.div`
@@ -8,17 +7,16 @@ export const Wrapper = styled.div`
   min-height: 100vh;
   width: 100vw;
   background-color: #2a2535;
-  color: white;
+  color: #fff;
+
   ${device.tablet} {
     justify-content: flex-end;
     align-items: center;
-  }
-`;
-
-export const AuthBackground = styled(Image)`
-  display: none !important;
-  ${device.tablet} {
-    display: block !important;
+    background-image: url('images/hero-background-image.jpg'),
+      url('images/placeholder-auth-container.jpg');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 `;
 
