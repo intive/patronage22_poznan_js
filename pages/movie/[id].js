@@ -6,14 +6,8 @@ import {
   getMovieById,
 } from 'server/services/movieDb';
 
-export default function Movie({ movieData, listOfSimilarMovies, ListOfRecommendedMovies }) {
+export default function Movie({ movieData, listOfSimilarMovies, listOfRecommendedMovies }) {
   const { data: session } = useSession();
-  const movieId = movieData.id;
-
-  console.log(movieData);
-  console.log(movieId);
-  console.log(listOfSimilarMovies);
-  console.log(ListOfRecommendedMovies);
 
   return (
     <>
@@ -28,20 +22,24 @@ export default function Movie({ movieData, listOfSimilarMovies, ListOfRecommende
 }
 
 export async function getServerSideProps(context) {
-  const { id } = context.query;
+  const { id } = context.params;
+  try {
+    const movieData = await getMovieById(id);
 
-  const movie = await getMovieById(id);
-  const movieData = movie;
-  const SimilarMovies = await getListOfSimilarMoviesById(id);
-  const listOfSimilarMovies = SimilarMovies.results;
-  const RecommendedMovies = await getListOfRecommendedMoviesById(id);
-  const ListOfRecommendedMovies = RecommendedMovies.results;
+    const listOfSimilarMovies = await getListOfSimilarMoviesById(id).then((data) => data.results);
 
-  return {
-    props: {
-      movieData,
-      listOfSimilarMovies,
-      ListOfRecommendedMovies,
-    },
-  };
+    const listOfRecommendedMovies = await getListOfRecommendedMoviesById(id).then(
+      (data) => data.results
+    );
+
+    return {
+      props: {
+        movieData,
+        listOfSimilarMovies,
+        listOfRecommendedMovies,
+      },
+    };
+  } catch (e) {
+    return { props: {} };
+  }
 }
