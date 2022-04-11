@@ -20,7 +20,7 @@ export default function MyListPage({ moviesData = [] }) {
     return (
       <ErrorWrapper>
         <NoMovieError>
-          Oops, looks like there are no movies in your list!Add some first! :(
+          Oops, looks like there are no movies in your list! Add some first! :(
         </NoMovieError>
       </ErrorWrapper>
     );
