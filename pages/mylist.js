@@ -7,11 +7,11 @@ export default function MyList({ moviesData }) {
 
 export async function getServerSideProps({ req }) {
   try {
-    const myList = await getMyList({ req });
+    const myList = await getMyList(req);
 
     return {
       props: {
-        moviesData: myList ? myList.results : [],
+        moviesData: myList ? myList : [],
       },
     };
   } catch (e) {
