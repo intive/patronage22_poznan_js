@@ -1,6 +1,8 @@
 export const fetchWrapper = {
   post,
   get,
+  put,
+  delete: _delete,
 };
 
 async function post(endpoint, body) {
@@ -14,7 +16,7 @@ async function post(endpoint, body) {
     const data = await response.json();
     return { status: response.status, data };
   } catch (error) {
-    return { error: "We're having issues processing your request. Please try again later." };
+    handleFetchError(error);
   }
 }
 
@@ -24,6 +26,32 @@ async function get(url) {
     const data = await response.json();
     return { status: response.status, data };
   } catch (error) {
-    return { error: "We're having issues processing your request. Please try again later." };
+    handleFetchError(error);
   }
+}
+
+async function put(url) {
+  const requestOptions = {
+    method: 'PUT',
+  };
+  try {
+    await fetch(url, requestOptions);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function _delete(url) {
+  const requestOptions = {
+    method: 'DELETE',
+  };
+  try {
+    await fetch(url, requestOptions);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+function handleFetchError(error) {
+  return { [error]: "We're having issues processing your request. Please try again later." };
 }
