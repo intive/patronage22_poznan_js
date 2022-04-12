@@ -1,12 +1,7 @@
 import { Input } from 'components/Form';
 import { Wrapper } from './ChangePassword.styles';
-import { useState } from 'react';
 
-const initialState = Object.freeze({ currentPass: '', newPass: '', repeatPass: '' });
-
-export default function ChangePassword() {
-  const [inputValues, setInputValues] = useState(initialState);
-
+export default function ChangePassword({ inputValues, setInputValues, errors }) {
   return (
     <Wrapper>
       <Input
@@ -17,6 +12,7 @@ export default function ChangePassword() {
           setInputValues({ ...inputValues, currentPass: e.target.value });
         }}
         value={inputValues.currentPass}
+        error={errors.currentPass}
       />
       <Input
         id="new-password-input"
@@ -26,6 +22,7 @@ export default function ChangePassword() {
           setInputValues({ ...inputValues, newPass: e.target.value });
         }}
         value={inputValues.newPass}
+        error={errors.newPass}
       />
       <Input
         id="repeat-new-password-input"
@@ -35,6 +32,7 @@ export default function ChangePassword() {
           setInputValues({ ...inputValues, repeatPass: e.target.value });
         }}
         value={inputValues.repeatPass}
+        error={errors.repeatPass}
       />
     </Wrapper>
   );

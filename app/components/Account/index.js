@@ -14,6 +14,9 @@ import {
   ChangePass,
 } from './Account.styles';
 import ChangePassword from 'components/ChangePassword';
+import { validateChangePassword } from 'utils/validateFormInputs';
+
+const initialState = Object.freeze({ currentPass: '', newPass: '', repeatPass: '' });
 
 export default function Account() {
   const { data: session } = useSession();
@@ -21,7 +24,29 @@ export default function Account() {
   const user = session?.user;
   const [isEditingAvatar, setIsEditingAvatar] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
+
   const [isChangingPass, setIsChangingPass] = useState(false);
+  const [inputValues, setInputValues] = useState(initialState);
+  const [inputErrors, setInputErrors] = useState({});
+
+  const handleSave = (event) => {
+    event.preventDefault();
+
+    setInputErrors(null);
+    const isFormValid = validateInputs();
+
+    if (isFormValid) {
+      alert('Password could be changed, wait for backend.');
+    }
+  };
+
+  const validateInputs = () => {
+    //TODO: current password validation
+    const errorMessages = validateChangePassword(inputValues);
+    const isError = Object.values(errorMessages).some((errorMessage) => Boolean(errorMessage));
+    setInputErrors(isError ? errorMessages : {});
+    return !isError;
+  };
 
   const toggleIsEditingAvatar = () => {
     setIsEditingAvatar(!isEditingAvatar);
@@ -91,9 +116,13 @@ export default function Account() {
       )}
       {isChangingPass && (
         <>
-          <ChangePassword />
+          <ChangePassword
+            inputValues={inputValues}
+            setInputValues={setInputValues}
+            errors={inputErrors}
+          />
           <FlexRow>
-            <Button primary onClick={() => alert('I wish I could')}>
+            <Button primary onClick={handleSave}>
               Save
             </Button>
             <Button onClick={() => setIsChangingPass(false)}>Cancel</Button>

@@ -31,6 +31,7 @@ export const FlexRow = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  min-width: 375px;
 `;
 
 export const PencilIcon = styled(Icon).attrs({ type: 'pencil' })``;
@@ -82,8 +83,9 @@ export const Header = styled.h1`
   }
 `;
 
-export const ChangePass = styled.span`
+export const ChangePass = styled(Button).attrs({ onlyIcon: true })`
   cursor: pointer;
+  font-weight: bold;
   &:hover {
     text-decoration: underline;
   }
