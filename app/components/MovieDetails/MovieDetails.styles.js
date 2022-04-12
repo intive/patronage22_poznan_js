@@ -14,9 +14,9 @@ export const MovieBackDrop = styled.div`
   background-size: cover;
   background-position: center top;
   color: white;
-  height: 50vh;
+  height: 40vh;
   ${device.desktop} {
-    height: 80vh;
+    height: 50vh;
   }
 `;
 export const LoadingWrapper = styled.div`
