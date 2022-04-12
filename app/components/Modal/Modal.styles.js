@@ -9,20 +9,28 @@ export const FullScreenWrapper = styled.div`
   align-items: center;
   justify-content: center;
   inset: 0;
+  overflow-y: auto;
   z-index: 1001;
   background: linear-gradient(180deg, rgba(30, 27, 38, 0.56) 0%, rgba(30, 27, 38, 0.08) 100%);
 `;
 export const ContentWrapper = styled.div`
-  min-height: 100%;
-  min-width: 100%;
+  max-height: 100%;
   max-width: 100%;
+  min-width: 100%;
   position: relative;
-  overflow: hidden;
+  color: white;
   background-color: #1e1b26;
   ${device.tablet} {
+    max-height: 90vh;
+    max-width: 80%;
+    min-width: 80%;
     border-radius: 8px;
-    min-height: 500px;
-    min-width: 500px;
+    overflow-y: auto;
+  }
+  ${device.desktop} {
+    max-height: 95vh;
+    max-width: 60%;
+    min-width: 60%;
   }
 `;
 

@@ -14,6 +14,8 @@ import {
   faChevronDown,
   faGear,
   faSortDown,
+  faCaretRight,
+  faSpinner,
   faPencil,
   faStar,
   faStarHalfAlt,
@@ -39,9 +41,11 @@ const iconMap = {
   youtube: faYoutube,
   'sort-down': faSortDown,
   pencil: faPencil,
+  'caret-right': faCaretRight,
   star: faStar,
   starOutline: farStar,
   starHalf: faStarHalfAlt,
+  spinner: faSpinner,
   'check-mark': faCheck,
 };
 
