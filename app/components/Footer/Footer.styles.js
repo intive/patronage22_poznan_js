@@ -19,3 +19,11 @@ export const CopyrightParagraph = styled.p`
   margin-bottom: 1rem;
   font-size: 0.8rem;
 `;
+
+export const ResourcesParagraph = styled.p`
+  text-align: center;
+  margin-left: 2.4rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+`;
