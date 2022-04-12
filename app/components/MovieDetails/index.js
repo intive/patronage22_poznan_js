@@ -27,45 +27,54 @@ export const MovieDetails = ({
   const [movieData, setMovieData] = useState({});
   const [similarMoviesData, setSimilarMoviesData] = useState([]);
   const [recommendedMoviesData, setRecommendedMoviesData] = useState([]);
+  const [isButtonClick, setButtonClick] = useState(false);
 
   const router = useRouter();
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const resp = await fetch(`/api/movies/${movieId}`);
-        const data = await resp.json();
-        setMovieData(data);
-
-        const reqSmilar = await fetch(`/api/movies/${movieId}/similar`);
-        const similarMovieData = await reqSmilar.json();
-        setSimilarMoviesData(similarMovieData);
-
-        const reqRecomandation = await fetch(`/api/movies/${movieId}/recommendations`);
-        const recomandationData = await reqRecomandation.json();
-        setRecommendedMoviesData(recomandationData);
-      } catch (error) {
-        router.push('/404');
-      }
+    const allFetchedData = [];
+    if (!preloadedMovieData && movieId) {
+      setMovieData({});
+      const fetchMovie = fetch(`/api/movies/${movieId}`).then((response) =>
+        response
+          .json()
+          .then((data) => setMovieData(data))
+          .catch((error) => router.push('movie/404', error))
+      );
+      allFetchedData.push(fetchMovie);
     }
-
-    if (movieId && (!preloadedMovieData || !similarMovies || !recommendedMovies)) {
-      setMovieData('');
-      fetchData();
+    if (similarMovies === undefined) {
+      const fetchSmilarMovies = fetch(`/api/movies/${movieId}/similar`)
+        .then((response) => response.json())
+        .then((data) => setSimilarMoviesData(data));
+      allFetchedData.push(fetchSmilarMovies);
     }
-  }, [movieId, preloadedMovieData, recommendedMovies, similarMovies, router]);
+    if (recommendedMovies === undefined) {
+      const fetchRecommendationMovies = fetch(`/api/movies/${movieId}/recommendations`)
+        .then((response) => response.json())
+        .then((data) => setRecommendedMoviesData(data));
+      allFetchedData.push(fetchRecommendationMovies);
+    }
+    Promise.all(allFetchedData);
+  }, [movieId, preloadedMovieData, router, similarMovies, recommendedMovies]);
 
   useEffect(() => {
     if (preloadedMovieData) {
       setMovieData(preloadedMovieData);
     }
-  }, [preloadedMovieData]);
+    if (isButtonClick) {
+      router.push(`/movie/${movieId}`, undefined, { shallow: true });
+    }
+  }, [preloadedMovieData, isButtonClick, router, movieId]);
 
   useEffect(() => {
-    if (movieId) {
-      router.push(`/movie/${movieId}`, `/movie/${movieId}`, { shallow: true });
-    }
-  }, [movieId, router]);
+    router.push(`/?movie/${movieId}`, `/movie/${movieId}`, { shallow: true });
+  }, [movieId]);
+
+  // trigger to change path to movie/movieID
+  const handleChangePath = () => {
+    setButtonClick(!isButtonClick);
+  };
 
   const { images, title, overview, productionCompanies } = movieData;
 
@@ -73,23 +82,29 @@ export const MovieDetails = ({
     <>
       {movieData?.id ? (
         <MovieDetailsWrapper>
-          <MovieBackDrop backgroundImg={images.backdrop.original}>
-            <Heading title={title} />
+          <MovieBackDrop backgroundImg={images?.backdrop?.original}>
+            <Heading title={title} changePath={handleChangePath} />
           </MovieBackDrop>
           <DescriptionWrapper>
             <MovieDescription>
               <MovieMetadata movieData={movieData} />
               <p>{overview}</p>
             </MovieDescription>
-            <ProductionCompanies productionCompanies={productionCompanies} />
-            <WatchBtn fullWidth>
+            {productionCompanies && (
+              <ProductionCompanies productionCompanies={productionCompanies} />
+            )}
+            <WatchBtn fullWidth onClick={handleChangePath}>
               <PlayIcon />
               watch
             </WatchBtn>
           </DescriptionWrapper>
           <CarouselWrapper>
-            <CarouselTitle>Recommended Movies</CarouselTitle>
-            <Carousel movies={recommendedMovies || recommendedMoviesData} />
+            {(recommendedMovies || recommendedMoviesData) && (
+              <>
+                <CarouselTitle>Recommended Movies</CarouselTitle>
+                <Carousel movies={recommendedMovies || recommendedMoviesData} />
+              </>
+            )}
             <CarouselTitle>Similar Movies</CarouselTitle>
             <Carousel movies={similarMovies || similarMoviesData} />
           </CarouselWrapper>

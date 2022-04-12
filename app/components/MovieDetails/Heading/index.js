@@ -3,11 +3,14 @@ import { TitleWrapper, MovieTitile } from './Heading.styles';
 
 import Button from 'components/UI/Button';
 
-export default function Heading({ title }) {
+export default function Heading({ title, changePath }) {
+  const handleClick = () => {
+    changePath();
+  };
   return (
     <TitleWrapper>
       <MovieTitile>{title}</MovieTitile>
-      <Button>
+      <Button onClick={() => handleClick()}>
         <PlayIcon />
         watch
       </Button>
