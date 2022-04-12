@@ -18,9 +18,11 @@ import {
   faStar,
   faStarHalfAlt,
   faCheck,
+  faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartOutline } from '@fortawesome/free-regular-svg-icons';
 const iconMap = {
   'arrow-down': faArrowDown,
   'chevron-down': faChevronDown,
@@ -43,6 +45,8 @@ const iconMap = {
   starOutline: farStar,
   starHalf: faStarHalfAlt,
   'check-mark': faCheck,
+  heart: faHeart,
+  'heart-outline': faHeartOutline,
 };
 
 export default function Icon({
