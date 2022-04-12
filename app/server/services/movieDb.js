@@ -1,5 +1,7 @@
 import fetch from 'node-fetch';
 
+let IS_GETTING_VIDEOS = false;
+
 // wrapper class for fetch HTTP errors
 class HTTPResponseError extends Error {
   constructor(response, ...args) {
@@ -41,40 +43,50 @@ const movieDbClient = async (url, query = '', method = 'GET', body) => {
   }
 
   const data = await res.json();
-
-  if (Array.isArray(data.results)) {
-    // result is a list
-    data.results = data.results
-      // some movies have missing fields like images and genres
-      .filter(
-        (movie) => movie && movie.id && movie.title && (movie.poster_path || movie.backdrop_path)
-      )
-      .map((movie) => {
-        movie.images = {};
-        if (movie.poster_path) {
-          movie.images.poster = getFullImageURLs(movie.poster_path);
-          delete movie.poster_path;
+  if (!IS_GETTING_VIDEOS) {
+    if (Array.isArray(data.results)) {
+      // result is a list
+      data.results = data.results
+        // some movies have missing fields like images and genres
+        .filter(
+          (movie) => movie && movie.id && movie.title && (movie.poster_path || movie.backdrop_path)
+        )
+        .map((movie) => {
+          movie.images = {};
+          if (movie.poster_path) {
+            movie.images.poster = getFullImageURLs(movie.poster_path);
+            delete movie.poster_path;
+          }
+          if (movie.backdrop_path) {
+            movie.images.backdrop = getFullImageURLs(movie.backdrop_path);
+            delete movie.backdrop_path;
+          }
+          return makeKeysCamelCase(movie);
+        });
+    } else {
+      // result is a single movie
+      if (data.poster_path || data.backdrop_path) {
+        data.images = {};
+        if (data.poster_path) {
+          data.images.poster = getFullImageURLs(data.poster_path);
         }
-        if (movie.backdrop_path) {
-          movie.images.backdrop = getFullImageURLs(movie.backdrop_path);
-          delete movie.backdrop_path;
+        if (data.backdrop_path) {
+          data.images.backdrop = getFullImageURLs(data.backdrop_path);
         }
-        return makeKeysCamelCase(movie);
-      });
-  } else {
-    // result is a single movie
-    if (data.poster_path || data.backdrop_path) {
-      data.images = {};
-      if (data.poster_path) {
-        data.images.poster = getFullImageURLs(data.poster_path);
+        return makeKeysCamelCase(data);
       }
-      if (data.backdrop_path) {
-        data.images.backdrop = getFullImageURLs(data.backdrop_path);
-      }
-      return makeKeysCamelCase(data);
     }
+  } else if (IS_GETTING_VIDEOS) {
+    data.results = data.results.map((movie) => {
+      if (movie.site === 'YouTube') {
+        if (movie.key) {
+          movie.wholeVideoUrl = getVideoUrl(movie.key);
+        }
+      }
+      return movie;
+    });
   }
-
+  IS_GETTING_VIDEOS = false;
   return data;
 };
 
@@ -99,6 +111,11 @@ export function makeKeysCamelCase(data) {
       .replace(/([-_][a-z])/g, (group) => group.toUpperCase().replace('-', '').replace('_', ''));
   const dataToCamelCase = Object.keys(data).map((key) => [toCamelCase(key), data[key]]);
   return Object.fromEntries(dataToCamelCase);
+}
+
+export function getVideoUrl(vidUrl) {
+  const baseVidUrl = 'https://www.youtube.com/watch?v=';
+  return `${baseVidUrl}${vidUrl}`;
 }
 
 /**
@@ -178,4 +195,16 @@ export async function getMovieSearchOutcome(queryText) {
   if (!queryText) return null;
   const query = `&query=${queryText}`;
   return movieDbClient(`search/movie`, query);
+}
+
+/**
+ * Get videos for a movie
+ *
+ * @export
+ * @param {string|number} id Id of the movie to get videos for
+ * @return {Promise<Object|null>}  movie object
+ */
+export async function getVideosByMovieId(id) {
+  IS_GETTING_VIDEOS = true;
+  return movieDbClient(`movie/${id}/videos`);
 }
