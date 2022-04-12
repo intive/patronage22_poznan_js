@@ -14,22 +14,23 @@ export const FullScreenWrapper = styled.div`
   background: linear-gradient(180deg, rgba(30, 27, 38, 0.56) 0%, rgba(30, 27, 38, 0.08) 100%);
 `;
 export const ContentWrapper = styled.div`
-  min-height: 100%;
-  min-width: 100%;
+  max-height: 100%;
   max-width: 100%;
+  min-width: 100%;
   position: relative;
   color: white;
   background-color: #1e1b26;
   ${device.tablet} {
-    border-radius: 8px 8px;
-    min-height: 80%;
-    min-width: 500px;
-    max-width: 70%;
-    overflow: hidden;
+    max-height: 90vh;
+    max-width: 80%;
+    min-width: 80%;
+    border-radius: 8px;
+    overflow-y: auto;
   }
   ${device.desktop} {
-    max-width: 50%;
-    min-width: 850px;
+    max-height: 95vh;
+    max-width: 60%;
+    min-width: 60%;
   }
 `;
 
