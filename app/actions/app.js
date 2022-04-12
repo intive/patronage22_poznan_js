@@ -7,7 +7,7 @@ export const actions = {
   REMOVE_MOVIE_FROM_MY_LIST: 'remove-movie-from-my-list',
   IS_MOVIE_ON_MY_LIST: 'is-movie-on-my-list',
   SET_MOVIES_IN_MY_LIST: 'set-movies-in-my-list',
-  //
+
   dispatch: (action) => {
     console.error('Actions was used before dispatch was ready - app store', action);
   },

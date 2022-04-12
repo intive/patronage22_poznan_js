@@ -36,7 +36,6 @@ export const CarouselItemInner = styled.div`
   background-color: transparent;
   text-align: center;
   border-radius: 5px;
-  /* cursor: pointer; */
 `;
 
 export const NavButton = styled.button`
