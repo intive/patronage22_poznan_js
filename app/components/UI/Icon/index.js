@@ -49,10 +49,24 @@ const iconMap = {
   'check-mark': faCheck,
 };
 
-export default function Icon({ type, ...props }) {
+export default function Icon({
+  type,
+  color,
+  size,
+  opacity,
+  rotation,
+  flip,
+  spin,
+  pulse,
+  className,
+}) {
   const iconName = iconMap[type] || faQuestionCircle;
 
-  return <FontAwesomeIcon icon={iconName} {...props} />;
+  // FontAwesomeIcon passes {}...props} down to the svg DOM node which triggers an error with any custom prop
+  // so let's select only standard props
+  const selectedProps = { color, size, opacity, rotation, flip, spin, pulse, className };
+
+  return <FontAwesomeIcon icon={iconName} {...selectedProps} />;
 }
 
 Icon.propTypes = {

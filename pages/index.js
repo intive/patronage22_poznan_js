@@ -1,5 +1,4 @@
 import { useSession } from 'next-auth/react';
-import { verifyJwtInRequest } from 'server/hash';
 import { getMyList } from 'server/services/myListClient';
 import HomePage from 'components/Pages/HomePage';
 import {
@@ -32,8 +31,7 @@ export async function getServerSideProps({ req }) {
       })
     );
 
-    const session = await verifyJwtInRequest(req);
-    const myList = await getMyList({ session });
+    const myList = await getMyList(req);
     const popularList = await getListOfPopularMovies(req);
     const resultsOfPopularList = popularList.results;
     const popularCategory = { id: 1, name: 'Popular', listOfMovies: popularList.results };
