@@ -30,7 +30,7 @@ export default function StartPage() {
           <ContentContainer>
             <WelcomeHeader>Welcome to inTiVi!</WelcomeHeader>
             <WelcomeContent>
-              Register with inTiVi now and enjoy watching the latest movies.
+              Register now in inTiVi now and enjoy watching the latest movies.
               <Link href="/sign-up" passHref>
                 <SignUpLink>Sign Up</SignUpLink>
               </Link>
