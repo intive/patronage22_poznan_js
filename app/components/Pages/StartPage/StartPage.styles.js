@@ -15,7 +15,6 @@ export const BackgroundWrapper = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  overflow: auto;
   height: 100%;
   width: 100%;
 
@@ -33,16 +32,16 @@ export const Container = styled(FormContainer)`
   ${device.tablet} {
     align-self: flex-start;
     padding: 40px 20px 80px;
-    margin-top: 210px;
+    margin-top: 150px;
     margin-left: 15px;
     background-color: #381010;
   }
 
-  @media (min-width: 1500px) {
+  @media (min-width: 1220px) {
     align-self: flex-end;
     margin-top: 150px;
-    margin-right: 10px;
-    padding: 80px 70px 100px;
+    margin-right: 20px;
+    padding: 50px 50px 80px;
   }
 `;
 
@@ -50,17 +49,13 @@ export const ContentContainer = styled.div`
   min-width: 200px;
   max-width: 100%;
   text-align: center;
-
   ${device.tablet} {
     width: 400px;
-  }
-  ${device.desktop} {
-    width: 450px;
   }
 `;
 
 export const WelcomeHeader = styled.p`
-  padding-bottom: 50px;
+  padding-bottom: 40px;
   font-size: 3.2rem;
   letter-spacing: 0.7px;
   font-weight: 700;
