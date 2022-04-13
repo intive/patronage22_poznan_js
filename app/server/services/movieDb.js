@@ -79,8 +79,9 @@ const movieDbClient = async (url, query = '', method = 'GET', body) => {
   } else if (IS_GETTING_VIDEOS) {
     data.results = data.results.map((movie) => {
       if (movie.site === 'YouTube') {
+        movie.videos = {};
         if (movie.key) {
-          movie.wholeVideoUrl = getVideoUrl(movie.key);
+          movie.videos = getVideoUrl(movie.key);
         }
       }
       return movie;
@@ -114,8 +115,11 @@ export function makeKeysCamelCase(data) {
 }
 
 export function getVideoUrl(vidUrl) {
-  const baseVidUrl = 'https://www.youtube.com/watch?v=';
-  return `${baseVidUrl}${vidUrl}`;
+  const baseVidUrl = 'https://www.youtube.com';
+  return {
+    youtube: `${baseVidUrl}/watch?v=${vidUrl}`,
+    embedded: `${baseVidUrl}/embed/${vidUrl}`,
+  };
 }
 
 /**
