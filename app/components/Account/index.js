@@ -13,9 +13,7 @@ import {
   Username,
   EditUsername,
 } from './Account.styles';
-// add ChangeUsernameStyle to the Account.styles
 import ChangeUsername from 'components/ChangeUsername';
-import { validateSignUpUserName } from 'utils/validateFormInputs';
 
 const initialState = Object.freeze({ currentName: '', newName: '' });
 
