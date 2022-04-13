@@ -14,7 +14,6 @@ import {
 
 export default function MyListPage({ moviesData = [] }) {
   const [searchQ, setSearchQ] = useState('');
-  console.log(moviesData);
 
   if (moviesData.length === 0) {
     return (
@@ -30,25 +29,23 @@ export default function MyListPage({ moviesData = [] }) {
     : moviesData;
 
   return (
-    <>
-      <MyListWrapper>
-        <SearchDiv>
-          <SearchStyle>
-            <Input
-              id="search"
-              placeholder="Search the movies in this category..."
-              onChange={(event) => setSearchQ(event.target.value)}
-              value={searchQ}
-            />
-          </SearchStyle>
-        </SearchDiv>
-        <TitleWrapper>
-          <MyListTitle></MyListTitle>
-        </TitleWrapper>
-        <WrapperGrid>
-          <MovieGrid listOfMovies={filteredList} />
-        </WrapperGrid>
-      </MyListWrapper>
-    </>
+    <MyListWrapper>
+      <SearchDiv>
+        <SearchStyle>
+          <Input
+            id="search"
+            placeholder="Search the movies in this category..."
+            onChange={(event) => setSearchQ(event.target.value)}
+            value={searchQ}
+          />
+        </SearchStyle>
+      </SearchDiv>
+      <TitleWrapper>
+        <MyListTitle>Your favourite movies :)</MyListTitle>
+      </TitleWrapper>
+      <WrapperGrid>
+        <MovieGrid listOfMovies={filteredList} />
+      </WrapperGrid>
+    </MyListWrapper>
   );
 }
