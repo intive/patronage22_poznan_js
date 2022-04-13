@@ -5,11 +5,12 @@ import { Wrapper, FormContainer } from '../AuthPageContainer/AuthPageContainer.s
 export const StartPageContainer = styled(Wrapper)`
   background-color: #381010;
   ${device.tablet} {
-    background-image: url('images/initial-page-background.jpg');
+    background-image: url('images/initial-page-placeholder.jpg');
   }
 `;
 
 export const BackgroundWrapper = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -17,7 +18,6 @@ export const BackgroundWrapper = styled.div`
   min-width: 100vw;
 
   ${device.tablet} {
-    position: absolute;
     background-image: url('images/initial-page-background.jpg');
     background-position: top left;
     background-repeat: no-repeat;
@@ -35,20 +35,19 @@ export const Logo = styled.div`
 
 export const Container = styled(FormContainer)`
   align-self: center;
-  margin-top: 100px;
-  position: absolute;
+
   ${device.tablet} {
     align-self: flex-start;
     padding: 100px 30px;
-    margin-top: 180px;
+    margin-top: 100px;
     margin-left: 15px;
     background-color: #381010;
   }
 
-  @media (min-width: 1350px) {
+  @media (min-width: 1500px) {
     align-self: flex-end;
-    margin-right: 15px;
-    margin-top: 100px;
+    margin-right: 30px;
+    margin-top: 10px;
     padding: 80px 70px 100px;
   }
 `;
@@ -65,20 +64,18 @@ export const ContentContainer = styled.div`
 
 export const WelcomeHeader = styled.p`
   padding-bottom: 50px;
-  // width: 100%;
-  font-size: 2.8rem;
+  font-size: 3.2rem;
   letter-spacing: 0.7px;
   font-weight: 700;
 
   ${device.tablet} {
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 500;
   }
 `;
 
 export const WelcomeContent = styled.p`
-  // width 100%;
-  font-size: 1.5rem;
+  font-size: 2rem;
   line-height: 1.8;
   letter-spacing: 0.8px;
 
@@ -89,6 +86,6 @@ export const WelcomeContent = styled.p`
 
 export const SignUpLink = styled.a`
   padding-left: 10px;
-  color: #575655;
   font-weight: 700;
+  color: #616161;
 `;
