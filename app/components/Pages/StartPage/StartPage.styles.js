@@ -4,6 +4,8 @@ import { Wrapper, FormContainer } from '../AuthPageContainer/AuthPageContainer.s
 
 export const StartPageContainer = styled(Wrapper)`
   background-color: #381010;
+  width: 100%;
+
   ${device.tablet} {
     background-image: url('images/initial-page-placeholder.jpg');
   }
@@ -15,7 +17,7 @@ export const BackgroundWrapper = styled.div`
   flex-direction: column;
   overflow: auto;
   height: 100%;
-  min-width: 100vw;
+  width: 100%;
 
   ${device.tablet} {
     background-image: url('images/initial-page-background.jpg');
@@ -25,29 +27,20 @@ export const BackgroundWrapper = styled.div`
   }
 `;
 
-export const Logo = styled.div`
-  position: relative;
-  margin-left: 40px;
-  margin-top: 5px;
-  width: clamp(70px, 10vw, 100px);
-  height: 120px;
-`;
-
 export const Container = styled(FormContainer)`
   align-self: center;
-
+  margin-top: 200px;
   ${device.tablet} {
     align-self: flex-start;
     padding: 100px 30px;
-    margin-top: 100px;
+    margin-top: 150px;
     margin-left: 15px;
     background-color: #381010;
   }
 
   @media (min-width: 1500px) {
     align-self: flex-end;
-    margin-right: 30px;
-    margin-top: 10px;
+    margin-right: 10px;
     padding: 80px 70px 100px;
   }
 `;
