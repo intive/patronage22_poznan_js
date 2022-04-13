@@ -31,6 +31,8 @@ export const FlexRow = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  min-width: 385px;
+  margin-bottom: 10px;
 `;
 
 export const PencilIcon = styled(Icon).attrs({ type: 'pencil' })``;
@@ -80,4 +82,31 @@ export const Header = styled.h1`
   ${device.tablet} {
     margin-bottom: none;
   }
+`;
+
+export const EditUsername = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  ${PencilIcon} {
+    display: none;
+    padding-left: 15px;
+    padding-bottom: 8px;
+    width: 20px;
+    height: 20px;
+  }
+
+  :hover ${PencilIcon} {
+    display: inline-block;
+  }
+
+  ${({ $isChangingUsername }) =>
+    $isChangingUsername &&
+    css`
+      ${PencilIcon} {
+        display: inline-block;
+      }
+    `}
 `;

@@ -11,7 +11,13 @@ import {
   Header,
   PencilIcon,
   Username,
+  EditUsername,
 } from './Account.styles';
+// add ChangeUsernameStyle to the Account.styles
+import ChangeUsername from 'components/ChangeUsername';
+import { validateSignUpUserName } from 'utils/validateFormInputs';
+
+const initialState = Object.freeze({ currentName: '', newName: '' });
 
 export default function Account() {
   const { data: session } = useSession();
@@ -19,10 +25,19 @@ export default function Account() {
   const user = session?.user;
   const [isEditingAvatar, setIsEditingAvatar] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [isChangingUsername, setIsChangingUsername] = useState(false);
+
+  const [inputUsername, setInputUsername] = useState(initialState);
+  const [inputErrors, setInputErrors] = useState({});
 
   const toggleIsEditingAvatar = () => {
     setIsEditingAvatar(!isEditingAvatar);
     setSelectedAvatar(user.avatar);
+  };
+
+  const toggleIsChangingUsername = () => {
+    setIsChangingUsername(!isChangingUsername);
+    setNewUsername(user.name);
   };
 
   useEffect(() => {
@@ -43,41 +58,87 @@ export default function Account() {
   return (
     <AccountWrapper>
       <Header>Account</Header>
-      <section>
-        <EditAvatarButton
-          onlyIcon
-          onClick={toggleIsEditingAvatar}
-          $isEditingAvatar={isEditingAvatar}
-        >
-          <UserAvatar size={200} avatar={selectedAvatar} />
-          <PencilIcon />
-        </EditAvatarButton>
-      </section>
-      {!isEditingAvatar && (
+      {!isChangingUsername && (
         <>
-          {user.name && <Username>{user.name}</Username>}
+          <section>
+            <EditAvatarButton
+              onlyIcon
+              onClick={toggleIsEditingAvatar}
+              $isEditingAvatar={isEditingAvatar}
+            >
+              <UserAvatar size={200} avatar={selectedAvatar} />
+              <PencilIcon />
+            </EditAvatarButton>
+          </section>
+          {!isEditingAvatar && (
+            <>
+              <section>
+                <EditUsername onClick={() => setIsChangingUsername(!isChangingUsername)}>
+                  {user.name && <Username>{user.name}</Username>}
+                  <PencilIcon
+                    onClick={toggleIsChangingUsername}
+                    $isChangingUsername={isChangingUsername}
+                  />
+                </EditUsername>
+              </section>
+
+              {user.email && <Email>{user.email}</Email>}
+              {user.createdAt && (
+                <section>with us since {new Date(user.createdAt).toDateString()}</section>
+              )}
+              <FlexRow>
+                <Button onClick={signOut}>Log Out</Button>
+              </FlexRow>
+            </>
+          )}
+          {isEditingAvatar && (
+            <section>
+              <UserAvatarSelector
+                selectedAvatar={selectedAvatar}
+                setSelectedAvatar={setSelectedAvatar}
+              />
+              <FlexRow>
+                <Button primary onClick={() => alert('I wish I could')}>
+                  Save
+                </Button>
+                <Button onClick={toggleIsEditingAvatar}>Cancel</Button>
+              </FlexRow>
+            </section>
+          )}
+        </>
+      )}
+      {isChangingUsername && (
+        <>
+          <section>
+            <EditAvatarButton
+              onlyIcon
+              onClick={toggleIsEditingAvatar}
+              $isEditingAvatar={isEditingAvatar}
+            >
+              <UserAvatar size={200} avatar={selectedAvatar} />
+              <PencilIcon />
+            </EditAvatarButton>
+          </section>
+          <section>
+            <ChangeUsername
+              inputUsername={inputUsername}
+              setInputUsername={setInputUsername}
+              errors={inputErrors}
+            />
+            <FlexRow>
+              <Button primary onClick={() => alert('Username will be updated soon')}>
+                Save
+              </Button>
+              <Button onClick={() => setIsChangingUsername(false)}>Cancel</Button>
+
+              {/* add onClick to both Buttons */}
+            </FlexRow>
+          </section>
           {user.email && <Email>{user.email}</Email>}
           {user.createdAt && (
             <section>with us since {new Date(user.createdAt).toDateString()}</section>
           )}
-          <FlexRow>
-            <Button onClick={signOut}>Log Out</Button>
-          </FlexRow>
         </>
-      )}
-      {isEditingAvatar && (
-        <section>
-          <UserAvatarSelector
-            selectedAvatar={selectedAvatar}
-            setSelectedAvatar={setSelectedAvatar}
-          />
-          <FlexRow>
-            <Button primary onClick={() => alert('I wish I could')}>
-              Save
-            </Button>
-            <Button onClick={toggleIsEditingAvatar}>Cancel</Button>
-          </FlexRow>
-        </section>
       )}
     </AccountWrapper>
   );
