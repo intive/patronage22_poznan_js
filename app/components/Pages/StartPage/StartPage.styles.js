@@ -29,17 +29,18 @@ export const BackgroundWrapper = styled.div`
 
 export const Container = styled(FormContainer)`
   align-self: center;
-  margin-top: 200px;
+  margin-top: 120px;
   ${device.tablet} {
     align-self: flex-start;
-    padding: 100px 30px;
-    margin-top: 150px;
+    padding: 40px 20px 80px;
+    margin-top: 210px;
     margin-left: 15px;
     background-color: #381010;
   }
 
   @media (min-width: 1500px) {
     align-self: flex-end;
+    margin-top: 150px;
     margin-right: 10px;
     padding: 80px 70px 100px;
   }
@@ -51,6 +52,9 @@ export const ContentContainer = styled.div`
   text-align: center;
 
   ${device.tablet} {
+    width: 400px;
+  }
+  ${device.desktop} {
     width: 450px;
   }
 `;
