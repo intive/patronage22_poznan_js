@@ -89,6 +89,7 @@ export const EditUsername = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  cursor: pointer;
 
   ${PencilIcon} {
     display: none;
