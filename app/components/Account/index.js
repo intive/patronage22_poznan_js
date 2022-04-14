@@ -125,8 +125,6 @@ export default function Account() {
                 Save
               </Button>
               <Button onClick={() => setIsChangingUsername(false)}>Cancel</Button>
-
-              {/* add onClick to both Buttons */}
             </FlexRow>
           </section>
           {user.email && <Email>{user.email}</Email>}
