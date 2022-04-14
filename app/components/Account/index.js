@@ -33,11 +33,6 @@ export default function Account() {
     setSelectedAvatar(user.avatar);
   };
 
-  const toggleIsChangingUsername = () => {
-    setIsChangingUsername(!isChangingUsername);
-    setNewUsername(user.name);
-  };
-
   useEffect(() => {
     if (user) {
       setSelectedAvatar(user.avatar);
@@ -56,64 +51,18 @@ export default function Account() {
   return (
     <AccountWrapper>
       <Header>Account</Header>
-      {!isChangingUsername && (
-        <>
-          <section>
-            <EditAvatarButton
-              onlyIcon
-              onClick={toggleIsEditingAvatar}
-              $isEditingAvatar={isEditingAvatar}
-            >
-              <UserAvatar size={200} avatar={selectedAvatar} />
-              <PencilIcon />
-            </EditAvatarButton>
-          </section>
-          {!isEditingAvatar && (
-            <>
-              <section>
-                <EditUsername onClick={() => setIsChangingUsername(!isChangingUsername)}>
-                  {user.name && <Username>{user.name}</Username>}
-                  <PencilIcon />
-                </EditUsername>
-              </section>
-
-              {user.email && <Email>{user.email}</Email>}
-              {user.createdAt && (
-                <section>with us since {new Date(user.createdAt).toDateString()}</section>
-              )}
-              <FlexRow>
-                <Button onClick={signOut}>Log Out</Button>
-              </FlexRow>
-            </>
-          )}
-          {isEditingAvatar && (
-            <section>
-              <UserAvatarSelector
-                selectedAvatar={selectedAvatar}
-                setSelectedAvatar={setSelectedAvatar}
-              />
-              <FlexRow>
-                <Button primary onClick={() => alert('I wish I could')}>
-                  Save
-                </Button>
-                <Button onClick={toggleIsEditingAvatar}>Cancel</Button>
-              </FlexRow>
-            </section>
-          )}
-        </>
-      )}
+      <section>
+        <EditAvatarButton
+          onlyIcon
+          onClick={toggleIsEditingAvatar}
+          $isEditingAvatar={isEditingAvatar}
+        >
+          <UserAvatar size={200} avatar={selectedAvatar} />
+          <PencilIcon />
+        </EditAvatarButton>
+      </section>
       {isChangingUsername && (
         <>
-          <section>
-            <EditAvatarButton
-              onlyIcon
-              onClick={toggleIsEditingAvatar}
-              $isEditingAvatar={isEditingAvatar}
-            >
-              <UserAvatar size={200} avatar={selectedAvatar} />
-              <PencilIcon />
-            </EditAvatarButton>
-          </section>
           <section>
             <ChangeUsername
               inputUsername={inputUsername}
@@ -127,11 +76,42 @@ export default function Account() {
               <Button onClick={() => setIsChangingUsername(false)}>Cancel</Button>
             </FlexRow>
           </section>
+        </>
+      )}
+      {!isEditingAvatar && (
+        <>
+          {!isChangingUsername && (
+            <section>
+              <EditUsername onClick={() => setIsChangingUsername(!isChangingUsername)}>
+                {user.name && <Username>{user.name}</Username>}
+                <PencilIcon />
+              </EditUsername>
+            </section>
+          )}
           {user.email && <Email>{user.email}</Email>}
           {user.createdAt && (
             <section>with us since {new Date(user.createdAt).toDateString()}</section>
           )}
+          {!isChangingUsername && (
+            <FlexRow>
+              <Button onClick={signOut}>Log Out</Button>
+            </FlexRow>
+          )}
         </>
+      )}
+      {isEditingAvatar && (
+        <section>
+          <UserAvatarSelector
+            selectedAvatar={selectedAvatar}
+            setSelectedAvatar={setSelectedAvatar}
+          />
+          <FlexRow>
+            <Button primary onClick={() => alert('I wish I could')}>
+              Save
+            </Button>
+            <Button onClick={toggleIsEditingAvatar}>Cancel</Button>
+          </FlexRow>
+        </section>
       )}
     </AccountWrapper>
   );
