@@ -13,7 +13,7 @@ import {
 } from './MyListPage.styles';
 
 export default function MyListPage({ moviesData = [] }) {
-  const [searchQ, setSearchQ] = useState('');
+  const [query, setQuery] = useState('');
 
   if (moviesData.length === 0) {
     return (
@@ -24,8 +24,8 @@ export default function MyListPage({ moviesData = [] }) {
       </ErrorWrapper>
     );
   }
-  const filteredList = searchQ
-    ? moviesData.filter((movie) => movie.title?.toLowerCase().includes(searchQ.toLowerCase()))
+  const filteredList = query
+    ? moviesData.filter((movie) => movie.title?.toLowerCase().includes(query.toLowerCase()))
     : moviesData;
 
   return (
@@ -35,8 +35,8 @@ export default function MyListPage({ moviesData = [] }) {
           <Input
             id="search"
             placeholder="Search the movies in this category..."
-            onChange={(event) => setSearchQ(event.target.value)}
-            value={searchQ}
+            onChange={(event) => setQuery(event.target.value)}
+            value={query}
           />
         </SearchStyle>
       </SearchDiv>
