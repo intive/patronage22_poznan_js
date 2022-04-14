@@ -5,7 +5,6 @@ import { Wrapper, FormContainer } from '../AuthPageContainer/AuthPageContainer.s
 export const StartPageContainer = styled(Wrapper)`
   background-color: #381010;
   width: 100%;
-
   ${device.tablet} {
     background-image: url('images/initial-page-placeholder.jpg');
   }
@@ -54,7 +53,7 @@ export const ContentContainer = styled.div`
   }
 `;
 
-export const WelcomeHeader = styled.p`
+export const WelcomeHeader = styled.h1`
   padding-bottom: 40px;
   font-size: 3.2rem;
   letter-spacing: 0.7px;
