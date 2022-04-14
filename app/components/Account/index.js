@@ -73,10 +73,7 @@ export default function Account() {
               <section>
                 <EditUsername onClick={() => setIsChangingUsername(!isChangingUsername)}>
                   {user.name && <Username>{user.name}</Username>}
-                  <PencilIcon
-                    onClick={toggleIsChangingUsername}
-                    $isChangingUsername={isChangingUsername}
-                  />
+                  <PencilIcon />
                 </EditUsername>
               </section>
 
