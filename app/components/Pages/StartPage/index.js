@@ -1,13 +1,12 @@
-import Link from 'next/link';
 import {
   StartPageContainer,
   Container,
   WelcomeHeader,
   WelcomeContent,
   ContentContainer,
-  SignUpLink,
   BackgroundWrapper,
 } from './StartPage.styles';
+import Button from 'components/UI/Button';
 
 export default function StartPage() {
   return (
@@ -18,10 +17,10 @@ export default function StartPage() {
             <WelcomeHeader>Welcome to inTiVi!</WelcomeHeader>
             <WelcomeContent>
               Register now in inTiVi and enjoy watching the latest movies.
-              <Link href="/sign-up" passHref>
-                <SignUpLink>Sign Up</SignUpLink>
-              </Link>
             </WelcomeContent>
+            <Button primary href="/sign-up">
+              Sign Up
+            </Button>
           </ContentContainer>
         </Container>
       </BackgroundWrapper>

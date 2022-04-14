@@ -27,10 +27,10 @@ export const BackgroundWrapper = styled.div`
 
 export const Container = styled(FormContainer)`
   align-self: center;
-  margin-top: 120px;
+  padding: 120px 50px;
   ${device.tablet} {
     align-self: flex-start;
-    padding: 40px 20px 80px;
+    padding: 40px 20px 50px;
     margin-top: 150px;
     margin-left: 15px;
     background-color: #381010;
@@ -40,13 +40,13 @@ export const Container = styled(FormContainer)`
     align-self: flex-end;
     margin-top: 150px;
     margin-right: 20px;
-    padding: 50px 50px 80px;
+    padding: 40px 50px 50px;
   }
 `;
 
 export const ContentContainer = styled.div`
   min-width: 200px;
-  max-width: 100%;
+  max-width: 500px;
   text-align: center;
   ${device.tablet} {
     width: 400px;
@@ -69,14 +69,8 @@ export const WelcomeContent = styled.p`
   font-size: 2rem;
   line-height: 1.8;
   letter-spacing: 0.8px;
-
+  padding-bottom: 50px;
   ${device.tablet} {
     font-size: 1.8rem;
   }
-`;
-
-export const SignUpLink = styled.a`
-  padding-left: 10px;
-  font-weight: 700;
-  color: #616161;
 `;
