@@ -11,7 +11,7 @@ export async function getServerSideProps({ req }) {
 
     return {
       props: {
-        moviesData: myList ? myList : [],
+        moviesData: myList,
       },
     };
   } catch (e) {
