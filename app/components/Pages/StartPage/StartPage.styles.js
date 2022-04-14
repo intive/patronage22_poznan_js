@@ -11,13 +11,13 @@ export const StartPageContainer = styled(Wrapper)`
 `;
 
 export const BackgroundWrapper = styled.div`
-  position: absolute;
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
 
   ${device.tablet} {
+    min-height: 100vh;
     background-image: url('images/initial-page-background.jpg');
     background-position: top left;
     background-repeat: no-repeat;
