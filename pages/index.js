@@ -48,6 +48,7 @@ export async function getServerSideProps({ req }) {
     return {
       props: {
         heroMovie,
+        myList,
         listOfCarousels,
         pageLayout: { header: true, footer: true },
       },
