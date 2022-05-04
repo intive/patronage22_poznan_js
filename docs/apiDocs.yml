@@ -236,15 +236,41 @@ paths:
       responses:
         200:
           description: "Avatar updated."
+        400:
+          description: "Error - bad request."
+        404:
+          description: "Error - avatar not found."
+
+  /api/users:
+    put:
+      tags:
+        - users
+      summary: Make changes to user's name and/or password.
+      description: Makes changes to user's name and/or password. 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                newUsername:
+                  type: string
+                  default: ''
+                currentPassword:
+                  type: string
+                  default: ''
+                newPassword:
+                  type: string
+                  default: ''
+      responses:
+        200:
+          description: "User's name and/or password changed."
           content:
             application/json:
               schema:
                 type: object
         400:
           description: "Error - bad request."
-        404:
-          description: "Error - avatar not found."
-        
+
   /api/mylist:
     get:
       tags:
