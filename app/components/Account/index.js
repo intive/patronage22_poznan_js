@@ -11,7 +11,11 @@ import {
   Header,
   PencilIcon,
   Username,
+  EditUsername,
 } from './Account.styles';
+import ChangeUsername from 'components/ChangeUsername';
+
+const initialState = Object.freeze({ currentName: '', newName: '' });
 
 export default function Account() {
   const { data: session } = useSession();
@@ -19,6 +23,10 @@ export default function Account() {
   const user = session?.user;
   const [isEditingAvatar, setIsEditingAvatar] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [isChangingUsername, setIsChangingUsername] = useState(false);
+
+  const [inputUsername, setInputUsername] = useState(initialState);
+  const [inputErrors, setInputErrors] = useState({});
 
   const toggleIsEditingAvatar = () => {
     setIsEditingAvatar(!isEditingAvatar);
@@ -53,16 +61,42 @@ export default function Account() {
           <PencilIcon />
         </EditAvatarButton>
       </section>
+      {isChangingUsername && (
+        <>
+          <section>
+            <ChangeUsername
+              inputUsername={inputUsername}
+              setInputUsername={setInputUsername}
+              errors={inputErrors}
+            />
+            <FlexRow>
+              <Button primary onClick={() => alert('Username will be updated soon')}>
+                Save
+              </Button>
+              <Button onClick={() => setIsChangingUsername(false)}>Cancel</Button>
+            </FlexRow>
+          </section>
+        </>
+      )}
       {!isEditingAvatar && (
         <>
-          {user.name && <Username>{user.name}</Username>}
+          {!isChangingUsername && (
+            <section>
+              <EditUsername onClick={() => setIsChangingUsername(!isChangingUsername)}>
+                {user.name && <Username>{user.name}</Username>}
+                <PencilIcon />
+              </EditUsername>
+            </section>
+          )}
           {user.email && <Email>{user.email}</Email>}
           {user.createdAt && (
             <section>with us since {new Date(user.createdAt).toDateString()}</section>
           )}
-          <FlexRow>
-            <Button onClick={signOut}>Log Out</Button>
-          </FlexRow>
+          {!isChangingUsername && (
+            <FlexRow>
+              <Button onClick={signOut}>Log Out</Button>
+            </FlexRow>
+          )}
         </>
       )}
       {isEditingAvatar && (

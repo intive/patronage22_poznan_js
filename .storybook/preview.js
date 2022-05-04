@@ -1,6 +1,9 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { SessionProvider } from 'next-auth/react';
+import { addDecorator } from '@storybook/react';
+import { withReactContext } from 'storybook-react-context';
+import AppContext from 'context/app';
 import '../styles/fonts.css';
 import '../styles/globals.css';
 
@@ -9,6 +12,17 @@ import '../styles/globals.css';
  * which we can do by making all instances of next/image have the unoptimized prop
  * */
 import * as NextImage from 'next/image';
+
+addDecorator(
+  withReactContext({
+    Context: AppContext,
+    initialState: {
+      content: '',
+      isModalOpen: false,
+      myList: {},
+    },
+  })
+);
 
 const OriginalNextImage = NextImage.default;
 
