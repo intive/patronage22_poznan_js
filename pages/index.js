@@ -7,6 +7,7 @@ import {
   getMovieById,
 } from 'server/services/movieDb';
 import { genresList } from 'components/Pages/HomePage/genresList';
+import StartPage from 'components/Pages/StartPage';
 
 export default function Home({ listOfCarousels, heroMovie }) {
   const { data: session } = useSession();
@@ -15,7 +16,7 @@ export default function Home({ listOfCarousels, heroMovie }) {
       {session?.user ? (
         <HomePage listOfCarousels={listOfCarousels} heroMovie={heroMovie} />
       ) : (
-        <>Not signed in :(</>
+        <StartPage />
       )}
     </>
   );
@@ -47,6 +48,7 @@ export async function getServerSideProps({ req }) {
     return {
       props: {
         heroMovie,
+        myList,
         listOfCarousels,
         pageLayout: { header: true, footer: true },
       },
