@@ -66,3 +66,23 @@ export const validateSignInForm = (inputValues) => {
   }
   return validationErrors;
 };
+
+export const validateChangePassword = (inputValues) => {
+  const validationErrors = {};
+
+  if (!inputValues.currentPass) {
+    validationErrors.currentPass = 'Please enter your current password.';
+  }
+  if (!inputValues.newPass) {
+    validationErrors.newPass = 'Please enter your new password.';
+  } else if (!passwordSignUpPattern.test(inputValues.newPass)) {
+    validationErrors.newPass = 'Please provide one word min. 6 characters long';
+  }
+  if (!inputValues.repeatPass) {
+    validationErrors.repeatPass = 'Please enter your new password.';
+  } else if (!(inputValues.newPass === inputValues.repeatPass)) {
+    validationErrors.repeatPass = 'Both passwords must match.';
+  }
+
+  return validationErrors;
+};

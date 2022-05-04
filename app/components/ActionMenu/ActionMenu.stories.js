@@ -1,8 +1,4 @@
 import ActionMenu from '.';
-import Button from 'components/UI/Button';
-import { useState, useRef, useEffect } from 'react';
-import useOnClickOutside from 'hooks/useOnClickOutside';
-import UserAvatar from 'components/UI/UserAvatar';
 
 export default {
   title: 'ActionMenu',
