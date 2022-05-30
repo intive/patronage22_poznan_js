@@ -152,6 +152,27 @@ paths:
                 type: array
                 # add array items as a ref to ListOfGenres
 
+  /api/movies/{id}/videos:
+    get:
+      tags:
+        - movies
+      summary: Get videos for a movie.
+      description: Returns videos for a movie.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: Id of the movie to get videos for.
+          schema:
+            type: integer
+      responses:
+        200:
+          description: list of movies
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListOfMovies"
+      
   /api/users/signin:
     post:
       tags:
