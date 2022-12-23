@@ -19,7 +19,7 @@
     "@fortawesome/react-fontawesome": "^0.1.17",
     "is-plain-object": "^5.0.0",
     "jest-styled-components": "^7.0.8",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongodb": "^4.4.1",
     "next": "12.1.0",
     "next-auth": "^4.2.1",
